@@ -6,7 +6,7 @@
   <h3 align="center">Verto UI</h3>
 
   <p align="center">
-    React components conforming to the Verto Style Guide, based on [Geist UI](https://geist-ui.dev).
+    React components conforming to the Verto Style Guide, based on <a href="https://geist-ui.dev">Geist UI</a>.
   </p>
 </p>
 
