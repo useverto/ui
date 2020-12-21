@@ -1,2 +1,27 @@
+@use '../../styles/variables'
+  
+$defaultPaddingTop: .3em
+$defaultPaddingSide: 1.5em
+  
 .Button
-  color: #ff0000
+  font-size: 1.2em
+  font-weight: 500
+  padding: $defaultPaddingTop $defaultPaddingSide
+  border-width: 2px !important
+  border-radius: 6px
+  text-transform: none
+  height: auto
+  line-height: 1.05em
+  width: auto
+  min-width: 110px
+  overflow: hidden
+
+.default
+  padding: calc(#{$defaultPaddingTop} + 1px) calc(#{$defaultPaddingSide} + 1px)
+  border-width: 1px !important
+  font-weight: 400
+
+.code
+  font-family: variables.$jetbrains-mono
+  font-weight: 400
+  text-transform: uppercase

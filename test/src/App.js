@@ -3,7 +3,9 @@ import { Button } from "@verto/ui";
 function App() {
   return (
     <div>
-      <Button></Button>
+      <Button type="primary" code>
+        Read more
+      </Button>
     </div>
   );
 }
