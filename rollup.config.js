@@ -5,6 +5,7 @@ import postcss from "rollup-plugin-postcss";
 import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import autoprefixer from "autoprefixer";
+import stringHash from "string-hash";
 
 import pkg from "./package.json";
 
@@ -27,7 +28,16 @@ export default {
   plugins: [
     external(),
     postcss({
-      plugins: [autoprefixer]
+      plugins: [autoprefixer],
+      modules: {
+        generateScopedName(name, filename, css) {
+          const path = require("path"),
+            file = path.basename(filename, ".css").split(".")[0],
+            hash = stringHash(css).toString(36).substr(0, 5);
+
+          return `Verto_${file}_${name}__${hash}_`;
+        }
+      }
     }),
     url(),
     resolve(),
