@@ -26,7 +26,7 @@ export default function Button({
     switch (type) {
       case "default":
       case "primary":
-        return reverse ? "rgba(255, 255, 255, .11)" : "rgba(0, 0, 0, .11)";
+        return reverse ? "rgba(255, 255, 255, .14)" : "rgba(0, 0, 0, .11)";
 
       case "success":
         return "rgba(159, 0, 237, .11)";
@@ -53,21 +53,23 @@ export default function Button({
   return (
     <button
       ref={component}
-      className={`
-        zi-btn 
-        ${type ?? ""} 
-        ${size ?? ""} 
-        ${abort ? "abort" : ""} 
-        ${shadow ? "shadow" : ""} 
-        ${disabled ? "disabled" : ""} 
-        ${loading ? "loading" : ""} 
-        ${styles.Button} 
-        ${styles[type] ?? ""} 
-        ${reverse ? styles.reverse : ""} 
-        ${code ? styles.code : ""}
-        ${loading ? styles.loading : ""}
-        ${shadow ? styles.shadow : ""}
-      `}
+      className={[
+        "zi-btn",
+        type ?? "",
+        size ?? "",
+        abort ? "abort" : "",
+        shadow ? "shadow" : "",
+        disabled ? "diabled" : "",
+        loading ? "loading" : "",
+        styles.Button,
+        styles[type] ?? "",
+        reverse ? styles.reverse : "",
+        code ? styles.code : "",
+        loading ? styles.loading : "",
+        shadow ? styles.shadow : ""
+      ]
+        .filter((val) => val !== "")
+        .join(" ")}
       onClick={startRipple}
       disabled={disabled}
       {...props}
