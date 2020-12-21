@@ -7,6 +7,7 @@ import {
 } from "react";
 import Ripple from "./Ripple";
 import styles from "./Button.module.sass";
+import { useTheme } from "../Provider/Theme";
 
 export default function Button({
   children,
@@ -27,7 +28,8 @@ export default function Button({
       x: 0,
       y: 0
     }),
-    component = useRef<HTMLButtonElement>();
+    component = useRef<HTMLButtonElement>(),
+    theme = useTheme();
 
   function rippleColor() {
     switch (type) {
