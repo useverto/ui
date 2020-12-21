@@ -65,13 +65,14 @@ export default function Button({
         ${styles[type] ?? ""} 
         ${reverse ? styles.reverse : ""} 
         ${code ? styles.code : ""}
+        ${loading ? styles.loading : ""}
       `}
       onClick={startRipple}
       disabled={disabled}
       {...props}
     >
       {(loading && (
-        <span className="zi-loading-shim">
+        <span className={"zi-loading-shim " + styles.LoadingAnimation}>
           <i></i>
           <i></i>
           <i></i>

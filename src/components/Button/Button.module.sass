@@ -2,6 +2,7 @@
   
 $defaultPaddingTop: .3em
 $defaultPaddingSide: 1.5em
+$defaultFontSize: 1.2em
   
 .Button
   position: relative
@@ -22,7 +23,7 @@ $defaultPaddingSide: 1.5em
     color: #fff
     border-color: #fff
 
-    &:hover
+    &:hover:not(.loading)
       background-color: #fff
       border: 2px solid #fff !important
 
@@ -34,6 +35,11 @@ $defaultPaddingSide: 1.5em
     font-family: variables.$jetbrains-mono
     font-weight: 400
     text-transform: uppercase
+
+.LoadingAnimation
+  position: relative
+  height: $defaultFontSize
+  background-color: transparent
 
 .Ripple
   position: absolute
