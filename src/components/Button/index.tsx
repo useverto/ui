@@ -40,7 +40,7 @@ export default function Button({
   }
 
   function startRipple(e: MouseEvent) {
-    if (!component.current || !effect) return;
+    if (!component.current || !effect || shadow) return;
     const bounding = component.current.getBoundingClientRect();
 
     setClickLocation({
@@ -66,6 +66,7 @@ export default function Button({
         ${reverse ? styles.reverse : ""} 
         ${code ? styles.code : ""}
         ${loading ? styles.loading : ""}
+        ${shadow ? styles.shadow : ""}
       `}
       onClick={startRipple}
       disabled={disabled}

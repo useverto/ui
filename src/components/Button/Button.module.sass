@@ -36,6 +36,25 @@ $defaultFontSize: 1.2em
     font-weight: 400
     text-transform: uppercase
 
+  &.shadow
+    transition: opacity .2s ease
+
+    &.success, &.success:hover
+      box-shadow: 0 4px 14px rgba(variables.$theme, .39)
+
+    &.primary, &.primary:hover
+      box-shadow: 0 4px 14px rgba(#000, .39)
+
+    &.warning, &.warning:hover
+      box-shadow: 0 4px 14px rgba(variables.$color-warning, .39)
+
+    &.danger, &.danger:hover
+      box-shadow: 0 4px 14px rgba(variables.$color-error, .39)
+
+    &:hover
+      transform: none !important
+      opacity: .82
+
 .LoadingAnimation
   position: relative
   height: $defaultFontSize

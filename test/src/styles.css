@@ -1,0 +1,23 @@
+.content {
+  padding-top: 2em;
+  margin: 0 auto;
+  max-width: 60%;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1300px) {
+  .content {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .content {
+    max-width: 100%;
+  }
+}
