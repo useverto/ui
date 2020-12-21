@@ -79,6 +79,16 @@ function App() {
           <p>Paragraph element</p>
           <p className="code">Code paragraph element</p>
         </div>
+        <div className="section">
+          <h1>Links</h1>
+          <a href="https://verto.exchange">Link</a>{" "}
+          <a href="https://verto.exchange" className="underline">
+            Underline
+          </a>{" "}
+          <a href="https://verto.exchange" className="code">
+            Code
+          </a>
+        </div>
       </Page>
     </VertoProvider>
   );

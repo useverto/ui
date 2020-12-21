@@ -19,5 +19,28 @@ body, html
   --geist-selection: #{variables.$theme-light}
   --font-mono: #{variables.$jetbrains-mono}
 
-p.code
-  font-family: variables.$jetbrains-mono
+p, a
+  &.code
+    font-family: variables.$jetbrains-mono
+
+h1, h2, h3, h4, h5, h6, p
+  transition: all .25s ease-in-out
+
+a.underline
+  position: relative
+  text-decoration: none
+
+  &::after
+    content: ''
+    position: absolute
+    top: 105%
+    left: 0
+    width: 0
+    height: 2px
+    opacity: 0
+    background-color: variables.$theme
+    transition: all .22s ease-in-out
+
+  &:hover::after
+    width: 100%
+    opacity: 1
