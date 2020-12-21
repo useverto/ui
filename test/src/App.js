@@ -15,8 +15,16 @@ function App() {
       </div>
       <h2>Reverse</h2>
       <div
-        style={{ background: "#000", padding: "1.3em", width: "min-content" }}
+        className="button-container"
+        style={{
+          background: "#000",
+          padding: "1.3em",
+          justifyContent: "normal"
+        }}
       >
+        <Button style={{ marginRight: "1em" }} reverse>
+          Read more
+        </Button>
         <Button type="primary" reverse>
           Read more
         </Button>

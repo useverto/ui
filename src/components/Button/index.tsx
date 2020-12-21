@@ -26,7 +26,7 @@ export default function Button({
     switch (type) {
       case "default":
       case "primary":
-        return "rgba(0, 0, 0, .11)";
+        return reverse ? "rgba(255, 255, 255, .11)" : "rgba(0, 0, 0, .11)";
 
       case "success":
         return "rgba(159, 0, 237, .11)";
