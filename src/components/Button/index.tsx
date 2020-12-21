@@ -1,4 +1,4 @@
-import { useEffect, useState, PropsWithChildren, MouseEvent } from "react";
+import { useRef, useState, PropsWithChildren, MouseEvent } from "react";
 import Ripple from "./Ripple";
 import styles from "./Button.module.sass";
 
@@ -11,13 +11,16 @@ export default function Button({
   shadow,
   disabled,
   loading,
+  reverse,
+  effect = true,
   ...props
 }: PropsWithChildren<ButtonProps>) {
   const [ripple, showRipple] = useState(false),
     [clickLocation, setClickLocation] = useState<{ x: number; y: number }>({
       x: 0,
       y: 0
-    });
+    }),
+    component = useRef<HTMLButtonElement>();
 
   function rippleColor() {
     switch (type) {
@@ -37,12 +40,19 @@ export default function Button({
   }
 
   function startRipple(e: MouseEvent) {
-    setClickLocation({ x: e.clientX, y: e.clientY });
+    if (!component.current || !effect) return;
+    const bounding = component.current.getBoundingClientRect();
+
+    setClickLocation({
+      x: e.clientX - bounding.left,
+      y: e.clientY - bounding.top
+    });
     showRipple(true);
   }
 
   return (
     <button
+      ref={component}
       className={`
         zi-btn 
         ${type ?? ""} 
@@ -53,6 +63,7 @@ export default function Button({
         ${loading ? "loading" : ""} 
         ${styles.Button} 
         ${styles[type] ?? ""} 
+        ${reverse ? styles.reverse : ""} 
         ${code ? styles.code : ""}
       `}
       onClick={startRipple}
@@ -86,4 +97,6 @@ interface ButtonProps {
   shadow?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  effect?: boolean;
+  reverse?: boolean;
 }

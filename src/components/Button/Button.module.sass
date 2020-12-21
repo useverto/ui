@@ -17,14 +17,23 @@ $defaultPaddingSide: 1.5em
   min-width: 110px
   overflow: hidden
 
-.default
-  padding: calc(#{$defaultPaddingTop} + 1px) calc(#{$defaultPaddingSide} + 1px)
-  border-width: 1px !important
+  &.reverse
+    background-color: transparent
+    color: #fff
+    border-color: #fff
 
-.code
-  font-family: variables.$jetbrains-mono
-  font-weight: 400
-  text-transform: uppercase
+    &:hover
+      background-color: #fff
+      border: 2px solid #fff !important
+
+  &.default
+    padding: calc(#{$defaultPaddingTop} + 1px) calc(#{$defaultPaddingSide} + 1px)
+    border-width: 1px !important
+
+  &.code
+    font-family: variables.$jetbrains-mono
+    font-weight: 400
+    text-transform: uppercase
 
 .Ripple
   position: absolute
