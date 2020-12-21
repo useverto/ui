@@ -2,3 +2,6 @@ node_modules
 public
 .github
 dist
+test/build
+test/node_modules
+test/public

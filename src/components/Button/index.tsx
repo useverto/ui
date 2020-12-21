@@ -1,4 +1,4 @@
-import { useEffect, useState, PropsWithChildren } from "react";
+import { useEffect, useState, PropsWithChildren, MouseEvent } from "react";
 import Ripple from "./Ripple";
 import styles from "./Button.module.sass";
 
@@ -13,7 +13,33 @@ export default function Button({
   loading,
   ...props
 }: PropsWithChildren<ButtonProps>) {
-  const [ripple, showRipple] = useState(false);
+  const [ripple, showRipple] = useState(false),
+    [clickLocation, setClickLocation] = useState<{ x: number; y: number }>({
+      x: 0,
+      y: 0
+    });
+
+  function rippleColor() {
+    switch (type) {
+      case "default":
+      case "primary":
+        return "rgba(0, 0, 0, .11)";
+
+      case "success":
+        return "rgba(159, 0, 237, .11)";
+
+      case "warning":
+        return "rgba(245, 166, 35, .11)";
+
+      case "danger":
+        return "rgba(238, 0, 0, .11)";
+    }
+  }
+
+  function startRipple(e: MouseEvent) {
+    setClickLocation({ x: e.clientX, y: e.clientY });
+    showRipple(true);
+  }
 
   return (
     <button
@@ -29,7 +55,7 @@ export default function Button({
         ${styles[type] ?? ""} 
         ${code ? styles.code : ""}
       `}
-      onClick={() => showRipple(true)}
+      onClick={startRipple}
       disabled={disabled}
       {...props}
     >
@@ -43,8 +69,8 @@ export default function Button({
         children}
       {ripple && (
         <Ripple
-          click={{ x: 0, y: 0 }}
-          color="#fff"
+          click={clickLocation}
+          color={rippleColor()}
           completed={() => showRipple(false)}
         />
       )}

@@ -24,14 +24,12 @@
   "dependencies": {
     "@geist-ui/style": "^2.0.0",
     "axios": "^0.21.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "rollup-plugin-sass": "^1.2.2",
     "sass": "^1.30.0"
   },
   "peerDependencies": {
-    "react": ">=17.0.1",
-    "react-dom": ">=17.0.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.1.0",

@@ -11,7 +11,8 @@ export default function Ripple({ color, click, completed }: RippleProps) {
 
     return function cleanup() {
       completed();
-      component.current.removeEventListener("animationend", completed);
+      if (component.current)
+        component.current.removeEventListener("animationend", completed);
     };
   });
 
