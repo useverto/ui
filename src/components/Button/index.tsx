@@ -1,4 +1,5 @@
-import { PropsWithChildren } from "react";
+import { useEffect, useState, PropsWithChildren } from "react";
+import Ripple from "./Ripple";
 import styles from "./Button.module.sass";
 
 export default function Button({
@@ -12,13 +13,23 @@ export default function Button({
   loading,
   ...props
 }: PropsWithChildren<ButtonProps>) {
+  const [ripple, showRipple] = useState(false);
+
   return (
     <button
-      className={`zi-btn ${type ?? ""} ${size ?? ""} ${abort ? "abort" : ""} ${
-        shadow ? "shadow" : ""
-      } ${disabled ? "disabled" : ""} ${loading ? "loading" : ""} ${
-        styles.Button
-      } ${styles[type] ?? ""} ${code ? styles.code : ""}`}
+      className={`
+        zi-btn 
+        ${type ?? ""} 
+        ${size ?? ""} 
+        ${abort ? "abort" : ""} 
+        ${shadow ? "shadow" : ""} 
+        ${disabled ? "disabled" : ""} 
+        ${loading ? "loading" : ""} 
+        ${styles.Button} 
+        ${styles[type] ?? ""} 
+        ${code ? styles.code : ""}
+      `}
+      onClick={() => showRipple(true)}
       disabled={disabled}
       {...props}
     >
@@ -30,6 +41,13 @@ export default function Button({
         </span>
       )) ||
         children}
+      {ripple && (
+        <Ripple
+          click={{ x: 0, y: 0 }}
+          color="#fff"
+          completed={() => showRipple(false)}
+        />
+      )}
     </button>
   );
 }

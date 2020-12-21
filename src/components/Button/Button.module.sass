@@ -4,8 +4,9 @@ $defaultPaddingTop: .3em
 $defaultPaddingSide: 1.5em
   
 .Button
+  position: relative
   font-size: 1.2em
-  font-weight: 500
+  font-weight: 400
   padding: $defaultPaddingTop $defaultPaddingSide
   border-width: 2px !important
   border-radius: 6px
@@ -19,9 +20,37 @@ $defaultPaddingSide: 1.5em
 .default
   padding: calc(#{$defaultPaddingTop} + 1px) calc(#{$defaultPaddingSide} + 1px)
   border-width: 1px !important
-  font-weight: 400
 
 .code
   font-family: variables.$jetbrains-mono
   font-weight: 400
   text-transform: uppercase
+
+.Ripple
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+
+  svg
+    position: absolute
+    animation: .35s ease-in-out rippleAnimation
+    animation-fill-mode: forwards
+    width: 1em
+    height: 1em
+
+@keyframes rippleAnimation
+  0%
+    opacity: 0
+    transform: scale(1)
+
+  30%
+    opacity: 1
+
+  80%
+    opacity: .5
+
+  100%
+    transform: scale(28)
+    opacity: 0

@@ -1,11 +1,13 @@
 @use './variables'
 @use './jetbrains-mono.css'
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap')
   
 body, html
   margin: 0
   --geist-success: #{variables.$theme}
   --geist-success-dark: #{variables.$theme-dark}
   --geist-success-light: #{variables.$theme-light}
+  --font-mono: #{variables.$jetbrains-mono}
 
 ::selection
   background: variables.$theme 

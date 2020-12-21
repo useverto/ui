@@ -1,3 +1,5 @@
+/// <reference types="react-scripts" />
+
 import "@geist-ui/style";
 import "./styles/global.sass";
 
