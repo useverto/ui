@@ -1,4 +1,5 @@
 import { Button } from "@verto/ui";
+import { User } from "@geist-ui/react-icons";
 import "./styles.css";
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
           Danger
         </Button>
       </div>
+      <h2>Icon</h2>
+      <Button type="primary" icon={<User />}>
+        Primary
+      </Button>
     </div>
   );
 }

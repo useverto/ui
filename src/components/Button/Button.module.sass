@@ -63,6 +63,18 @@ $defaultFontSize: 1.2em
       transform: none !important
       opacity: .82
 
+  &.iconButton
+    padding-left: $defaultPaddingSide
+
+    .icon
+      position: absolute
+      top: 50%
+      left: $defaultPaddingSide / 2
+      transform: translateY(-50%)
+
+      svg
+        height: $defaultFontSize - .2em
+
 .LoadingAnimation
   position: relative
   height: $defaultFontSize

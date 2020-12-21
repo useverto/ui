@@ -1,4 +1,10 @@
-import { useRef, useState, PropsWithChildren, MouseEvent } from "react";
+import {
+  useRef,
+  useState,
+  PropsWithChildren,
+  MouseEvent,
+  ReactNode
+} from "react";
 import Ripple from "./Ripple";
 import styles from "./Button.module.sass";
 
@@ -13,6 +19,7 @@ export default function Button({
   loading,
   reverse,
   effect = true,
+  icon,
   ...props
 }: PropsWithChildren<ButtonProps>) {
   const [ripple, showRipple] = useState(false),
@@ -66,7 +73,8 @@ export default function Button({
         reverse ? styles.reverse : "",
         code ? styles.code : "",
         loading ? styles.loading : "",
-        shadow ? styles.shadow : ""
+        shadow ? styles.shadow : "",
+        icon ? styles.iconButton : ""
       ]
         .filter((val) => val !== "")
         .join(" ")}
@@ -82,6 +90,7 @@ export default function Button({
         </span>
       )) ||
         children}
+      {icon && <div className={styles.icon}>{icon}</div>}
       {ripple && (
         <Ripple
           click={clickLocation}
@@ -103,4 +112,5 @@ interface ButtonProps {
   loading?: boolean;
   effect?: boolean;
   reverse?: boolean;
+  icon?: ReactNode;
 }
