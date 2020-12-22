@@ -113,6 +113,31 @@ $defaultFontSize: 1.2em
   height: $defaultFontSize
   background-color: transparent
 
+.IconButton
+  $iconFontSize: 1.27em
+  color: var(--accents-7)
+  padding: 0
+  margin: 0
+  background-color: transparent
+  outline: none
+  border: none
+  cursor: pointer
+  line-height: 1em
+  height: $iconFontSize
+  width: $iconFontSize
+  font-size: $iconFontSize
+  transition: all .3s ease-in-out
+
+  svg
+    width: 100%
+    height: 100%
+
+  &:hover
+    color: #000
+
+  &.DarkIconButton:hover
+    color: #fff
+
 .Ripple
   position: absolute
   left: 0

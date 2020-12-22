@@ -1,6 +1,6 @@
 import { VertoProvider, Button, Page, Card, Loading } from "@verto/ui";
 import { useState } from "react";
-import { User } from "@geist-ui/react-icons";
+import { User, Plus } from "@geist-ui/react-icons";
 import "./styles.css";
 
 function App() {
@@ -64,9 +64,12 @@ function App() {
             Code
           </Button>
           <h2>Icon</h2>
-          <Button type="primary" icon={<User />}>
+          <Button type="primary" icon={<User />} style={{ marginRight: "1em" }}>
             Primary
           </Button>
+          <Button.Icon>
+            <Plus />
+          </Button.Icon>
         </div>
         <div className="section">
           <h1>Text</h1>

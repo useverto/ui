@@ -9,7 +9,10 @@ export default function Page({
   return (
     <div
       className={
-        styles.Page + (padTop ? " " + styles.PadTop : "") + ` ${className}`
+        styles.Page +
+        (padTop ? " " + styles.PadTop : "") +
+        " " +
+        (className ?? "")
       }
     >
       {children}

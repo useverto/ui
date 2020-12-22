@@ -84,7 +84,9 @@ export default function Button({
           theme === "Dark" ? styles.ButtonThemeDark : ""
         ]
           .filter((val) => val !== "")
-          .join(" ") + ` ${className}`
+          .join(" ") +
+        " " +
+        (className ?? "")
       }
       onClick={startRipple}
       disabled={disabled}
@@ -110,6 +112,27 @@ export default function Button({
   );
 }
 
+Button.Icon = function ({
+  children,
+  className
+}: PropsWithChildren<IconButtonProps>) {
+  const theme = useTheme();
+
+  return (
+    <button
+      className={
+        [styles.IconButton, theme === "Dark" ? styles.DarkIconButton : ""]
+          .filter((val) => val !== "")
+          .join(" ") +
+        " " +
+        (className ?? "")
+      }
+    >
+      {children}
+    </button>
+  );
+};
+
 interface ButtonProps {
   code?: boolean;
   type?: "default" | "primary" | "success" | "warning" | "danger";
@@ -121,5 +144,9 @@ interface ButtonProps {
   effect?: boolean;
   reverse?: boolean;
   icon?: ReactNode;
+  className?: string;
+}
+
+interface IconButtonProps {
   className?: string;
 }
