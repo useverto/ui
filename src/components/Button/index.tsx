@@ -21,6 +21,7 @@ export default function Button({
   reverse,
   effect = true,
   icon,
+  className,
   ...props
 }: PropsWithChildren<ButtonProps>) {
   const [ripple, showRipple] = useState(false),
@@ -64,25 +65,27 @@ export default function Button({
   return (
     <button
       ref={component}
-      className={[
-        "zi-btn",
-        type ?? "",
-        size ?? "",
-        abort ? "abort" : "",
-        shadow ? "shadow" : "",
-        disabled ? "diabled" : "",
-        loading ? "loading" : "",
-        styles.Button,
-        styles[type] ?? "",
-        reverse ? styles.reverse : "",
-        code ? styles.code : "",
-        loading ? styles.loading : "",
-        shadow ? styles.shadow : "",
-        icon ? styles.iconButton : "",
-        theme === "Dark" ? styles.ButtonThemeDark : ""
-      ]
-        .filter((val) => val !== "")
-        .join(" ")}
+      className={
+        [
+          "zi-btn",
+          type ?? "",
+          size ?? "",
+          abort ? "abort" : "",
+          shadow ? "shadow" : "",
+          disabled ? "diabled" : "",
+          loading ? "loading" : "",
+          styles.Button,
+          styles[type] ?? "",
+          reverse ? styles.reverse : "",
+          code ? styles.code : "",
+          loading ? styles.loading : "",
+          shadow ? styles.shadow : "",
+          icon ? styles.iconButton : "",
+          theme === "Dark" ? styles.ButtonThemeDark : ""
+        ]
+          .filter((val) => val !== "")
+          .join(" ") + ` ${className}`
+      }
       onClick={startRipple}
       disabled={disabled}
       {...props}
@@ -118,4 +121,5 @@ interface ButtonProps {
   effect?: boolean;
   reverse?: boolean;
   icon?: ReactNode;
+  className?: string;
 }

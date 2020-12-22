@@ -1,4 +1,4 @@
-import { VertoProvider, Button, Page } from "@verto/ui";
+import { VertoProvider, Button, Page, Card } from "@verto/ui";
 import { useState } from "react";
 import { User } from "@geist-ui/react-icons";
 import "./styles.css";
@@ -76,6 +76,7 @@ function App() {
           <h4>h4 element</h4>
           <h5>h5 element</h5>
           <h6>h6 element</h6>
+          <h6 className="code">Code heading</h6>
           <p>Paragraph element</p>
           <p className="code">Code paragraph element</p>
         </div>
@@ -88,6 +89,32 @@ function App() {
           <a href="https://verto.exchange" className="code">
             Code
           </a>
+        </div>
+        <div className="section">
+          <h1>Cards</h1>
+          <Card style={{ marginBottom: "1em" }} className="test-token">
+            <h1 className="code">VRT</h1>
+            <div className="info">
+              <h4 className="code">
+                <span>[PST]</span>Verto
+              </h4>
+              <p className="code">
+                <span>ID:</span>usjm4PCxUd5mtaon7zc97-dt-3qf67yPyqgzLnLqk5A
+              </p>
+            </div>
+          </Card>
+          <Card style={{ marginBottom: "1em" }}>
+            <p>This is a test hoverable Verto card</p>
+          </Card>
+          <Card design="Geist" style={{ marginBottom: "1em" }}>
+            <p>This is a test Geist card</p>
+          </Card>
+          <Card hoverable design="Geist" style={{ marginBottom: "1em" }}>
+            <p>This is a hoverable card</p>
+          </Card>
+          <Card hoverable design="Geist" shadow>
+            <p>This is a shadowed card</p>
+          </Card>
         </div>
       </Page>
     </VertoProvider>
