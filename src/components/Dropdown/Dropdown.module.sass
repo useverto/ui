@@ -1,0 +1,86 @@
+@use '../../styles/variables'
+  
+$defaultFontSize: 1.4em
+$defaultIconSize: .9em
+$defaultBorderRadius: 5px
+$defaultSidePadding: .6em
+
+.Dropdown
+  position: relative
+  width: min-content
+
+  &.Dark
+
+.Head
+  position: relative
+  background-color: #000
+  color: #fff
+  padding: .2em $defaultSidePadding
+    right: $defaultSidePadding + .3em + $defaultIconSize
+  font-size: $defaultFontSize
+  line-height: 1.22em
+  border-radius: $defaultBorderRadius
+  cursor: pointer
+  transition: all .25s ease-in-out
+
+  &:hover
+    opacity: .75
+
+  .Icon
+    position: absolute
+    top: 50%
+    right: .2em
+    color: #fff
+    width: $defaultIconSize
+    height: $defaultIconSize
+    transform: translateY(-50%)
+
+    svg
+      width: 100%
+      height: 100%
+
+  &.Dark
+    color: #000
+    background-color: #fff
+
+    .Icon
+      color: #000
+
+.Body
+  position: absolute
+  top: 106%
+  left: 0
+  right: 0
+  background-color: #000
+  border-radius: $defaultBorderRadius
+  padding: .25em 0
+  box-shadow: rgba(0, 0, 0, .12) 0px 5px 10px
+  color: #fff
+  overflow: hidden
+  transition: all .3s ease-in-out
+
+  &.Dark
+    background-color: #fff
+    box-shadow: none
+    color: #000
+
+.Item
+  padding: .3em $defaultSidePadding
+  cursor: pointer
+  background-color: #000
+  color: #fff
+  line-height: 1.1em
+  transition: all .3s ease-in-out
+
+  &:hover
+    background-color: #141414
+
+  &.Dark
+    background-color: #fff
+    color: #000
+
+    &:hover
+      background-color: #e2e2e2
+
+.Code
+  font-family: variables.$jetbrains-mono

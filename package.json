@@ -22,7 +22,9 @@
     "pre-commit": "prettier --write . && git add -A"
   },
   "dependencies": {
-    "@geist-ui/style": "^2.0.0"
+    "@geist-ui/react-icons": "^1.0.1",
+    "@geist-ui/style": "^2.0.0",
+    "framer-motion": "^3.1.1"
   },
   "peerDependencies": {
     "react": "^17.0.1",

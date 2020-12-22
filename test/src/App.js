@@ -1,4 +1,11 @@
-import { VertoProvider, Button, Page, Card, Loading } from "@verto/ui";
+import {
+  VertoProvider,
+  Button,
+  Page,
+  Card,
+  Loading,
+  Dropdown
+} from "@verto/ui";
 import { useState } from "react";
 import { User, Plus } from "@geist-ui/react-icons";
 import "./styles.css";
@@ -132,6 +139,15 @@ function App() {
           <div style={{ width: "9em" }}>
             <Loading.Skeleton></Loading.Skeleton>
           </div>
+        </div>
+        <div className="section">
+          <h1>Dropdowns</h1>
+          <Dropdown>
+            <Dropdown.Head>test</Dropdown.Head>
+            <Dropdown.Body>
+              <Dropdown.Item>testtt</Dropdown.Item>
+            </Dropdown.Body>
+          </Dropdown>
         </div>
       </Page>
     </VertoProvider>
