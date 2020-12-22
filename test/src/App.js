@@ -1,4 +1,4 @@
-import { VertoProvider, Button, Page, Card } from "@verto/ui";
+import { VertoProvider, Button, Page, Card, Loading } from "@verto/ui";
 import { useState } from "react";
 import { User } from "@geist-ui/react-icons";
 import "./styles.css";
@@ -115,6 +115,20 @@ function App() {
           <Card hoverable design="Geist" shadow>
             <p>This is a shadowed card</p>
           </Card>
+        </div>
+        <div className="section">
+          <h1>Loading</h1>
+          <div
+            style={{ position: "relative", width: "2em", marginBottom: "3em" }}
+          >
+            <Loading.Dots></Loading.Dots>
+          </div>
+          <div style={{ width: "2em", marginBottom: "1em" }}>
+            <Loading.Spinner></Loading.Spinner>
+          </div>
+          <div style={{ width: "9em" }}>
+            <Loading.Skeleton></Loading.Skeleton>
+          </div>
         </div>
       </Page>
     </VertoProvider>
