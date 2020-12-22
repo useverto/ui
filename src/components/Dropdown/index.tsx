@@ -3,7 +3,8 @@ import {
   createContext,
   useContext,
   Context,
-  useState
+  useState,
+  useEffect
 } from "react";
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
@@ -22,10 +23,11 @@ export default function Dropdown({
   code,
   ...props
 }: PropsWithChildren<DropdownProps>) {
-  const theme = useTheme();
+  const theme = useTheme(),
+    [context, setContext] = useState<DropdownConfig>({ opened: false });
 
   return (
-    <DropdownContext.Provider value={{ opened: false }}>
+    <DropdownContext.Provider value={{ ...context, setContext }}>
       <div
         className={
           [styles.Dropdown, theme === "Dark" ? styles.Dark : ""]
@@ -65,6 +67,12 @@ Dropdown.Head = function ({
         (className ?? "")
       }
       {...props}
+      onClick={() =>
+        dropdownData.setContext({
+          ...dropdownData,
+          opened: !dropdownData.opened
+        })
+      }
     >
       {(!dropdownData.selected && children) || dropdownData.selected}
       <ChevronDown className={styles.Icon} />
@@ -84,16 +92,20 @@ Dropdown.Body = function ({
   return (
     <motion.div
       animate={{ opacity: dropdownData.opened ? 1 : 0 }}
-      className={
-        [styles.Body, theme === "Dark" ? styles.Dark : ""]
-          .filter((val) => val !== "")
-          .join(" ") +
-        " " +
-        (className ?? "")
-      }
-      {...props}
+      transition={{ duration: 0.2 }}
     >
-      {children}
+      <div
+        className={
+          [styles.Body, theme === "Dark" ? styles.Dark : ""]
+            .filter((val) => val !== "")
+            .join(" ") +
+          " " +
+          (className ?? "")
+        }
+        {...props}
+      >
+        {children}
+      </div>
     </motion.div>
   );
 };
@@ -109,6 +121,14 @@ Dropdown.Item = function ({
   const theme = useTheme(),
     dropdownData = useDropdownConfig();
 
+  useEffect(() => {
+    selected = dropdownData.selected === value;
+  }, [dropdownData.selected]);
+
+  useEffect(() => {
+    if (selected) dropdownData.setContext({ ...dropdownData, selected: value });
+  }, [selected, value]);
+
   return (
     <div
       className={
@@ -123,6 +143,9 @@ Dropdown.Item = function ({
         (className ?? "")
       }
       {...props}
+      onClick={() =>
+        dropdownData.setContext({ ...dropdownData, selected: value })
+      }
     >
       {children}
     </div>
@@ -144,4 +167,5 @@ interface DropdownItemProps {
 interface DropdownConfig {
   opened: boolean;
   selected?: string | number;
+  setContext?: Function;
 }
