@@ -9,23 +9,23 @@ import {
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
 import { motion, AnimatePresence } from "framer-motion";
-import styles from "./Dropdown.module.sass";
+import styles from "./Select.module.sass";
 
-const DropdownContext: Context<IDropdownContext> = createContext<IDropdownContext>(
+const SelectContext: Context<ISelectContext> = createContext<ISelectContext>(
   null
 );
-const useDropdownConfig = (): IDropdownContext =>
-  useContext<IDropdownContext>(DropdownContext);
+const useSelectConfig = (): ISelectContext =>
+  useContext<ISelectContext>(SelectContext);
 
-export default function Dropdown({
+export default function Select({
   children,
   className,
   code,
   value,
   ...props
-}: PropsWithChildren<DropdownProps>) {
+}: PropsWithChildren<SelectProps>) {
   const theme = useTheme(),
-    [contextValue, setContext] = useState<DropdownConfig>({ opened: false });
+    [contextValue, setContext] = useState<SelectConfig>({ opened: false });
 
   // set value programmatically
   useEffect(() => setContext((val) => ({ ...val, selected: value, code })), [
@@ -33,10 +33,10 @@ export default function Dropdown({
   ]);
 
   return (
-    <DropdownContext.Provider value={{ value: contextValue, setContext }}>
+    <SelectContext.Provider value={{ value: contextValue, setContext }}>
       <div
         className={
-          [styles.Dropdown, theme === "Dark" ? styles.Dark : ""]
+          [styles.Select, theme === "Dark" ? styles.Dark : ""]
             .filter((val) => val !== "")
             .join(" ") +
           " " +
@@ -46,18 +46,18 @@ export default function Dropdown({
       >
         {children}
       </div>
-    </DropdownContext.Provider>
+    </SelectContext.Provider>
   );
 }
 
-Dropdown.Head = function ({
+Select.Head = function ({
   children,
   className,
   code,
   ...props
-}: PropsWithChildren<DropdownHeadProps>) {
+}: PropsWithChildren<SelectHeadProps>) {
   const theme = useTheme(),
-    { value, setContext } = useDropdownConfig();
+    { value, setContext } = useSelectConfig();
 
   return (
     <div
@@ -88,20 +88,20 @@ Dropdown.Head = function ({
   );
 };
 
-Dropdown.Body = function ({
+Select.Body = function ({
   children,
   className,
   ...props
-}: PropsWithChildren<DropdownBodyProps>) {
+}: PropsWithChildren<SelectBodyProps>) {
   const theme = useTheme(),
-    { value, setContext } = useDropdownConfig(),
+    { value, setContext } = useSelectConfig(),
     zIndex = 1000;
 
   return (
     <>
       {value.opened && (
         <div
-          className={styles.DropdownOverlay}
+          className={styles.SelectOverlay}
           style={{ zIndex }}
           onClick={() => setContext({ ...value, opened: false })}
         ></div>
@@ -134,19 +134,19 @@ Dropdown.Body = function ({
   );
 };
 
-Dropdown.Item = function ({
+Select.Item = function ({
   children,
   className,
   code,
   value,
   ...props
-}: PropsWithChildren<DropdownItemProps>) {
+}: PropsWithChildren<SelectItemProps>) {
   const theme = useTheme(),
-    dropdownData = useDropdownConfig();
+    selectData = useSelectConfig();
 
   function setSelected() {
-    dropdownData.setContext({
-      ...dropdownData.value,
+    selectData.setContext({
+      ...selectData.value,
       selected: value,
       opened: false,
       display: children
@@ -159,7 +159,7 @@ Dropdown.Item = function ({
         [
           styles.Item,
           theme === "Dark" ? styles.Dark : "",
-          code || dropdownData.value.code ? styles.Code : ""
+          code || selectData.value.code ? styles.Code : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -174,48 +174,48 @@ Dropdown.Item = function ({
   );
 };
 
-Dropdown.Divider = function ({
+Select.Divider = function ({
   className,
   ...props
-}: PropsWithChildren<DropdownDividerProps>) {
+}: PropsWithChildren<SelectDividerProps>) {
   return (
     <div className={styles.Divider + " " + (className ?? "")} {...props}></div>
   );
 };
 
-interface DropdownProps {
+interface SelectProps {
   className?: string;
   code?: boolean;
   value?: string | number;
 }
 
-interface DropdownHeadProps {
+interface SelectHeadProps {
   className?: string;
   code?: boolean;
 }
 
-interface DropdownBodyProps {
+interface SelectBodyProps {
   className?: string;
 }
 
-interface DropdownItemProps {
+interface SelectItemProps {
   className?: string;
   code?: boolean;
   value?: string | number;
 }
 
-interface DropdownDividerProps {
+interface SelectDividerProps {
   className?: string;
 }
 
-interface DropdownConfig {
+interface SelectConfig {
   opened?: boolean;
   selected?: string | number;
   display?: any;
   code?: boolean;
 }
 
-interface IDropdownContext {
-  value: DropdownConfig;
+interface ISelectContext {
+  value: SelectConfig;
   setContext: Function;
 }

@@ -9,4 +9,4 @@ export { default as Button } from "./components/Button";
 export { default as Page } from "./components/Page";
 export { default as Card } from "./components/Card";
 export * as Loading from "./components/Loading";
-export { default as Dropdown } from "./components/Dropdown";
+export { default as Select } from "./components/Select";
