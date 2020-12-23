@@ -36,9 +36,14 @@ export default function Button({
     switch (type) {
       case "default":
       case "primary":
-        return theme === "Dark" || reverse
-          ? "rgba(255, 255, 255, .11)"
-          : "rgba(0, 0, 0, .11)";
+        if (!reverse)
+          return theme === "Dark"
+            ? "rgba(255, 255, 255, .11)"
+            : "rgba(0, 0, 0, .11)";
+        else
+          return theme === "Dark"
+            ? "rgba(0, 0, 0, .11)"
+            : "rgba(255, 255, 255, .11)";
 
       case "success":
         return "rgba(159, 0, 237, .11)";
