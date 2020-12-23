@@ -10,3 +10,4 @@ export { default as Page } from "./components/Page";
 export { default as Card } from "./components/Card";
 export * as Loading from "./components/Loading";
 export { default as Select } from "./components/Select";
+export { default as Note } from "./components/Note";

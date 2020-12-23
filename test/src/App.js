@@ -1,6 +1,20 @@
-import { VertoProvider, Button, Page, Card, Loading, Select } from "@verto/ui";
+import {
+  VertoProvider,
+  Button,
+  Page,
+  Card,
+  Loading,
+  Select,
+  Note
+} from "@verto/ui";
 import { useState } from "react";
-import { User, Plus, AtSign } from "@geist-ui/react-icons";
+import {
+  User,
+  Plus,
+  AtSign,
+  CheckInCircle,
+  AlertCircle
+} from "@geist-ui/react-icons";
 import "./styles.css";
 
 function App() {
@@ -195,6 +209,40 @@ function App() {
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
+        </div>
+        <div className="section">
+          <h1>Notes</h1>
+          <Note>Default note</Note>
+          <Note type="primary">Primary note</Note>
+          <Note type="success">Success note</Note>
+          <Note type="warning">Warning note</Note>
+          <Note type="error">Error note</Note>
+          <Note type="warning" dismiss>
+            Allow dismiss
+          </Note>
+          <h2>Label customization</h2>
+          <Note type="success" label="Hey">
+            Change the label
+          </Note>
+          <Note type="success" labelIcon={<CheckInCircle />}>
+            Add an icon
+          </Note>
+          <h2>Filled</h2>
+          <Note type="primary" filled>
+            Primary note
+          </Note>
+          <Note type="success" filled>
+            Success note
+          </Note>
+          <Note type="warning" filled>
+            Warning note
+          </Note>
+          <Note type="error" filled>
+            Error note
+          </Note>
+          <Note labelIcon={<AlertCircle />} filled>
+            Filled with icon
+          </Note>
         </div>
       </Page>
     </VertoProvider>
