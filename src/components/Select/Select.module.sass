@@ -9,6 +9,9 @@ $defaultSidePadding: .6em
   position: relative
   width: max-content
 
+  &.Opened
+    z-index: 40
+
 .Head
   position: relative
   background-color: #000
@@ -20,6 +23,9 @@ $defaultSidePadding: .6em
   border-radius: $defaultBorderRadius
   cursor: pointer
   transition: all .25s ease-in-out
+
+  &.NoIcon
+    padding-right: $defaultSidePadding
 
   &:hover
     opacity: .75
@@ -100,3 +106,9 @@ $defaultSidePadding: .6em
   margin: .27em 0
   height: 1px
   background-color: var(--accents-7)
+
+.Search
+  $bottomPadding: .3em
+  padding: $bottomPadding $defaultSidePadding
+  margin-bottom: $bottomPadding
+  border-bottom: 1px solid var(--accents-7)

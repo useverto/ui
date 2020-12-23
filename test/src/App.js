@@ -166,6 +166,26 @@ function App() {
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
+          <Select className="select">
+            <Select.Head icon={false}>No icon</Select.Head>
+            <Select.Body>
+              <Select.Item value="one">One</Select.Item>
+              <Select.Item value="two" selected>
+                Two
+              </Select.Item>
+              <Select.Item value="three">Three</Select.Item>
+            </Select.Body>
+          </Select>
+          <Select className="select" search>
+            <Select.Head>Search</Select.Head>
+            <Select.Body>
+              <Select.Item value="one">One</Select.Item>
+              <Select.Item value="two" selected>
+                Two
+              </Select.Item>
+              <Select.Item value="three">Three</Select.Item>
+            </Select.Body>
+          </Select>
         </div>
       </Page>
     </VertoProvider>

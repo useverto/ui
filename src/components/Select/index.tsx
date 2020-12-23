@@ -22,21 +22,27 @@ export default function Select({
   className,
   code,
   value,
+  search = false,
   ...props
 }: PropsWithChildren<SelectProps>) {
   const theme = useTheme(),
     [contextValue, setContext] = useState<SelectConfig>({ opened: false });
 
   // set value programmatically
-  useEffect(() => setContext((val) => ({ ...val, selected: value, code })), [
-    value
-  ]);
+  useEffect(
+    () => setContext((val) => ({ ...val, selected: value, code, search })),
+    [value]
+  );
 
   return (
     <SelectContext.Provider value={{ value: contextValue, setContext }}>
       <div
         className={
-          [styles.Select, theme === "Dark" ? styles.Dark : ""]
+          [
+            styles.Select,
+            theme === "Dark" ? styles.Dark : "",
+            contextValue.opened ? styles.Opened : ""
+          ]
             .filter((val) => val !== "")
             .join(" ") +
           " " +
@@ -54,6 +60,7 @@ Select.Head = function ({
   children,
   className,
   code,
+  icon = true,
   ...props
 }: PropsWithChildren<SelectHeadProps>) {
   const theme = useTheme(),
@@ -65,7 +72,8 @@ Select.Head = function ({
         [
           styles.Head,
           theme === "Dark" ? styles.Dark : "",
-          code || value.code ? styles.Code : ""
+          code || value.code ? styles.Code : "",
+          icon ? "" : styles.NoIcon
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -81,9 +89,13 @@ Select.Head = function ({
       }
     >
       {(value.selected && value.display && value.display) || children}
-      <ChevronDown
-        className={styles.Icon + " " + (value.opened ? styles.IconOpened : "")}
-      />
+      {icon && (
+        <ChevronDown
+          className={
+            styles.Icon + " " + (value.opened ? styles.IconOpened : "")
+          }
+        />
+      )}
     </div>
   );
 };
@@ -125,6 +137,19 @@ Select.Body = function ({
               style={{ zIndex }}
               {...props}
             >
+              {value.search && (
+                <div className={styles.Search}>
+                  <input
+                    type="text"
+                    onChange={(e) =>
+                      setContext((val) => ({
+                        ...val,
+                        searchFilter: e.target.value
+                      }))
+                    }
+                  />
+                </div>
+              )}
               {children}
             </div>
           </motion.div>
@@ -153,24 +178,53 @@ Select.Item = function ({
     });
   }
 
+  function isShown() {
+    // if search is disabled or the filter is empty
+    if (
+      !selectData.value.search ||
+      !selectData.value.searchFilter ||
+      selectData.value.searchFilter === ""
+    )
+      return true;
+
+    // if the value/children matches the search query
+    if (
+      children
+        .toString()
+        .toLowerCase()
+        .includes(selectData.value.searchFilter.toLowerCase()) ||
+      value
+        .toString()
+        .toLowerCase()
+        .includes(selectData.value.searchFilter.toLowerCase())
+    )
+      return true;
+
+    return false;
+  }
+
   return (
-    <div
-      className={
-        [
-          styles.Item,
-          theme === "Dark" ? styles.Dark : "",
-          code || selectData.value.code ? styles.Code : ""
-        ]
-          .filter((val) => val !== "")
-          .join(" ") +
-        " " +
-        (className ?? "")
-      }
-      {...props}
-      onClick={setSelected}
-    >
-      {children}
-    </div>
+    <>
+      {isShown() && (
+        <div
+          className={
+            [
+              styles.Item,
+              theme === "Dark" ? styles.Dark : "",
+              code || selectData.value.code ? styles.Code : ""
+            ]
+              .filter((val) => val !== "")
+              .join(" ") +
+            " " +
+            (className ?? "")
+          }
+          {...props}
+          onClick={setSelected}
+        >
+          {children}
+        </div>
+      )}
+    </>
   );
 };
 
@@ -186,12 +240,14 @@ Select.Divider = function ({
 interface SelectProps {
   className?: string;
   code?: boolean;
+  search?: boolean;
   value?: string | number;
 }
 
 interface SelectHeadProps {
   className?: string;
   code?: boolean;
+  icon?: boolean;
 }
 
 interface SelectBodyProps {
@@ -213,6 +269,8 @@ interface SelectConfig {
   selected?: string | number;
   display?: any;
   code?: boolean;
+  search?: boolean;
+  searchFilter?: string;
 }
 
 interface ISelectContext {
