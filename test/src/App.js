@@ -142,13 +142,34 @@ function App() {
         </div>
         <div className="section">
           <h1>Dropdowns</h1>
-          <Dropdown>
+          <Dropdown className="select">
             <Dropdown.Head>Select one</Dropdown.Head>
             <Dropdown.Body>
               <Dropdown.Item value="one">One</Dropdown.Item>
               <Dropdown.Item value="two" selected>
                 Two
               </Dropdown.Item>
+              <Dropdown.Item value="three">Three</Dropdown.Item>
+            </Dropdown.Body>
+          </Dropdown>
+          <Dropdown className="select" code>
+            <Dropdown.Head>Code</Dropdown.Head>
+            <Dropdown.Body>
+              <Dropdown.Item value="one">One</Dropdown.Item>
+              <Dropdown.Item value="two" selected>
+                Two
+              </Dropdown.Item>
+              <Dropdown.Item value="three">Three</Dropdown.Item>
+            </Dropdown.Body>
+          </Dropdown>
+          <Dropdown className="select">
+            <Dropdown.Head>With divider</Dropdown.Head>
+            <Dropdown.Body>
+              <Dropdown.Item value="one">One</Dropdown.Item>
+              <Dropdown.Item value="two" selected>
+                Two
+              </Dropdown.Item>
+              <Dropdown.Divider />
               <Dropdown.Item value="three">Three</Dropdown.Item>
             </Dropdown.Body>
           </Dropdown>

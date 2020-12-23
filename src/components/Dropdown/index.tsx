@@ -28,7 +28,9 @@ export default function Dropdown({
     [contextValue, setContext] = useState<DropdownConfig>({ opened: false });
 
   // set value programmatically
-  useEffect(() => setContext((val) => ({ ...val, selected: value })), [value]);
+  useEffect(() => setContext((val) => ({ ...val, selected: value, code })), [
+    value
+  ]);
 
   return (
     <DropdownContext.Provider value={{ value: contextValue, setContext }}>
@@ -63,7 +65,7 @@ Dropdown.Head = function ({
         [
           styles.Head,
           theme === "Dark" ? styles.Dark : "",
-          code ? styles.Code : ""
+          code || value.code ? styles.Code : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -89,7 +91,6 @@ Dropdown.Head = function ({
 Dropdown.Body = function ({
   children,
   className,
-  code,
   ...props
 }: PropsWithChildren<DropdownBodyProps>) {
   const theme = useTheme(),
@@ -158,7 +159,7 @@ Dropdown.Item = function ({
         [
           styles.Item,
           theme === "Dark" ? styles.Dark : "",
-          code ? styles.Code : ""
+          code || dropdownData.value.code ? styles.Code : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -170,6 +171,15 @@ Dropdown.Item = function ({
     >
       {children}
     </div>
+  );
+};
+
+Dropdown.Divider = function ({
+  className,
+  ...props
+}: PropsWithChildren<DropdownDividerProps>) {
+  return (
+    <div className={styles.Divider + " " + (className ?? "")} {...props}></div>
   );
 };
 
@@ -186,7 +196,6 @@ interface DropdownHeadProps {
 
 interface DropdownBodyProps {
   className?: string;
-  code?: boolean;
 }
 
 interface DropdownItemProps {
@@ -195,10 +204,15 @@ interface DropdownItemProps {
   value?: string | number;
 }
 
+interface DropdownDividerProps {
+  className?: string;
+}
+
 interface DropdownConfig {
   opened?: boolean;
   selected?: string | number;
   display?: any;
+  code?: boolean;
 }
 
 interface IDropdownContext {
