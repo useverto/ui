@@ -16,6 +16,8 @@ $defaultSidePadding: .6em
   position: relative
   background-color: #000
   color: #fff
+  display: flex
+  align-items: center
   padding: .2em $defaultSidePadding
     right: $defaultSidePadding + .3em + $defaultIconSize
   font-size: $defaultFontSize
@@ -33,6 +35,12 @@ $defaultSidePadding: .6em
 
   &:hover:not(.Disabled)
     opacity: .75
+
+  .LabelIcon
+    margin-right: .3em
+    display: flex
+    align-items: center
+    opacity: .8
 
   .Icon
     $positionTransform: translateY(-50%)

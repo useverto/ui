@@ -4,7 +4,8 @@ import React, {
   useContext,
   Context,
   useState,
-  useEffect
+  useEffect,
+  ReactNode
 } from "react";
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
@@ -74,6 +75,7 @@ Select.Head = function ({
   className,
   code,
   icon = true,
+  labelIcon,
   ...props
 }: PropsWithChildren<SelectHeadProps>) {
   const theme = useTheme(),
@@ -105,6 +107,7 @@ Select.Head = function ({
       {...props}
       onClick={toggleOpened}
     >
+      {labelIcon && <div className={styles.LabelIcon}>{labelIcon}</div>}
       {(value.selected && value.display && value.display) || children}
       {icon && (
         <ChevronDown
@@ -271,6 +274,7 @@ interface SelectHeadProps {
   className?: string;
   code?: boolean;
   icon?: boolean;
+  labelIcon?: ReactNode;
 }
 
 interface SelectBodyProps {

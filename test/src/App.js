@@ -1,6 +1,6 @@
 import { VertoProvider, Button, Page, Card, Loading, Select } from "@verto/ui";
 import { useState } from "react";
-import { User, Plus } from "@geist-ui/react-icons";
+import { User, Plus, AtSign } from "@geist-ui/react-icons";
 import "./styles.css";
 
 function App() {
@@ -139,9 +139,7 @@ function App() {
             <Select.Head>Select one</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two" selected>
-                Two
-              </Select.Item>
+              <Select.Item value="two">Two</Select.Item>
               <Select.Item value="three">Three</Select.Item>
               <Select.Item value="dis" disabled>
                 Disabled option
@@ -152,9 +150,7 @@ function App() {
             <Select.Head>Code</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two" selected>
-                Two
-              </Select.Item>
+              <Select.Item value="two">Two</Select.Item>
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
@@ -162,9 +158,7 @@ function App() {
             <Select.Head>With divider</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two" selected>
-                Two
-              </Select.Item>
+              <Select.Item value="two">Two</Select.Item>
               <Select.Divider />
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
@@ -173,9 +167,7 @@ function App() {
             <Select.Head icon={false}>No icon</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two" selected>
-                Two
-              </Select.Item>
+              <Select.Item value="two">Two</Select.Item>
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
@@ -183,9 +175,7 @@ function App() {
             <Select.Head>Search</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two" selected>
-                Two
-              </Select.Item>
+              <Select.Item value="two">Two</Select.Item>
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
@@ -193,9 +183,15 @@ function App() {
             <Select.Head>Disabled</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two" selected>
-                Two
-              </Select.Item>
+              <Select.Item value="two">Two</Select.Item>
+              <Select.Item value="three">Three</Select.Item>
+            </Select.Body>
+          </Select>
+          <Select className="select">
+            <Select.Head labelIcon={<AtSign />}>With icon</Select.Head>
+            <Select.Body>
+              <Select.Item value="one">One</Select.Item>
+              <Select.Item value="two">Two</Select.Item>
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
