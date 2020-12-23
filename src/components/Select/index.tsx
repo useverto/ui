@@ -76,6 +76,7 @@ Select.Head = function ({
   code,
   icon = true,
   labelIcon,
+  uppercase = false,
   ...props
 }: PropsWithChildren<SelectHeadProps>) {
   const theme = useTheme(),
@@ -97,7 +98,8 @@ Select.Head = function ({
           theme === "Dark" ? styles.Dark : "",
           code || value.code ? styles.Code : "",
           icon ? "" : styles.NoIcon,
-          value.disabled ? styles.Disabled : ""
+          value.disabled ? styles.Disabled : "",
+          uppercase ? styles.Uppercase : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -186,6 +188,7 @@ Select.Item = function ({
   code,
   value,
   disabled,
+  uppercase = false,
   ...props
 }: PropsWithChildren<SelectItemProps>) {
   const theme = useTheme(),
@@ -236,7 +239,8 @@ Select.Item = function ({
               styles.Item,
               theme === "Dark" ? styles.Dark : "",
               code || selectData.value.code ? styles.Code : "",
-              disabled ? styles.Disabled : ""
+              disabled ? styles.Disabled : "",
+              uppercase ? styles.Uppercase : ""
             ]
               .filter((val) => val !== "")
               .join(" ") +
@@ -275,6 +279,7 @@ interface SelectHeadProps {
   code?: boolean;
   icon?: boolean;
   labelIcon?: ReactNode;
+  uppercase?: boolean;
 }
 
 interface SelectBodyProps {
@@ -286,6 +291,7 @@ interface SelectItemProps {
   code?: boolean;
   value?: string | number;
   disabled?: boolean;
+  uppercase?: boolean;
 }
 
 interface SelectDividerProps {

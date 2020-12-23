@@ -74,8 +74,12 @@ function App() {
             </Button>
           </div>
           <h2>Code</h2>
-          <Button type="primary" code>
+          <Button type="primary" style={{ marginBottom: "1em" }} code>
             Code
+          </Button>
+          <br />
+          <Button type="primary" code uppercase>
+            Uppercase
           </Button>
           <h2>Icon</h2>
           <Button type="primary" icon={<User />} style={{ marginRight: "1em" }}>
@@ -84,6 +88,14 @@ function App() {
           <Button.Icon>
             <Plus />
           </Button.Icon>
+          <h2>Thin</h2>
+          <Button type="primary" style={{ marginBottom: "1em" }} thin>
+            Thin uppercase
+          </Button>
+          <br />
+          <Button type="primary" thin uppercase>
+            Thin uppercase
+          </Button>
         </div>
         <div className="section">
           <h1>Text</h1>

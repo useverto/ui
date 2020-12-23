@@ -21,6 +21,8 @@ export default function Button({
   reverse,
   effect = true,
   icon,
+  uppercase = false,
+  thin = false,
   className,
   ...props
 }: PropsWithChildren<ButtonProps>) {
@@ -86,6 +88,8 @@ export default function Button({
           loading ? styles.loading : "",
           shadow ? styles.shadow : "",
           icon ? styles.iconButton : "",
+          uppercase ? styles.uppercase : "",
+          thin ? styles.thin : "",
           theme === "Dark" ? styles.ButtonThemeDark : ""
         ]
           .filter((val) => val !== "")
@@ -149,6 +153,8 @@ interface ButtonProps {
   effect?: boolean;
   reverse?: boolean;
   icon?: ReactNode;
+  uppercase?: boolean;
+  thin?: boolean;
   className?: string;
 }
 

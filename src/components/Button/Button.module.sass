@@ -18,6 +18,15 @@ $defaultFontSize: 1.2em
   min-width: 110px
   overflow: hidden
 
+  &.uppercase
+    text-transform: uppercase
+
+  &.thin
+    $thinBorder: 1px
+    border-width: $thinBorder !important
+    padding: calc(#{$defaultPaddingTop} + #{$thinBorder}) calc(#{$defaultPaddingSide} + #{$thinBorder})
+    font-weight: 300
+
   &.reverse
     background-color: transparent
     color: #fff
@@ -42,7 +51,6 @@ $defaultFontSize: 1.2em
   &.code
     font-family: variables.$jetbrains-mono
     font-weight: 400
-    text-transform: uppercase
 
   &.shadow
     transition: opacity .2s ease
