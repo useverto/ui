@@ -7,9 +7,7 @@ $defaultSidePadding: .6em
 
 .Dropdown
   position: relative
-  width: min-content
-
-  &.Dark
+  width: max-content
 
 .Head
   position: relative
@@ -27,13 +25,18 @@ $defaultSidePadding: .6em
     opacity: .75
 
   .Icon
+    $positionTransform: translateY(-50%)
     position: absolute
     top: 50%
-    right: .2em
+    right: .3em
     color: #fff
-    width: $defaultIconSize
-    height: $defaultIconSize
-    transform: translateY(-50%)
+    width: $defaultIconSize - .17em
+    height: $defaultIconSize - .17em
+    transform: $positionTransform
+    transition: transform .18s ease-in-out
+
+    &.IconOpened
+      transform: $positionTransform rotate(180deg)
 
     svg
       width: 100%
@@ -63,6 +66,13 @@ $defaultSidePadding: .6em
     background-color: #fff
     box-shadow: none
     color: #000
+
+.DropdownOverlay
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
 
 .Item
   padding: .3em $defaultSidePadding

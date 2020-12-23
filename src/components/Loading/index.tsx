@@ -24,8 +24,6 @@ export function Spinner({
 }: PropsWithChildren<LoadingProps>) {
   const theme = useTheme();
 
-  console.log(styles.Spinner);
-
   return (
     <div
       className={
