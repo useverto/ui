@@ -1,4 +1,4 @@
-import {
+import React, {
   PropsWithChildren,
   createContext,
   useContext,
@@ -23,15 +23,28 @@ export default function Select({
   code,
   value,
   search = false,
+  disabled = false,
   ...props
 }: PropsWithChildren<SelectProps>) {
   const theme = useTheme(),
-    [contextValue, setContext] = useState<SelectConfig>({ opened: false });
+    [contextValue, setContext] = useState<SelectConfig>({
+      opened: false,
+      code,
+      search,
+      disabled
+    });
 
-  // set value programmatically
+  // set values programmatically
   useEffect(
-    () => setContext((val) => ({ ...val, selected: value, code, search })),
-    [value]
+    () =>
+      setContext((val) => ({
+        ...val,
+        selected: value,
+        code,
+        search,
+        disabled
+      })),
+    [value, code, search, disabled]
   );
 
   return (
@@ -66,6 +79,14 @@ Select.Head = function ({
   const theme = useTheme(),
     { value, setContext } = useSelectConfig();
 
+  function toggleOpened() {
+    if (value.disabled) return;
+    setContext({
+      ...value,
+      opened: !value.opened
+    });
+  }
+
   return (
     <div
       className={
@@ -73,7 +94,8 @@ Select.Head = function ({
           styles.Head,
           theme === "Dark" ? styles.Dark : "",
           code || value.code ? styles.Code : "",
-          icon ? "" : styles.NoIcon
+          icon ? "" : styles.NoIcon,
+          value.disabled ? styles.Disabled : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -81,12 +103,7 @@ Select.Head = function ({
         (className ?? "")
       }
       {...props}
-      onClick={() =>
-        setContext({
-          ...value,
-          opened: !value.opened
-        })
-      }
+      onClick={toggleOpened}
     >
       {(value.selected && value.display && value.display) || children}
       {icon && (
@@ -137,6 +154,7 @@ Select.Body = function ({
               style={{ zIndex }}
               {...props}
             >
+              {/** TODO: add custom Input here */}
               {value.search && (
                 <div className={styles.Search}>
                   <input
@@ -164,12 +182,15 @@ Select.Item = function ({
   className,
   code,
   value,
+  disabled,
   ...props
 }: PropsWithChildren<SelectItemProps>) {
   const theme = useTheme(),
     selectData = useSelectConfig();
 
   function setSelected() {
+    if (disabled) return;
+
     selectData.setContext({
       ...selectData.value,
       selected: value,
@@ -211,7 +232,8 @@ Select.Item = function ({
             [
               styles.Item,
               theme === "Dark" ? styles.Dark : "",
-              code || selectData.value.code ? styles.Code : ""
+              code || selectData.value.code ? styles.Code : "",
+              disabled ? styles.Disabled : ""
             ]
               .filter((val) => val !== "")
               .join(" ") +
@@ -242,6 +264,7 @@ interface SelectProps {
   code?: boolean;
   search?: boolean;
   value?: string | number;
+  disabled?: boolean;
 }
 
 interface SelectHeadProps {
@@ -258,6 +281,7 @@ interface SelectItemProps {
   className?: string;
   code?: boolean;
   value?: string | number;
+  disabled?: boolean;
 }
 
 interface SelectDividerProps {
@@ -271,9 +295,10 @@ interface SelectConfig {
   code?: boolean;
   search?: boolean;
   searchFilter?: string;
+  disabled?: boolean;
 }
 
 interface ISelectContext {
   value: SelectConfig;
-  setContext: Function;
+  setContext: React.Dispatch<React.SetStateAction<SelectConfig>>;
 }

@@ -143,6 +143,9 @@ function App() {
                 Two
               </Select.Item>
               <Select.Item value="three">Three</Select.Item>
+              <Select.Item value="dis" disabled>
+                Disabled option
+              </Select.Item>
             </Select.Body>
           </Select>
           <Select className="select" code>
@@ -178,6 +181,16 @@ function App() {
           </Select>
           <Select className="select" search>
             <Select.Head>Search</Select.Head>
+            <Select.Body>
+              <Select.Item value="one">One</Select.Item>
+              <Select.Item value="two" selected>
+                Two
+              </Select.Item>
+              <Select.Item value="three">Three</Select.Item>
+            </Select.Body>
+          </Select>
+          <Select className="select" disabled>
+            <Select.Head>Disabled</Select.Head>
             <Select.Body>
               <Select.Item value="one">One</Select.Item>
               <Select.Item value="two" selected>

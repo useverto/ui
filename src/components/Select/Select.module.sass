@@ -27,7 +27,11 @@ $defaultSidePadding: .6em
   &.NoIcon
     padding-right: $defaultSidePadding
 
-  &:hover
+  &.Disabled
+    cursor: not-allowed
+    background-color: #313131
+
+  &:hover:not(.Disabled)
     opacity: .75
 
   .Icon
@@ -51,6 +55,9 @@ $defaultSidePadding: .6em
   &.Dark
     color: #000
     background-color: #fff
+
+    &.Disabled
+      background-color: #c2c2c2
 
     .Icon
       color: #000
@@ -88,14 +95,21 @@ $defaultSidePadding: .6em
   line-height: 1.1em
   transition: all .3s ease-in-out
 
-  &:hover
+  &.Disabled
+    background-color: #0f0f0f
+    cursor: not-allowed
+
+  &:hover:not(.Disabled)
     background-color: #141414
 
   &.Dark
     background-color: #fff
     color: #000
 
-    &:hover
+    &.Disabled
+      background-color: #e9e9e9
+
+    &:hover:not(.Disabled)
       background-color: #e2e2e2
 
 .Code
