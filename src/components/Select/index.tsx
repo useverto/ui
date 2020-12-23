@@ -25,6 +25,7 @@ export default function Select({
   value,
   search = false,
   disabled = false,
+  onChange,
   ...props
 }: PropsWithChildren<SelectProps>) {
   const theme = useTheme(),
@@ -47,6 +48,12 @@ export default function Select({
       })),
     [value, code, search, disabled]
   );
+
+  // on change
+  useEffect(() => {
+    if (contextValue.selected && contextValue.selected !== "")
+      onChange(contextValue.selected);
+  }, [contextValue.selected]);
 
   return (
     <SelectContext.Provider value={{ value: contextValue, setContext }}>
@@ -272,6 +279,7 @@ interface SelectProps {
   search?: boolean;
   value?: string | number;
   disabled?: boolean;
+  onChange?: (val: string | number) => void;
 }
 
 interface SelectHeadProps {

@@ -5,7 +5,8 @@ import {
   Card,
   Loading,
   Select,
-  Note
+  Note,
+  Input
 } from "@verto/ui";
 import { useState } from "react";
 import {
@@ -90,7 +91,7 @@ function App() {
           </Button.Icon>
           <h2>Thin</h2>
           <Button type="primary" style={{ marginBottom: "1em" }} thin>
-            Thin uppercase
+            Thin
           </Button>
           <br />
           <Button type="primary" thin uppercase>
@@ -255,6 +256,10 @@ function App() {
           <Note labelIcon={<AlertCircle />} filled>
             Filled with icon
           </Note>
+        </div>
+        <div className="section" style={{ width: "30%" }}>
+          <h1>Inputs</h1>
+          <Input label="Input" />
         </div>
       </Page>
     </VertoProvider>

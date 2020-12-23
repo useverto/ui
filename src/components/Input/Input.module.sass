@@ -1,0 +1,55 @@
+@use '../../styles/variables'
+  
+$defaultFontSize: .91em
+$defaultSidePadding: .44em
+$defaultTopPadding: .7em
+$defaultBorderSize: 1px
+
+=focusLabelStyle
+  background-color: #fff
+  border-radius: 2px
+  padding: 1px 2px
+  top: 0
+  transform: scale(.77) translateY(-#{$defaultTopPadding + $defaultFontSize / 2 })
+  
+.Input
+  position: relative
+  display: flex
+  align-items: stretch
+  border: $defaultBorderSize solid var(--accents-2)
+  border-radius: 5px
+  transition: all .24s ease-in-out
+
+  &:focus-within
+    border-color: var(--accents-5)
+
+  .Label
+    position: absolute
+    left: calc(#{$defaultSidePadding} + #{$defaultBorderSize})
+    top: 50%
+    color: var(--geist-foreground)
+    font-size: $defaultFontSize
+    transform: translateY(-50%)
+    z-index: 10
+    transition: all .22s ease-in-out
+
+    &.HasContent
+      +focusLabelStyle
+
+  input
+    display: block
+    width: 100%
+    border: none
+    outline: none
+    background-color: transparent
+    font-size: $defaultFontSize
+    font-weight: normal
+    padding: $defaultSidePadding $defaultTopPadding
+    color: var(--geist-foreground)
+    z-index: 1
+
+    &:focus + .Label
+      +focusLabelStyle
+
+  &.Code input
+    font-family: variables.$jetbrains-mono
