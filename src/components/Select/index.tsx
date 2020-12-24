@@ -51,7 +51,7 @@ export default function Select({
 
   // on change
   useEffect(() => {
-    if (contextValue.selected && contextValue.selected !== "")
+    if (contextValue.selected && contextValue.selected !== "" && onChange)
       onChange(contextValue.selected);
   }, [contextValue.selected]);
 

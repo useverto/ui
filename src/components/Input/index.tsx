@@ -7,6 +7,7 @@ import {
 } from "react";
 import { X as Clear } from "@geist-ui/react-icons";
 import styles from "./Input.module.sass";
+import { useTheme } from "../Provider/Theme";
 
 export default function Input({
   children,
@@ -23,7 +24,8 @@ export default function Input({
   code,
   ...props
 }: PropsWithChildren<InputProps>) {
-  const [val, setVal] = useState(value);
+  const [val, setVal] = useState(value),
+    theme = useTheme();
 
   function change(e: ChangeEvent<HTMLInputElement>) {
     setVal(e.target.value);
@@ -33,7 +35,11 @@ export default function Input({
   return (
     <div
       className={
-        [styles.Input, code ? styles.Code : ""]
+        [
+          styles.Input,
+          code ? styles.Code : "",
+          theme === "Dark" ? styles.Dark : ""
+        ]
           .filter((val) => val !== "")
           .join(" ") +
         " " +
