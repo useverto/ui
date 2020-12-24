@@ -3,7 +3,8 @@
 $defaultPaddingTop: .3em
 $defaultPaddingSide: 1.5em
 $defaultFontSize: 1.2em
-  
+$minifontSize: .875rem
+
 .Button
   position: relative
   font-size: 1.2em
@@ -26,6 +27,12 @@ $defaultFontSize: 1.2em
     border-width: $thinBorder !important
     padding: calc(#{$defaultPaddingTop} + #{$thinBorder}) calc(#{$defaultPaddingSide} + #{$thinBorder})
     font-weight: 300
+
+  &.minifont
+    $miniTopPadding: calc(#{$defaultPaddingTop + .18em} + #{$defaultFontSize} - #{$minifontSize})
+    $miniSidePadding: calc(#{$defaultPaddingSide + .18em} + #{$defaultFontSize} - #{$minifontSize})
+    font-size: $minifontSize
+    padding: $miniTopPadding $miniSidePadding
 
   &.reverse
     background-color: transparent

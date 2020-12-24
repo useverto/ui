@@ -97,6 +97,20 @@ function App() {
           <Button type="primary" thin uppercase>
             Thin uppercase
           </Button>
+          <h2>Minifont</h2>
+          <Button type="primary" style={{ marginBottom: "1em" }} minifont>
+            Minifont
+          </Button>
+          <br />
+          <Button
+            type="primary"
+            style={{ marginBottom: "1em" }}
+            thin
+            uppercase
+            minifont
+          >
+            Thin with minifont
+          </Button>
         </div>
         <div className="section">
           <h1>Text</h1>

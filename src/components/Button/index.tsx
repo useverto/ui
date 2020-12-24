@@ -23,6 +23,7 @@ export default function Button({
   icon,
   uppercase = false,
   thin = false,
+  minifont = false,
   className,
   ...props
 }: PropsWithChildren<ButtonProps>) {
@@ -90,6 +91,7 @@ export default function Button({
           icon ? styles.iconButton : "",
           uppercase ? styles.uppercase : "",
           thin ? styles.thin : "",
+          minifont ? styles.minifont : "",
           theme === "Dark" ? styles.ButtonThemeDark : ""
         ]
           .filter((val) => val !== "")
@@ -155,6 +157,7 @@ interface ButtonProps {
   icon?: ReactNode;
   uppercase?: boolean;
   thin?: boolean;
+  minifont?: boolean;
   className?: string;
 }
 
