@@ -3,7 +3,9 @@ import {
   ChangeEventHandler,
   ReactNode,
   ChangeEvent,
-  useState
+  useState,
+  useEffect,
+  useRef
 } from "react";
 import { X as Clear } from "@geist-ui/react-icons";
 import styles from "./Input.module.sass";
@@ -16,7 +18,7 @@ export default function Input({
   label,
   type = "text",
   disabled,
-  style,
+  theme,
   readOnly,
   icon,
   onChange,
@@ -25,11 +27,19 @@ export default function Input({
   ...props
 }: PropsWithChildren<InputProps>) {
   const [val, setVal] = useState(value),
-    theme = useTheme();
+    displayTheme = useTheme(),
+    inputEl = useRef<HTMLInputElement>();
+
+  useEffect(() => setVal(value), [value]);
 
   function change(e: ChangeEvent<HTMLInputElement>) {
     setVal(e.target.value);
     if (onChange) onChange(e);
+  }
+
+  function focusInput() {
+    if (!inputEl.current) return;
+    inputEl.current.focus();
   }
 
   return (
@@ -38,25 +48,33 @@ export default function Input({
         [
           styles.Input,
           code ? styles.Code : "",
-          theme === "Dark" ? styles.Dark : ""
+          displayTheme === "Dark" ? styles.Dark : "",
+          disabled ? styles.Disabled : "",
+          theme ? styles[`Theme_${theme}`] ?? "" : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
         " " +
-        className
+        (className ?? "")
       }
       {...props}
     >
-      {icon && <div className={styles.Icon}>{icon}</div>}
+      {icon && (
+        <div className={styles.Icon} onClick={focusInput}>
+          {icon}
+        </div>
+      )}
       <input
         type={type}
-        value={value}
+        value={val ?? ""}
         onChange={change}
         disabled={disabled}
         readOnly={readOnly}
+        ref={inputEl}
       />
       {label && (
         <span
+          onClick={focusInput}
           className={[styles.Label, val && val !== "" ? styles.HasContent : ""]
             .filter((val) => val !== "")
             .join(" ")}
@@ -79,7 +97,7 @@ interface InputProps {
   label?: string;
   type?: "password" | "email" | "text";
   disabled?: boolean;
-  style?: "default" | "error" | "success" | "warning";
+  theme?: "default" | "error" | "success" | "warning";
   readOnly?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   icon?: ReactNode;

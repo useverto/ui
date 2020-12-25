@@ -273,7 +273,25 @@ function App() {
         </div>
         <div className="section" style={{ width: "30%" }}>
           <h1>Inputs</h1>
-          <Input label="Input" />
+          <Input label="Input" style={{ marginBottom: "2em" }} />
+          <Input label="Disabled" style={{ marginBottom: "2em" }} disabled />
+          <Input
+            label="Readonly"
+            value="Read only"
+            style={{ marginBottom: "2em" }}
+            readOnly
+          />
+          <Input label="Error" style={{ marginBottom: "2em" }} theme="error" />
+          <Input
+            label="Warning"
+            style={{ marginBottom: "2em" }}
+            theme="warning"
+          />
+          <Input
+            label="Success"
+            style={{ marginBottom: "2em" }}
+            theme="success"
+          />
         </div>
       </Page>
     </VertoProvider>

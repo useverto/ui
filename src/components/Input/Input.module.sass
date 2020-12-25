@@ -36,6 +36,13 @@ $defaultBorderSize: 1px
     &.HasContent
       +focusLabelStyle
 
+  &.Disabled
+    opacity: .6
+    cursor: not-allowed
+
+    input
+      cursor: not-allowed
+
   input
     display: block
     width: 100%
@@ -50,6 +57,27 @@ $defaultBorderSize: 1px
 
     &:focus + .Label
       +focusLabelStyle
+
+  &.Theme_error
+    border-color: variables.$color-error
+    color: variables.$color-error
+
+    .Label, input
+      color: variables.$color-error
+
+  &.Theme_success
+    border-color: variables.$theme
+    color: variables.$theme
+
+    .Label, input
+      color: variables.$theme
+
+  &.Theme_warning
+    border-color: variables.$color-warning
+    color: variables.$color-warning
+
+    .Label, input
+      color: variables.$color-warning
 
   &.Code input
     font-family: variables.$jetbrains-mono
