@@ -24,6 +24,7 @@ export default function Input({
   onChange,
   clearButton,
   code,
+  reverse,
   ...props
 }: PropsWithChildren<InputProps>) {
   const [val, setVal] = useState(value),
@@ -48,9 +49,10 @@ export default function Input({
         [
           styles.Input,
           code ? styles.Code : "",
-          displayTheme === "Dark" ? styles.Dark : "",
+          displayTheme === "Dark" || reverse ? styles.Dark : "",
           disabled ? styles.Disabled : "",
-          theme ? styles[`Theme_${theme}`] ?? "" : ""
+          theme ? styles[`Theme_${theme}`] ?? "" : "",
+          reverse ? styles.Reverse : ""
         ]
           .filter((val) => val !== "")
           .join(" ") +
@@ -103,4 +105,5 @@ interface InputProps {
   icon?: ReactNode;
   clearButton?: boolean;
   code?: boolean;
+  reverse?: boolean;
 }

@@ -10,6 +10,7 @@ import React, {
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
 import { motion, AnimatePresence } from "framer-motion";
+import Input from "../Input";
 import styles from "./Select.module.sass";
 
 const SelectContext: Context<ISelectContext> = createContext<ISelectContext>(
@@ -166,11 +167,12 @@ Select.Body = function ({
               style={{ zIndex }}
               {...props}
             >
-              {/** TODO: add custom Input here */}
               {value.search && (
                 <div className={styles.Search}>
-                  <input
-                    type="text"
+                  <Input
+                    label="Search"
+                    reverse
+                    value={value.searchFilter ?? ""}
                     onChange={(e) =>
                       setContext((val) => ({
                         ...val,
