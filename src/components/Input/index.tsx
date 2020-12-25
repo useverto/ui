@@ -83,7 +83,7 @@ export default function Input({
         </span>
       )}
       {clearButton && (
-        <div className={styles.ClearButton}>
+        <div className={styles.ActionButton} onClick={() => setVal("")}>
           <Clear />
         </div>
       )}

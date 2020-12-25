@@ -18,6 +18,7 @@ $defaultBorderSize: 1px
   align-items: stretch
   border: $defaultBorderSize solid var(--accents-2)
   border-radius: 5px
+  color: #000
   transition: all .24s ease-in-out
 
   &:focus-within
@@ -58,6 +59,28 @@ $defaultBorderSize: 1px
     &:focus + .Label
       +focusLabelStyle
 
+  .ActionButton
+    position: absolute
+    top: $defaultTopPadding
+    right: calc(#{$defaultBorderSize} + #{$defaultSidePadding})
+    width: .9em
+    height: .9em
+    cursor: pointer
+    z-index: 12
+    transition: all .24s ease-in-out
+
+    &:hover
+      opacity: .7
+
+    svg
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      width: 100%
+      height: 100%
+
   &.Theme_error
     border-color: variables.$color-error
     color: variables.$color-error
@@ -79,9 +102,11 @@ $defaultBorderSize: 1px
     .Label, input
       color: variables.$color-warning
 
-  &.Code input
+  &.Code input, &.Code .Label
     font-family: variables.$jetbrains-mono
 
   &.Dark
+    color: #000
+    
     input:focus + .Label, .Label.HasContent
       background-color: #000

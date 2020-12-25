@@ -292,6 +292,12 @@ function App() {
             style={{ marginBottom: "2em" }}
             theme="success"
           />
+          <Input label="Code" style={{ marginBottom: "2em" }} code />
+          <Input
+            label="With clear button"
+            style={{ marginBottom: "2em" }}
+            clearButton
+          />
         </div>
       </Page>
     </VertoProvider>
