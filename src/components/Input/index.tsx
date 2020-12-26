@@ -74,7 +74,7 @@ export default function Input({
         readOnly={readOnly}
         ref={inputEl}
       />
-      {label && (
+      {label && label !== "" && (
         <span
           onClick={focusInput}
           className={[styles.Label, val && val !== "" ? styles.HasContent : ""]

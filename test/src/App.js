@@ -6,7 +6,8 @@ import {
   Loading,
   Select,
   Note,
-  Input
+  Input,
+  Table
 } from "@verto/ui";
 import { useState } from "react";
 import {
@@ -296,8 +297,69 @@ function App() {
           <Input
             label="With clear button"
             style={{ marginBottom: "2em" }}
+            value="Test"
             clearButton
           />
+        </div>
+        <div className="section">
+          <h1>Tables</h1>
+          <Table>
+            <thead>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Tel.</th>
+              <th>Age</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>john@doe.com</td>
+                <td>06804329244</td>
+                <td>22</td>
+              </tr>
+              <tr>
+                <td>John Doe</td>
+                <td>john@doe.com</td>
+                <td>06804329244</td>
+                <td>22</td>
+              </tr>
+              <tr>
+                <td>John Doe</td>
+                <td>john@doe.com</td>
+                <td>06804329244</td>
+                <td>22</td>
+              </tr>
+            </tbody>
+          </Table>
+          <br />
+          <Table code>
+            <thead>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Tel.</th>
+              <th>Age</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>john@doe.com</td>
+                <td>06804329244</td>
+                <td>22</td>
+              </tr>
+              <tr>
+                <td>John Doe</td>
+                <td>john@doe.com</td>
+                <td>06804329244</td>
+                <td>22</td>
+              </tr>
+              <tr>
+                <td>John Doe</td>
+                <td>john@doe.com</td>
+                <td>06804329244</td>
+                <td>22</td>
+              </tr>
+            </tbody>
+          </Table>
         </div>
       </Page>
     </VertoProvider>
