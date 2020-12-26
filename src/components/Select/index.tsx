@@ -34,7 +34,9 @@ export default function Select({
       opened: false,
       code,
       search,
-      disabled
+      disabled,
+      selected: value ?? undefined,
+      display: value ?? ""
     });
 
   // set values programmatically
@@ -202,6 +204,18 @@ Select.Item = function ({
 }: PropsWithChildren<SelectItemProps>) {
   const theme = useTheme(),
     selectData = useSelectConfig();
+
+  useEffect(() => {
+    if (selectData.value.selected && !selectData.value.display) {
+      selectData.setContext((val) => ({
+        ...val,
+        display:
+          selectData.value.selected.toString() === value.toString()
+            ? children
+            : val.selected
+      }));
+    }
+  });
 
   function setSelected() {
     if (disabled) return;

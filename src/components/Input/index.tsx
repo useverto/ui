@@ -98,6 +98,7 @@ export default function Input({
             <Clear />
           </div>
         )}
+        {children && <div className={styles.InputChildren}>{children}</div>}
       </div>
     </>
   );

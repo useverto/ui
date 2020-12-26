@@ -301,6 +301,16 @@ function App() {
             clearButton
           />
           <Input value={10} label="Bold input" type="number" bold />
+          <br />
+          <Input value={10} label="Children" type="number" bold>
+            <Select value="Eth" code>
+              <Select.Head>Currency</Select.Head>
+              <Select.Body>
+                <Select.Item value="eth">Eth</Select.Item>
+                <Select.Item value="ar">Ar</Select.Item>
+              </Select.Body>
+            </Select>
+          </Input>
         </div>
         <div className="section">
           <h1>Tables</h1>
