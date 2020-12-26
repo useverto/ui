@@ -25,6 +25,7 @@ export default function Input({
   clearButton,
   code,
   reverse,
+  bold,
   ...props
 }: PropsWithChildren<InputProps>) {
   const [val, setVal] = useState(value),
@@ -44,52 +45,61 @@ export default function Input({
   }
 
   return (
-    <div
-      className={
-        [
-          styles.Input,
-          code ? styles.Code : "",
-          displayTheme === "Dark" || reverse ? styles.Dark : "",
-          disabled ? styles.Disabled : "",
-          theme ? styles[`Theme_${theme}`] ?? "" : "",
-          reverse ? styles.Reverse : ""
-        ]
-          .filter((val) => val !== "")
-          .join(" ") +
-        " " +
-        (className ?? "")
-      }
-      {...props}
-    >
-      {icon && (
-        <div className={styles.Icon} onClick={focusInput}>
-          {icon}
-        </div>
+    <>
+      {label && label !== "" && bold && (
+        <span className={styles.BoldLabel}>{label}</span>
       )}
-      <input
-        type={type}
-        value={val ?? ""}
-        onChange={change}
-        disabled={disabled}
-        readOnly={readOnly}
-        ref={inputEl}
-      />
-      {label && label !== "" && (
-        <span
-          onClick={focusInput}
-          className={[styles.Label, val && val !== "" ? styles.HasContent : ""]
+      <div
+        className={
+          [
+            styles.Input,
+            code ? styles.Code : "",
+            displayTheme === "Dark" || reverse ? styles.Dark : "",
+            disabled ? styles.Disabled : "",
+            theme ? styles[`Theme_${theme}`] ?? "" : "",
+            reverse ? styles.Reverse : "",
+            bold ? styles.Bold : ""
+          ]
             .filter((val) => val !== "")
-            .join(" ")}
-        >
-          {label}
-        </span>
-      )}
-      {clearButton && (
-        <div className={styles.ActionButton} onClick={() => setVal("")}>
-          <Clear />
-        </div>
-      )}
-    </div>
+            .join(" ") +
+          " " +
+          (className ?? "")
+        }
+        {...props}
+      >
+        {icon && (
+          <div className={styles.Icon} onClick={focusInput}>
+            {icon}
+          </div>
+        )}
+        <input
+          type={type}
+          value={val ?? ""}
+          onChange={change}
+          disabled={disabled}
+          readOnly={readOnly}
+          ref={inputEl}
+        />
+        {label && label !== "" && !bold && (
+          <span
+            onClick={focusInput}
+            className={[
+              styles.Label,
+              val && val !== "" ? styles.HasContent : ""
+            ]
+              .filter((val) => val !== "")
+              .join(" ")}
+          >
+            {label}
+          </span>
+        )}
+        {clearButton && (
+          <div className={styles.ActionButton} onClick={() => setVal("")}>
+            <Clear />
+          </div>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -97,7 +107,7 @@ interface InputProps {
   className?: string;
   value?: string;
   label?: string;
-  type?: "password" | "email" | "text";
+  type?: "password" | "email" | "text" | "number";
   disabled?: boolean;
   theme?: "default" | "error" | "success" | "warning";
   readOnly?: boolean;
@@ -106,4 +116,5 @@ interface InputProps {
   clearButton?: boolean;
   code?: boolean;
   reverse?: boolean;
+  bold?: boolean;
 }

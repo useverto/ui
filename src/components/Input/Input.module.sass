@@ -59,6 +59,17 @@ $defaultBorderSize: 1px
     &:focus + .Label
       +focusLabelStyle
 
+  &.Bold
+    border-width: 2px
+    border-color: #000
+    font-family: variables.$jetbrains-mono
+
+    input
+      padding: .04em $defaultTopPadding - .1em
+      font-size: 1.31em
+      font-weight: 500
+      font-family: variables.$jetbrains-mono
+
   .ActionButton
     position: absolute
     top: $defaultTopPadding
@@ -107,9 +118,20 @@ $defaultBorderSize: 1px
 
   &.Dark
     color: #000
+
+    &.Bold
+      border-color: #000
     
     input:focus + .Label, .Label.HasContent
       background-color: #000
 
   &.Reverse .Label, &.Reverse input
     color: #fff
+
+.BoldLabel
+  color: var(--accents-3)
+  margin-bottom: .42em
+  font-family: variables.$jetbrains-mono
+  text-transform: uppercase
+  display: block
+  font-weight: 600

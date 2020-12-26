@@ -300,6 +300,7 @@ function App() {
             value="Test"
             clearButton
           />
+          <Input value={10} label="Bold input" type="number" bold />
         </div>
         <div className="section">
           <h1>Tables</h1>
