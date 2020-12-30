@@ -8,7 +8,7 @@ import {
   Note,
   Input,
   Table
-} from "../../src/index";
+} from "@verto/ui";
 import { useState } from "react";
 import {
   User,
