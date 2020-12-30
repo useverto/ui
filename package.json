@@ -1,6 +1,6 @@
 {
   "name": "@verto/ui",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "The Verto Components library for React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -13,6 +13,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "rollup -c",
     "start": "rollup -c -w",
