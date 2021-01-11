@@ -40,17 +40,19 @@ $minifontSize: .875rem
     color: #fff
     border-color: #fff
 
-    &:hover:not(.loading)
-      background-color: #fff
-      border: 2px solid #fff !important
+    &:not(:disabled)
+      &:hover:not(.loading)
+        background-color: #fff
+        border: 2px solid #fff !important
 
     &.primary
       background-color: #fff
       color: #000
 
-      &:hover
-        background-color: transparent !important
-        color: #fff
+      &:not(:disabled)
+        &:hover
+          background-color: transparent !important
+          color: #fff
 
   &.default
     padding: calc(#{$defaultPaddingTop} + 1px) calc(#{$defaultPaddingSide} + 1px)
@@ -63,21 +65,22 @@ $minifontSize: .875rem
   &.shadow
     transition: opacity .2s ease
 
-    &.success, &.success:hover
-      box-shadow: 0 4px 14px rgba(variables.$theme, .39)
+    &:not(:disabled)
+      &.success, &.success:hover
+        box-shadow: 0 4px 14px rgba(variables.$theme, .39)
 
-    &.primary, &.primary:hover
-      box-shadow: 0 4px 14px rgba(#000, .39)
+      &.primary, &.primary:hover
+        box-shadow: 0 4px 14px rgba(#000, .39)
 
-    &.warning, &.warning:hover
-      box-shadow: 0 4px 14px rgba(variables.$color-warning, .39)
+      &.warning, &.warning:hover
+        box-shadow: 0 4px 14px rgba(variables.$color-warning, .39)
 
-    &.danger, &.danger:hover
-      box-shadow: 0 4px 14px rgba(variables.$color-error, .39)
+      &.danger, &.danger:hover
+        box-shadow: 0 4px 14px rgba(variables.$color-error, .39)
 
-    &:hover
-      transform: none !important
-      opacity: .82
+      &:hover
+        transform: none !important
+        opacity: .82
 
   &.iconButton
     padding-left: $defaultPaddingSide
@@ -96,11 +99,12 @@ $minifontSize: .875rem
     &.primary
       background-color: #fff
 
+      &:not(:disabled)
+        &:hover:not(.shadow)
+          color: #fff
+    &:not(:disabled)
       &:hover:not(.shadow)
-        color: #fff
-
-    &:hover:not(.shadow)
-      background-color: transparent !important
+        background-color: transparent !important
 
     &.default:hover
       border-color: #fff
@@ -110,19 +114,23 @@ $minifontSize: .875rem
       color: #000
       border-color: #000
 
-      &:hover:not(.loading)
-        border: 2px solid #000 !important
+      &:not(:disabled)
+        &:hover:not(.loading)
+          border: 2px solid #000 !important
 
-        &:not(.primary)
-          color: #fff
-          background-color: #000 !important
+          &:not(.primary)
+            color: #fff
+            background-color: #000 !important
 
       &.primary
         background-color: #000
         color: #fff
 
-        &:hover
+        &:hover:not(:disabled)
           color: #000
+
+  &:disabled
+    cursor: not-allowed
 
 .LoadingAnimation
   position: relative

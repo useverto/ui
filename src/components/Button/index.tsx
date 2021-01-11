@@ -80,7 +80,7 @@ export default function Button({
           size ?? "",
           abort ? "abort" : "",
           shadow ? "shadow" : "",
-          disabled ? "diabled" : "",
+          disabled ? "disabled" : "",
           loading ? "loading" : "",
           styles.Button,
           styles[type] ?? "",

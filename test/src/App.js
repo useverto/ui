@@ -112,6 +112,10 @@ function App() {
           >
             Thin with minifont
           </Button>
+          <h2>Disabled</h2>
+          <Button type="primary" disabled>
+            Disabled
+          </Button>
         </div>
         <div className="section">
           <h1>Text</h1>
