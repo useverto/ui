@@ -7,7 +7,8 @@ import {
   Select,
   Note,
   Input,
-  Table
+  Table,
+  Modal
 } from "@verto/ui";
 import { useState } from "react";
 import {
@@ -20,7 +21,8 @@ import {
 import "./styles.css";
 
 function App() {
-  const [theme, setTheme] = useState("Light");
+  const [theme, setTheme] = useState("Light"),
+    [modal1, setModal1] = useState(false);
 
   return (
     <VertoProvider theme={theme}>
@@ -375,6 +377,24 @@ function App() {
               </tr>
             </tbody>
           </Table>
+        </div>
+        <div className="section">
+          <h1>Modal</h1>
+          <Button onClick={() => setModal1(true)}>Open modal</Button>
+          <Modal open={modal1} onClose={() => setModal1(false)}>
+            <Modal.Content>
+              <h3 style={{ textAlign: "center" }}>Test Modal</h3>
+              <p>This is a test</p>
+            </Modal.Content>
+            <Modal.Footer>
+              <Modal.Action onClick={() => setModal1(false)} passive>
+                Cancel
+              </Modal.Action>
+              <Modal.Action onClick={() => setModal1(false)}>
+                Submit
+              </Modal.Action>
+            </Modal.Footer>
+          </Modal>
         </div>
       </Page>
     </VertoProvider>

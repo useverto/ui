@@ -22,7 +22,7 @@ export default function Card({
           theme === "Dark" ? styles.Dark : ""
         ]
           .filter((val) => val !== "")
-          .join(" ") + ` ${className}`
+          .join(" ") + ` ${className ?? ""}`
       }
       {...props}
     >

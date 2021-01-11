@@ -12,7 +12,7 @@ import { useTheme } from "../Provider/Theme";
 export default function Button({
   children,
   code,
-  type,
+  type = "default",
   size,
   abort,
   shadow,
