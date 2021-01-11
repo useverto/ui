@@ -15,7 +15,9 @@
 This is the Verto React Component library, based on Geist UI, designed by [@maximousblk](https://github.com/maximousblk), developed by The Verto Team
 
 ## Guide
+
 TODO
 
 ## License
+
 The code contained within this repository is licensed under the MIT license. Geist UI is also licensed under the MIT license.
