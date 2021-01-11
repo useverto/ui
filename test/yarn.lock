@@ -1972,10 +1972,10 @@
     "@typescript-eslint/types" "4.8.1"
     eslint-visitor-keys "^2.0.0"
 
-"@verto/ui@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@verto/ui/-/ui-0.0.0.tgz#c65eff21180ecb54b987f7c2ab7175841fabb75c"
-  integrity sha512-qQekWGOjABmkkv1fExhELafgAPlX8wx9Et/v87KjnUvOgCOJ8j0oDvzocOWy7fw3ORMEGTz0QR1e+JLZRxm8Hw==
+"@verto/ui@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@verto/ui/-/ui-0.0.3.tgz#249fbe5cbfa7283b9011a511feb7a11752fa6790"
+  integrity sha512-SACi1Hhj74jvBZlhBvAD1/EW1IrKneiDASSibv5bNnnne2j4uQCP2oqqTbjQnghuIZekpPnvtKBr+uMid9eD5w==
   dependencies:
     "@geist-ui/react-icons" "^1.0.1"
     "@geist-ui/style" "^2.0.0"
