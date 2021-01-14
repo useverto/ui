@@ -1,4 +1,4 @@
-import { PropsWithChildren, CSSProperties } from "react";
+import { PropsWithChildren, CSSProperties, MouseEvent } from "react";
 import { useTheme } from "../Provider/Theme";
 import styles from "./Loading.module.sass";
 
@@ -6,12 +6,14 @@ export function Dots({
   className,
   children,
   style,
+  onClick,
   ...props
 }: PropsWithChildren<LoadingProps>) {
   return (
     <span
       className={"zi-loading-shim " + (className ?? "")}
       style={style}
+      onClick={onClick}
       {...props}
     >
       <i></i>
@@ -26,6 +28,7 @@ export function Spinner({
   className,
   children,
   style,
+  onClick,
   ...props
 }: PropsWithChildren<LoadingProps>) {
   const theme = useTheme();
@@ -40,6 +43,7 @@ export function Spinner({
         (className ?? "")
       }
       style={style}
+      onClick={onClick}
       {...props}
     >
       <svg viewBox="22 22 44 44">
@@ -61,6 +65,7 @@ export function Skeleton({
   className,
   children,
   style,
+  onClick,
   ...props
 }: PropsWithChildren<LoadingProps>) {
   const theme = useTheme();
@@ -75,6 +80,7 @@ export function Skeleton({
         (className ?? "")
       }
       style={style}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -85,4 +91,5 @@ export function Skeleton({
 interface LoadingProps {
   className?: string;
   style?: CSSProperties;
+  onClick?: (event: MouseEvent) => void;
 }

@@ -117,7 +117,7 @@ export default function Input({
 
 interface InputProps {
   className?: string;
-  value?: string;
+  value?: string | number;
   label?: string;
   rightLabel?: string;
   type?: "password" | "email" | "text" | "number";

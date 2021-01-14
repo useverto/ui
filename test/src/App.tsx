@@ -18,10 +18,10 @@ import {
   CheckInCircle,
   AlertCircle
 } from "@geist-ui/react-icons";
-import "./styles.css";
+import "./styles.sass";
 
 function App() {
-  const [theme, setTheme] = useState("Light"),
+  const [theme, setTheme] = useState<"Light" | "Dark">("Light"),
     [modal1, setModal1] = useState(false);
 
   return (
@@ -249,9 +249,9 @@ function App() {
           <Note>Default note</Note>
           <Note type="primary">Primary note</Note>
           <Note type="success">Success note</Note>
-          <Note type="warning">Warning note</Note>
+          <Note type="alert">Warning note</Note>
           <Note type="error">Error note</Note>
-          <Note type="warning" dismiss>
+          <Note type="alert" dismiss>
             Allow dismiss
           </Note>
           <h2>Label customization</h2>
@@ -268,7 +268,7 @@ function App() {
           <Note type="success" filled>
             Success note
           </Note>
-          <Note type="warning" filled>
+          <Note type="alert" filled>
             Warning note
           </Note>
           <Note type="error" filled>

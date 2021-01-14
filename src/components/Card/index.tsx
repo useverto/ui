@@ -1,4 +1,4 @@
-import { PropsWithChildren, CSSProperties } from "react";
+import { PropsWithChildren, CSSProperties, MouseEvent } from "react";
 import { useTheme } from "../Provider/Theme";
 import styles from "./Card.module.sass";
 
@@ -9,6 +9,7 @@ export default function Card({
   shadow,
   className,
   style,
+  onClick,
   ...props
 }: PropsWithChildren<CardProps>) {
   const theme = useTheme();
@@ -26,6 +27,7 @@ export default function Card({
           .filter((val) => val !== "")
           .join(" ") + ` ${className ?? ""}`
       }
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -39,4 +41,5 @@ interface CardProps {
   shadow?: boolean;
   className?: string;
   style?: CSSProperties;
+  onClick?: (event: MouseEvent) => void;
 }

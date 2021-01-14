@@ -27,6 +27,7 @@ export default function Button({
   minifont = false,
   className,
   style,
+  onClick,
   ...props
 }: PropsWithChildren<ButtonProps>) {
   const [ripple, showRipple] = useState(false),
@@ -72,6 +73,11 @@ export default function Button({
     showRipple(true);
   }
 
+  function handleClick(e: MouseEvent) {
+    onClick(e);
+    startRipple(e);
+  }
+
   return (
     <button
       ref={component}
@@ -101,7 +107,7 @@ export default function Button({
         " " +
         (className ?? "")
       }
-      onClick={startRipple}
+      onClick={handleClick}
       disabled={disabled}
       style={style}
       {...props}
@@ -165,6 +171,7 @@ interface ButtonProps {
   minifont?: boolean;
   className?: string;
   style?: CSSProperties;
+  onClick?: (event: MouseEvent) => void;
 }
 
 interface IconButtonProps {
