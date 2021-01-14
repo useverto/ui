@@ -11,6 +11,6 @@ export { default as Card } from "./components/Card";
 export * as Loading from "./components/Loading";
 export { default as Select } from "./components/Select";
 export { default as Note } from "./components/Note";
-export { default as Input } from "./components/Input";
+export { default as Input, useInput } from "./components/Input";
 export { default as Table } from "./components/Table";
 export { default as Modal } from "./components/Modal";

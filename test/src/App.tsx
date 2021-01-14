@@ -20,7 +20,7 @@ import {
 } from "@geist-ui/react-icons";
 import "./styles.sass";
 
-function App() {
+export default function App() {
   const [theme, setTheme] = useState<"Light" | "Dark">("Light"),
     [modal1, setModal1] = useState(false);
 
@@ -409,5 +409,3 @@ function App() {
     </VertoProvider>
   );
 }
-
-export default App;

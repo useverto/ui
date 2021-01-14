@@ -6,7 +6,9 @@ import {
   useState,
   useEffect,
   useRef,
-  CSSProperties
+  CSSProperties,
+  Dispatch,
+  SetStateAction
 } from "react";
 import { X as Clear } from "@geist-ui/react-icons";
 import styles from "./Input.module.sass";
@@ -115,6 +117,22 @@ export default function Input({
   );
 }
 
+export function useInput(val: string | number): UseInputData {
+  const [state, setState] = useState<string | number>(val);
+
+  return {
+    state,
+    setState,
+    reset: () => setState(val),
+    bindings: {
+      value: state,
+      onChange(e: ChangeEvent<HTMLInputElement>) {
+        setState(e.target.value);
+      }
+    }
+  };
+}
+
 interface InputProps {
   className?: string;
   value?: string | number;
@@ -133,4 +151,14 @@ interface InputProps {
   min?: number;
   max?: number;
   style?: CSSProperties;
+}
+
+interface UseInputData {
+  state: string | number;
+  setState: Dispatch<SetStateAction<string | number>>;
+  reset: () => void;
+  bindings: {
+    value: string | number;
+    onChange: ChangeEventHandler<HTMLInputElement>;
+  };
 }
