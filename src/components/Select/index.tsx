@@ -5,7 +5,8 @@ import React, {
   Context,
   useState,
   useEffect,
-  ReactNode
+  ReactNode,
+  CSSProperties
 } from "react";
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
@@ -27,6 +28,7 @@ export default function Select({
   search = false,
   disabled = false,
   onChange,
+  style,
   ...props
 }: PropsWithChildren<SelectProps>) {
   const theme = useTheme(),
@@ -72,6 +74,7 @@ export default function Select({
           " " +
           (className ?? "")
         }
+        style={style}
         {...props}
       >
         {children}
@@ -87,6 +90,7 @@ Select.Head = function ({
   icon = true,
   labelIcon,
   uppercase = false,
+  style,
   ...props
 }: PropsWithChildren<SelectHeadProps>) {
   const theme = useTheme(),
@@ -116,6 +120,7 @@ Select.Head = function ({
         " " +
         (className ?? "")
       }
+      style={style}
       {...props}
       onClick={toggleOpened}
     >
@@ -135,6 +140,7 @@ Select.Head = function ({
 Select.Body = function ({
   children,
   className,
+  style,
   ...props
 }: PropsWithChildren<SelectBodyProps>) {
   const theme = useTheme(),
@@ -166,7 +172,7 @@ Select.Body = function ({
                 " " +
                 (className ?? "")
               }
-              style={{ zIndex }}
+              style={{ ...style, zIndex }}
               {...props}
             >
               {value.search && (
@@ -200,6 +206,7 @@ Select.Item = function ({
   value,
   disabled,
   uppercase = false,
+  style,
   ...props
 }: PropsWithChildren<SelectItemProps>) {
   const theme = useTheme(),
@@ -270,6 +277,7 @@ Select.Item = function ({
             " " +
             (className ?? "")
           }
+          style={style}
           {...props}
           onClick={setSelected}
         >
@@ -282,10 +290,15 @@ Select.Item = function ({
 
 Select.Divider = function ({
   className,
+  style,
   ...props
 }: PropsWithChildren<SelectDividerProps>) {
   return (
-    <div className={styles.Divider + " " + (className ?? "")} {...props}></div>
+    <div
+      className={styles.Divider + " " + (className ?? "")}
+      style={style}
+      {...props}
+    ></div>
   );
 };
 
@@ -296,6 +309,7 @@ interface SelectProps {
   value?: string | number;
   disabled?: boolean;
   onChange?: (val: string | number) => void;
+  style?: CSSProperties;
 }
 
 interface SelectHeadProps {
@@ -304,10 +318,12 @@ interface SelectHeadProps {
   icon?: boolean;
   labelIcon?: ReactNode;
   uppercase?: boolean;
+  style?: CSSProperties;
 }
 
 interface SelectBodyProps {
   className?: string;
+  style?: CSSProperties;
 }
 
 interface SelectItemProps {
@@ -316,10 +332,12 @@ interface SelectItemProps {
   value?: string | number;
   disabled?: boolean;
   uppercase?: boolean;
+  style?: CSSProperties;
 }
 
 interface SelectDividerProps {
   className?: string;
+  style?: CSSProperties;
 }
 
 interface SelectConfig {

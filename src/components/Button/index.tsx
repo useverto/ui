@@ -3,7 +3,8 @@ import {
   useState,
   PropsWithChildren,
   MouseEvent,
-  ReactNode
+  ReactNode,
+  CSSProperties
 } from "react";
 import Ripple from "./Ripple";
 import styles from "./Button.module.sass";
@@ -25,6 +26,7 @@ export default function Button({
   thin = false,
   minifont = false,
   className,
+  style,
   ...props
 }: PropsWithChildren<ButtonProps>) {
   const [ripple, showRipple] = useState(false),
@@ -101,6 +103,7 @@ export default function Button({
       }
       onClick={startRipple}
       disabled={disabled}
+      style={style}
       {...props}
     >
       {(loading && (
@@ -125,12 +128,14 @@ export default function Button({
 
 Button.Icon = function ({
   children,
-  className
+  className,
+  style
 }: PropsWithChildren<IconButtonProps>) {
   const theme = useTheme();
 
   return (
     <button
+      style={style}
       className={
         [styles.IconButton, theme === "Dark" ? styles.DarkIconButton : ""]
           .filter((val) => val !== "")
@@ -159,8 +164,10 @@ interface ButtonProps {
   thin?: boolean;
   minifont?: boolean;
   className?: string;
+  style?: CSSProperties;
 }
 
 interface IconButtonProps {
   className?: string;
+  style?: CSSProperties;
 }

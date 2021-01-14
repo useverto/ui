@@ -1,10 +1,12 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, CSSProperties } from "react";
 import styles from "./Page.module.sass";
 
 export default function Page({
   padTop = true,
   children,
-  className
+  className,
+  style,
+  ...props
 }: PropsWithChildren<PageProps>) {
   return (
     <div
@@ -14,6 +16,8 @@ export default function Page({
         " " +
         (className ?? "")
       }
+      style={style}
+      {...props}
     >
       {children}
     </div>
@@ -23,4 +27,5 @@ export default function Page({
 interface PageProps {
   padTop?: boolean;
   className?: string;
+  style?: CSSProperties;
 }

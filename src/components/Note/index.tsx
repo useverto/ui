@@ -1,4 +1,10 @@
-import { PropsWithChildren, ReactNode, useEffect, useState } from "react";
+import {
+  PropsWithChildren,
+  ReactNode,
+  useEffect,
+  useState,
+  CSSProperties
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X as Close } from "@geist-ui/react-icons";
 import styles from "./Note.module.sass";
@@ -12,6 +18,7 @@ export default function Note({
   filled = false,
   dismiss = false,
   className,
+  style,
   ...props
 }: PropsWithChildren<NoteProps>) {
   const [labelText, setLabelText] = useState(label),
@@ -50,6 +57,7 @@ export default function Note({
             duration: 0.2,
             transitionTimingFunction: "ease-in-out"
           }}
+          style={style}
           {...props}
         >
           <span className={"zi-note-type " + styles.Type}>
@@ -75,4 +83,5 @@ interface NoteProps {
   labelIcon?: ReactNode;
   filled?: boolean;
   dismiss?: boolean;
+  style?: CSSProperties;
 }

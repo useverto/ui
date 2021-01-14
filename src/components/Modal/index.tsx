@@ -1,4 +1,4 @@
-import { PropsWithChildren, MouseEvent } from "react";
+import { PropsWithChildren, MouseEvent, CSSProperties } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../Provider/Theme";
 import styles from "./Modal.module.sass";
@@ -10,6 +10,7 @@ export default function Modal({
   open = false,
   backdrop = true,
   code,
+  style,
   ...props
 }: PropsWithChildren<ModalProps>) {
   const theme = useTheme();
@@ -47,6 +48,7 @@ export default function Modal({
                 .filter((val) => val !== "")
                 .join(" ") + ` ${className ?? ""}`
             }
+            style={style}
             {...props}
           >
             {children}
@@ -60,6 +62,7 @@ export default function Modal({
 Modal.Content = function ({
   children,
   className,
+  style,
   ...props
 }: PropsWithChildren<ModalContentProps>) {
   const theme = useTheme();
@@ -71,6 +74,7 @@ Modal.Content = function ({
           .filter((val) => val !== "")
           .join(" ") + ` ${className ?? ""}`
       }
+      style={style}
       {...props}
     >
       {children}
@@ -81,6 +85,7 @@ Modal.Content = function ({
 Modal.Footer = function ({
   children,
   className,
+  style,
   ...props
 }: PropsWithChildren<ModalFooterProps>) {
   const theme = useTheme();
@@ -92,6 +97,7 @@ Modal.Footer = function ({
           .filter((val) => val !== "")
           .join(" ") + ` ${className ?? ""}`
       }
+      style={style}
       {...props}
     >
       {children}
@@ -104,6 +110,7 @@ Modal.Action = function ({
   className,
   onClick,
   passive,
+  style,
   ...props
 }: PropsWithChildren<ModalActionProps>) {
   const theme = useTheme();
@@ -120,6 +127,7 @@ Modal.Action = function ({
           .join(" ") + ` ${className ?? ""}`
       }
       onClick={onClick}
+      style={style}
       {...props}
     >
       {children}
@@ -131,20 +139,24 @@ interface ModalProps {
   open: boolean;
   onClose?: (e?: MouseEvent) => void;
   className?: string;
-  backdrop: boolean;
+  backdrop?: boolean;
   code?: boolean;
+  style?: CSSProperties;
 }
 
 interface ModalContentProps {
   className?: string;
+  style?: CSSProperties;
 }
 
 interface ModalFooterProps {
   className?: string;
+  style?: CSSProperties;
 }
 
 interface ModalActionProps {
   className?: string;
   passive?: boolean;
   onClick?: (e?: MouseEvent) => void;
+  style?: CSSProperties;
 }

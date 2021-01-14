@@ -5,7 +5,8 @@ import {
   ChangeEvent,
   useState,
   useEffect,
-  useRef
+  useRef,
+  CSSProperties
 } from "react";
 import { X as Clear } from "@geist-ui/react-icons";
 import styles from "./Input.module.sass";
@@ -26,6 +27,7 @@ export default function Input({
   code,
   reverse,
   bold,
+  style,
   ...props
 }: PropsWithChildren<InputProps>) {
   const [val, setVal] = useState(value),
@@ -65,6 +67,7 @@ export default function Input({
           " " +
           (className ?? "")
         }
+        style={style}
         {...props}
       >
         {icon && (
@@ -118,4 +121,5 @@ interface InputProps {
   code?: boolean;
   reverse?: boolean;
   bold?: boolean;
+  style?: CSSProperties;
 }

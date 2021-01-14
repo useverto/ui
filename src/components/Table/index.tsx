@@ -1,10 +1,11 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, CSSProperties } from "react";
 import styles from "./Table.module.sass";
 
 export default function Table({
   children,
   className,
   code = false,
+  style,
   ...props
 }: PropsWithChildren<TableProps>) {
   return (
@@ -16,6 +17,7 @@ export default function Table({
         " " +
         (className ?? "")
       }
+      style={style}
       {...props}
     >
       {children}
@@ -26,4 +28,5 @@ export default function Table({
 interface TableProps {
   className?: string;
   code?: boolean;
+  style?: CSSProperties;
 }

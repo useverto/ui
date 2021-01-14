@@ -1,14 +1,19 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, CSSProperties } from "react";
 import { useTheme } from "../Provider/Theme";
 import styles from "./Loading.module.sass";
 
 export function Dots({
   className,
   children,
+  style,
   ...props
 }: PropsWithChildren<LoadingProps>) {
   return (
-    <span className={"zi-loading-shim " + (className ?? "")} {...props}>
+    <span
+      className={"zi-loading-shim " + (className ?? "")}
+      style={style}
+      {...props}
+    >
       <i></i>
       <i></i>
       <i></i>
@@ -20,6 +25,7 @@ export function Dots({
 export function Spinner({
   className,
   children,
+  style,
   ...props
 }: PropsWithChildren<LoadingProps>) {
   const theme = useTheme();
@@ -33,6 +39,7 @@ export function Spinner({
         " " +
         (className ?? "")
       }
+      style={style}
       {...props}
     >
       <svg viewBox="22 22 44 44">
@@ -53,6 +60,7 @@ export function Spinner({
 export function Skeleton({
   className,
   children,
+  style,
   ...props
 }: PropsWithChildren<LoadingProps>) {
   const theme = useTheme();
@@ -66,6 +74,7 @@ export function Skeleton({
         " " +
         (className ?? "")
       }
+      style={style}
       {...props}
     >
       {children}
@@ -75,4 +84,5 @@ export function Skeleton({
 
 interface LoadingProps {
   className?: string;
+  style?: CSSProperties;
 }

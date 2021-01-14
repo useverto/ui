@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, CSSProperties } from "react";
 import { useTheme } from "../Provider/Theme";
 import styles from "./Card.module.sass";
 
@@ -8,12 +8,14 @@ export default function Card({
   hoverable,
   shadow,
   className,
+  style,
   ...props
 }: PropsWithChildren<CardProps>) {
   const theme = useTheme();
 
   return (
     <div
+      style={style}
       className={
         [
           design === "Geist" ? "zi-card" : styles.Card,
@@ -36,4 +38,5 @@ interface CardProps {
   hoverable?: boolean;
   shadow?: boolean;
   className?: string;
+  style?: CSSProperties;
 }
