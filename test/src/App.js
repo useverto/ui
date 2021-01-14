@@ -317,6 +317,15 @@ function App() {
               </Select.Body>
             </Select>
           </Input>
+          <p>Right label only works with bold inputs:</p>
+          <Input
+            value={10}
+            max={20}
+            type="number"
+            label="Left"
+            rightLabel="Right"
+            bold
+          />
         </div>
         <div className="section">
           <h1>Tables</h1>

@@ -17,7 +17,10 @@ export default function Input({
   className,
   value,
   label,
+  rightLabel,
   type = "text",
+  min,
+  max,
   disabled,
   theme,
   readOnly,
@@ -49,7 +52,10 @@ export default function Input({
   return (
     <>
       {label && label !== "" && bold && (
-        <span className={styles.BoldLabel}>{label}</span>
+        <div className={styles.BoldLabel}>
+          <span>{label}</span>
+          {rightLabel && rightLabel !== "" && <span>{rightLabel}</span>}
+        </div>
       )}
       <div
         className={
@@ -81,6 +87,8 @@ export default function Input({
           onChange={change}
           disabled={disabled}
           readOnly={readOnly}
+          min={min}
+          max={max}
           ref={inputEl}
         />
         {label && label !== "" && !bold && (
@@ -111,6 +119,7 @@ interface InputProps {
   className?: string;
   value?: string;
   label?: string;
+  rightLabel?: string;
   type?: "password" | "email" | "text" | "number";
   disabled?: boolean;
   theme?: "default" | "error" | "success" | "warning";
@@ -121,5 +130,7 @@ interface InputProps {
   code?: boolean;
   reverse?: boolean;
   bold?: boolean;
+  min?: number;
+  max?: number;
   style?: CSSProperties;
 }
