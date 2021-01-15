@@ -6,7 +6,9 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-  CSSProperties
+  CSSProperties,
+  Dispatch,
+  SetStateAction
 } from "react";
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
@@ -302,6 +304,20 @@ Select.Divider = function ({
   );
 };
 
+export function useSelect(defaultValue?: string | number): UseSelectData {
+  const [state, setState] = useState<string | number>(defaultValue);
+
+  return {
+    state,
+    setState,
+    reset: () => setState(undefined),
+    bindings: {
+      value: state,
+      onChange: (val) => setState(val)
+    }
+  };
+}
+
 interface SelectProps {
   className?: string;
   code?: boolean;
@@ -353,4 +369,14 @@ interface SelectConfig {
 interface ISelectContext {
   value: SelectConfig;
   setContext: React.Dispatch<React.SetStateAction<SelectConfig>>;
+}
+
+interface UseSelectData {
+  state: string | number | undefined;
+  setState: Dispatch<SetStateAction<string | number>>;
+  reset: () => void;
+  bindings: {
+    value: string | number | undefined;
+    onChange: (val: string | number) => void;
+  };
 }

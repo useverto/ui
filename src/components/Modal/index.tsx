@@ -1,4 +1,11 @@
-import { PropsWithChildren, MouseEvent, CSSProperties } from "react";
+import {
+  PropsWithChildren,
+  MouseEvent,
+  CSSProperties,
+  Dispatch,
+  SetStateAction,
+  useState
+} from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../Provider/Theme";
 import styles from "./Modal.module.sass";
@@ -135,6 +142,19 @@ Modal.Action = function ({
   );
 };
 
+export function useModal(open: boolean = false): UseModalData {
+  const [state, setState] = useState(open);
+
+  return {
+    state,
+    setState,
+    bindings: {
+      open: state,
+      onClose: () => setState(false)
+    }
+  };
+}
+
 interface ModalProps {
   open: boolean;
   onClose?: (e?: MouseEvent) => void;
@@ -159,4 +179,13 @@ interface ModalActionProps {
   passive?: boolean;
   onClick?: (e?: MouseEvent) => void;
   style?: CSSProperties;
+}
+
+interface UseModalData {
+  state: boolean;
+  setState: Dispatch<SetStateAction<boolean>>;
+  bindings: {
+    open: boolean;
+    onClose: (e?: MouseEvent) => void;
+  };
 }

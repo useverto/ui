@@ -8,7 +8,10 @@ import {
   Note,
   Input,
   Table,
-  Modal
+  Modal,
+  useModal,
+  useInput,
+  useSelect
 } from "@verto/ui";
 import { useState } from "react";
 import {
@@ -22,7 +25,10 @@ import "./styles.sass";
 
 export default function App() {
   const [theme, setTheme] = useState<"Light" | "Dark">("Light"),
-    [modal1, setModal1] = useState(false);
+    [modal1, setModal1] = useState(false),
+    modal2 = useModal(),
+    inputHook = useInput("default value"),
+    selectHook = useSelect();
 
   return (
     <VertoProvider theme={theme}>
@@ -243,6 +249,18 @@ export default function App() {
               <Select.Item value="three">Three</Select.Item>
             </Select.Body>
           </Select>
+          <p>
+            With select hooks (val: {selectHook.state}){" "}
+            <a onClick={() => selectHook.reset()}>Reset!</a>
+          </p>
+          <Select className="select" {...selectHook.bindings}>
+            <Select.Head>Select hooks</Select.Head>
+            <Select.Body>
+              <Select.Item value="one">One</Select.Item>
+              <Select.Item value="two">Two</Select.Item>
+              <Select.Item value="three">Three</Select.Item>
+            </Select.Body>
+          </Select>
         </div>
         <div className="section">
           <h1>Notes</h1>
@@ -326,6 +344,13 @@ export default function App() {
             rightLabel="Right"
             bold
           />
+          <p>Input with hooks (val: {inputHook.state})</p>
+          <Input
+            type="text"
+            label="Captain hook"
+            bold
+            {...inputHook.bindings}
+          />
         </div>
         <div className="section">
           <h1>Tables</h1>
@@ -400,6 +425,22 @@ export default function App() {
                 Cancel
               </Modal.Action>
               <Modal.Action onClick={() => setModal1(false)}>
+                Submit
+              </Modal.Action>
+            </Modal.Footer>
+          </Modal>
+          <h2>Modal with "useModal"</h2>
+          <Button onClick={() => modal2.setState(true)}>Modal hooks</Button>
+          <Modal {...modal2.bindings}>
+            <Modal.Content>
+              <h3 style={{ textAlign: "center" }}>Test Modal with hooks</h3>
+              <p>This is a test</p>
+            </Modal.Content>
+            <Modal.Footer>
+              <Modal.Action onClick={() => modal2.setState(false)} passive>
+                Cancel
+              </Modal.Action>
+              <Modal.Action onClick={() => modal2.setState(false)}>
                 Submit
               </Modal.Action>
             </Modal.Footer>
