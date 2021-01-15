@@ -16,7 +16,33 @@ This is the Verto React Component library, based on Geist UI, designed by [@maxi
 
 ## Guide
 
-TODO
+### Install
+
+```
+yarn add @verto/ui
+```
+
+or
+
+```
+npm i @verto/ui
+```
+
+### Usage
+
+Before you start using the components, make sure to wrap your app component with the `Verto Provider`:
+
+```tsx
+<VertoProvider theme={theme}>
+  <App />
+</VertoProvider>
+```
+
+The `theme` prop can be "Light" or "Dark" and it is required.
+
+### Components
+
+All components' documentation can be found at [ui.verto.exchange](https://ui.verto.exchange) and in the [repo](https://github.com/useverto/ui/blob/main/test/src/App.tsx).
 
 ## License
 
