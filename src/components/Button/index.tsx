@@ -74,7 +74,7 @@ export default function Button({
   }
 
   function handleClick(e: MouseEvent) {
-    onClick(e);
+    if (onClick) onClick(e);
     startRipple(e);
   }
 
