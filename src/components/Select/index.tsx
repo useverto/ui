@@ -8,7 +8,8 @@ import React, {
   ReactNode,
   CSSProperties,
   Dispatch,
-  SetStateAction
+  SetStateAction,
+  ReactElement
 } from "react";
 import { useTheme } from "../Provider/Theme";
 import { ChevronDown } from "@geist-ui/react-icons";
@@ -39,8 +40,7 @@ export default function Select({
       code,
       search,
       disabled,
-      selected: value ?? undefined,
-      display: value ?? ""
+      selected: value ?? undefined
     });
 
   // set values programmatically
@@ -149,6 +149,12 @@ Select.Body = function ({
     { value, setContext } = useSelectConfig(),
     zIndex = 1000;
 
+  useEffect(() => {
+    for (const child of children as ReactElement[])
+      if (child.props.value && child.props.value === value.selected)
+        setContext({ ...value, display: child.props.children });
+  }, [children, value.selected]);
+
   return (
     <>
       {value.opened && (
@@ -224,7 +230,7 @@ Select.Item = function ({
             : val.selected
       }));
     }
-  });
+  }, [selectData, value]);
 
   function setSelected() {
     if (disabled) return;
@@ -310,7 +316,7 @@ export function useSelect(defaultValue?: string | number): UseSelectData {
   return {
     state,
     setState,
-    reset: () => setState(undefined),
+    reset: () => setState(defaultValue),
     bindings: {
       value: state,
       onChange: (val) => setState(val)

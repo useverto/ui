@@ -28,7 +28,7 @@ export default function App() {
     [modal1, setModal1] = useState(false),
     modal2 = useModal(),
     inputHook = useInput("default value"),
-    selectHook = useSelect();
+    selectHook = useSelect(2);
 
   return (
     <VertoProvider theme={theme}>
@@ -256,9 +256,9 @@ export default function App() {
           <Select className="select" {...selectHook.bindings}>
             <Select.Head>Select hooks</Select.Head>
             <Select.Body>
-              <Select.Item value="one">One</Select.Item>
-              <Select.Item value="two">Two</Select.Item>
-              <Select.Item value="three">Three</Select.Item>
+              <Select.Item value={1}>One</Select.Item>
+              <Select.Item value={2}>Two</Select.Item>
+              <Select.Item value={3}>Three</Select.Item>
             </Select.Body>
           </Select>
         </div>
