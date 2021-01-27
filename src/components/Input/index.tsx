@@ -17,6 +17,7 @@ import { useTheme } from "../Provider/Theme";
 export default function Input({
   children,
   className,
+  childClassName,
   value,
   label,
   rightLabel,
@@ -111,7 +112,16 @@ export default function Input({
             <Clear />
           </div>
         )}
-        {children && <div className={styles.InputChildren}>{children}</div>}
+        {children && (
+          <div
+            className={
+              styles.InputChildren +
+              (childClassName ? ` ${childClassName}` : "")
+            }
+          >
+            {children}
+          </div>
+        )}
       </div>
     </>
   );
@@ -135,6 +145,7 @@ export function useInput(val: string | number): UseInputData {
 
 interface InputProps {
   className?: string;
+  childClassName?: string;
   value?: string | number;
   label?: string;
   rightLabel?: string;
