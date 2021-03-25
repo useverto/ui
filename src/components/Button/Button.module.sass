@@ -1,0 +1,24 @@
+@use "../../styles/variables"
+  
+.Button
+  display: flex
+  align-items: center
+  justify-content: center
+  outline: none
+  border: none
+  cursor: pointer
+  background-color: variables.$foreground-color
+  color: variables.$foreground-reverse-color
+  box-shadow: variables.$standard-shadow
+  border-radius: variables.$big-items-radius
+  font-size: variables.$normal-font-size
+  font-weight: 500
+  padding: .6em 2.3em
+  transition: all .23s ease-in-out
+
+  &:hover
+    box-shadow: variables.$standard-shadow-hover
+    transform: translateY(-1.5px)
+
+  &:active
+    transform: translateY(.45px)
