@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { CSSProperties, PropsWithChildren } from "react";
 import styles from "./Loading.module.sass";
 
 export function Spinner({ className, ...props }: PropsWithChildren<Props>) {
@@ -30,4 +30,5 @@ export function Skeleton({ className, ...props }: PropsWithChildren<Props>) {
 
 interface Props {
   className?: string;
+  style?: CSSProperties;
 }

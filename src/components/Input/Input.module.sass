@@ -1,0 +1,90 @@
+@use "../../styles/variables"
+
+$borderWidth: 3px
+$sidePadding: .4em
+$topPadding: .55em
+  
+.InputWrapper
+  position: relative
+  display: flex
+  background-color: variables.$background-color
+  border: $borderWidth solid variables.$foreground-color
+  overflow: hidden
+  border-radius: variables.$big-items-radius
+  font-size: variables.$normal-font-size
+  width: min-content
+  min-width: 320px
+
+  input
+    outline: none
+    border: none
+    display: block
+    background-color: transparent
+    color: variables.$light-text
+    font-family: variables.$jetbrains-mono
+    font-size: variables.$normal-font-size
+    font-weight: 500
+    padding: $sidePadding $topPadding
+    width: 100%
+    -moz-appearance: textfield
+
+    &::placeholder
+      opacity: .45
+
+    &::-webkit-outer-spin-button, &::-webkit-inner-spin-button
+      -webkit-appearance: none
+      margin: 0
+
+  &.WithCurrency input
+    padding-left: $sidePadding + 1em
+
+  &.WithInlineLabel input
+    z-index: 10
+    background-color: variables.$background-color
+    border-radius: variables.$big-items-radius
+
+  .Currency
+    position: absolute
+    top: 50%
+    left: calc($sidePadding + $borderWidth)
+    color: variables.$light-text
+    font-family: variables.$jetbrains-mono
+    font-size: variables.$normal-font-size
+    font-weight: 500
+    transform: translateY(-50%)
+
+  .InlineLabel
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    font-size: variables.$normal-font-size
+    font-weight: 500
+    padding:
+      left: $sidePadding
+      right: $sidePadding
+    background-color: variables.$foreground-color
+    color: variables.$foreground-reverse-color
+    min-width: 90px
+
+    &::before
+      content: ""
+      position: absolute
+      left: -#{variables.$big-items-radius}
+      top: 0
+      bottom: 0
+      background-color: variables.$foreground-color
+      width: variables.$big-items-radius
+
+    &.LeftInlineLabel::before
+      left: unset
+      right: -#{variables.$big-items-radius}
+
+.Label
+  display: block
+  font-size: variables.$smaller-font-size + .1em
+  font-weight: 500
+  color: variables.$light-text
+  margin-bottom: .27em
+  text-transform: uppercase

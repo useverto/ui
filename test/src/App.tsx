@@ -1,4 +1,4 @@
-import { VertoProvider, Button, Loading } from "@verto/ui";
+import { VertoProvider, Button, Loading, Input } from "@verto/ui";
 import { useState } from "react";
 import "./styles.sass";
 
@@ -18,6 +18,19 @@ export default function App() {
       <Button loading>Outlined</Button>
       <Loading.Spinner />
       <Loading.Skeleton />
+      <Input
+        label="You send"
+        inlineLabel="VRT"
+        type="number"
+        placeholder="10000"
+      />
+      <Input
+        label="You send"
+        inlineLabel="VRT"
+        type="text"
+        placeholder="Type here..."
+        leftInlineLabel
+      />
     </VertoProvider>
   );
 }

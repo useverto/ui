@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, CSSProperties } from "react";
 import { Spinner } from "../Loading";
 import styles from "./Button.module.sass";
 
@@ -36,4 +36,5 @@ interface Props {
   className?: string;
   disabled?: boolean;
   loading?: boolean;
+  style?: CSSProperties;
 }
