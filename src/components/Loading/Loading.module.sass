@@ -1,0 +1,34 @@
+@use "../../styles/variables"
+  
+.Spinner
+  width: 1.7em
+  height: 1.7em
+  color: variables.$foreground-color
+  animation: spin 1s ease-in-out infinite
+
+  svg
+    font-size: 1em
+    width: 100%
+    height: 100%
+
+.Skeleton
+  border-radius: 5px
+  background: linear-gradient(90deg, variables.$skeleton 5%, variables.$skeleton-shine 35%, variables.$skeleton 45%)
+  background-size: 200% 100%
+  width: 5em
+  height: 1.65em
+  animation: skeleton 4s ease-in-out infinite
+
+@keyframes spin
+  from
+    transform: rotate(0)
+
+  to
+    transform: rotate(360deg)
+
+@keyframes skeleton
+  0%
+    background-position-x: 200%
+
+  100%
+    background-position-x: -200%

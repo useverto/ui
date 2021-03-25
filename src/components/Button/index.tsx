@@ -1,10 +1,12 @@
 import { PropsWithChildren } from "react";
+import { Spinner } from "../Loading";
 import styles from "./Button.module.sass";
 
 export default function Button({
   children,
   type = "filled",
   small,
+  loading,
   className,
   ...props
 }: PropsWithChildren<Props>) {
@@ -23,7 +25,7 @@ export default function Button({
       }
       {...props}
     >
-      {children}
+      {(loading && <Spinner className={styles.Loading} />) || children}
     </button>
   );
 }
@@ -33,4 +35,5 @@ interface Props {
   small?: boolean;
   className?: string;
   disabled?: boolean;
+  loading?: boolean;
 }

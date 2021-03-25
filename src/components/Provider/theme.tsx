@@ -23,6 +23,7 @@ export const CssVariables = ({ theme }: { theme: DisplayTheme }) => {
       --light-text: #666;
       --cec: #CECECE;
       --skeleton: #E4E4E4;
+      --skeleton-shine: #bdbdbd;
       --modal-layer-dark: rgba(0, 0, 0, .8);
       --success: #00D46E;
       --warning: #FFD336;

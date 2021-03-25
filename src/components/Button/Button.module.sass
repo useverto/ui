@@ -21,6 +21,9 @@ $borderWidth: 3px
   padding: $topPaddingNormal $sidePaddingNormal
   transition: all .23s ease-in-out
 
+  .Loading
+    color: variables.$foreground-reverse-color
+
   &:disabled
     cursor: not-allowed
     opacity: .9
@@ -37,6 +40,9 @@ $borderWidth: 3px
     color: variables.$foreground-color
     background-color: variables.$background-color
 
+    .Loading
+      color: variables.$foreground-color
+
     &.secondary
       color: variables.$light-text
       border-color: variables.$cec
@@ -48,6 +54,9 @@ $borderWidth: 3px
     &.outlined:hover
       background-color: variables.$foreground-color
       color: variables.$foreground-reverse-color
+
+      .Loading
+        color: variables.$foreground-reverse-color
 
   &.small
     padding: $topPaddingNormal $sidePaddingSmall

@@ -1,4 +1,4 @@
-import { VertoProvider, Button } from "@verto/ui";
+import { VertoProvider, Button, Loading } from "@verto/ui";
 import { useState } from "react";
 import "./styles.sass";
 
@@ -15,6 +15,9 @@ export default function App() {
       <Button type="outlined" small>
         Small outlined
       </Button>
+      <Button loading>Outlined</Button>
+      <Loading.Spinner />
+      <Loading.Skeleton />
     </VertoProvider>
   );
 }
