@@ -3,4 +3,4 @@
 import "./styles/global.sass";
 
 export { default as VertoProvider } from "./components/Provider";
-export { useTheme } from "./components/Provider/Theme";
+export { useTheme } from "./components/Provider/theme";
