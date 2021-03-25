@@ -4,20 +4,7 @@
   
 body, html
   margin: 0
-  min-height: 100vh
   transition: all .25s ease-in-out
-  --geist-success: #{variables.$theme}
-  --geist-success-dark: #{variables.$theme-dark}
-  --geist-success-light: #{variables.$theme-light}
-  --geist-link-color: #{variables.$theme}
-  --geist-error: #{variables.$color-error}
-  --geist-error-light:#{variables.$color-error-light}
-  --geist-error-dark: #{variables.$color-error-dark}
-  --geist-warning: #{variables.$color-warning}
-  --geist-warning-light: #{variables.$color-warning-light}
-  --geist-warning-dark: #{variables.$color-warning-dark}
-  --geist-selection: #{variables.$theme-light}
-  --font-mono: #{variables.$jetbrains-mono}
 
 *
   -webkit-tap-highlight-color: transparent
@@ -28,22 +15,3 @@ h1, h2, h3, h4, h5, h6, p, a
 
 h1, h2, h3, h4, h5, h6, p
   transition: all .25s ease-in-out
-
-a.underline
-  position: relative
-  text-decoration: none
-
-  &::after
-    content: ''
-    position: absolute
-    top: 105%
-    left: 0
-    width: 0
-    height: 2px
-    opacity: 0
-    background-color: variables.$theme
-    transition: all .22s ease-in-out
-
-  &:hover::after
-    width: 100%
-    opacity: 1
