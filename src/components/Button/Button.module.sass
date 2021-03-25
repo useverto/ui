@@ -1,5 +1,10 @@
 @use "../../styles/variables"
-  
+
+$sidePaddingNormal: 2.3em
+$topPaddingNormal: .6em
+$sidePaddingSmall: 1.7em
+$borderWidth: 3px
+
 .Button
   display: flex
   align-items: center
@@ -13,12 +18,41 @@
   border-radius: variables.$big-items-radius
   font-size: variables.$normal-font-size
   font-weight: 500
-  padding: .6em 2.3em
+  padding: $topPaddingNormal $sidePaddingNormal
   transition: all .23s ease-in-out
 
-  &:hover
-    box-shadow: variables.$standard-shadow-hover
-    transform: translateY(-1.5px)
+  &:disabled
+    cursor: not-allowed
+    opacity: .9
 
-  &:active
-    transform: translateY(.45px)
+  &:hover:not(:disabled)
+    box-shadow: variables.$standard-shadow-hover
+
+  &:active:not(:disabled)
+    transform: scale(.96)
+
+  &.outlined, &.secondary
+    border: $borderWidth solid variables.$foreground-color
+    padding: calc(#{$topPaddingNormal} - #{$borderWidth}) calc(#{$sidePaddingNormal} - #{$borderWidth})
+    color: variables.$foreground-color
+    background-color: variables.$background-color
+
+    &.secondary
+      color: variables.$light-text
+      border-color: variables.$cec
+      box-shadow: none
+
+      &:hover
+        box-shadow: none
+
+    &.outlined:hover
+      background-color: variables.$foreground-color
+      color: variables.$foreground-reverse-color
+
+  &.small
+    padding: $topPaddingNormal $sidePaddingSmall
+    font-size: variables.$smaller-font-size
+    border-radius: variables.$small-items-radius
+
+    &.outlined, &.secondary
+      padding: calc(#{$topPaddingNormal} - #{$borderWidth}) calc(#{$sidePaddingSmall} - #{$borderWidth})

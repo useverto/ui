@@ -4,14 +4,20 @@ import styles from "./Button.module.sass";
 export default function Button({
   children,
   type = "filled",
-  size = "normal",
+  small,
   className,
   ...props
 }: PropsWithChildren<Props>) {
   return (
     <button
       className={
-        [styles.Button].filter((val) => val !== "").join(" ") +
+        [
+          styles.Button,
+          (type !== "filled" && styles[type]) || "",
+          (small && styles.small) || ""
+        ]
+          .filter((val) => val !== "")
+          .join(" ") +
         " " +
         (className ?? "")
       }
@@ -24,6 +30,7 @@ export default function Button({
 
 interface Props {
   type?: "filled" | "outlined" | "secondary";
-  size?: "normal" | "small";
+  small?: boolean;
   className?: string;
+  disabled?: boolean;
 }
