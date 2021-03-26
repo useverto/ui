@@ -15,6 +15,7 @@ export default function Select({
   className,
   style,
   filled,
+  small,
   ...props
 }: PropsWithChildren<Props>) {
   return (
@@ -26,7 +27,8 @@ export default function Select({
         className={[
           "VertoSelectWrapper",
           styles.Select,
-          (filled && styles.Filled) || ""
+          (filled && styles.Filled) || "",
+          (small && styles.Small) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}
@@ -67,4 +69,5 @@ interface Props {
   onChange?: ChangeEventHandler<HTMLSelectElement>;
   label?: ReactNode;
   filled?: boolean;
+  small?: boolean;
 }

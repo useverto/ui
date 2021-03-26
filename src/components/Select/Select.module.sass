@@ -1,7 +1,9 @@
 @use "../../styles/variables"
 
-$sidePaddingNormal: .8em
-$topPaddingNormal: .6em
+$sidePaddingNormal: .46em
+$topPaddingNormal: .55em
+$sidePaddingSmall: .28em
+$topPaddingSmall: .36em
 
 .Select
   position: relative
@@ -25,7 +27,7 @@ $topPaddingNormal: .6em
     -moz-appearance: none
     font-size: 1em
     font-weight: 500
-    padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingNormal} - #{variables.$borderWidth})
+    padding: $topPaddingNormal $sidePaddingNormal
     color: variables.$foreground-color
     width: 100%
     z-index: 10
@@ -46,6 +48,14 @@ $topPaddingNormal: .6em
 
     select
       color: variables.$foreground-reverse-color
+
+  &.Small
+    font-size: variables.$smaller-font-size
+    border-radius: variables.$small-items-radius
+    min-width: 110px
+
+    select
+      padding: $topPaddingSmall $sidePaddingSmall
 
   .Arrow
     position: absolute
