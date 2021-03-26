@@ -4,6 +4,7 @@ import {
   CSSProperties,
   PropsWithChildren,
   ReactNode,
+  useEffect,
   useState
 } from "react";
 import styles from "./Input.module.sass";
@@ -16,18 +17,32 @@ export default function Input({
   inlineLabel,
   leftInlineLabel,
   status,
+  matchPattern,
+  onChange,
   ...props
 }: PropsWithChildren<Props>) {
+  const [val, setVal] = useState(props.value),
+    [inputStatus, setInputStatus] = useState(status),
+    [changed, setChanged] = useState(false);
+
+  useEffect(() => {
+    if (typeof val !== "string" || !matchPattern || !changed) return;
+    if (!val.match(matchPattern)) setInputStatus("error");
+    else setInputStatus(undefined);
+  }, [val]);
+
   return (
     <div className={"VertoInput " + (className ?? "")} style={style}>
-      <span className={"VertoInputLabel " + styles.Label}>{label}</span>
+      <span className={"VertoInputLabel " + styles.Label}>
+        {label} {props.value}
+      </span>
       <div
         className={[
           "VertoInputWrapper",
           styles.InputWrapper,
           (currency && styles.WithCurrency) || "",
           (inlineLabel && styles.WithInlineLabel) || "",
-          (status && styles[`Status_${status}`]) || ""
+          (inputStatus && styles[`Status_${inputStatus}`]) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}
@@ -45,7 +60,16 @@ export default function Input({
             {inlineLabel}
           </div>
         )}
-        <input {...props} />
+        <input
+          onChange={(e) => {
+            setVal(
+              props.type === "number" ? Number(e.target.value) : e.target.value
+            );
+            setChanged(true);
+            if (onChange) onChange(e);
+          }}
+          {...props}
+        />
         {inlineLabel && !leftInlineLabel && (
           <div className={"VertoInputInlineLabel " + styles.InlineLabel}>
             {inlineLabel}
@@ -56,7 +80,8 @@ export default function Input({
   );
 }
 
-export function useInput<T extends string | number>(val: T) {
+// @ts-ignore
+export function useInput<T extends string | number>(val: T = "") {
   const [state, setState] = useState<T>(val),
     [status, setStatus] = useState<InputStatus>();
 
@@ -96,6 +121,7 @@ interface Props {
   leftInlineLabel?: boolean;
   placeholder?: string;
   status?: InputStatus;
+  matchPattern?: RegExp;
   type?: "text" | "number" | "password";
 }
 
