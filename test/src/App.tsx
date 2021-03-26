@@ -45,6 +45,10 @@ export default function App() {
         <option value="test">Test</option>
         <option value="test2">Test 2</option>
       </Select>
+      <Select label="Filled input" filled>
+        <option value="test">Test</option>
+        <option value="test2">Test 2</option>
+      </Select>
     </VertoProvider>
   );
 }

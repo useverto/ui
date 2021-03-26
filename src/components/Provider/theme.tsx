@@ -14,6 +14,7 @@ export const ThemeContext: Context<DisplayTheme> = createContext<DisplayTheme>(
 export const useTheme = (): DisplayTheme =>
   useContext<DisplayTheme>(ThemeContext);
 
+// TODO: dark theme variables
 export const CssVariables = ({ theme }: { theme: DisplayTheme }) => {
   const GlobalStyle = createGlobalStyle`
     body {

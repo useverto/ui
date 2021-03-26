@@ -36,6 +36,17 @@ $topPaddingNormal: .6em
     &:focus
       outline: none
 
+    option
+      background-color: variables.$foreground-color
+      color: variables.$foreground-reverse-color
+
+  &.Filled
+    background-color: variables.$foreground-color
+    color: variables.$foreground-reverse-color
+
+    select
+      color: variables.$foreground-reverse-color
+
   .Arrow
     position: absolute
     top: 50%
