@@ -3,10 +3,9 @@ import {
   Button,
   Loading,
   Input,
-  useInput,
-  Select
+  Select,
+  Tooltip
 } from "@verto/ui";
-import { useEffect } from "react";
 import { useState } from "react";
 import "./styles.sass";
 
@@ -53,6 +52,10 @@ export default function App() {
         <option value="test">Test</option>
         <option value="test2">Test 2</option>
       </Select>
+      <br />
+      <Tooltip text="Test tooltip">
+        <p style={{ margin: 0 }}>Hello</p>
+      </Tooltip>
     </VertoProvider>
   );
 }

@@ -8,3 +8,4 @@ export { default as Button } from "./components/Button";
 export * as Loading from "./components/Loading";
 export { default as Input, useInput } from "./components/Input";
 export { default as Select, useSelect } from "./components/Select";
+export { default as Tooltip } from "./components/Tooltip";

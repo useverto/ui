@@ -1,0 +1,21 @@
+@use "../../styles/variables"
+
+.TooltipWrapper
+  position: relative
+  display: inline-block
+
+.Tooltip
+  position: absolute
+  left: 50%
+  padding: .4em .8em
+  background-color: variables.$foreground-color
+  color: variables.$foreground-reverse-color
+  font-weight: 500
+  font-size: variables.$smaller-font-size
+  text-align: center
+  border-radius: variables.$big-items-radius
+  z-index: 10000
+  width: max-content
+  max-width: 150px
+  box-shadow: variables.$standard-shadow
+  transform: translateX(-50%)

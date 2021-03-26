@@ -22,7 +22,15 @@ export default function Select({
   return (
     <div className={"VertoSelect " + (className ?? "")} style={style}>
       {label && (
-        <span className={"VertoSelectLabel " + styles.Label}>{label}</span>
+        <span
+          className={
+            "VertoSelectLabel " +
+            styles.Label +
+            ((small && " " + styles.SmallLabel) || "")
+          }
+        >
+          {label}
+        </span>
       )}
       <div
         className={[
