@@ -14,6 +14,7 @@ $topPadding: .55em
   font-size: variables.$normal-font-size
   width: min-content
   min-width: 320px
+  transition: border-color .23s ease-in-out
 
   input
     outline: none
@@ -43,10 +44,19 @@ $topPadding: .55em
     background-color: variables.$background-color
     border-radius: variables.$big-items-radius
 
+  &.Status_error
+    border-color: variables.$error !important
+
+  &.Status_warning
+    border-color: variables.$warning !important
+
+  &.Status_success
+    border-color: variables.$success !important
+
   .Currency
     position: absolute
     top: 50%
-    left: calc($sidePadding + $borderWidth)
+    left: calc(#{$sidePadding} + #{$borderWidth})
     color: variables.$light-text
     font-family: variables.$jetbrains-mono
     font-size: variables.$normal-font-size

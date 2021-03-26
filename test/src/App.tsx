@@ -1,4 +1,5 @@
 import { VertoProvider, Button, Loading, Input } from "@verto/ui";
+import { useEffect } from "react";
 import { useState } from "react";
 import "./styles.sass";
 
@@ -31,6 +32,7 @@ export default function App() {
         placeholder="Type here..."
         leftInlineLabel
       />
+      <Input label="Amount" type="number" placeholder="10000" currency="$" />
     </VertoProvider>
   );
 }

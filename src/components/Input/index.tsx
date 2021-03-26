@@ -15,47 +15,65 @@ export default function Input({
   label,
   inlineLabel,
   leftInlineLabel,
+  status,
   ...props
 }: PropsWithChildren<Props>) {
   return (
     <div className={"VertoInput " + (className ?? "")} style={style}>
-      <span className={styles.Label}>{label}</span>
+      <span className={"VertoInputLabel " + styles.Label}>{label}</span>
       <div
         className={[
           "VertoInputWrapper",
           styles.InputWrapper,
           (currency && styles.WithCurrency) || "",
-          (inlineLabel && styles.WithInlineLabel) || ""
+          (inlineLabel && styles.WithInlineLabel) || "",
+          (status && styles[`Status_${status}`]) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}
       >
         {currency && <span className={styles.Currency}>{currency}</span>}
         {inlineLabel && leftInlineLabel && (
-          <div className={styles.InlineLabel + " " + styles.LeftInlineLabel}>
+          <div
+            className={
+              "VertoInputInlineLabel " +
+              styles.InlineLabel +
+              " " +
+              styles.LeftInlineLabel
+            }
+          >
             {inlineLabel}
           </div>
         )}
         <input {...props} />
         {inlineLabel && !leftInlineLabel && (
-          <div className={styles.InlineLabel}>{inlineLabel}</div>
+          <div className={"VertoInputInlineLabel " + styles.InlineLabel}>
+            {inlineLabel}
+          </div>
         )}
       </div>
     </div>
   );
 }
 
-export function useInput(val: string | number) {
-  const [state, setState] = useState(val);
+export function useInput<T extends string | number>(val: T) {
+  const [state, setState] = useState<T>(val),
+    [status, setStatus] = useState<InputStatus>();
 
   return {
     state,
     setState,
-    reset: () => setState(val),
+    setStatus,
+    reset() {
+      setState(val);
+      setStatus(undefined);
+    },
     bindings: {
       value: state,
+      status,
       onChange(e: ChangeEvent<HTMLInputElement>) {
         setState(
+          // @ts-ignore
           typeof state === "string" ? e.target.value : Number(e.target.value)
         );
       }
@@ -77,5 +95,8 @@ interface Props {
   inlineLabel?: ReactNode;
   leftInlineLabel?: boolean;
   placeholder?: string;
+  status?: InputStatus;
   type?: "text" | "number" | "password";
 }
+
+type InputStatus = undefined | "error" | "warning" | "success";
