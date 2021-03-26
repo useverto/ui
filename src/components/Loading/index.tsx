@@ -1,7 +1,7 @@
-import { CSSProperties, PropsWithChildren } from "react";
+import { CSSProperties } from "react";
 import styles from "./Loading.module.sass";
 
-export function Spinner({ className, ...props }: PropsWithChildren<Props>) {
+export function Spinner({ className, ...props }: Props) {
   return (
     <div className={styles.Spinner + " " + (className ?? "")} {...props}>
       <svg
@@ -22,7 +22,7 @@ export function Spinner({ className, ...props }: PropsWithChildren<Props>) {
   );
 }
 
-export function Skeleton({ className, ...props }: PropsWithChildren<Props>) {
+export function Skeleton({ className, ...props }: Props) {
   return (
     <div className={styles.Skeleton + " " + (className ?? "")} {...props} />
   );

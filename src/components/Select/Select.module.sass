@@ -1,0 +1,65 @@
+@use "../../styles/variables"
+
+$sidePaddingNormal: .8em
+$topPaddingNormal: .6em
+
+.Select
+  position: relative
+  display: flex
+  box-shadow: variables.$standard-shadow
+  border-radius: variables.$big-items-radius
+  overflow: hidden
+  font-size: variables.$normal-font-size
+  border: variables.$borderWidth solid variables.$foreground-color
+  background-color: variables.$background-color
+  width: min-content
+  min-width: 320px
+  transition: all .23s ease-in-out
+
+  select
+    display: block
+    outline: none
+    background-color: transparent
+    border: none
+    -webkit-appearance: none
+    -moz-appearance: none
+    font-size: 1em
+    font-weight: 500
+    padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingNormal} - #{variables.$borderWidth})
+    color: variables.$foreground-color
+    width: 100%
+    z-index: 10
+
+    &::-ms-expand
+      display: none
+
+    &:focus
+      outline: none
+
+  .Arrow
+    position: absolute
+    top: 50%
+    right: calc(#{$sidePaddingNormal} + #{variables.$borderWidth})
+    display: block
+    transform: translateY(-50%)
+
+    svg
+      display: block
+      font-size: 1em
+      width: variables.$normal-font-size
+      height: variables.$normal-font-size
+
+  &:disabled
+    cursor: not-allowed
+    opacity: .9
+
+  &:hover:not(:disabled)
+    box-shadow: variables.$standard-shadow-hover
+
+.Label
+  display: block
+  font-size: variables.$smaller-font-size + .1em
+  font-weight: 500
+  color: variables.$light-text
+  margin-bottom: .27em
+  text-transform: uppercase

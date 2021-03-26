@@ -2,7 +2,6 @@ import {
   ChangeEvent,
   ChangeEventHandler,
   CSSProperties,
-  PropsWithChildren,
   ReactNode,
   useEffect,
   useState
@@ -20,7 +19,7 @@ export default function Input({
   matchPattern,
   onChange,
   ...props
-}: PropsWithChildren<Props>) {
+}: Props) {
   const [val, setVal] = useState(props.value),
     [inputStatus, setInputStatus] = useState(status),
     [changed, setChanged] = useState(false);

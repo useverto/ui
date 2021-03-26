@@ -3,7 +3,6 @@
 $sidePaddingNormal: 2.3em
 $topPaddingNormal: .6em
 $sidePaddingSmall: 1.7em
-$borderWidth: 3px
 
 .Button
   display: flex
@@ -35,8 +34,8 @@ $borderWidth: 3px
     transform: scale(.96)
 
   &.outlined, &.secondary
-    border: $borderWidth solid variables.$foreground-color
-    padding: calc(#{$topPaddingNormal} - #{$borderWidth}) calc(#{$sidePaddingNormal} - #{$borderWidth})
+    border: variables.$borderWidth solid variables.$foreground-color
+    padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingNormal} - #{variables.$borderWidth})
     color: variables.$foreground-color
     background-color: variables.$background-color
 
@@ -64,4 +63,4 @@ $borderWidth: 3px
     border-radius: variables.$small-items-radius
 
     &.outlined, &.secondary
-      padding: calc(#{$topPaddingNormal} - #{$borderWidth}) calc(#{$sidePaddingSmall} - #{$borderWidth})
+      padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingSmall} - #{variables.$borderWidth})

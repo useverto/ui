@@ -1,4 +1,11 @@
-import { VertoProvider, Button, Loading, Input, useInput } from "@verto/ui";
+import {
+  VertoProvider,
+  Button,
+  Loading,
+  Input,
+  useInput,
+  Select
+} from "@verto/ui";
 import { useEffect } from "react";
 import { useState } from "react";
 import "./styles.sass";
@@ -34,6 +41,10 @@ export default function App() {
         matchPattern={/.{5}/}
       />
       <Input label="Amount" type="number" placeholder="10000" currency="$" />
+      <Select label="Choose something">
+        <option value="test">Test</option>
+        <option value="test2">Test 2</option>
+      </Select>
     </VertoProvider>
   );
 }

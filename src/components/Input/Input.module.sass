@@ -1,6 +1,5 @@
 @use "../../styles/variables"
 
-$borderWidth: 3px
 $sidePadding: .4em
 $topPadding: .55em
   
@@ -8,7 +7,7 @@ $topPadding: .55em
   position: relative
   display: flex
   background-color: variables.$background-color
-  border: $borderWidth solid variables.$foreground-color
+  border: variables.$borderWidth solid variables.$foreground-color
   overflow: hidden
   border-radius: variables.$big-items-radius
   font-size: variables.$normal-font-size
@@ -56,7 +55,7 @@ $topPadding: .55em
   .Currency
     position: absolute
     top: 50%
-    left: calc(#{$sidePadding} + #{$borderWidth})
+    left: calc(#{$sidePadding} + #{variables.$borderWidth})
     color: variables.$light-text
     font-family: variables.$jetbrains-mono
     font-size: variables.$normal-font-size
@@ -92,9 +91,4 @@ $topPadding: .55em
       right: -#{variables.$big-items-radius}
 
 .Label
-  display: block
-  font-size: variables.$smaller-font-size + .1em
-  font-weight: 500
-  color: variables.$light-text
-  margin-bottom: .27em
-  text-transform: uppercase
+  +variables.labelStyle
