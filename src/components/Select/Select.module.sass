@@ -57,6 +57,15 @@ $topPaddingSmall: .36em
     select
       padding: $topPaddingSmall $sidePaddingSmall
 
+  &.Status_error
+    border-color: variables.$error !important
+
+  &.Status_warning
+    border-color: variables.$warning !important
+
+  &.Status_success
+    border-color: variables.$success !important
+
   .Arrow
     position: absolute
     top: 50%

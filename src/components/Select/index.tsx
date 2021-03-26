@@ -16,6 +16,7 @@ export default function Select({
   style,
   filled,
   small,
+  status,
   ...props
 }: PropsWithChildren<Props>) {
   return (
@@ -28,7 +29,8 @@ export default function Select({
           "VertoSelectWrapper",
           styles.Select,
           (filled && styles.Filled) || "",
-          (small && styles.Small) || ""
+          (small && styles.Small) || "",
+          (status && styles[`Status_${status}`]) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}
@@ -44,14 +46,20 @@ export default function Select({
 
 // @ts-ignore
 export function useSelect<T extends string | number>(val: T = "") {
-  const [state, setState] = useState<T>(val);
+  const [state, setState] = useState<T>(val),
+    [status, setStatus] = useState<SelectStatus>();
 
   return {
     state,
     setState,
-    reset: () => setState(val),
+    setStatus,
+    reset() {
+      setState(val);
+      setStatus(undefined);
+    },
     bindings: {
       value: state,
+      status,
       onChange(e: ChangeEvent<HTMLSelectElement>) {
         setState(
           // @ts-ignore
@@ -70,4 +78,7 @@ interface Props {
   label?: ReactNode;
   filled?: boolean;
   small?: boolean;
+  status?: SelectStatus;
 }
+
+type SelectStatus = undefined | "error" | "warning" | "success";
