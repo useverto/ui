@@ -56,6 +56,14 @@ export default function App() {
       <Tooltip text="Test tooltip">
         <p style={{ margin: 0 }}>Hello</p>
       </Tooltip>
+      <br />
+      <Tooltip text="Test tooltip" position="right">
+        <p style={{ margin: 0 }}>Side</p>
+      </Tooltip>
+      <br />
+      <Tooltip text="Test tooltip" position="right" arrow>
+        <p style={{ margin: 0 }}>With arrow</p>
+      </Tooltip>
     </VertoProvider>
   );
 }
