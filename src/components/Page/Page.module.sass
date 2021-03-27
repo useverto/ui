@@ -1,0 +1,52 @@
+@use "../../styles/variables"
+
+.Page
+  position: relative
+  padding:
+    top: 2em
+    bottom: 2em
+
+  &.Size_normal
+    padding:
+      left: 19vw
+      right: 19vw
+
+    @media screen and (max-width: variables.$smaller-screen)
+      padding:
+        left: 10vw
+        right: 10vw
+
+    @media screen and (max-width: variables.$mobile-screen)
+      padding:
+        left: 7.4vw
+        right: 7.4vw
+
+  &.Size_small
+    padding:
+      left: 13vw
+      right: 13vw
+
+    @media screen and (max-width: variables.$smaller-screen)
+      padding:
+        left: 7.75vw
+        right: 7.75vw
+
+    @media screen and (max-width: variables.$mobile-screen)
+      padding:
+        left: 5vw
+        right: 5vw
+
+  &.Size_large
+    padding:
+      left: 22.5vw
+      right: 22.5vw
+
+    @media screen and (max-width: variables.$smaller-screen)
+      padding:
+        left: 15vw
+        right: 15vw
+
+    @media screen and (max-width: variables.$mobile-screen)
+      padding:
+        left: 10.5vw
+        right: 10.5vw

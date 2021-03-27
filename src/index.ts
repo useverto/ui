@@ -11,3 +11,4 @@ export { default as Select, useSelect } from "./components/Select";
 export { default as Tooltip } from "./components/Tooltip";
 export { default as Card } from "./components/Card";
 export { default as Spacer } from "./components/Spacer";
+export { default as Page } from "./components/Page";
