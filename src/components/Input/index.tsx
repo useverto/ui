@@ -31,7 +31,7 @@ export default function Input({
   }, [val]);
 
   return (
-    <div className={"VertoInput " + (className ?? "")} style={style}>
+    <div className={"VertoInput " + (className ?? "")}>
       <span className={"VertoInputLabel " + styles.Label}>
         {label} {props.value}
       </span>
@@ -45,6 +45,7 @@ export default function Input({
         ]
           .filter((val) => val !== "")
           .join(" ")}
+        style={style}
       >
         {currency && <span className={styles.Currency}>{currency}</span>}
         {inlineLabel && leftInlineLabel && (

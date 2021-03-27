@@ -4,7 +4,9 @@ import {
   Loading,
   Input,
   Select,
-  Tooltip
+  Tooltip,
+  Card,
+  Spacer
 } from "@verto/ui";
 import { useState } from "react";
 import "./styles.sass";
@@ -52,18 +54,35 @@ export default function App() {
         <option value="test">Test</option>
         <option value="test2">Test 2</option>
       </Select>
-      <br />
+      <Spacer y={1} />
       <Tooltip text="Test tooltip">
         <p style={{ margin: 0 }}>Hello</p>
       </Tooltip>
-      <br />
+      <Spacer y={1} />
       <Tooltip text="Test tooltip" position="right">
         <p style={{ margin: 0 }}>Side</p>
       </Tooltip>
-      <br />
+      <Spacer y={1} />
       <Tooltip text="Test tooltip" position="right" arrow>
         <p style={{ margin: 0 }}>With arrow</p>
       </Tooltip>
+      <Card>
+        <Input
+          label="Address"
+          placeholder="Your address"
+          style={{ width: "calc(100% - 6px)" }}
+        />
+        <Spacer y={1} />
+        <Input
+          label="You send"
+          inlineLabel="VRT"
+          type="number"
+          placeholder="10000"
+          style={{ width: "calc(100% - 6px)" }}
+        />
+        <Spacer y={1} />
+        <Button style={{ width: "100%" }}>Send</Button>
+      </Card>
     </VertoProvider>
   );
 }

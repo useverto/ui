@@ -9,3 +9,5 @@ export * as Loading from "./components/Loading";
 export { default as Input, useInput } from "./components/Input";
 export { default as Select, useSelect } from "./components/Select";
 export { default as Tooltip } from "./components/Tooltip";
+export { default as Card } from "./components/Card";
+export { default as Spacer } from "./components/Spacer";
