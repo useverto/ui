@@ -1,4 +1,4 @@
-import { PropsWithChildren, CSSProperties } from "react";
+import { PropsWithChildren, CSSProperties, MouseEventHandler } from "react";
 import { Spinner } from "../Loading";
 import styles from "./Button.module.sass";
 
@@ -8,6 +8,7 @@ export default function Button({
   small,
   loading,
   className,
+  onClick,
   ...props
 }: PropsWithChildren<Props>) {
   return (
@@ -23,6 +24,7 @@ export default function Button({
         " " +
         (className ?? "")
       }
+      onClick={onClick}
       {...props}
     >
       {(loading && <Spinner className={styles.Loading} />) || children}
@@ -36,5 +38,6 @@ interface Props {
   className?: string;
   disabled?: boolean;
   loading?: boolean;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   style?: CSSProperties;
 }

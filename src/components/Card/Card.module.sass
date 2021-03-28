@@ -1,11 +1,114 @@
 @use "../../styles/variables"
 
+$standardPadding: 1.03em
+
 .Card
   position: relative
   background-color: variables.$background-color
   box-shadow: variables.$lighter-shadow
   border-radius: variables.$card-radius
   overflow: hidden
-  padding: 1.03em
+  padding: $standardPadding
   width: min-content
   min-width: 350px
+
+=dataWithLabel
+  h1
+    font-size: variables.$normal-font-size
+    color: variables.$foreground-color
+    font-weight: 500
+    margin: 0
+    line-height: 1em
+
+  p
+    display: flex
+    align-items: center
+    font-size: variables.$small-font-size
+    color: variables.$light-text
+    font-weight: 500
+    margin: 0
+    line-height: 1em
+
+.Order
+  $firstTitleMargin: .24em
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: .85em $standardPadding + .3em
+  width: auto
+  border-radius: variables.$big-items-radius
+
+  .OrderData
+    display: flex
+    align-items: center
+
+    .OrderType
+      background-color: variables.$foreground-color
+      color: variables.$foreground-reverse-color
+      font-size: variables.$normal-font-size
+      font-weight: 500
+      border-radius: variables.$small-items-radius - 1.5px
+      box-shadow: variables.$standard-shadow
+      padding: .04em .38em
+      margin-right: 1.25em
+      text-transform: uppercase
+
+    .Data
+      +dataWithLabel
+
+      h1
+        margin-bottom: $firstTitleMargin
+
+      .Status
+        display: block
+        width: 8px
+        height: 8px
+        margin-left: 8px
+        border-radius: 100%
+
+        &.Status_success
+          background-color: variables.$success
+
+        &.Status_pending
+          background-color: variables.$warning
+
+        &.Status_error
+          background-color: variables.$error
+
+        &.Status_neutral
+          background-color: variables.$foreground-color
+          opacity: .6
+
+  .OrderInfo
+    display: flex
+    align-items: center
+
+    .Time
+      +dataWithLabel
+
+      h1, p
+        display: block
+        text-align: right
+
+      p
+        margin-bottom: $firstTitleMargin
+
+    .Icon
+      display: flex
+      align-items: center
+      justify-content: center
+      font-size: variables.$normal-font-size
+      width: variables.$normal-font-size
+      height: variables.$normal-font-size
+      color: variables.$light-text
+      margin-left: $standardPadding - 0.25em
+      cursor: pointer
+      transition: all .23s ease-in-out
+
+      &:hover
+        color: variables.$foreground-color
+
+      svg
+        font-size: 1em
+        width: 1em
+        height: 1em

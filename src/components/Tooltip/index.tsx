@@ -8,6 +8,7 @@ export default function Tooltip({
   text,
   position = "top",
   arrow,
+  style,
   ...props
 }: PropsWithChildren<Props>) {
   const [shown, setShown] = useState(false);
@@ -23,7 +24,7 @@ export default function Tooltip({
 
   return (
     <div
-      className={styles.TooltipWrapper + " " + (className ?? "")}
+      className={styles.TooltipWrapper}
       {...props}
       onMouseEnter={() => setShown(true)}
       onMouseLeave={() => setShown(false)}
@@ -31,16 +32,22 @@ export default function Tooltip({
       <AnimatePresence>
         {shown && (
           <motion.div
-            className={[
-              "VertoTooltip",
-              styles.Tooltip,
-              ((position === "right" || position === "left") && styles.Side) ||
-                "",
-              (arrow && styles.WithArrow) || "",
-              styles[`Pos_${position}`]
-            ]
-              .filter((val) => val !== "")
-              .join(" ")}
+            className={
+              [
+                "VertoTooltip",
+                styles.Tooltip,
+                ((position === "right" || position === "left") &&
+                  styles.Side) ||
+                  "",
+                (arrow && styles.WithArrow) || "",
+                styles[`Pos_${position}`]
+              ]
+                .filter((val) => val !== "")
+                .join(" ") +
+              " " +
+              (className ?? "")
+            }
+            style={style}
             initial={{ [getCssPosition()]: "80%", opacity: 0 }}
             animate={{ [getCssPosition()]: "108%", opacity: 1 }}
             exit={{ [getCssPosition()]: "80%", opacity: 0 }}

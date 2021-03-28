@@ -85,6 +85,13 @@ export default function App() {
           <Spacer y={1} />
           <Button style={{ width: "100%" }}>Send</Button>
         </Card>
+        <Spacer y={1} />
+        <Card.Order
+          type="sell"
+          orderID="WE5dJ4BenAiBbjs8zs8EWAsOo33gjwadsfa7ntxVLVc"
+          status="success"
+          timestamp={new Date()}
+        />
       </Page>
     </VertoProvider>
   );
