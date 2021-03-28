@@ -92,6 +92,15 @@ export default function App() {
           status="success"
           timestamp={new Date()}
         />
+        <Spacer y={1} />
+        <Card.ArtActivity
+          type="buy"
+          avatar="https://th8ta.org/marton.jpeg"
+          usertag="martonlederer"
+          timestamp={new Date()}
+          price={{ usd: 1204.768548, ar: 300.43256424 }}
+          orderID="WE5dJ4BenAiBbjs8zs8EWAsOo33gjwadsfa7ntxVLVc"
+        />
       </Page>
     </VertoProvider>
   );

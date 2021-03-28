@@ -2005,10 +2005,10 @@
     "@typescript-eslint/types" "4.8.1"
     eslint-visitor-keys "^2.0.0"
 
-"@verto/ui@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@verto/ui/-/ui-0.0.3.tgz#249fbe5cbfa7283b9011a511feb7a11752fa6790"
-  integrity sha512-SACi1Hhj74jvBZlhBvAD1/EW1IrKneiDASSibv5bNnnne2j4uQCP2oqqTbjQnghuIZekpPnvtKBr+uMid9eD5w==
+"@verto/ui@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@verto/ui/-/ui-0.0.7.tgz#92aeb67629d1c1ff5369a1535192a802cd7b0fb2"
+  integrity sha512-n47VaYkUjY7O4PORRD8oE+dOw3lo5z5IB8bj68Gy3/8yRpeTvB/UHm1/7wvaK1ygHkJWTBOR5q/atMarZ7ofIQ==
   dependencies:
     "@geist-ui/react-icons" "^1.0.1"
     "@geist-ui/style" "^2.0.0"

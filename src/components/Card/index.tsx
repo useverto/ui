@@ -1,6 +1,6 @@
 import { LinkExternalIcon } from "@primer/octicons-react";
 import { CSSProperties, PropsWithChildren, MouseEventHandler } from "react";
-import { formatTime } from "../../utils";
+import { formatTime, formatBalance } from "../../utils";
 import Tooltip from "../Tooltip";
 import styles from "./Card.module.sass";
 
@@ -39,11 +39,11 @@ Card.Order = ({
   timestamp
 }: OrderProps) => (
   <Card
-    className={styles.Order + " " + (className ?? "")}
+    className={styles.Item + " " + (className ?? "")}
     style={style}
     onClick={onClick}
   >
-    <div className={styles.OrderData}>
+    <div className={styles.ItemData}>
       <span className={styles.OrderType}>{type}</span>
       <div className={styles.Data}>
         <h1>Order ID</h1>
@@ -61,14 +61,14 @@ Card.Order = ({
         </p>
       </div>
     </div>
-    <div className={styles.OrderInfo}>
+    <div className={styles.ItemInfo}>
       <div className={styles.Time}>
         <p>Timestamp</p>
         <h1>{formatTime(timestamp)}</h1>
       </div>
-      <div className={styles.Icon}>
+      <a href={`/orbit/order/${orderID}`} className={styles.Icon}>
         <LinkExternalIcon />
-      </div>
+      </a>
     </div>
   </Card>
 );
@@ -78,4 +78,72 @@ type OrderProps = Props & {
   orderID: string;
   status: "success" | "pending" | "error" | "neutral";
   timestamp: Date;
+};
+
+Card.ArtActivity = ({
+  className,
+  onClick,
+  style,
+  type,
+  avatar,
+  usertag,
+  timestamp,
+  price,
+  orderID
+}: ArtActivityProps) => (
+  <Card
+    className={styles.Item + " " + (className ?? "")}
+    style={style}
+    onClick={onClick}
+  >
+    <div className={styles.ItemData}>
+      <img
+        src={avatar}
+        alt="user-avatar"
+        className={styles.Avatar}
+        draggable={false}
+      />
+      <div className={styles.Data}>
+        <h1 className={styles.Action}>
+          {(type === "list" && (
+            <>
+              Collectable listed by{" "}
+              <a href={`/u/${usertag}`} className={styles.Usertag}>
+                @{usertag}
+              </a>
+            </>
+          )) || (
+            <>
+              Share {(type === "buy" && "bought") || "sold"} by{" "}
+              <a href={`/u/${usertag}`} className={styles.Usertag}>
+                @{usertag}
+              </a>
+            </>
+          )}
+        </h1>
+        <p>{formatTime(timestamp)}</p>
+      </div>
+    </div>
+    <div className={styles.ItemInfo}>
+      <div className={styles.Time}>
+        <p>${formatBalance(price.usd)} USD</p>
+        <h1>{formatBalance(price.ar)} AR</h1>
+      </div>
+      <a href={`/orbit/order/${orderID}`} className={styles.Icon}>
+        <LinkExternalIcon />
+      </a>
+    </div>
+  </Card>
+);
+
+type ArtActivityProps = Props & {
+  type: "buy" | "sell" | "list";
+  avatar: string;
+  usertag: string;
+  timestamp: Date;
+  price: {
+    usd: number;
+    ar: number;
+  };
+  orderID: string;
 };

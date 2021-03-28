@@ -29,8 +29,9 @@ $standardPadding: 1.03em
     margin: 0
     line-height: 1em
 
-.Order
+.Item
   $firstTitleMargin: .24em
+  $space: 1.25em
   display: flex
   align-items: center
   justify-content: space-between
@@ -38,7 +39,7 @@ $standardPadding: 1.03em
   width: auto
   border-radius: variables.$big-items-radius
 
-  .OrderData
+  .ItemData
     display: flex
     align-items: center
 
@@ -50,14 +51,29 @@ $standardPadding: 1.03em
       border-radius: variables.$small-items-radius - 1.5px
       box-shadow: variables.$standard-shadow
       padding: .04em .38em
-      margin-right: 1.25em
+      margin-right: $space
       text-transform: uppercase
+
+    .Avatar
+      width: 2.35em
+      height: 2.35em
+      border-radius: 100%
+      margin-right: $space
+      user-select: none
 
     .Data
       +dataWithLabel
 
       h1
         margin-bottom: $firstTitleMargin
+
+        &.Action
+          color: variables.$light-text
+          font-size: variables.$smaller-font-size
+
+          .Usertag
+            color: variables.$foreground-color
+            text-decoration: none
 
       .Status
         display: block
@@ -79,7 +95,7 @@ $standardPadding: 1.03em
           background-color: variables.$foreground-color
           opacity: .6
 
-  .OrderInfo
+  .ItemInfo
     display: flex
     align-items: center
 
@@ -103,6 +119,7 @@ $standardPadding: 1.03em
       color: variables.$light-text
       margin-left: $standardPadding - 0.25em
       cursor: pointer
+      text-decoration: none
       transition: all .23s ease-in-out
 
       &:hover
