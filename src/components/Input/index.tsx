@@ -49,14 +49,7 @@ export default function Input({
       >
         {currency && <span className={styles.Currency}>{currency}</span>}
         {inlineLabel && leftInlineLabel && (
-          <div
-            className={
-              "VertoInputInlineLabel " +
-              styles.InlineLabel +
-              " " +
-              styles.LeftInlineLabel
-            }
-          >
+          <div className={"VertoInputInlineLabel " + styles.InlineLabel}>
             {inlineLabel}
           </div>
         )}

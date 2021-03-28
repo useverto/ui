@@ -38,10 +38,13 @@ $topPadding: .55em
   &.WithCurrency input
     padding-left: $sidePadding + 1em
 
-  &.WithInlineLabel input
-    z-index: 10
-    background-color: variables.$background-color
-    border-radius: variables.$big-items-radius
+  &.WithInlineLabel 
+    background-color: variables.$foreground-color
+
+    input
+      z-index: 10
+      background-color: variables.$background-color
+      border-radius: variables.$big-items-radius - variables.$borderWidth
 
   &.Status_error
     border-color: variables.$error !important
@@ -76,19 +79,6 @@ $topPadding: .55em
     background-color: variables.$foreground-color
     color: variables.$foreground-reverse-color
     min-width: 90px
-
-    &::before
-      content: ""
-      position: absolute
-      left: -#{variables.$big-items-radius}
-      top: 0
-      bottom: 0
-      background-color: variables.$foreground-color
-      width: variables.$big-items-radius
-
-    &.LeftInlineLabel::before
-      left: unset
-      right: -#{variables.$big-items-radius}
 
 .Label
   +variables.labelStyle
