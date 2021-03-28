@@ -39,11 +39,7 @@ Card.Order = ({
   timestamp
 }: OrderProps) => (
   <Card
-    className={
-      [styles.Order].filter((val) => val !== "").join(" ") +
-      " " +
-      (className ?? "")
-    }
+    className={styles.Order + " " + (className ?? "")}
     style={style}
     onClick={onClick}
   >
