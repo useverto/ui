@@ -133,6 +133,18 @@ export default function App() {
           orderID="WE5dJ4BenAiBbjs8zs8EWAsOo33gjwadsfa7ntxVLVc"
         />
         <Spacer y={1} />
+        <Card.Trade
+          type="sell"
+          from={{
+            amount: 20000,
+            ticker: "VRT"
+          }}
+          to="AR"
+          timestamp={new Date()}
+          status="success"
+          cancel={() => {}}
+        />
+        <Spacer y={1} />
         <Avatar
           avatar="https://th8ta.org/marton.jpeg"
           usertag="martonlederer"
