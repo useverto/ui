@@ -19,22 +19,32 @@ export default function App() {
     <VertoProvider theme={theme}>
       <Page>
         <Button>Filled</Button>
+        <Spacer y={1} />
         <Button type="outlined">Outlined</Button>
+        <Spacer y={1} />
         <Button type="secondary">Secondary</Button>
+        <Spacer y={1} />
         <Button disabled>Disabled</Button>
+        <Spacer y={1} />
         <Button small>Small</Button>
+        <Spacer y={1} />
         <Button type="outlined" small>
           Small outlined
         </Button>
+        <Spacer y={1} />
         <Button loading>Outlined</Button>
+        <Spacer y={1} />
         <Loading.Spinner />
+        <Spacer y={1} />
         <Loading.Skeleton />
+        <Spacer y={1} />
         <Input
           label="You send"
           inlineLabel="VRT"
           type="number"
           placeholder="10000"
         />
+        <Spacer y={1} />
         <Input
           label="You send"
           inlineLabel="VRT"
@@ -43,15 +53,19 @@ export default function App() {
           leftInlineLabel
           matchPattern={/.{5}/}
         />
+        <Spacer y={1} />
         <Input label="Amount" type="number" placeholder="10000" currency="$" />
+        <Spacer y={1} />
         <Select label="Choose something">
           <option value="test">Test</option>
           <option value="test2">Test 2</option>
         </Select>
+        <Spacer y={1} />
         <Select label="Filled input" filled>
           <option value="test">Test</option>
           <option value="test2">Test 2</option>
         </Select>
+        <Spacer y={1} />
         <Select label="Small" small filled>
           <option value="test">Test</option>
           <option value="test2">Test 2</option>
@@ -68,6 +82,7 @@ export default function App() {
         <Tooltip text="Test tooltip" position="right" arrow>
           <p style={{ margin: 0 }}>With arrow</p>
         </Tooltip>
+        <Spacer y={1} />
         <Card>
           <Input
             label="Address"
