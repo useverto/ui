@@ -138,6 +138,7 @@ export default function App() {
           usertag="martonlederer"
           name="Marton Lederer"
           notification
+          href=""
         />
         <Spacer y={1} />
         <Avatar
@@ -145,6 +146,13 @@ export default function App() {
           usertag="martonlederer"
           name="Marton Lederer"
           size="large"
+        />
+        <Spacer y={1} />
+        <Avatar
+          avatar="https://th8ta.org/marton.jpeg"
+          usertag="martonlederer"
+          name="Marton Lederer"
+          size="large-inline"
         />
       </Page>
     </VertoProvider>

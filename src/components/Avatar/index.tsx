@@ -18,7 +18,8 @@ export default function Avatar({
     <a
       className={
         styles.Avatar +
-        (size === "large" ? " " + styles.Large : "") +
+        " " +
+        (size !== "small" ? styles[size] : "") +
         " " +
         (className ?? "")
       }
@@ -49,7 +50,7 @@ export default function Avatar({
 }
 
 interface Props extends DefaultProps {
-  size?: "small" | "large";
+  size?: "small" | "large" | "large-inline";
   usertag: string;
   name: string; // full name
   avatar: string;

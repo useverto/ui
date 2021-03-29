@@ -5,12 +5,14 @@
   display: flex
   align-items: center
   text-decoration: none
-  cursor: pointer
   width: max-content
   transition: all .24s ease-in-out
 
-  &:hover
-    opacity: .8
+  &[href]
+    cursor: pointer
+
+    &:hover
+      opacity: .8
 
   .Pfp
     position: relative
@@ -51,19 +53,23 @@
     border-radius: 100%
     box-shadow: variables.$standard-shadow
 
-  &.Large
-    display: block
-    text-align: center
-    align-items: unset
+  &.large, &.large-inline
+    &.large
+      display: block
+      text-align: center
+      align-items: unset
+
+      .Pfp
+        margin: 0 auto
+          bottom: 1em
+
+      h1, p
+        text-align: center
 
     .Pfp
       width: 120px
       height: 120px
-      margin: 0 auto
-        bottom: 1em
-
-    h1, p
-      text-align: center
+      margin-right: 1em
 
     h1
       font-size: variables.$normal-font-size + .25em
@@ -71,3 +77,4 @@
 
     p
       font-size: variables.$smaller-font-size
+      font-weight: 500
