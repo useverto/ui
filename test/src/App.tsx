@@ -95,10 +95,23 @@ export default function App() {
         <Spacer y={1} />
         <Card.ArtActivity
           type="buy"
-          avatar="https://th8ta.org/marton.jpeg"
-          usertag="martonlederer"
+          user={{
+            avatar: "https://th8ta.org/marton.jpeg",
+            usertag: "martonlederer"
+          }}
           timestamp={new Date()}
           price={{ usd: 1204.768548, ar: 300.43256424 }}
+          orderID="WE5dJ4BenAiBbjs8zs8EWAsOo33gjwadsfa7ntxVLVc"
+        />
+        <Spacer y={1} />
+        <Card.SwapSell
+          user={{
+            avatar: "https://th8ta.org/marton.jpeg",
+            usertag: "martonlederer"
+          }}
+          selling={{ quantity: 20000, ticker: "VRT" }}
+          rate={1.3}
+          filled={300}
           orderID="WE5dJ4BenAiBbjs8zs8EWAsOo33gjwadsfa7ntxVLVc"
         />
       </Page>

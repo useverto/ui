@@ -55,11 +55,16 @@ $standardPadding: 1.03em
       text-transform: uppercase
 
     .Avatar
-      width: 2.35em
-      height: 2.35em
-      border-radius: 100%
+      display: flex
+      height: min-content
+      align-items: center
       margin-right: $space
-      user-select: none
+
+      img
+        width: 2.35em
+        height: 2.35em
+        border-radius: 100%
+        user-select: none
 
     .Data
       +dataWithLabel
@@ -74,6 +79,13 @@ $standardPadding: 1.03em
           .Usertag
             color: variables.$foreground-color
             text-decoration: none
+
+      &.SmallLabel
+        h1
+          margin-bottom: 0
+
+        p
+          margin-bottom: $firstTitleMargin
 
       .Status
         display: block
