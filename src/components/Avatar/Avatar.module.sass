@@ -1,0 +1,73 @@
+@use "../../styles/variables"
+
+.Avatar
+  $avatarWidth: 2.2em
+  display: flex
+  align-items: center
+  text-decoration: none
+  cursor: pointer
+  width: max-content
+  transition: all .24s ease-in-out
+
+  &:hover
+    opacity: .8
+
+  .Pfp
+    position: relative
+    width: $avatarWidth
+    height: $avatarWidth
+    margin-right: .65em
+
+    img
+      width: 100%
+      height: 100%
+      border-radius: 100%
+      user-select: none
+      box-shadow: variables.$standard-shadow
+
+  h1, p
+    margin: 0
+    line-height: 1em
+
+  h1
+    color: variables.$foreground-color
+    font-weight: 500
+    font-size: $avatarWidth - variables.$tiny-font-size - .3em
+
+  p
+    color: variables.$light-text
+    font-weight: 400
+    font-size: variables.$small-font-size
+
+  .Notification
+    $notificationWidth: 8px
+    position: absolute
+    display: block
+    width: $notificationWidth
+    height: $notificationWidth
+    top: 0
+    right: 0
+    background-color: variables.$foreground-color
+    border-radius: 100%
+    box-shadow: variables.$standard-shadow
+
+  &.Large
+    display: block
+    text-align: center
+    align-items: unset
+
+    .Pfp
+      width: 120px
+      height: 120px
+      margin: 0 auto
+        bottom: 1em
+
+    h1, p
+      text-align: center
+
+    h1
+      font-size: variables.$normal-font-size + .25em
+      margin-bottom: .27em
+
+    p
+      font-size: variables.$smaller-font-size

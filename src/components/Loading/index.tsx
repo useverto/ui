@@ -1,9 +1,9 @@
-import { CSSProperties } from "react";
+import { DefaultProps } from "../../utils";
 import styles from "./Loading.module.sass";
 
-export function Spinner({ className, ...props }: Props) {
+export function Spinner({ className, style }: DefaultProps) {
   return (
-    <div className={styles.Spinner + " " + (className ?? "")} {...props}>
+    <div className={styles.Spinner + " " + (className ?? "")} style={style}>
       <svg
         width="24"
         height="24"
@@ -22,13 +22,8 @@ export function Spinner({ className, ...props }: Props) {
   );
 }
 
-export function Skeleton({ className, ...props }: Props) {
+export function Skeleton({ className, style }: DefaultProps) {
   return (
-    <div className={styles.Skeleton + " " + (className ?? "")} {...props} />
+    <div className={styles.Skeleton + " " + (className ?? "")} style={style} />
   );
-}
-
-interface Props {
-  className?: string;
-  style?: CSSProperties;
 }

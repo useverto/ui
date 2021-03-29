@@ -1,5 +1,6 @@
-import { PropsWithChildren, CSSProperties, MouseEventHandler } from "react";
+import { PropsWithChildren, MouseEventHandler } from "react";
 import { Spinner } from "../Loading";
+import { DefaultProps } from "../../utils";
 import styles from "./Button.module.sass";
 
 export default function Button({
@@ -32,12 +33,10 @@ export default function Button({
   );
 }
 
-interface Props {
+interface Props extends DefaultProps {
   type?: "filled" | "outlined" | "secondary";
   small?: boolean;
-  className?: string;
   disabled?: boolean;
   loading?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  style?: CSSProperties;
 }

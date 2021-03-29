@@ -7,7 +7,8 @@ import {
   Tooltip,
   Card,
   Spacer,
-  Page
+  Page,
+  Avatar
 } from "@verto/ui";
 import { useState } from "react";
 import "./styles.sass";
@@ -112,7 +113,8 @@ export default function App() {
           type="buy"
           user={{
             avatar: "https://th8ta.org/marton.jpeg",
-            usertag: "martonlederer"
+            usertag: "martonlederer",
+            name: "Marton Lederer"
           }}
           timestamp={new Date()}
           price={{ usd: 1204.768548, ar: 300.43256424 }}
@@ -122,12 +124,27 @@ export default function App() {
         <Card.SwapSell
           user={{
             avatar: "https://th8ta.org/marton.jpeg",
-            usertag: "martonlederer"
+            usertag: "martonlederer",
+            name: "Marton Lederer"
           }}
           selling={{ quantity: 20000, ticker: "VRT" }}
           rate={1.3}
           filled={300}
           orderID="WE5dJ4BenAiBbjs8zs8EWAsOo33gjwadsfa7ntxVLVc"
+        />
+        <Spacer y={1} />
+        <Avatar
+          avatar="https://th8ta.org/marton.jpeg"
+          usertag="martonlederer"
+          name="Marton Lederer"
+          notification
+        />
+        <Spacer y={1} />
+        <Avatar
+          avatar="https://th8ta.org/marton.jpeg"
+          usertag="martonlederer"
+          name="Marton Lederer"
+          size="large"
         />
       </Page>
     </VertoProvider>

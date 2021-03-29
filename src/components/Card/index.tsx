@@ -1,6 +1,6 @@
 import { LinkExternalIcon } from "@primer/octicons-react";
-import { CSSProperties, PropsWithChildren, MouseEventHandler } from "react";
-import { formatTime, formatBalance } from "../../utils";
+import { PropsWithChildren, MouseEventHandler } from "react";
+import { formatTime, formatBalance, DefaultProps } from "../../utils";
 import Spacer from "../Spacer";
 import Tooltip from "../Tooltip";
 import styles from "./Card.module.sass";
@@ -24,9 +24,7 @@ export default function Card({
   );
 }
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
+interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
@@ -145,12 +143,15 @@ Card.ArtActivity = ({
   </Card>
 );
 
+interface UserData {
+  avatar: string;
+  usertag: string;
+  name: string; // full name
+}
+
 type ArtActivityProps = Props & {
   type: "buy" | "sell" | "list";
-  user: {
-    avatar: string;
-    usertag: string;
-  };
+  user: UserData;
   timestamp: Date;
   price: {
     usd: number;
@@ -210,10 +211,7 @@ Card.SwapSell = ({
 );
 
 type SwapSellProps = Props & {
-  user: {
-    avatar: string;
-    usertag: string;
-  };
+  user: UserData;
   selling: {
     quantity: number;
     ticker: string;

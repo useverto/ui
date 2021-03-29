@@ -1,4 +1,5 @@
 import { CSSProperties, PropsWithChildren } from "react";
+import { DefaultProps } from "../../utils";
 import styles from "./Spacer.module.sass";
 
 export default function Spacer({
@@ -29,9 +30,7 @@ export default function Spacer({
   );
 }
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
+interface Props extends DefaultProps {
   x?: number;
   y?: number;
   inline?: boolean;

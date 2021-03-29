@@ -1,12 +1,12 @@
 import { ChevronDownIcon } from "@primer/octicons-react";
 import {
   PropsWithChildren,
-  CSSProperties,
   ReactNode,
   ChangeEventHandler,
   useState,
   ChangeEvent
 } from "react";
+import { DefaultProps } from "../../utils";
 import styles from "./Select.module.sass";
 
 export default function Select({
@@ -78,9 +78,7 @@ export function useSelect<T extends string | number>(val: T = "") {
   };
 }
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
+interface Props extends DefaultProps {
   disabled?: boolean;
   onChange?: ChangeEventHandler<HTMLSelectElement>;
   label?: ReactNode;

@@ -1,11 +1,11 @@
 import {
   ChangeEvent,
   ChangeEventHandler,
-  CSSProperties,
   ReactNode,
   useEffect,
   useState
 } from "react";
+import { DefaultProps } from "../../utils";
 import styles from "./Input.module.sass";
 
 export default function Input({
@@ -99,9 +99,7 @@ export function useInput<T extends string | number>(val: T = "") {
   };
 }
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
+interface Props extends DefaultProps {
   value?: string | number;
   min?: string | number;
   max?: string | number;

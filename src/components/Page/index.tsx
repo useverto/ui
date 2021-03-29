@@ -1,4 +1,5 @@
 import { CSSProperties, PropsWithChildren } from "react";
+import { DefaultProps } from "../../utils";
 import styles from "./Page.module.sass";
 
 export default function Page({
@@ -21,8 +22,6 @@ export default function Page({
   );
 }
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
+interface Props extends DefaultProps {
   size?: "large" | "normal" | "small";
 }

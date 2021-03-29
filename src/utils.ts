@@ -1,3 +1,5 @@
+import { CSSProperties } from "react";
+
 export function formatTime(time: Date): string {
   return new Intl.DateTimeFormat("en", {
     // @ts-ignore
@@ -11,4 +13,9 @@ export function formatBalance(val: number | string) {
   const full = val.split(".")[0];
   if (full.length >= 10) return full;
   return val.slice(0, 10);
+}
+
+export interface DefaultProps {
+  className?: string;
+  style?: CSSProperties;
 }

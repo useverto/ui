@@ -1,6 +1,7 @@
-import { ReactNode, CSSProperties, PropsWithChildren, useState } from "react";
+import { ReactNode, PropsWithChildren, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Tooltip.module.sass";
+import { DefaultProps } from "../../utils";
 
 export default function Tooltip({
   className,
@@ -62,9 +63,7 @@ export default function Tooltip({
   );
 }
 
-interface Props {
-  className?: string;
-  style?: CSSProperties;
+interface Props extends DefaultProps {
   text?: ReactNode;
   position?: "top" | "bottom" | "left" | "right";
   arrow?: boolean;
