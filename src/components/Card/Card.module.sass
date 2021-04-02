@@ -38,6 +38,7 @@ $standardPadding: 1.03em
   padding: .85em $standardPadding + .3em
   width: auto
   border-radius: variables.$big-items-radius
+  overflow: visible
 
   .ItemData
     display: flex
@@ -130,7 +131,7 @@ $standardPadding: 1.03em
     display: flex
     align-items: center
 
-    .Time
+    .Time, .Match
       +dataWithLabel
 
       h1, p
@@ -139,6 +140,9 @@ $standardPadding: 1.03em
 
       p
         margin-bottom: $firstTitleMargin
+
+      &.Match h1
+        font-size: variables.$smaller-font-size + .15em
 
     .Icon
       display: flex
@@ -160,9 +164,6 @@ $standardPadding: 1.03em
         font-size: 1em
         width: 1em
         height: 1em
-
-.Trade
-  overflow: visible
 
 .Balance
   .ItemData 

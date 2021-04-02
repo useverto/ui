@@ -17,7 +17,7 @@ export default function Trade({
 }: Props) {
   return (
     <Card
-      className={styles.Item + " " + styles.Trade + " " + (className ?? "")}
+      className={styles.Item + " " + (className ?? "")}
       style={style}
       onClick={onClick}
     >
