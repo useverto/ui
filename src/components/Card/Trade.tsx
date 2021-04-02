@@ -17,7 +17,7 @@ export default function Trade({
 }: Props) {
   return (
     <Card
-      className={styles.Item + " " + (className ?? "")}
+      className={styles.Item + " " + styles.Trade + " " + (className ?? "")}
       style={style}
       onClick={onClick}
     >
@@ -49,9 +49,11 @@ export default function Trade({
       </div>
       <div className={styles.ItemInfo}>
         {cancel && (
-          <a onClick={cancel} className={styles.Icon}>
-            <XIcon />
-          </a>
+          <Tooltip text="Cancel">
+            <a onClick={cancel} className={styles.Icon}>
+              <XIcon />
+            </a>
+          </Tooltip>
         )}
       </div>
     </Card>

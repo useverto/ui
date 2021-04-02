@@ -4,6 +4,7 @@ import ArtActivity from "./ArtActivity";
 import Order from "./Order";
 import SwapSell from "./SwapSell";
 import Trade from "./Trade";
+import Balance from "./Balance";
 import styles from "./Card.module.sass";
 
 export default function Card({
@@ -29,6 +30,7 @@ Card.ArtActivity = ArtActivity;
 Card.Order = Order;
 Card.SwapSell = SwapSell;
 Card.Trade = Trade;
+Card.Balance = Balance;
 
 export interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;

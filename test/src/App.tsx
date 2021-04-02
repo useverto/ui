@@ -10,11 +10,13 @@ import {
   Page,
   Avatar
 } from "@verto/ui";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.sass";
 
 export default function App() {
   const [theme, setTheme] = useState<"Light" | "Dark">("Light");
+
+  useEffect(() => console.log("test"));
 
   return (
     <VertoProvider theme={theme}>
@@ -143,6 +145,14 @@ export default function App() {
           timestamp={new Date()}
           status="success"
           cancel={() => {}}
+        />
+        <Spacer y={1} />
+        <Card.Balance
+          logo={{ light: "https://verto.exchange/logo_light.svg" }}
+          name="Verto"
+          ticker="VRT"
+          balance={173089}
+          id="usjm4PCxUd5mtaon7zc97-dt-3qf67yPyqgzLnLqk5A"
         />
         <Spacer y={1} />
         <Avatar
