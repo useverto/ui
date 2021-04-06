@@ -6,6 +6,7 @@ import SwapSell from "./SwapSell";
 import Trade from "./Trade";
 import Balance from "./Balance";
 import OrderStep from "./OrderStep";
+import TradingPost from "./TradingPost";
 import styles from "./Card.module.sass";
 
 export default function Card({
@@ -33,6 +34,7 @@ Card.SwapSell = SwapSell;
 Card.Trade = Trade;
 Card.Balance = Balance;
 Card.OrderStep = OrderStep;
+Card.TradingPost = TradingPost;
 
 export interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;

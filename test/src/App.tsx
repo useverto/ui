@@ -162,6 +162,13 @@ export default function App() {
           link=""
         />
         <Spacer y={1} />
+        <Card.TradingPost
+          status="online"
+          address="dxGmt44SZenqmHa-_IEl8AmuejgITs4pB3oe-xUR36A"
+          balance={12.9534432}
+          vrtStake={843050}
+        />
+        <Spacer y={1} />
         <Avatar
           avatar="https://th8ta.org/marton.jpeg"
           usertag="martonlederer"

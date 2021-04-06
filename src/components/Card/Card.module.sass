@@ -85,6 +85,10 @@ $standardPadding: 1.03em
             color: variables.$foreground-color
             text-decoration: none
 
+      .TradingPostAddress
+        color: variables.$foreground-color
+        margin-top: .17em
+
       &.SmallLabel
         h1
           margin-bottom: 0
@@ -131,7 +135,7 @@ $standardPadding: 1.03em
     display: flex
     align-items: center
 
-    .Time, .Match
+    .Time, .Match, .RightSection
       +dataWithLabel
 
       h1, p
@@ -143,6 +147,12 @@ $standardPadding: 1.03em
 
       &.Match h1
         font-size: variables.$smaller-font-size + .15em
+
+      &.RightSection
+        margin-right: 2.35em
+
+        &:last-child
+          margin-right: 0
 
     .Icon
       display: flex
@@ -181,3 +191,48 @@ $standardPadding: 1.03em
     margin: 0
     font-weight: 500
     line-height: 1em
+
+$tradingPostStatusSize: 8px
+
+.TradingPost
+  cursor: pointer
+
+  .TradingPostStatus
+    display: block
+    margin-right: $standardPadding + .3em
+    width: $tradingPostStatusSize
+    height: $tradingPostStatusSize
+    border-radius: 100%
+
+    &.TradingPostStatus_neutral
+      background-color: variables.$foreground-color
+      opacity: .6
+
+    &.TradingPostStatus_online
+      position: relative
+      background-color: variables.$success
+
+      &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 50%
+        left: 50%
+        width: $tradingPostStatusSize
+        height: $tradingPostStatusSize
+        border-radius: 100%
+        border: 1px solid variables.$success
+        transform: translate(-50%, -50%)
+        animation: online-animation 1.4s infinite
+
+    &.TradingPostStatus_offline
+      background-color: variables.$error
+
+@keyframes online-animation
+  0%
+    width: $tradingPostStatusSize
+    height: $tradingPostStatusSize
+    
+  100%
+    width: $tradingPostStatusSize * 4.5
+    height: $tradingPostStatusSize * 4.5
