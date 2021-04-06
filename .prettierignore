@@ -4,4 +4,4 @@ public
 dist
 test/build
 test/node_modules
-test/public
+test/.next

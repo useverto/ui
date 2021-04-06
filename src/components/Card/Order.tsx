@@ -2,6 +2,7 @@ import Card, { Props as BaseProps, Status } from "./index";
 import { formatTime } from "../../utils";
 import { LinkExternalIcon } from "@primer/octicons-react";
 import Tooltip from "../Tooltip";
+import Link from "next/link";
 import styles from "./Card.module.sass";
 
 export default function Order({
@@ -44,9 +45,11 @@ export default function Order({
           <p>Timestamp</p>
           <h1>{formatTime(timestamp)}</h1>
         </div>
-        <a href={`/orbit/order/${orderID}`} className={styles.Icon}>
-          <LinkExternalIcon />
-        </a>
+        <Link href={`/orbit/order/${orderID}`}>
+          <a className={styles.Icon}>
+            <LinkExternalIcon />
+          </a>
+        </Link>
       </div>
     </Card>
   );

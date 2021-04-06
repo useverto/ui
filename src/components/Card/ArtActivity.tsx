@@ -1,6 +1,7 @@
 import Card, { Props as BaseProps, UserData } from "./index";
 import { formatTime, formatBalance } from "../../utils";
 import { LinkExternalIcon } from "@primer/octicons-react";
+import Link from "next/link";
 import styles from "./Card.module.sass";
 
 export default function ArtActivity({
@@ -20,36 +21,36 @@ export default function ArtActivity({
       onClick={onClick}
     >
       <div className={styles.ItemData}>
-        <a
-          href={`/u/${user.usertag}`}
-          className={styles.Avatar}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <img src={user.avatar} alt="user-avatar" draggable={false} />
-        </a>
+        <Link href={`/u/${user.usertag}`}>
+          <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
+            <img src={user.avatar} alt="user-avatar" draggable={false} />
+          </a>
+        </Link>
         <div className={styles.Data}>
           <h1 className={styles.Action}>
             {(type === "list" && (
               <>
                 Collectable listed by{" "}
-                <a
-                  href={`/u/${user.usertag}`}
-                  className={styles.Usertag}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  @{user.usertag}
-                </a>
+                <Link href={`/u/${user.usertag}`}>
+                  <a
+                    className={styles.Usertag}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    @{user.usertag}
+                  </a>
+                </Link>
               </>
             )) || (
               <>
                 Asset {(type === "buy" && "bought") || "sold"} by{" "}
-                <a
-                  href={`/u/${user.usertag}`}
-                  className={styles.Usertag}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  @{user.usertag}
-                </a>
+                <Link href={`/u/${user.usertag}`}>
+                  <a
+                    className={styles.Usertag}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    @{user.usertag}
+                  </a>
+                </Link>
               </>
             )}
           </h1>
@@ -61,9 +62,11 @@ export default function ArtActivity({
           <p>${formatBalance(price.usd)} USD</p>
           <h1>{formatBalance(price.ar)} AR</h1>
         </div>
-        <a href={`/orbit/order/${orderID}`} className={styles.Icon}>
-          <LinkExternalIcon />
-        </a>
+        <Link href={`/orbit/order/${orderID}`}>
+          <a className={styles.Icon}>
+            <LinkExternalIcon />
+          </a>
+        </Link>
       </div>
     </Card>
   );

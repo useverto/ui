@@ -1,6 +1,7 @@
 import { MouseEventHandler } from "react";
 import { DefaultProps } from "../../utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter } from "next/router";
 import styles from "./Avatar.module.sass";
 
 export default function Avatar({
@@ -14,8 +15,10 @@ export default function Avatar({
   size = "small",
   notification
 }: Props) {
+  const router = useRouter();
+
   return (
-    <a
+    <div
       className={
         styles.Avatar +
         " " +
@@ -24,8 +27,10 @@ export default function Avatar({
         (className ?? "")
       }
       style={style}
-      onClick={onClick}
-      href={href}
+      onClick={(e) => {
+        if (href) router.push(href);
+        onClick(e);
+      }}
     >
       <div className={styles.Pfp}>
         <AnimatePresence>
@@ -45,7 +50,7 @@ export default function Avatar({
         <h1>{name}</h1>
         <p>@{usertag}</p>
       </div>
-    </a>
+    </div>
   );
 }
 
@@ -54,7 +59,7 @@ interface Props extends DefaultProps {
   usertag: string;
   name: string; // full name
   avatar: string;
-  onClick?: MouseEventHandler<HTMLAnchorElement>;
+  onClick?: MouseEventHandler<HTMLDivElement>;
   href?: string;
   notification?: boolean;
 }

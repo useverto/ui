@@ -1,6 +1,7 @@
 import Card, { Props as BaseProps } from "./index";
 import { LinkExternalIcon } from "@primer/octicons-react";
 import { useTheme } from "../Provider/theme";
+import Link from "next/link";
 import styles from "./Card.module.sass";
 
 export default function Balance({
@@ -36,9 +37,11 @@ export default function Balance({
         <h1>
           {balance} {ticker.toUpperCase()}
         </h1>
-        <a href={`/space/${id}`} className={styles.Icon}>
-          <LinkExternalIcon />
-        </a>
+        <Link href={`/space/${id}`}>
+          <a className={styles.Icon}>
+            <LinkExternalIcon />
+          </a>
+        </Link>
       </div>
     </Card>
   );

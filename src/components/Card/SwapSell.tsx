@@ -1,6 +1,7 @@
 import Card, { Props as BaseProps, UserData } from "./index";
 import { formatBalance } from "../../utils";
 import Spacer from "../Spacer";
+import Link from "next/link";
 import styles from "./Card.module.sass";
 
 export default function SwapSell({
@@ -20,13 +21,11 @@ export default function SwapSell({
       onClick={onClick}
     >
       <div className={styles.ItemData}>
-        <a
-          href={`/u/${user.usertag}`}
-          className={styles.Avatar}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <img src={user.avatar} alt="user-avatar" draggable={false} />
-        </a>
+        <Link href={`/u/${user.usertag}`}>
+          <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
+            <img src={user.avatar} alt="user-avatar" draggable={false} />
+          </a>
+        </Link>
         <span className={styles.OrderType}>Sell</span>
         <div className={styles.Data + " " + styles.SmallLabel}>
           <p>Selling</p>
@@ -47,9 +46,11 @@ export default function SwapSell({
           <p>Filled</p>
           <h1>{formatBalance(filled)} AR</h1>
         </div>
-        <a href={`/orbit/order/${orderID}`} className={styles.Icon}>
-          <OrbitIcon />
-        </a>
+        <Link href={`/orbit/order/${orderID}`}>
+          <a className={styles.Icon}>
+            <OrbitIcon />
+          </a>
+        </Link>
       </div>
     </Card>
   );

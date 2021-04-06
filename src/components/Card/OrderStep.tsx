@@ -1,5 +1,6 @@
 import Card, { Props as BaseProps } from "./index";
 import { LinkExternalIcon } from "@primer/octicons-react";
+import Link from "next/link";
 import styles from "./Card.module.sass";
 
 export default function OrderStep({
@@ -30,9 +31,11 @@ export default function OrderStep({
             <p>{matchID}</p>
           </div>
         )}
-        <a href={link} className={styles.Icon}>
-          <LinkExternalIcon />
-        </a>
+        <Link href={link}>
+          <a className={styles.Icon}>
+            <LinkExternalIcon />
+          </a>
+        </Link>
       </div>
     </Card>
   );
