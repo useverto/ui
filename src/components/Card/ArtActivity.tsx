@@ -42,7 +42,7 @@ export default function ArtActivity({
               </>
             )) || (
               <>
-                Share {(type === "buy" && "bought") || "sold"} by{" "}
+                Asset {(type === "buy" && "bought") || "sold"} by{" "}
                 <a
                   href={`/u/${user.usertag}`}
                   className={styles.Usertag}

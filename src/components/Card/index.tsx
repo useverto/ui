@@ -7,6 +7,7 @@ import Trade from "./Trade";
 import Balance from "./Balance";
 import OrderStep from "./OrderStep";
 import TradingPost from "./TradingPost";
+import Asset from "./Asset";
 import styles from "./Card.module.sass";
 
 export default function Card({
@@ -35,6 +36,7 @@ Card.Trade = Trade;
 Card.Balance = Balance;
 Card.OrderStep = OrderStep;
 Card.TradingPost = TradingPost;
+Card.Asset = Asset;
 
 export interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;

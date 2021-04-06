@@ -228,6 +228,87 @@ $tradingPostStatusSize: 8px
     &.TradingPostStatus_offline
       background-color: variables.$error
 
+.Asset
+  $assetWidth: 204px
+  width: $assetWidth
+  background-color: variables.$foreground-color
+  border-radius: variables.$small-items-radius
+  overflow: hidden
+  cursor: pointer
+
+  .Preview
+    position: relative
+    width: $assetWidth
+    height: $assetWidth
+    overflow: hidden
+
+    img
+      position: absolute
+      max-width: 100%
+      max-height: 100%
+      top: 50%
+      left: 50%
+      user-select: none
+      transform: translate(-50%, -50%)
+
+    &.Logo img
+      max-height: 80%
+      max-width: 80%
+
+  .AssetInfo
+    padding: ($standardPadding / 3) ($standardPadding / 2)
+
+    h1
+      font-size: 1.9em
+      color: variables.$foreground-reverse-color
+      margin: 0
+        bottom: $standardPadding / 4
+      font-weight: 600
+      line-height: 1em
+
+    .AssetTicker
+      font-size: variables.$smaller-font-size
+      color: variables.$cec
+      line-height: 1em
+
+    .UserData
+      display: flex
+      align-items: center
+      cursor: pointer
+      text-decoration: none
+      margin-bottom: .13em
+      transition: opacity .23s ease-in-out
+
+      &:hover
+        opacity: .8
+
+      img
+        width: 1.6em
+        height: 1.6em
+        border-radius: 100%
+        user-select: none
+        margin-right: .45em
+
+      span
+        font-family: variables.$jetbrains-mono
+        color: variables.$foreground-reverse-color
+        font-size: variables.$small-font-size
+        font-weight: 500
+
+    .Price
+      font-size: variables.$smaller-font-size
+      color: variables.$foreground-reverse-color
+      font-weight: 500
+      margin: 0
+
+      &.WithTicker
+        line-height: 1em
+        font-size: 2em
+
+      span
+        font-size: .62em
+        margin-left: .14em
+
 @keyframes online-animation
   0%
     width: $tradingPostStatusSize

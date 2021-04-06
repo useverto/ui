@@ -169,6 +169,26 @@ export default function App() {
           vrtStake={843050}
         />
         <Spacer y={1} />
+        <div style={{ display: "flex" }}>
+          <Card.Asset
+            name="Test"
+            userData={{
+              avatar: "https://th8ta.org/marton.jpeg",
+              name: "Marton Lederer",
+              usertag: "martonlederer"
+            }}
+            price={125}
+            image="/art.png"
+          />
+          <Spacer x={1} />
+          <Card.Asset
+            name="Verto"
+            ticker="VRT"
+            price={125}
+            image="https://verto.exchange/logo_dark.svg"
+          />
+        </div>
+        <Spacer y={1} />
         <Avatar
           avatar="https://th8ta.org/marton.jpeg"
           usertag="martonlederer"
