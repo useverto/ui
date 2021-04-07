@@ -218,6 +218,15 @@ export default function Home() {
         avatar="https://th8ta.org/marton.jpeg"
         usertag="martonlederer"
         name="Marton Lederer"
+        notification
+        href=""
+        left
+      />
+      <Spacer y={1} />
+      <Avatar
+        avatar="https://th8ta.org/marton.jpeg"
+        usertag="martonlederer"
+        name="Marton Lederer"
         size="large"
       />
       <Spacer y={1} />

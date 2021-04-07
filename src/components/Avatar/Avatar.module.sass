@@ -15,10 +15,15 @@
       opacity: .8
 
   .Pfp
+    $sideMargin: .65em
     position: relative
     width: $avatarWidth
     height: $avatarWidth
-    margin-right: .65em
+    margin-right: $sideMargin
+
+    &.RightPfp
+      margin-right: 0
+      margin-left: $sideMargin
 
     img
       width: 100%
@@ -40,6 +45,10 @@
     color: variables.$light-text
     font-weight: 400
     font-size: variables.$small-font-size
+
+  .LeftInfo
+    h1, p
+      text-align: right
 
   .Notification
     $notificationWidth: 8px

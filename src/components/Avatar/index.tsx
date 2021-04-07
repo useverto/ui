@@ -13,7 +13,8 @@ export default function Avatar({
   onClick,
   href,
   size = "small",
-  notification
+  notification,
+  left
 }: Props) {
   const router = useRouter();
 
@@ -29,10 +30,16 @@ export default function Avatar({
       style={style}
       onClick={(e) => {
         if (href) router.push(href);
-        onClick(e);
+        if (onClick) onClick(e);
       }}
     >
-      <div className={styles.Pfp}>
+      {left && size === "small" && (
+        <div className={styles.LeftInfo}>
+          <h1>{name}</h1>
+          <p>@{usertag}</p>
+        </div>
+      )}
+      <div className={styles.Pfp + " " + (left ? styles.RightPfp : "")}>
         <AnimatePresence>
           {notification && (
             <motion.span
@@ -46,10 +53,12 @@ export default function Avatar({
         </AnimatePresence>
         <img src={avatar} alt={`${usertag}'s avatar`} draggable={false} />
       </div>
-      <div>
-        <h1>{name}</h1>
-        <p>@{usertag}</p>
-      </div>
+      {(!left || size === "large") && (
+        <div>
+          <h1>{name}</h1>
+          <p>@{usertag}</p>
+        </div>
+      )}
     </div>
   );
 }
@@ -62,4 +71,5 @@ interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
   href?: string;
   notification?: boolean;
+  left?: boolean;
 }
