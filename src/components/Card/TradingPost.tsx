@@ -13,9 +13,9 @@ export default function TradingPost({
 }: Props) {
   return (
     <Card
-      className={
-        styles.Item + " " + styles.TradingPost + " " + (className ?? "")
-      }
+      className={[styles.Item, styles.TradingPost, className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       onClick={onClick}
     >

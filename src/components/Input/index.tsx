@@ -31,7 +31,11 @@ export default function Input({
   }, [val]);
 
   return (
-    <div className={"VertoInput " + (className ?? "")}>
+    <div
+      className={["VertoInput", className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
+    >
       <span className={"VertoInputLabel " + styles.Label}>
         {label} {props.value}
       </span>

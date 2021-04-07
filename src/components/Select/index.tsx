@@ -20,7 +20,12 @@ export default function Select({
   ...props
 }: PropsWithChildren<Props>) {
   return (
-    <div className={"VertoSelect " + (className ?? "")} style={style}>
+    <div
+      className={["VertoSelect", className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
+      style={style}
+    >
       {label && (
         <span
           className={

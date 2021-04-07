@@ -19,7 +19,9 @@ export default function Card({
 }: PropsWithChildren<Props>) {
   return (
     <div
-      className={"VertoCard " + styles.Card + " " + (className ?? "")}
+      className={["VertoCard", styles.Card, className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       onClick={onClick}
       {...props}

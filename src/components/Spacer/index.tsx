@@ -12,14 +12,14 @@ export default function Spacer({
 }: PropsWithChildren<Props>) {
   return (
     <span
-      className={
-        "VertoSpacer " +
-        styles.Spacer +
-        " " +
-        (inline ? styles.Inline : "") +
-        " " +
-        (className ?? "")
-      }
+      className={[
+        "VertoSpacer",
+        styles.Spacer,
+        inline ? styles.Inline : "",
+        className ?? ""
+      ]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={{
         marginRight: x !== undefined ? `${x}em` : undefined,
         marginBottom: y !== undefined ? `${y}em` : undefined,

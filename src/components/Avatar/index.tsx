@@ -19,13 +19,13 @@ export default function Avatar({
 
   return (
     <div
-      className={
-        styles.Avatar +
-        " " +
-        (size !== "small" ? styles[size] : "") +
-        " " +
-        (className ?? "")
-      }
+      className={[
+        styles.Avatar,
+        size !== "small" ? styles[size] : "",
+        className ?? ""
+      ]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       onClick={(e) => {
         if (href) router.push(href);

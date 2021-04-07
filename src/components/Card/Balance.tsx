@@ -18,7 +18,9 @@ export default function Balance({
 
   return (
     <Card
-      className={styles.Item + " " + styles.Balance + " " + (className ?? "")}
+      className={[styles.Item, styles.Balance, className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       onClick={onClick}
     >

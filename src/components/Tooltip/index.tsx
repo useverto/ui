@@ -33,21 +33,17 @@ export default function Tooltip({
       <AnimatePresence>
         {shown && (
           <motion.div
-            className={
-              [
-                "VertoTooltip",
-                styles.Tooltip,
-                ((position === "right" || position === "left") &&
-                  styles.Side) ||
-                  "",
-                (arrow && styles.WithArrow) || "",
-                styles[`Pos_${position}`]
-              ]
-                .filter((val) => val !== "")
-                .join(" ") +
-              " " +
-              (className ?? "")
-            }
+            className={[
+              "VertoTooltip",
+              styles.Tooltip,
+              ((position === "right" || position === "left") && styles.Side) ||
+                "",
+              (arrow && styles.WithArrow) || "",
+              styles[`Pos_${position}`],
+              className ?? ""
+            ]
+              .filter((val) => val !== "")
+              .join(" ")}
             style={style}
             initial={{ [getCssPosition()]: "80%", opacity: 0 }}
             animate={{ [getCssPosition()]: "108%", opacity: 1 }}

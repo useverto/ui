@@ -14,17 +14,14 @@ export default function Button({
 }: PropsWithChildren<Props>) {
   return (
     <button
-      className={
-        [
-          styles.Button,
-          (type !== "filled" && styles[type]) || "",
-          (small && styles.small) || ""
-        ]
-          .filter((val) => val !== "")
-          .join(" ") +
-        " " +
-        (className ?? "")
-      }
+      className={[
+        styles.Button,
+        (type !== "filled" && styles[type]) || "",
+        (small && styles.small) || "",
+        className ?? ""
+      ]
+        .filter((val) => val !== "")
+        .join(" ")}
       onClick={onClick}
       {...props}
     >

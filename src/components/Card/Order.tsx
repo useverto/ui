@@ -16,7 +16,9 @@ export default function Order({
 }: Props) {
   return (
     <Card
-      className={styles.Item + " " + (className ?? "")}
+      className={[styles.Item, className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       onClick={onClick}
     >

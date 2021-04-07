@@ -11,9 +11,9 @@ export default function Page({
 }: PropsWithChildren<Props>) {
   return (
     <div
-      className={
-        styles.Page + " " + styles[`Size_${size}`] + " " + (className ?? "")
-      }
+      className={[styles.Page, styles[`Size_${size}`], className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       {...props}
     >

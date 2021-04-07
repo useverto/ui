@@ -3,7 +3,12 @@ import styles from "./Loading.module.sass";
 
 export function Spinner({ className, style }: DefaultProps) {
   return (
-    <div className={styles.Spinner + " " + (className ?? "")} style={style}>
+    <div
+      className={[styles.Spinner, className ?? ""]
+        .filter((val) => val !== "")
+        .join(" ")}
+      style={style}
+    >
       <svg
         width="24"
         height="24"
