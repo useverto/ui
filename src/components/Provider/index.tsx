@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect } from "react";
 import { DisplayTheme } from "../../types";
-import { ThemeContext, CssVariables } from "./theme";
+import { ThemeContext, GlobalStyle } from "./theme";
 
 export default function Provider({
   theme = "Light",
@@ -12,7 +12,7 @@ export default function Provider({
 
   return (
     <ThemeContext.Provider value={theme}>
-      <CssVariables theme={theme} />
+      <GlobalStyle theme={theme} />
       {children}
     </ThemeContext.Provider>
   );

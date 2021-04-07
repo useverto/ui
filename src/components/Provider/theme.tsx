@@ -14,28 +14,95 @@ export const ThemeContext: Context<DisplayTheme> = createContext<DisplayTheme>(
 export const useTheme = (): DisplayTheme =>
   useContext<DisplayTheme>(ThemeContext);
 
-// TODO: dark theme variables
-export const CssVariables = ({ theme }: { theme: DisplayTheme }) => {
-  const GlobalStyle = createGlobalStyle`
-    body {
-      --background-color: #fff;
-      --foreground-color: #000;
-      --foreground-reverse-color: #fff;
-      --light-text: #666;
-      --cec: #CECECE;
-      --skeleton: #E4E4E4;
-      --skeleton-shine: #bdbdbd;
-      --modal-layer-dark: rgba(0, 0, 0, .8);
-      --success: #00D46E;
-      --warning: #FFD336;
-      --error: #FF0000;
-      
-      --standard-shadow: 0px 10px 20px rgba(0, 0, 0, .2);
-      --darker-shadow: 0px 10px 35px rgba(0, 0, 0, .35);
-      --lighter-shadow: 0px 10px 25px rgba(0, 0, 0, .185);
-      --standard-shadow-hover: 0px 10px 20px rgba(0, 0, 0, .26);
-    }
-  `;
-
-  return <GlobalStyle />;
+// TODO: dark theme variables and custom theme support
+const defaultTheme: SchemeTypes = {
+  Light: {
+    backgroundColor: "#fff",
+    foregroundColor: "#000",
+    foregroundReverseColor: "#fff",
+    lightTextColor: "#666",
+    darkerTextColor: "#CECECE",
+    skeletonColor: "#E4E4E4",
+    skeletonShineColor: "#bdbdbd",
+    modalOverlayColor: "rgba(0, 0, 0, .8)",
+    success: "#00D46E",
+    warning: "#FFD335",
+    error: "#FF0000",
+    standardShadow: "0px 10px 20px rgba(0, 0, 0, .2)",
+    standardShadowHover: "0px 10px 20px rgba(0, 0, 0, .26)",
+    darkerShadow: "0px 10px 25px rgba(0, 0, 0, .185)",
+    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
+  },
+  Dark: {
+    backgroundColor: "#000",
+    foregroundColor: "#fff",
+    foregroundReverseColor: "#000",
+    lightTextColor: "#666",
+    darkerTextColor: "#CECECE",
+    skeletonColor: "#E4E4E4",
+    skeletonShineColor: "#bdbdbd",
+    modalOverlayColor: "rgba(0, 0, 0, .8)",
+    success: "#00D46E",
+    warning: "#FFD335",
+    error: "#FF0000",
+    standardShadow: "0px 10px 20px rgba(0, 0, 0, .2)",
+    standardShadowHover: "0px 10px 20px rgba(0, 0, 0, .26)",
+    darkerShadow: "0px 10px 25px rgba(0, 0, 0, .185)",
+    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
+  }
 };
+
+export const GlobalStyle = createGlobalStyle`
+  body {
+    --background-color: ${(props) =>
+      defaultTheme[props.theme as string].backgroundColor};
+    --foreground-color: ${(props) =>
+      defaultTheme[props.theme as string].foregroundColor};
+    --foreground-reverse-color: ${(props) =>
+      defaultTheme[props.theme as string].foregroundReverseColor};
+    --light-text: ${(props) =>
+      defaultTheme[props.theme as string].lightTextColor};
+    --cec: ${(props) => defaultTheme[props.theme as string].darkerTextColor};
+    --skeleton: ${(props) => defaultTheme[props.theme as string].skeletonColor};
+    --skeleton-shine: ${(props) =>
+      defaultTheme[props.theme as string].skeletonShineColor};
+    --modal-layer-dark: ${(props) =>
+      defaultTheme[props.theme as string].modalOverlayColor};
+    --success: ${(props) => defaultTheme[props.theme as string].success};
+    --warning: ${(props) => defaultTheme[props.theme as string].warning};
+    --error: ${(props) => defaultTheme[props.theme as string].error};
+      
+    --standard-shadow: ${(props) =>
+      defaultTheme[props.theme as string].standardShadow};
+    --darker-shadow: ${(props) =>
+      defaultTheme[props.theme as string].darkerShadow};
+    --lighter-shadow: ${(props) =>
+      defaultTheme[props.theme as string].lighterShadow};
+    --standard-shadow-hover: ${(props) =>
+      defaultTheme[props.theme as string].standardShadowHover};
+  }
+`;
+
+export interface Theme {
+  backgroundColor: string;
+  foregroundColor: string;
+  foregroundReverseColor: string;
+  lightTextColor: string;
+  darkerTextColor: string; // CEC
+  skeletonColor: string;
+  skeletonShineColor: string;
+  modalOverlayColor: string; // modals' overlay
+  success: string;
+  warning: string;
+  error: string;
+
+  standardShadow: string;
+  standardShadowHover: string;
+  darkerShadow: string;
+  lighterShadow: string;
+}
+
+export interface SchemeTypes {
+  Light: Theme;
+  Dark: Theme;
+}
