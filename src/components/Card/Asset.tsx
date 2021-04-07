@@ -8,13 +8,20 @@ export default function Asset({
   image,
   ticker,
   userData,
+  reverse,
   className,
   style,
   onClick
 }: Props) {
   return (
     <div
-      className={"VertoAssetCard " + styles.Asset + " " + (className ?? "")}
+      className={
+        ["VertoAssetCard", styles.Asset, reverse ? styles.ReverseAsset : ""]
+          .filter((val) => val !== "")
+          .join(" ") +
+        " " +
+        (className ?? "")
+      }
       style={style}
       onClick={onClick}
     >
@@ -51,4 +58,5 @@ interface Props extends BaseProps {
   image: string;
   ticker?: string;
   userData?: UserData;
+  reverse?: boolean;
 }

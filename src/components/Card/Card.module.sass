@@ -309,6 +309,16 @@ $tradingPostStatusSize: 8px
         font-size: .62em
         margin-left: .14em
 
+  &.ReverseAsset
+    background-color: variables.$background-color
+
+    .AssetInfo
+      h1, .UserData span, .Price
+        color: variables.$foreground-color
+
+      .AssetTicker
+        color: variables.$light-text
+
 @keyframes online-animation
   0%
     width: $tradingPostStatusSize

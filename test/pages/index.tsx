@@ -136,6 +136,7 @@ export default function Home() {
         to="AR"
         timestamp={new Date()}
         status="success"
+        orderID="test"
         cancel={() => {}}
       />
       <Spacer y={1} />
@@ -178,6 +179,28 @@ export default function Home() {
           ticker="VRT"
           price={125}
           image="https://verto.exchange/logo_dark.svg"
+        />
+      </div>
+      <Spacer y={1} />
+      <div style={{ padding: "1em", backgroundColor: "#000", display: "flex" }}>
+        <Card.Asset
+          name="Test"
+          userData={{
+            avatar: "https://th8ta.org/marton.jpeg",
+            name: "Marton Lederer",
+            usertag: "martonlederer"
+          }}
+          price={125}
+          image="/art.png"
+          reverse
+        />
+        <Spacer x={1} />
+        <Card.Asset
+          name="Verto"
+          ticker="VRT"
+          price={125}
+          image="https://verto.exchange/logo_light.svg"
+          reverse
         />
       </div>
       <Spacer y={1} />
