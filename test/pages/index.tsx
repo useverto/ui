@@ -204,6 +204,8 @@ export default function Home() {
         />
       </div>
       <Spacer y={1} />
+      <Card.AssetClear image="/art.png" />
+      <Spacer y={1} />
       <Avatar
         avatar="https://th8ta.org/marton.jpeg"
         usertag="martonlederer"

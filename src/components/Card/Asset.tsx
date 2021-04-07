@@ -15,13 +15,14 @@ export default function Asset({
 }: Props) {
   return (
     <div
-      className={
-        ["VertoAssetCard", styles.Asset, reverse ? styles.ReverseAsset : ""]
-          .filter((val) => val !== "")
-          .join(" ") +
-        " " +
-        (className ?? "")
-      }
+      className={[
+        "VertoAssetCard",
+        styles.Asset,
+        reverse ? styles.ReverseAsset : "",
+        className ?? ""
+      ]
+        .filter((val) => val !== "")
+        .join(" ")}
       style={style}
       onClick={onClick}
     >
@@ -52,6 +53,25 @@ export default function Asset({
   );
 }
 
+export const Clear = ({ image, className, style, onClick }: ClearProps) => (
+  <div
+    className={[
+      "VertoAssetCard",
+      styles.Asset,
+      styles.ClearAsset,
+      className ?? ""
+    ]
+      .filter((val) => val !== "")
+      .join(" ")}
+    style={style}
+    onClick={onClick}
+  >
+    <div className={styles.Preview}>
+      <img src={image} alt="clear-asset" draggable={false} />
+    </div>
+  </div>
+);
+
 interface Props extends BaseProps {
   name: string;
   price: number;
@@ -59,4 +79,8 @@ interface Props extends BaseProps {
   ticker?: string;
   userData?: UserData;
   reverse?: boolean;
+}
+
+export interface ClearProps extends BaseProps {
+  image: string;
 }
