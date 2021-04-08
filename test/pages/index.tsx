@@ -162,6 +162,27 @@ export default function Home() {
         vrtStake={843050}
       />
       <Spacer y={1} />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between"
+        }}
+      >
+        <Card.Bits
+          quantity={23}
+          priceAr={12.65}
+          priceUSD={92.22}
+          style={{ width: "45%" }}
+        />
+        <Card.Bits
+          quantity={23}
+          priceAr={12.65}
+          priceUSD={92.22}
+          style={{ width: "45%" }}
+        />
+      </div>
+      <Spacer y={1} />
       <div style={{ display: "flex" }}>
         <Card.Asset
           name="Test"

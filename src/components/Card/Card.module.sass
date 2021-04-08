@@ -44,7 +44,7 @@ $standardPadding: 1.03em
     display: flex
     align-items: center
 
-    .OrderType
+    .OrderType, .BitCount
       background-color: variables.$foreground-color
       color: variables.$foreground-reverse-color
       font-size: variables.$normal-font-size
@@ -54,6 +54,9 @@ $standardPadding: 1.03em
       padding: .04em .38em
       margin-right: $space
       text-transform: uppercase
+
+      &.BitCount
+        margin-right: $space - .3em
 
     .Avatar
       display: flex
@@ -319,6 +322,11 @@ $tradingPostStatusSize: 8px
       .AssetTicker
         color: variables.$light-text
 
+.TokenPortionTitle
+  margin: 0
+  font-weight: 500
+  line-height: 1em
+  
 @keyframes online-animation
   0%
     width: $tradingPostStatusSize

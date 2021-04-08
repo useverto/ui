@@ -27,7 +27,7 @@ export default function Trade({
       style={style}
       onClick={(e) => {
         router.push(`/orbit/order/${orderID}`);
-        onClick(e);
+        if (onClick) onClick(e);
       }}
     >
       <div className={styles.ItemData}>

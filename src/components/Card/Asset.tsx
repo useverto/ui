@@ -46,7 +46,7 @@ export default function Asset({
         )}
         <p className={styles.Price + " " + (ticker ? styles.WithTicker : "")}>
           ${price}
-          {!ticker && <span>/share</span>}
+          {!ticker && <span>/bit</span>}
         </p>
       </div>
     </div>

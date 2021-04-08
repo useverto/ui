@@ -44,7 +44,7 @@ export default function ArtActivity({
               </>
             )) || (
               <>
-                Asset {(type === "buy" && "bought") || "sold"} by{" "}
+                A bit {(type === "buy" && "bought") || "sold"} by{" "}
                 <Link href={`/u/${user.usertag}`}>
                   <a
                     className={styles.Usertag}
