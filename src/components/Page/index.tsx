@@ -8,11 +8,17 @@ export default function Page({
   className,
   style,
   size = "normal",
+  minHeight = true,
   ...props
 }: PropsWithChildren<Props>) {
   return (
     <motion.div
-      className={[styles.Page, styles[`Size_${size}`], className ?? ""]
+      className={[
+        styles.Page,
+        styles[`Size_${size}`],
+        className ?? "",
+        minHeight ? styles.MinHeight : ""
+      ]
         .filter((val) => val !== "")
         .join(" ")}
       style={style}
@@ -28,4 +34,5 @@ export default function Page({
 
 interface Props extends DefaultProps {
   size?: "large" | "normal" | "small";
+  minHeight?: boolean;
 }

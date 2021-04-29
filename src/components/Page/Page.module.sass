@@ -1,10 +1,14 @@
 @use "../../styles/variables"
 
 .Page
+  $topPadding: 2em
   position: relative
   padding:
-    top: 2em
-    bottom: 2em
+    top: $topPadding
+    bottom: $topPadding
+  
+  &.MinHeight
+    min-height: calc(100vh - #{$topPadding * 2})
 
   &.Size_normal
     padding:
