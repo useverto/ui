@@ -1,0 +1,44 @@
+@use "../../styles/variables"
+  
+.Toast
+  $sidePadding: .9em
+  display: flex
+  align-items: center
+  background-color: #000
+  box-shadow: variables.$standard-shadow
+  border-radius: variables.$small-items-radius
+  padding: .435em $sidePadding
+  width: max-content
+  cursor: pointer
+  z-index: 100000
+
+  svg
+    font-size: 1.2em
+    width: 1em
+    height: 1em
+    margin-right: $sidePadding
+
+  .Content
+    .Title, .Description
+      font-size: variables.$smaller-font-size
+      font-weight: 500
+      margin: 0
+      color: #fff
+
+    .Description
+      color: #CECECE
+
+  &.Status_info svg
+    color: #00C2FF
+
+  &.Status_success svg
+    color: variables.$success
+    
+  &.Status_error svg
+    color: variables.$error
+
+  &.Status_warning svg
+    color: variables.$warning
+
+  &:hover svg
+    color: #fff

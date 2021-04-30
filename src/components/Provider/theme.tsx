@@ -9,7 +9,7 @@ export const ThemeContext: Context<DisplayTheme> = createContext<DisplayTheme>(
 /**
  * Get the current theme of Verto UI
  *
- * returns DisplayTheme
+ * @returns DisplayTheme
  */
 export const useTheme = (): DisplayTheme =>
   useContext<DisplayTheme>(ThemeContext);
