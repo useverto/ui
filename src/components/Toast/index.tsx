@@ -5,22 +5,33 @@ import {
   InfoIcon,
   XIcon
 } from "@primer/octicons-react";
-import { useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { ToastData } from "../../types";
+import { motion } from "framer-motion";
 import styles from "./Toast.module.sass";
+
+type Props = Omit<ToastData, "duration"> & {
+  onClick?: MouseEventHandler<HTMLDivElement>;
+};
 
 export default function Toast({
   title,
   description,
-  type = "info"
-}: ToastData) {
+  type = "info",
+  onClick
+}: Props) {
   const [hovered, setHoverd] = useState(false);
 
   return (
-    <div
+    <motion.div
       className={styles.Toast + " " + styles[`Status_${type}`]}
       onMouseEnter={() => setHoverd(true)}
       onMouseLeave={() => setHoverd(false)}
+      initial={{ x: "100%", opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ scale: 0, opacity: 0.4 }}
+      transition={{ ease: "easeInOut", duration: 0.17 }}
+      onClick={onClick}
     >
       {(hovered && <XIcon />) ||
         (type === "info" && <InfoIcon />) ||
@@ -31,7 +42,7 @@ export default function Toast({
         <p className={styles.Title}>{title}</p>
         <p className={styles.Description}>{description}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

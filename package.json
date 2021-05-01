@@ -29,6 +29,7 @@
   "dependencies": {
     "@primer/octicons-react": "^12.1.0",
     "framer-motion": "^3.1.1",
+    "nanoid": "^3.1.22",
     "styled-components": "^5.2.1"
   },
   "peerDependencies": {

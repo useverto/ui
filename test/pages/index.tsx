@@ -7,10 +7,13 @@ import {
   Card,
   Spacer,
   Page,
-  Avatar
+  Avatar,
+  useToasts
 } from "@verto/ui";
 
 export default function Home() {
+  const { setToast } = useToasts();
+
   return (
     <Page>
       <Button>Filled</Button>
@@ -257,6 +260,18 @@ export default function Home() {
         name="Marton Lederer"
         size="large-inline"
       />
+      <Spacer y={1} />
+      <Button
+        onClick={() =>
+          setToast({
+            title: "Test title",
+            description: "This is a test text",
+            duration: 5000
+          })
+        }
+      >
+        Show toast
+      </Button>
     </Page>
   );
 }
