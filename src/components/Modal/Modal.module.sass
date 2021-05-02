@@ -1,0 +1,56 @@
+@use "../../styles/variables"
+
+$modalZIndex: 10000
+
+.Modal
+  $sidePadding: 3em
+  $topPadding: 3.6em
+  position: fixed
+  width: 28rem
+  max-width: 90%
+  background-color: variables.$background-color
+  border-radius: variables.$huge-items-radius
+  padding: $topPadding $sidePadding 2.5em
+  top: 50%
+  left: 50%
+  z-index: $modalZIndex
+  transform: translate(-50%, -50%)
+
+  .Close
+    position: absolute
+    top: $topPadding
+    right: $sidePadding
+    cursor: pointer
+    color: variables.$cec
+    transform: translate(-50%, -50%)
+    transition: all .23s ease-in-out
+
+    svg
+      font-size: variables.$title-font-size - .25em
+      width: 1em
+      height: 1em
+      transition: all .23s ease-in-out
+
+    &:active svg
+      transform: scale(.8)
+
+    &:hover
+      opacity: .8
+
+.Backdrop
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: rgba(0, 0, 0, .8)
+  z-index: $modalZIndex - 1
+
+.ModalTitle
+  font-size: variables.$normal-font-size + .27em
+  font-weight: 600
+  text-align: center
+  margin: 0
+    bottom: .7em
+  line-height: 1em
+  color: variables.$foreground-color

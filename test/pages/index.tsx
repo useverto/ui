@@ -8,11 +8,14 @@ import {
   Spacer,
   Page,
   Avatar,
-  useToasts
+  useToasts,
+  Modal,
+  useModal
 } from "@verto/ui";
 
 export default function Home() {
   const { setToast } = useToasts();
+  const exampleModal = useModal();
 
   return (
     <Page>
@@ -266,12 +269,49 @@ export default function Home() {
           setToast({
             title: "Test title",
             description: "This is a test text",
-            duration: 50000
+            duration: 5000
           })
         }
       >
         Show toast
       </Button>
+      <Spacer y={1} />
+      <Button onClick={() => exampleModal.setState(true)}>Show modal</Button>
+      <Modal {...exampleModal.bindings}>
+        <Modal.Title>List new token</Modal.Title>
+        <Input
+          label="You send"
+          inlineLabel="VRT"
+          type="text"
+          placeholder="Type here..."
+          leftInlineLabel
+          matchPattern={/.{5}/}
+          style={{ width: "100%" }}
+        />
+        <Spacer y={1.8} />
+        <p
+          style={{
+            textAlign: "justify",
+            color: "var(--light-text)",
+            margin: 0,
+            fontSize: "1.1em",
+            fontWeight: 500
+          }}
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
+          nihil, incidunt eos sunt, ad accusamus rem quam vero neque obcaecati
+          consequatur. Recusandae eaque tempore non placeat repellendus quaerat
+          excepturi quidem!
+        </p>
+        <Spacer y={1.8} />
+        <Button
+          small
+          onClick={() => exampleModal.setState(false)}
+          style={{ margin: "0 auto" }}
+        >
+          Submit
+        </Button>
+      </Modal>
     </Page>
   );
 }

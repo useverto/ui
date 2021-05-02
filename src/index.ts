@@ -13,3 +13,4 @@ export { default as Card } from "./components/Card";
 export { default as Spacer } from "./components/Spacer";
 export { default as Page } from "./components/Page";
 export { default as Avatar } from "./components/Avatar";
+export { default as Modal, useModal } from "./components/Modal";
