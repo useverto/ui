@@ -29,7 +29,7 @@ export default function Toast({
       onMouseLeave={() => setHoverd(false)}
       initial={{ x: "100%", opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
-      exit={{ scale: 0, opacity: 0.4 }}
+      exit={{ opacity: 0.4, height: 0, scale: 0 }}
       transition={{ ease: "easeInOut", duration: 0.17 }}
       onClick={onClick}
     >
