@@ -1,5 +1,7 @@
 import { Props as BaseProps, UserData } from "./index";
 import Link from "next/link";
+import Popover from "../Popover";
+import Avatar from "../Avatar";
 import styles from "./Card.module.sass";
 
 export default function Asset({
@@ -33,16 +35,29 @@ export default function Asset({
         <h1 style={ticker ? { margin: 0 } : {}}>{name}</h1>
         {ticker && <span className={styles.AssetTicker}>{ticker}</span>}
         {userData && (
-          <Link href={`/u/${userData.usertag}`}>
-            <a className={styles.UserData}>
-              <img
-                src={userData.avatar}
-                alt={userData.name}
-                draggable={false}
+          <Popover
+            mode="hover"
+            className={styles.UserPopover + " " + styles.AssetUserPopover}
+            content={
+              <Avatar
+                avatar={userData.avatar}
+                usertag={userData.usertag}
+                name={userData.name}
+                size="large"
               />
-              <span>@{userData.usertag}</span>
-            </a>
-          </Link>
+            }
+          >
+            <Link href={`/u/${userData.usertag}`}>
+              <a className={styles.UserData}>
+                <img
+                  src={userData.avatar}
+                  alt={userData.name}
+                  draggable={false}
+                />
+                <span>@{userData.usertag}</span>
+              </a>
+            </Link>
+          </Popover>
         )}
         <p className={styles.Price + " " + (ticker ? styles.WithTicker : "")}>
           ${price}

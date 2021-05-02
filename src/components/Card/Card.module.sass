@@ -236,7 +236,6 @@ $tradingPostStatusSize: 8px
   width: $assetWidth
   background-color: variables.$foreground-color
   border-radius: variables.$small-items-radius
-  overflow: hidden
   cursor: pointer
 
   .Preview
@@ -252,6 +251,8 @@ $tradingPostStatusSize: 8px
       top: 50%
       left: 50%
       user-select: none
+      border-top-left-radius: variables.$small-items-radius
+      border-top-right-radius: variables.$small-items-radius
       transform: translate(-50%, -50%)
 
     &.Logo img
@@ -336,3 +337,17 @@ $tradingPostStatusSize: 8px
     width: $tradingPostStatusSize * 4.5
     height: $tradingPostStatusSize * 4.5
     opacity: 0
+
+.UserPopover
+  padding:
+    top: .8em
+    bottom: .8em
+
+  h1, p
+    text-align: center !important
+    display: block !important
+
+  &.AssetUserPopover
+    h1
+      font-size: variables.$normal-font-size + .25em
+      color: variables.$foreground-color !important

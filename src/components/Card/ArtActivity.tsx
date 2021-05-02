@@ -2,6 +2,8 @@ import Card, { Props as BaseProps, UserData } from "./index";
 import { formatTime, formatBalance } from "../../utils";
 import { LinkExternalIcon } from "@primer/octicons-react";
 import Link from "next/link";
+import Popover from "../Popover";
+import Avatar from "../Avatar";
 import styles from "./Card.module.sass";
 
 export default function ArtActivity({
@@ -23,36 +25,75 @@ export default function ArtActivity({
       onClick={onClick}
     >
       <div className={styles.ItemData}>
-        <Link href={`/u/${user.usertag}`}>
-          <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
-            <img src={user.avatar} alt="user-avatar" draggable={false} />
-          </a>
-        </Link>
+        <Popover
+          mode="hover"
+          className={styles.UserPopover}
+          content={
+            <Avatar
+              avatar={user.avatar}
+              usertag={user.usertag}
+              name={user.name}
+              size="large"
+            />
+          }
+        >
+          <Link href={`/u/${user.usertag}`}>
+            <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
+              <img src={user.avatar} alt="user-avatar" draggable={false} />
+            </a>
+          </Link>
+        </Popover>
         <div className={styles.Data}>
           <h1 className={styles.Action}>
             {(type === "list" && (
               <>
                 Collectable listed by{" "}
-                <Link href={`/u/${user.usertag}`}>
-                  <a
-                    className={styles.Usertag}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    @{user.usertag}
-                  </a>
-                </Link>
+                <Popover
+                  mode="hover"
+                  className={styles.UserPopover}
+                  content={
+                    <Avatar
+                      avatar={user.avatar}
+                      usertag={user.usertag}
+                      name={user.name}
+                      size="large"
+                    />
+                  }
+                >
+                  <Link href={`/u/${user.usertag}`}>
+                    <a
+                      className={styles.Usertag}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      @{user.usertag}
+                    </a>
+                  </Link>
+                </Popover>
               </>
             )) || (
               <>
                 A bit {(type === "buy" && "bought") || "sold"} by{" "}
-                <Link href={`/u/${user.usertag}`}>
-                  <a
-                    className={styles.Usertag}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    @{user.usertag}
-                  </a>
-                </Link>
+                <Popover
+                  mode="hover"
+                  className={styles.UserPopover}
+                  content={
+                    <Avatar
+                      avatar={user.avatar}
+                      usertag={user.usertag}
+                      name={user.name}
+                      size="large"
+                    />
+                  }
+                >
+                  <Link href={`/u/${user.usertag}`}>
+                    <a
+                      className={styles.Usertag}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      @{user.usertag}
+                    </a>
+                  </Link>
+                </Popover>
               </>
             )}
           </h1>

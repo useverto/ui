@@ -2,6 +2,8 @@ import Card, { Props as BaseProps, UserData } from "./index";
 import { formatBalance } from "../../utils";
 import Spacer from "../Spacer";
 import Link from "next/link";
+import Popover from "../Popover";
+import Avatar from "../Avatar";
 import styles from "./Card.module.sass";
 
 export default function SwapSell({
@@ -23,11 +25,24 @@ export default function SwapSell({
       onClick={onClick}
     >
       <div className={styles.ItemData}>
-        <Link href={`/u/${user.usertag}`}>
-          <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
-            <img src={user.avatar} alt="user-avatar" draggable={false} />
-          </a>
-        </Link>
+        <Popover
+          mode="hover"
+          className={styles.UserPopover}
+          content={
+            <Avatar
+              avatar={user.avatar}
+              usertag={user.usertag}
+              name={user.name}
+              size="large"
+            />
+          }
+        >
+          <Link href={`/u/${user.usertag}`}>
+            <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
+              <img src={user.avatar} alt="user-avatar" draggable={false} />
+            </a>
+          </Link>
+        </Popover>
         <span className={styles.OrderType}>Sell</span>
         <div className={styles.Data + " " + styles.SmallLabel}>
           <p>Selling</p>
