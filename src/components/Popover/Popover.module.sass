@@ -1,0 +1,14 @@
+@use "../../styles/variables"
+  
+.PopoverWrapper
+  position: relative
+  display: inline-block
+
+.Popover
+  position: absolute
+  background-color: variables.$background-color
+  box-shadow: variables.$standard-shadow
+  border-radius: variables.$small-items-radius
+  z-index: 1000
+  overflow: hidden
+  padding: .4em 1em

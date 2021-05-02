@@ -10,7 +10,8 @@ import {
   Avatar,
   useToasts,
   Modal,
-  useModal
+  useModal,
+  Popover
 } from "@verto/ui";
 
 export default function Home() {
@@ -312,6 +313,26 @@ export default function Home() {
           Submit
         </Button>
       </Modal>
+      <Popover
+        content={
+          <>
+            <h1>test</h1> <img src="/art.png" width={120} />
+          </>
+        }
+      >
+        <p>Popover</p>
+      </Popover>
+      <Spacer y={1} />
+      <Popover
+        content={
+          <>
+            <h1>test</h1> <img src="/art.png" width={120} />
+          </>
+        }
+        mode="hover"
+      >
+        <p>Popover (on hover)</p>
+      </Popover>
     </Page>
   );
 }

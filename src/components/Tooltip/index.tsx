@@ -1,7 +1,8 @@
 import { ReactNode, PropsWithChildren, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { DefaultProps, getCssPosition } from "../../utils";
+import { FloatingPosition } from "../../types";
 import styles from "./Tooltip.module.sass";
-import { DefaultProps } from "../../utils";
 
 export default function Tooltip({
   className,
@@ -13,15 +14,6 @@ export default function Tooltip({
   ...props
 }: PropsWithChildren<Props>) {
   const [shown, setShown] = useState(false);
-
-  const getCssPosition = () =>
-    position === "top"
-      ? "bottom"
-      : position === "bottom"
-      ? "top"
-      : position === "left"
-      ? "right"
-      : "left";
 
   return (
     <div
@@ -45,9 +37,9 @@ export default function Tooltip({
               .filter((val) => val !== "")
               .join(" ")}
             style={style}
-            initial={{ [getCssPosition()]: "80%", opacity: 0 }}
-            animate={{ [getCssPosition()]: "108%", opacity: 1 }}
-            exit={{ [getCssPosition()]: "80%", opacity: 0 }}
+            initial={{ [getCssPosition(position)]: "80%", opacity: 0 }}
+            animate={{ [getCssPosition(position)]: "108%", opacity: 1 }}
+            exit={{ [getCssPosition(position)]: "80%", opacity: 0 }}
             transition={{ duration: 0.23, ease: "easeInOut" }}
           >
             {text}
@@ -61,6 +53,6 @@ export default function Tooltip({
 
 interface Props extends DefaultProps {
   text?: ReactNode;
-  position?: "top" | "bottom" | "left" | "right";
+  position?: FloatingPosition;
   arrow?: boolean;
 }

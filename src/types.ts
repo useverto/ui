@@ -6,3 +6,5 @@ export interface ToastData {
   duration: number;
   type?: "success" | "info" | "error" | "warning";
 }
+
+export type FloatingPosition = "top" | "bottom" | "left" | "right";
