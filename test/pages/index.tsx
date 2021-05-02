@@ -266,7 +266,7 @@ export default function Home() {
           setToast({
             title: "Test title",
             description: "This is a test text",
-            duration: 5000
+            duration: 50000
           })
         }
       >

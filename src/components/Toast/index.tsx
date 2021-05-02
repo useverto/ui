@@ -33,11 +33,20 @@ export default function Toast({
       transition={{ ease: "easeInOut", duration: 0.17 }}
       onClick={onClick}
     >
-      {(hovered && <XIcon />) ||
-        (type === "info" && <InfoIcon />) ||
-        (type === "error" && <FlameIcon />) ||
-        (type === "success" && <CheckIcon />) ||
-        (type === "warning" && <AlertIcon />)}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.Icon}
+        key={(hovered && "hovered") || type}
+        transition={{ ease: "easeInOut", duration: 0.23 }}
+      >
+        {(hovered && <XIcon />) ||
+          (type === "info" && <InfoIcon />) ||
+          (type === "error" && <FlameIcon />) ||
+          (type === "success" && <CheckIcon />) ||
+          (type === "warning" && <AlertIcon />)}
+      </motion.div>
       <div className={styles.Content}>
         <p className={styles.Title}>{title}</p>
         <p className={styles.Description}>{description}</p>
