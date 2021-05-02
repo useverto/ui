@@ -19,7 +19,8 @@ export default function Popover({
   position = "top"
 }: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(false),
-    popoverWrapper = useRef<HTMLDivElement>();
+    popoverRef = useRef<HTMLDivElement>(),
+    wrapperRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClicks);
@@ -30,28 +31,22 @@ export default function Popover({
   });
 
   function handleClicks(e: MouseEvent) {
-    if (!open || mode !== "click") return;
-    if (
-      !popoverWrapper.current ||
-      popoverWrapper.current.contains(e.target as Node)
-    )
-      return;
-    setOpen(false);
+    if (mode !== "click") return;
+    if (!open && wrapperRef.current?.contains(e.target as Node)) setOpen(true);
+    else if (open && !popoverRef.current?.contains(e.target as Node))
+      setOpen(false);
   }
 
   return (
     <div
       className={"VertoPopoverWrapper " + styles.PopoverWrapper}
-      onClick={() => {
-        if (mode === "click") setOpen(true);
-      }}
       onMouseEnter={() => {
         if (mode === "hover") setOpen(true);
       }}
       onMouseLeave={() => {
         if (mode === "hover") setOpen(false);
       }}
-      ref={popoverWrapper}
+      ref={wrapperRef}
     >
       <AnimatePresence>
         {open && (
@@ -64,6 +59,7 @@ export default function Popover({
             animate={{ [getCssPosition(position)]: "108%", opacity: 1 }}
             exit={{ [getCssPosition(position)]: "80%", opacity: 0 }}
             transition={{ duration: 0.23, ease: "easeInOut" }}
+            ref={popoverRef}
           >
             {content}
           </motion.div>
