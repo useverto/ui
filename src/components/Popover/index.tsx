@@ -16,7 +16,8 @@ export default function Popover({
   style,
   className,
   mode = "click",
-  position = "top"
+  position = "top",
+  closeOnClick = false
 }: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(false),
     popoverRef = useRef<HTMLDivElement>(),
@@ -33,7 +34,10 @@ export default function Popover({
   function handleClicks(e: MouseEvent) {
     if (mode !== "click") return;
     if (!open && wrapperRef.current?.contains(e.target as Node)) setOpen(true);
-    else if (open && !popoverRef.current?.contains(e.target as Node))
+    else if (
+      open &&
+      (closeOnClick || !popoverRef.current?.contains(e.target as Node))
+    )
       setOpen(false);
   }
 
@@ -74,4 +78,5 @@ interface Props extends DefaultProps {
   content: ReactNode;
   mode?: "click" | "hover";
   position?: FloatingPosition;
+  closeOnClick?: boolean;
 }
