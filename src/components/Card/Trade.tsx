@@ -1,4 +1,4 @@
-import Card, { Props as BaseProps, Status } from "./index";
+import Card, { Props as BaseProps, Status, StatusTypes } from "./index";
 import { formatBalance, formatTime } from "../../utils";
 import { ArrowRightIcon, CloseIcon } from "@iconicicons/react";
 import { useRouter } from "next/router";
@@ -49,7 +49,13 @@ export default function Trade({
               className={styles.FromToStatusTooltip}
             >
               <span
-                className={styles.Status + " " + styles[`Status_${status}`]}
+                className={
+                  styles.Status +
+                  " " +
+                  (StatusTypes.includes(status)
+                    ? styles[`Status_${status}`]
+                    : "")
+                }
               />
             </Tooltip>
           </h1>

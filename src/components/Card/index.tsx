@@ -47,7 +47,8 @@ export interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
 }
 
-export type Status = "success" | "pending" | "error" | "neutral";
+export type Status = "success" | "pending" | "error" | string;
+export const StatusTypes = ["success", "pending", "error"];
 
 export interface UserData {
   avatar: string;

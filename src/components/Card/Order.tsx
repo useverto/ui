@@ -1,4 +1,4 @@
-import Card, { Props as BaseProps, Status } from "./index";
+import Card, { Props as BaseProps, Status, StatusTypes } from "./index";
 import { formatTime } from "../../utils";
 import { ShareIcon } from "@iconicicons/react";
 import Tooltip from "../Tooltip";
@@ -36,7 +36,13 @@ export default function Order({
               style={{ borderRadius: "6px" }}
             >
               <span
-                className={styles.Status + " " + styles[`Status_${status}`]}
+                className={
+                  styles.Status +
+                  " " +
+                  (StatusTypes.includes(status)
+                    ? styles[`Status_${status}`]
+                    : "")
+                }
               />
             </Tooltip>
           </p>

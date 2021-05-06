@@ -105,19 +105,20 @@ $standardPadding: 1.03em
         height: 8px
         margin-left: 8px
         border-radius: 100%
+        background-color: variables.$foreground-color
+        opacity: .6
 
         &.Status_success
+          opacity: 1
           background-color: variables.$success
 
         &.Status_pending
+          opacity: 1
           background-color: variables.$warning
 
         &.Status_error
+          opacity: 1
           background-color: variables.$error
-
-        &.Status_neutral
-          background-color: variables.$foreground-color
-          opacity: .6
 
       .FromTo
         display: flex
@@ -216,13 +217,12 @@ $tradingPostStatusSize: 8px
     width: $tradingPostStatusSize
     height: $tradingPostStatusSize
     border-radius: 100%
-
-    &.TradingPostStatus_neutral
-      background-color: variables.$foreground-color
-      opacity: .6
+    background-color: variables.$foreground-color
+    opacity: .6
 
     &.TradingPostStatus_online
       position: relative
+      opacity: 1
       background-color: variables.$success
 
       &::after
@@ -240,6 +240,7 @@ $tradingPostStatusSize: 8px
 
     &.TradingPostStatus_offline
       background-color: variables.$error
+      opacity: 1
 
 .Asset
   $assetWidth: 204px
