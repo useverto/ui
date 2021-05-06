@@ -1,4 +1,4 @@
-import { XIcon } from "@primer/octicons-react";
+import { CloseIcon } from "@iconicicons/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { MouseEventHandler, PropsWithChildren, useState } from "react";
 import { DefaultProps } from "../../utils";
@@ -53,7 +53,7 @@ export default function Modal({
             transition={{ duration: 0.23, ease: "easeInOut" }}
           >
             <div className={styles.Close} onClick={onClose}>
-              <XIcon />
+              <CloseIcon />
             </div>
             {children}
           </motion.div>

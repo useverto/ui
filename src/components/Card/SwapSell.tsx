@@ -64,7 +64,7 @@ export default function SwapSell({
           <h1>{formatBalance(filled)} AR</h1>
         </div>
         <Link href={`/orbit/order/${orderID}`}>
-          <a className={styles.Icon}>
+          <a className={styles.Icon + " " + styles.OrbitIcon}>
             <OrbitIcon />
           </a>
         </Link>

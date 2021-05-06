@@ -158,17 +158,27 @@ $standardPadding: 1.03em
           margin-right: 0
 
     .Icon
+      $iconLeftMargin: $standardPadding - 0.25em
+      $iconAddition: .2em
       display: flex
       align-items: center
       justify-content: center
-      font-size: variables.$normal-font-size
-      width: variables.$normal-font-size
-      height: variables.$normal-font-size
+      font-size: variables.$normal-font-size + $iconAddition
+      width: variables.$normal-font-size + $iconAddition
+      height: variables.$normal-font-size + $iconAddition
       color: variables.$light-text
-      margin-left: $standardPadding - 0.25em
+      margin-left: $iconLeftMargin
       cursor: pointer
       text-decoration: none
       transition: all .23s ease-in-out
+
+      &.OrbitIcon
+        font-size: variables.$normal-font-size
+        width: variables.$normal-font-size
+        height: variables.$normal-font-size
+        margin:
+          left: $iconLeftMargin + ($iconAddition * 2)
+          right: $iconAddition
 
       &:hover
         color: variables.$foreground-color

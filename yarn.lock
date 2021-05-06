@@ -1315,6 +1315,11 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
+"@iconicicons/react@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@iconicicons/react/-/react-1.1.1.tgz#8d2f94457f26d064fae813540fe47e9c499f7351"
+  integrity sha512-o0Zlt0E8aoRenVxot+bo04XodYXVj0x3Muh/H+BXbANVC8usQvCWSyLvsrRJoyrAWgF2tAV7crgYZ7MEe7sTzw==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1541,11 +1546,6 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
     source-map "^0.7.3"
-
-"@primer/octicons-react@^12.1.0":
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-12.1.0.tgz#7556450199e0c10e72e99dd02c59f1ac33544767"
-  integrity sha512-eb/5Obsp6/pVkyzzGhobK6aPAkKqx6VleF/7HYeihGTYm3rGZc+prL/jhxD5Mo1P6U343YEkHjc2gKuvtENn1g==
 
 "@rollup/plugin-commonjs@^15.1.0":
   version "15.1.0"

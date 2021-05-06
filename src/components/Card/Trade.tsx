@@ -1,8 +1,8 @@
 import Card, { Props as BaseProps, Status } from "./index";
 import { formatBalance, formatTime } from "../../utils";
-import { ArrowRightIcon, XIcon } from "@primer/octicons-react";
-import Tooltip from "../Tooltip";
+import { ArrowRightIcon, CloseIcon } from "@iconicicons/react";
 import { useRouter } from "next/router";
+import Tooltip from "../Tooltip";
 import styles from "./Card.module.sass";
 
 export default function Trade({
@@ -66,7 +66,7 @@ export default function Trade({
               }}
               className={styles.Icon}
             >
-              <XIcon />
+              <CloseIcon />
             </a>
           </Tooltip>
         )}

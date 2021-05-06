@@ -1,6 +1,6 @@
 import Card, { Props as BaseProps, UserData } from "./index";
 import { formatTime, formatBalance } from "../../utils";
-import { LinkExternalIcon } from "@primer/octicons-react";
+import { ShareIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
@@ -107,7 +107,7 @@ export default function ArtActivity({
         </div>
         <Link href={`/orbit/order/${orderID}`}>
           <a className={styles.Icon}>
-            <LinkExternalIcon />
+            <ShareIcon />
           </a>
         </Link>
       </div>

@@ -1,10 +1,10 @@
 import {
-  AlertIcon,
+  CloseIcon,
+  WarningTriangleIcon,
+  InformationIcon,
   CheckIcon,
-  FlameIcon,
-  InfoIcon,
-  XIcon
-} from "@primer/octicons-react";
+  CloseCircleIcon
+} from "@iconicicons/react";
 import { MouseEventHandler, useState } from "react";
 import { ToastData } from "../../types";
 import { motion } from "framer-motion";
@@ -41,11 +41,11 @@ export default function Toast({
         key={(hovered && "hovered") || type}
         transition={{ ease: "easeInOut", duration: 0.23 }}
       >
-        {(hovered && <XIcon />) ||
-          (type === "info" && <InfoIcon />) ||
-          (type === "error" && <FlameIcon />) ||
+        {(hovered && <CloseIcon />) ||
+          (type === "info" && <InformationIcon />) ||
+          (type === "error" && <CloseCircleIcon />) ||
           (type === "success" && <CheckIcon />) ||
-          (type === "warning" && <AlertIcon />)}
+          (type === "warning" && <WarningTriangleIcon />)}
       </motion.div>
       <div className={styles.Content}>
         <p className={styles.Title}>{title}</p>

@@ -1,6 +1,6 @@
 import Card, { Props as BaseProps, Status } from "./index";
 import { formatTime } from "../../utils";
-import { LinkExternalIcon } from "@primer/octicons-react";
+import { ShareIcon } from "@iconicicons/react";
 import Tooltip from "../Tooltip";
 import Link from "next/link";
 import styles from "./Card.module.sass";
@@ -49,7 +49,7 @@ export default function Order({
         </div>
         <Link href={`/orbit/order/${orderID}`}>
           <a className={styles.Icon}>
-            <LinkExternalIcon />
+            <ShareIcon />
           </a>
         </Link>
       </div>

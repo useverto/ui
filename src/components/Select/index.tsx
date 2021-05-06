@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@primer/octicons-react";
+import { ChevronDownIcon } from "@iconicicons/react";
 import {
   PropsWithChildren,
   ReactNode,

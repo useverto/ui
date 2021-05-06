@@ -1,5 +1,5 @@
 import Card, { Props as BaseProps } from "./index";
-import { LinkExternalIcon } from "@primer/octicons-react";
+import { ShareIcon } from "@iconicicons/react";
 import { useTheme } from "../Provider/theme";
 import Link from "next/link";
 import styles from "./Card.module.sass";
@@ -41,7 +41,7 @@ export default function Balance({
         </h1>
         <Link href={`/space/${id}`}>
           <a className={styles.Icon}>
-            <LinkExternalIcon />
+            <ShareIcon />
           </a>
         </Link>
       </div>
