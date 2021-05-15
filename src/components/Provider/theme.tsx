@@ -34,10 +34,11 @@ const defaultTheme: SchemeTypes = {
   },
   Dark: {
     backgroundColor: "#030a23",
+    lighterBackgroundColor: "#060e2b",
     foregroundColor: "#fff",
     foregroundReverseColor: "#030a23",
     lightTextColor: "#9CA0B1",
-    darkerTextColor: "#CECECE",
+    darkerTextColor: "#9a9a9a",
     skeletonColor: "#131829",
     skeletonShineColor: "#181f35",
     modalOverlayColor: "rgba(0, 0, 0, .8)",
@@ -55,6 +56,8 @@ export const GlobalStyle = createGlobalStyle`
   body {
     --background-color: ${(props) =>
       defaultTheme[props.theme as string].backgroundColor};
+    --lighter-background-color: ${(props) =>
+      defaultTheme[props.theme as string].lighterBackgroundColor ?? ""};
     --foreground-color: ${(props) =>
       defaultTheme[props.theme as string].foregroundColor};
     --foreground-reverse-color: ${(props) =>
@@ -86,6 +89,7 @@ export interface Theme {
   backgroundColor: string;
   foregroundColor: string;
   foregroundReverseColor: string;
+  lighterBackgroundColor?: string;
   lightTextColor: string;
   darkerTextColor: string; // CEC
   skeletonColor: string;

@@ -341,6 +341,16 @@ $tradingPostStatusSize: 8px
       .AssetTicker
         color: variables.$light-text
 
+  &.DarkAsset
+    border: 2px solid rgba(156, 160, 177, .18)
+    background-color: variables.$background-color
+
+    .Price, h1, .UserData span
+      color: variables.$foreground-color
+
+    &.ReverseAsset
+      border: none
+
 .TokenPortionTitle
   margin: 0
   font-weight: 500

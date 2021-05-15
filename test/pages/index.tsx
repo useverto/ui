@@ -11,12 +11,14 @@ import {
   useToasts,
   Modal,
   useModal,
-  Popover
+  Popover,
+  useTheme
 } from "@verto/ui";
 
 export default function Home() {
   const { setToast } = useToasts();
   const exampleModal = useModal();
+  const theme = useTheme();
 
   return (
     <Page>
@@ -213,7 +215,10 @@ export default function Home() {
       <div
         style={{
           padding: "1em",
-          backgroundColor: "var(--foreground-color)",
+          backgroundColor:
+            theme === "Dark"
+              ? "var(--lighter-background-color)"
+              : "var(--foreground-color)",
           display: "flex"
         }}
       >

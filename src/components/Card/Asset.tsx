@@ -1,4 +1,5 @@
 import { Props as BaseProps, UserData } from "./index";
+import { useTheme } from "../Provider/theme";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
@@ -15,12 +16,15 @@ export default function Asset({
   style,
   onClick
 }: Props) {
+  const theme = useTheme();
+
   return (
     <div
       className={[
         "VertoAssetCard",
         styles.Asset,
         reverse ? styles.ReverseAsset : "",
+        theme === "Dark" ? styles.DarkAsset : "",
         className ?? ""
       ]
         .filter((val) => val !== "")
