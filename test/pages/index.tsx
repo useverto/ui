@@ -319,6 +319,7 @@ export default function Home() {
             <h1>test</h1> <img src="/art.png" width={120} />
           </>
         }
+        closeOnClick
       >
         <p>Popover</p>
       </Popover>

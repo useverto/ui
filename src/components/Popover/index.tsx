@@ -34,10 +34,7 @@ export default function Popover({
   function handleClicks(e: MouseEvent) {
     if (mode !== "click") return;
     if (!open && wrapperRef.current?.contains(e.target as Node)) setOpen(true);
-    else if (
-      open &&
-      (closeOnClick || !popoverRef.current?.contains(e.target as Node))
-    )
+    else if (open && !popoverRef.current?.contains(e.target as Node))
       setOpen(false);
   }
 
@@ -64,6 +61,9 @@ export default function Popover({
             exit={{ [getCssPosition(position)]: "80%", opacity: 0 }}
             transition={{ duration: 0.23, ease: "easeInOut" }}
             ref={popoverRef}
+            onMouseUp={() => {
+              if (closeOnClick) setOpen(false);
+            }}
           >
             {content}
           </motion.div>
