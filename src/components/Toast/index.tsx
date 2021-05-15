@@ -48,7 +48,9 @@ export default function Toast({
           (type === "warning" && <WarningTriangleIcon />)}
       </motion.div>
       <div className={styles.Content}>
-        <p className={styles.Title}>{title}</p>
+        <p className={styles.Title}>
+          {title ?? type.charAt(0).toUpperCase() + type.slice(1)}
+        </p>
         <p className={styles.Description}>{description}</p>
       </div>
     </motion.div>
