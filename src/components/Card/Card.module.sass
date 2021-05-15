@@ -257,6 +257,8 @@ $tradingPostStatusSize: 8px
     width: $assetWidth
     height: $assetWidth
     overflow: hidden
+    border-top-left-radius: variables.$small-items-radius
+    border-top-right-radius: variables.$small-items-radius
 
     img
       position: absolute
@@ -265,14 +267,15 @@ $tradingPostStatusSize: 8px
       top: 50%
       left: 50%
       user-select: none
-      border-top-left-radius: variables.$small-items-radius
-      border-top-right-radius: variables.$small-items-radius
       transform: translate(-50%, -50%)
 
     &.Logo img
       max-height: 80%
       max-width: 80%
       border-radius: variables.$small-items-radius
+
+  &.ClearAsset .Preview
+    border-radius: variables.$small-items-radius
 
   .AssetInfo
     padding: ($standardPadding / 3) ($standardPadding / 2)
