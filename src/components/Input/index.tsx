@@ -30,15 +30,16 @@ export default function Input({
     else setInputStatus(undefined);
   }, [val]);
 
+  useEffect(() => setVal(props.value), [props.value]);
+  useEffect(() => setInputStatus(status), [status]);
+
   return (
     <div
       className={["VertoInput", className ?? ""]
         .filter((val) => val !== "")
         .join(" ")}
     >
-      <span className={"VertoInputLabel " + styles.Label}>
-        {label} {props.value}
-      </span>
+      <span className={"VertoInputLabel " + styles.Label}>{label}</span>
       <div
         className={[
           "VertoInputWrapper",
