@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  useEffect,
-  createContext,
-  useState,
-  useContext
-} from "react";
+import { PropsWithChildren, createContext, useState, useContext } from "react";
 import { DisplayTheme, ToastData } from "../../types";
 import { ThemeContext, GlobalStyle } from "./theme";
 import { AnimatePresence } from "framer-motion";
@@ -26,11 +20,6 @@ export default function Provider({
   children
 }: PropsWithChildren<ProviderProps>) {
   const [toasts, setToasts] = useState<ToastDataWithID[]>([]);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = theme === "Light" ? "#fff" : "#000";
-  }, [theme]);
-
   const setToast = (toast: ToastData) =>
     setToasts((val) => {
       const newID = toasts.length;

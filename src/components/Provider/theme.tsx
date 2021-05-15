@@ -14,7 +14,6 @@ export const ThemeContext: Context<DisplayTheme> = createContext<DisplayTheme>(
 export const useTheme = (): DisplayTheme =>
   useContext<DisplayTheme>(ThemeContext);
 
-// TODO: dark theme variables and custom theme support
 const defaultTheme: SchemeTypes = {
   Light: {
     backgroundColor: "#fff",
@@ -34,21 +33,21 @@ const defaultTheme: SchemeTypes = {
     lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
   },
   Dark: {
-    backgroundColor: "#000",
+    backgroundColor: "#030a23",
     foregroundColor: "#fff",
-    foregroundReverseColor: "#000",
-    lightTextColor: "#666",
+    foregroundReverseColor: "#030a23",
+    lightTextColor: "#9CA0B1",
     darkerTextColor: "#CECECE",
-    skeletonColor: "#E4E4E4",
-    skeletonShineColor: "#bdbdbd",
+    skeletonColor: "#131829",
+    skeletonShineColor: "#181f35",
     modalOverlayColor: "rgba(0, 0, 0, .8)",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
-    standardShadow: "0px 10px 20px rgba(0, 0, 0, .2)",
-    standardShadowHover: "0px 10px 20px rgba(0, 0, 0, .26)",
-    darkerShadow: "0px 10px 25px rgba(0, 0, 0, .185)",
-    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
+    standardShadow: "0px 0 1px 2px rgba(156, 160, 177, .2)",
+    standardShadowHover: "0px 0 1px 2px rgba(156, 160, 177, .26)",
+    darkerShadow: "0px 0 1px 2px rgba(156, 160, 177, .5)",
+    lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)"
   }
 };
 

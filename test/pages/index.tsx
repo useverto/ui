@@ -210,7 +210,13 @@ export default function Home() {
         />
       </div>
       <Spacer y={1} />
-      <div style={{ padding: "1em", backgroundColor: "#000", display: "flex" }}>
+      <div
+        style={{
+          padding: "1em",
+          backgroundColor: "var(--foreground-color)",
+          display: "flex"
+        }}
+      >
         <Card.Asset
           name="Test"
           userData={{
