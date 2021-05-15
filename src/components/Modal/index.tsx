@@ -31,20 +31,16 @@ export default function Modal({
             initial={{
               opacity: 0,
               translateX: "-50%",
-              translateY: "-200%",
-              scale: 0.6
+              translateY: "-55%"
             }}
             animate={{
               opacity: 1,
               translateX: "-50%",
-              translateY: "-50%",
-              scale: 1
+              translateY: "-50%"
             }}
             exit={{
               opacity: 0,
-              translateX: "-50%",
-              translateY: "100%",
-              scale: 0.6
+              translateY: "-45%"
             }}
             className={[styles.Modal, className ?? ""]
               .filter((val) => val !== "")
