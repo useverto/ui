@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "prepare": "cd ../node_modules/react && yarn link && cd ../../test && yarn link react"
+    "start": "next start"
   },
   "dependencies": {
     "next": "10.1.3",
