@@ -198,7 +198,8 @@ export default function Home() {
           userData={{
             avatar: "https://th8ta.org/marton.jpeg",
             name: "Marton Lederer",
-            usertag: "martonlederer"
+            usertag: "martonlederer",
+            displaytag: "testtt"
           }}
           price={125}
           image="/art.png"

@@ -59,7 +59,7 @@ export default function Asset({
                   alt={userData.name}
                   draggable={false}
                 />
-                <span>@{user.displaytag || userData.usertag}</span>
+                <span>@{userData.displaytag || userData.usertag}</span>
               </a>
             </Link>
           </Popover>
