@@ -32,6 +32,7 @@ export default function ArtActivity({
             <Avatar
               avatar={user.avatar}
               usertag={user.usertag}
+              displaytag={user.displaytag}
               name={user.name}
               size="large"
             />
@@ -55,6 +56,7 @@ export default function ArtActivity({
                     <Avatar
                       avatar={user.avatar}
                       usertag={user.usertag}
+                      displaytag={user.displaytag}
                       name={user.name}
                       size="large"
                     />
@@ -65,7 +67,7 @@ export default function ArtActivity({
                       className={styles.Usertag}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      @{user.usertag}
+                      @{user.displaytag || user.usertag}
                     </a>
                   </Link>
                 </Popover>
@@ -80,6 +82,7 @@ export default function ArtActivity({
                     <Avatar
                       avatar={user.avatar}
                       usertag={user.usertag}
+                      displaytag={user.displaytag}
                       name={user.name}
                       size="large"
                     />
@@ -90,7 +93,7 @@ export default function ArtActivity({
                       className={styles.Usertag}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      @{user.usertag}
+                      @{user.displaytag || user.usertag}
                     </a>
                   </Link>
                 </Popover>

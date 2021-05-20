@@ -53,5 +53,6 @@ export const StatusTypes = ["success", "pending", "error"];
 export interface UserData {
   avatar: string;
   usertag: string;
+  displaytag?: string;
   name: string; // full name
 }

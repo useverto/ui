@@ -32,6 +32,7 @@ export default function SwapSell({
             <Avatar
               avatar={user.avatar}
               usertag={user.usertag}
+              displaytag={user.displaytag}
               name={user.name}
               size="large"
             />

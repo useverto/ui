@@ -46,6 +46,7 @@ export default function Asset({
               <Avatar
                 avatar={userData.avatar}
                 usertag={userData.usertag}
+                displaytag={userData.displaytag}
                 name={userData.name}
                 size="large"
               />
@@ -58,7 +59,7 @@ export default function Asset({
                   alt={userData.name}
                   draggable={false}
                 />
-                <span>@{userData.usertag}</span>
+                <span>@{user.displaytag || userData.usertag}</span>
               </a>
             </Link>
           </Popover>
