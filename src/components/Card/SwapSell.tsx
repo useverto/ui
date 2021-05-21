@@ -1,5 +1,4 @@
 import Card, { Props as BaseProps, UserData } from "./index";
-import { formatBalance } from "../../utils";
 import Spacer from "../Spacer";
 import Link from "next/link";
 import Popover from "../Popover";
@@ -38,7 +37,7 @@ export default function SwapSell({
             />
           }
         >
-          <Link href={`/u/${user.usertag}`}>
+          <Link href={`/@${user.usertag}`}>
             <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
               <img src={user.avatar} alt="user-avatar" draggable={false} />
             </a>
@@ -48,21 +47,21 @@ export default function SwapSell({
         <div className={styles.Data + " " + styles.SmallLabel}>
           <p>Selling</p>
           <h1>
-            {selling.quantity} {selling.ticker.toUpperCase()}
+            {selling.quantity.toLocaleString()} {selling.ticker.toUpperCase()}
           </h1>
         </div>
         <Spacer x={3.65} />
         <div className={styles.Data + " " + styles.SmallLabel}>
           <p>At the rate of</p>
           <h1>
-            {formatBalance(rate)} {"AR/" + selling.ticker.toUpperCase()}
+            {rate.toLocaleString()} {"AR/" + selling.ticker.toUpperCase()}
           </h1>
         </div>
       </div>
       <div className={styles.ItemInfo}>
         <div className={styles.Time}>
           <p>Filled</p>
-          <h1>{formatBalance(filled)} AR</h1>
+          <h1>{filled.toLocaleString()} AR</h1>
         </div>
         <Link href={`/orbit/order/${orderID}`}>
           <a className={styles.Icon + " " + styles.OrbitIcon}>

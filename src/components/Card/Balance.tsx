@@ -37,7 +37,7 @@ export default function Balance({
       </div>
       <div className={styles.ItemInfo}>
         <h1>
-          {balance} {ticker.toUpperCase()}
+          {balance.toLocaleString()} {ticker.toUpperCase()}
         </h1>
         <Link href={`/space/${id}`}>
           <a className={styles.Icon}>

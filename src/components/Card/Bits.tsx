@@ -1,5 +1,4 @@
 import Card, { Props as BaseProps } from "./index";
-import { formatBalance } from "../../utils";
 import styles from "./Card.module.sass";
 
 export default function TokenPortion({
@@ -24,8 +23,8 @@ export default function TokenPortion({
       </div>
       <div className={styles.ItemInfo}>
         <div className={styles.RightSection}>
-          <p>${priceUSD} USD</p>
-          <h1>{formatBalance(priceAr)} AR</h1>
+          <p>${priceUSD.toLocaleString()} USD</p>
+          <h1>{priceAr.toLocaleString()} AR</h1>
         </div>
       </div>
     </Card>

@@ -9,13 +9,6 @@ export function formatTime(time: Date): string {
   }).format(time);
 }
 
-export function formatBalance(val: number | string) {
-  val = String(val);
-  const full = val.split(".")[0];
-  if (full.length >= 10) return full;
-  return val.slice(0, 10);
-}
-
 export interface DefaultProps {
   className?: string;
   style?: CSSProperties;

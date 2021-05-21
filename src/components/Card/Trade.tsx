@@ -1,5 +1,5 @@
 import Card, { Props as BaseProps, Status, StatusTypes } from "./index";
-import { formatBalance, formatTime } from "../../utils";
+import { formatTime } from "../../utils";
 import { ArrowRightIcon, CloseIcon, ShareIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Tooltip from "../Tooltip";
@@ -29,11 +29,7 @@ export default function Trade({
         <span className={styles.OrderType}>{type}</span>
         <div className={styles.Data}>
           <h1 className={styles.FromTo}>
-            {((from.ticker.toUpperCase() === "AR" ||
-              from.ticker.toUpperCase() === "ETH") &&
-              formatBalance(from.amount)) ||
-              from.amount}{" "}
-            {from.ticker.toUpperCase()}
+            {from.amount.toLocaleString()} {from.ticker.toUpperCase()}
             <ArrowRightIcon />
             {to}
             <Tooltip

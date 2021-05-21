@@ -1,5 +1,4 @@
 import Card, { Props as BaseProps } from "./index";
-import { formatBalance } from "../../utils";
 import styles from "./Card.module.sass";
 
 export default function TradingPost({
@@ -35,11 +34,11 @@ export default function TradingPost({
       <div className={styles.ItemInfo}>
         <div className={styles.RightSection}>
           <p>Balance</p>
-          <h1>{formatBalance(balance)} AR</h1>
+          <h1>{balance.toLocaleString()} AR</h1>
         </div>
         <div className={styles.RightSection}>
           <p>Stake</p>
-          <h1>{vrtStake} VRT</h1>
+          <h1>{vrtStake.toLocaleString()} VRT</h1>
         </div>
       </div>
     </Card>

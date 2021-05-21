@@ -1,5 +1,5 @@
 import Card, { Props as BaseProps, UserData } from "./index";
-import { formatTime, formatBalance } from "../../utils";
+import { formatTime } from "../../utils";
 import { ShareIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Popover from "../Popover";
@@ -38,7 +38,7 @@ export default function ArtActivity({
             />
           }
         >
-          <Link href={`/u/${user.usertag}`}>
+          <Link href={`/@${user.usertag}`}>
             <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
               <img src={user.avatar} alt="user-avatar" draggable={false} />
             </a>
@@ -62,7 +62,7 @@ export default function ArtActivity({
                     />
                   }
                 >
-                  <Link href={`/u/${user.usertag}`}>
+                  <Link href={`/@${user.usertag}`}>
                     <a
                       className={styles.Usertag}
                       onClick={(e) => e.stopPropagation()}
@@ -88,7 +88,7 @@ export default function ArtActivity({
                     />
                   }
                 >
-                  <Link href={`/u/${user.usertag}`}>
+                  <Link href={`/@${user.usertag}`}>
                     <a
                       className={styles.Usertag}
                       onClick={(e) => e.stopPropagation()}
@@ -105,8 +105,8 @@ export default function ArtActivity({
       </div>
       <div className={styles.ItemInfo}>
         <div className={styles.Time}>
-          <p>${formatBalance(price.usd)} USD</p>
-          <h1>{formatBalance(price.ar)} AR</h1>
+          <p>${price.usd.toLocaleString()} USD</p>
+          <h1>{price.ar.toLocaleString()} AR</h1>
         </div>
         <Link href={`/orbit/order/${orderID}`}>
           <a className={styles.Icon}>

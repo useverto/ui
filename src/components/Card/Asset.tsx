@@ -52,7 +52,7 @@ export default function Asset({
               />
             }
           >
-            <Link href={`/u/${userData.usertag}`}>
+            <Link href={`/@${userData.usertag}`}>
               <a className={styles.UserData}>
                 <img
                   src={userData.avatar}
@@ -65,7 +65,7 @@ export default function Asset({
           </Popover>
         )}
         <p className={styles.Price + " " + (ticker ? styles.WithTicker : "")}>
-          ${price}
+          ${price.toLocaleString()}
           {!ticker && <span>/bit</span>}
         </p>
       </div>
