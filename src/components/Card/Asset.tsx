@@ -1,5 +1,7 @@
 import { Props as BaseProps, UserData } from "./index";
 import { useTheme } from "../Provider/theme";
+import { useEffect, useState } from "react";
+import { FileIcon, MusicIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
@@ -17,6 +19,7 @@ export default function Asset({
   onClick
 }: Props) {
   const theme = useTheme();
+  const { type, contentType } = useAssetType(image);
 
   return (
     <div
@@ -33,7 +36,23 @@ export default function Asset({
       onClick={onClick}
     >
       <div className={styles.Preview + " " + (ticker ? styles.Logo : "")}>
-        <img src={image} alt={name} draggable={false} />
+        {(type === "image" && (
+          <img src={image} alt={name} draggable={false} />
+        )) ||
+          (type === "video" && (
+            <video
+              controls={false}
+              // @ts-ignore
+              onMouseEnter={(e) => e.target.play()}
+              // @ts-ignore
+              onMouseLeave={(e) => e.target.pause()}
+              muted
+            >
+              <source src={image} type={contentType} />
+            </video>
+          )) ||
+          (type === "audio" && <MusicIcon />) ||
+          (type === "other" && <FileIcon />)}
       </div>
       <div className={styles.AssetInfo}>
         <h1 style={ticker ? { margin: 0 } : {}}>{name}</h1>
@@ -91,6 +110,27 @@ export const Clear = ({ image, className, style, onClick }: ClearProps) => (
     </div>
   </div>
 );
+
+const useAssetType = (src: string) => {
+  const [type, setType] = useState<"image" | "video" | "audio" | "other">(
+    "image"
+  );
+  const [contentType, setContentType] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const content_type = (await fetch(src)).headers.get("Content-Type");
+      setContentType(content_type);
+
+      if (content_type.match(/^image\//)) setType("image");
+      else if (content_type.match(/^video\//)) setType("video");
+      else if (content_type.match(/^audio\//)) setType("audio");
+      else setType("other");
+    })();
+  }, [src]);
+
+  return { type, contentType };
+};
 
 interface Props extends BaseProps {
   name: string;

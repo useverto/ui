@@ -260,7 +260,7 @@ $tradingPostStatusSize: 8px
     border-top-left-radius: variables.$small-items-radius
     border-top-right-radius: variables.$small-items-radius
 
-    img
+    img, video, svg
       position: absolute
       max-width: 100%
       max-height: 100%
@@ -268,6 +268,12 @@ $tradingPostStatusSize: 8px
       left: 50%
       user-select: none
       transform: translate(-50%, -50%)
+
+    svg
+      color: variables.$foreground-reverse-color
+      display: block
+      width: 40%
+      height: 40%
 
     &.Logo img
       max-height: 80%
@@ -335,7 +341,7 @@ $tradingPostStatusSize: 8px
     background-color: variables.$background-color
 
     .AssetInfo
-      h1, .UserData span, .Price
+      h1, .UserData span, .Price, .Preview svg
         color: variables.$foreground-color
 
       .AssetTicker
@@ -345,7 +351,7 @@ $tradingPostStatusSize: 8px
     border: 2px solid rgba(156, 160, 177, .18)
     background-color: variables.$background-color
 
-    .Price, h1, .UserData span
+    .Price, h1, .UserData span, .Preview svg
       color: variables.$foreground-color
 
     &.ReverseAsset
