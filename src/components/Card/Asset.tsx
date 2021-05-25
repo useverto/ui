@@ -36,7 +36,7 @@ export default function Asset({
       onClick={onClick}
     >
       <div className={styles.Preview + " " + (ticker ? styles.Logo : "")}>
-        {(type === "image" && (
+        {((ticker || type === "image") && (
           <img src={image} alt={name} draggable={false} />
         )) ||
           (type === "video" && (
@@ -92,24 +92,44 @@ export default function Asset({
   );
 }
 
-export const Clear = ({ image, className, style, onClick }: ClearProps) => (
-  <div
-    className={[
-      "VertoAssetCard",
-      styles.Asset,
-      styles.ClearAsset,
-      className ?? ""
-    ]
-      .filter((val) => val !== "")
-      .join(" ")}
-    style={style}
-    onClick={onClick}
-  >
-    <div className={styles.Preview}>
-      <img src={image} alt="clear-asset" draggable={false} />
+export const Clear = ({ image, className, style, onClick }: ClearProps) => {
+  const { type, contentType } = useAssetType(image);
+
+  return (
+    <div
+      className={[
+        "VertoAssetCard",
+        styles.Asset,
+        styles.ClearAsset,
+        className ?? ""
+      ]
+        .filter((val) => val !== "")
+        .join(" ")}
+      style={style}
+      onClick={onClick}
+    >
+      <div className={styles.Preview}>
+        {(type === "image" && (
+          <img src={image} alt="art" draggable={false} />
+        )) ||
+          (type === "video" && (
+            <video
+              controls={false}
+              // @ts-ignore
+              onMouseEnter={(e) => e.target.play()}
+              // @ts-ignore
+              onMouseLeave={(e) => e.target.pause()}
+              muted
+            >
+              <source src={image} type={contentType} />
+            </video>
+          )) ||
+          (type === "audio" && <MusicIcon />) ||
+          (type === "other" && <FileIcon />)}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const useAssetType = (src: string) => {
   const [type, setType] = useState<"image" | "video" | "audio" | "other">(
