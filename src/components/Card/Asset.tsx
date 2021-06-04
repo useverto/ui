@@ -72,7 +72,10 @@ export default function Asset({
             }
           >
             <Link href={`/@${userData.usertag}`}>
-              <a className={styles.UserData}>
+              <a
+                className={styles.UserData}
+                onClick={(e) => e.stopPropagation()}
+              >
                 <img
                   src={userData.avatar}
                   alt={userData.name}
