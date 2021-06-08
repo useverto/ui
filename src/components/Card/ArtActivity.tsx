@@ -48,7 +48,7 @@ export default function ArtActivity({
           <h1 className={styles.Action}>
             {(type === "list" && (
               <>
-                Collectable listed by{" "}
+                Collectible listed by{" "}
                 <Popover
                   mode="hover"
                   className={styles.UserPopover}
