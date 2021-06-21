@@ -223,7 +223,7 @@ export default function Home() {
         }}
       >
         <Card.Asset
-          name="Test trest test tst"
+          name="ArCoNFT-01 Edition 63"
           userData={{
             avatar: "https://th8ta.org/marton.jpeg",
             name: "Marton Lederer",

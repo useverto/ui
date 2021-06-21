@@ -24,9 +24,9 @@ export default function Asset({
   function formatName(name: string) {
     if (name.length <= 12) return name;
     return (
-      name.substring(0, 6) +
+      name.substring(0, 5) +
       "..." +
-      name.substring(name.length - 6, name.length)
+      name.substring(name.length - 2, name.length)
     );
   }
 
