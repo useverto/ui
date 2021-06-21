@@ -21,6 +21,15 @@ export default function Asset({
   const theme = useTheme();
   const { type, contentType } = useAssetType(image);
 
+  function formatName(name: string) {
+    if (name.length <= 12) return name;
+    return (
+      name.substring(0, 6) +
+      "..." +
+      name.substring(name.length - 6, name.length)
+    );
+  }
+
   return (
     <div
       className={[
@@ -55,7 +64,7 @@ export default function Asset({
           (type === "other" && <FileIcon />)}
       </div>
       <div className={styles.AssetInfo}>
-        <h1 className={ticker ? "" : styles.ArtName}>{name}</h1>
+        <h1 className={ticker ? "" : styles.ArtName}>{formatName(name)}</h1>
         {ticker && <span className={styles.AssetTicker}>{ticker}</span>}
         {userData && (
           <Popover
