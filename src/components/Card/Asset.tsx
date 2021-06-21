@@ -55,7 +55,7 @@ export default function Asset({
           (type === "other" && <FileIcon />)}
       </div>
       <div className={styles.AssetInfo}>
-        <h1 style={ticker ? { margin: 0 } : {}}>{name}</h1>
+        <h1 className={ticker ? "" : styles.ArtName}>{name}</h1>
         {ticker && <span className={styles.AssetTicker}>{ticker}</span>}
         {userData && (
           <Popover

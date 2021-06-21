@@ -294,9 +294,14 @@ $tradingPostStatusSize: 8px
       font-size: 1.9em
       color: variables.$foreground-reverse-color
       margin: 0
-        bottom: $standardPadding / 4
       font-weight: 600
       line-height: 1em
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
+
+      &.ArtName
+        margin-bottom: $standardPadding / 4
 
     .AssetTicker
       font-size: variables.$smaller-font-size
