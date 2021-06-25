@@ -1,5 +1,6 @@
 import Card, { Props as BaseProps, UserData } from "./index";
 import { formatTime } from "../../utils";
+import { useMediaPredicate } from "react-media-hook";
 import { ShareIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Popover from "../Popover";
@@ -16,6 +17,8 @@ export default function ArtActivity({
   price,
   orderID
 }: Props) {
+  const notMobile = useMediaPredicate("(min-width: 720px)");
+
   return (
     <Card
       className={[styles.Item, className ?? ""]
@@ -27,7 +30,7 @@ export default function ArtActivity({
       <div className={styles.ItemData}>
         <Popover
           mode="hover"
-          className={styles.UserPopover}
+          className={styles.UserPopover + " " + styles.HideMobile}
           content={
             <Avatar
               avatar={user.avatar}
@@ -100,13 +103,24 @@ export default function ArtActivity({
               </>
             )}
           </h1>
-          <p>{formatTime(timestamp)}</p>
+          <p>{formatTime(timestamp, !notMobile)}</p>
         </div>
       </div>
       <div className={styles.ItemInfo}>
         <div className={styles.Time}>
-          <p>${price.usd.toLocaleString()} USD</p>
-          <h1>{price.ar.toLocaleString()} AR</h1>
+          <p>
+            $
+            {price.usd.toLocaleString(undefined, {
+              maximumFractionDigits: !notMobile ? 1 : undefined
+            })}{" "}
+            USD
+          </p>
+          <h1>
+            {price.ar.toLocaleString(undefined, {
+              maximumFractionDigits: !notMobile ? 1 : undefined
+            })}{" "}
+            AR
+          </h1>
         </div>
         <Link href={`/orbit/order/${orderID}`}>
           <a className={styles.Icon}>

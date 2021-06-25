@@ -171,13 +171,7 @@ export default function Home() {
         vrtStake={843050}
       />
       <Spacer y={1} />
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between"
-        }}
-      >
+      <div className="flex-container">
         <Card.Bits
           quantity={23}
           priceAr={12.65}

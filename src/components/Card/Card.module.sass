@@ -40,6 +40,9 @@ $standardPadding: 1.03em
   border-radius: variables.$big-items-radius
   overflow: visible
 
+  @media screen and (max-width: variables.$mobile-screen)
+    padding: .85em ($standardPadding + .3em) / 3 * 2
+
   .ItemData
     display: flex
     align-items: center
@@ -146,6 +149,10 @@ $standardPadding: 1.03em
         display: block
         text-align: right
 
+      h1
+        @media screen and (max-width: variables.$mobile-screen)
+          font-size: .9em
+
       p
         margin-bottom: $firstTitleMargin
 
@@ -173,16 +180,27 @@ $standardPadding: 1.03em
       text-decoration: none
       transition: all .23s ease-in-out
 
+      @media screen and (max-width: variables.$mobile-screen)
+        margin-left: $iconLeftMargin / 2
+
       &.SmallerSpace
-        margin-left: $iconLeftMargin / 3 * 2
+        $smallerSpaceMarginLeft: $iconLeftMargin / 3 * 2
+        margin-left: $smallerSpaceMarginLeft
+
+        @media screen and (max-width: variables.$mobile-screen)
+          margin-left: $smallerSpaceMarginLeft / 2
 
       &.OrbitIcon
+        $orbitIconMarginLeft: $iconLeftMargin + ($iconAddition * 2)
         font-size: variables.$normal-font-size
         width: variables.$normal-font-size
         height: variables.$normal-font-size
         margin:
-          left: $iconLeftMargin + ($iconAddition * 2)
+          left: $orbitIconMarginLeft
           right: $iconAddition
+
+        @media screen and (max-width: variables.$mobile-screen)
+          margin-left: $orbitIconMarginLeft / 2
 
       &:hover
         color: variables.$foreground-color
@@ -393,3 +411,7 @@ $tradingPostStatusSize: 8px
     h1
       font-size: variables.$normal-font-size + .25em
       color: variables.$foreground-color !important
+
+.HideMobile
+  @media screen and (max-width: variables.$mobile-screen)
+    display: none

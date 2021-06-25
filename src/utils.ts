@@ -1,10 +1,10 @@
 import { CSSProperties } from "react";
 import { FloatingPosition } from "./types";
 
-export function formatTime(time: Date): string {
+export function formatTime(time: Date, mobile = false): string {
   return new Intl.DateTimeFormat("en", {
     // @ts-ignore
-    timeStyle: "medium",
+    timeStyle: mobile ? undefined : "medium",
     dateStyle: "short"
   }).format(time);
 }

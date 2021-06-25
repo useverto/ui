@@ -30,6 +30,7 @@
     "@iconicicons/react": "^1.1.1",
     "framer-motion": "^3.1.1",
     "nanoid": "^3.1.22",
+    "react-media-hook": "^0.4.9",
     "styled-components": "^5.2.1"
   },
   "peerDependencies": {

@@ -16,6 +16,9 @@ $modalZIndex: 10000
   z-index: $modalZIndex
   transform: translate(-50%, -50%)
 
+  @media screen and (max-width: variables.$mobile-screen)
+    width: 90vw
+
   .Close
     position: absolute
     top: $topPadding
