@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { FloatingPosition } from "./types";
 
 export function formatTime(time: Date, mobile = false): string {
@@ -22,3 +22,17 @@ export const getCssPosition = (position: FloatingPosition) =>
     : position === "left"
     ? "right"
     : "left";
+
+export type AssetType = "image" | "video" | "audio" | "other";
+export type AssetTypeInfo = { type: AssetType; contentType: string };
+
+export async function getAssetType(src: string): Promise<AssetTypeInfo> {
+  const contentType = (await fetch(src)).headers.get("Content-Type");
+  let type: AssetType = "other";
+
+  if (contentType.match(/^image\//)) type = "image";
+  else if (contentType.match(/^video\//)) type = "video";
+  else if (contentType.match(/^audio\//)) type = "audio";
+
+  return { type, contentType };
+}

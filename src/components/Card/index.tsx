@@ -7,6 +7,7 @@ import Trade from "./Trade";
 import Balance from "./Balance";
 import OrderStep from "./OrderStep";
 import TradingPost from "./TradingPost";
+import Collection from "./Collection";
 import Asset, { Clear } from "./Asset";
 import Bits from "./Bits";
 import styles from "./Card.module.sass";
@@ -42,6 +43,7 @@ Card.TradingPost = TradingPost;
 Card.Asset = Asset;
 Card.AssetClear = Clear;
 Card.Bits = Bits;
+Card.Collection = Collection;
 
 export interface Props extends DefaultProps {
   onClick?: MouseEventHandler<HTMLDivElement>;

@@ -2,6 +2,7 @@ import { Props as BaseProps, UserData } from "./index";
 import { useTheme } from "../Provider/theme";
 import { useEffect, useState } from "react";
 import { FileIcon, MusicIcon } from "@iconicicons/react";
+import { AssetType, getAssetType } from "../../utils";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
@@ -144,21 +145,14 @@ export const Clear = ({ image, className, style, onClick }: ClearProps) => {
 };
 
 const useAssetType = (src: string) => {
-  const [type, setType] = useState<"image" | "video" | "audio" | "other">(
-    "image"
-  );
+  const [type, setType] = useState<AssetType>("image");
   const [contentType, setContentType] = useState("");
 
   useEffect(() => {
-    (async () => {
-      const content_type = (await fetch(src)).headers.get("Content-Type");
-      setContentType(content_type);
-
-      if (content_type.match(/^image\//)) setType("image");
-      else if (content_type.match(/^video\//)) setType("video");
-      else if (content_type.match(/^audio\//)) setType("audio");
-      else setType("other");
-    })();
+    getAssetType(src).then((res) => {
+      setContentType(res.contentType);
+      setType(res.type);
+    });
   }, [src]);
 
   return { type, contentType };

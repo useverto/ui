@@ -297,10 +297,30 @@ $tradingPostStatusSize: 8px
       width: 40%
       height: 40%
 
-    &.Logo img
+    &.Logo img, &.CollectionItem img
       max-height: 80%
       max-width: 80%
       border-radius: variables.$small-items-radius
+
+    &.CollectionItem img
+      &.SpotLight
+        max-height: 72%
+        max-width: 72%
+        z-index: 10
+        box-shadow: variables.$lighter-shadow
+
+      &.SideItem
+        $sideSpace: 10px
+        max-height: 65%
+        max-width: 65%
+        transform: translateY(-50%)
+
+        &:first-child
+          left: $sideSpace
+
+        &:last-child
+          right: $sideSpace
+          left: unset
 
   &.ClearAsset .Preview
     border-radius: variables.$small-items-radius

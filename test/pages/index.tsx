@@ -186,6 +186,20 @@ export default function Home() {
         />
       </div>
       <Spacer y={1} />
+      <Card.Collection
+        name="ArConf"
+        images={[
+          "https://arweave.net/pMdQXi8saSApwMG2KoT8SDeGDVkNi8N65MLFY0MyOK8",
+          "/art.png",
+          "https://s4azauhk5umrkvprhkuknbxg2f5j2whgrv7euch6d7mrsgxlfosq.arweave.net/lwGQUOrtGRVV8Tqopobm0XqdWOaNfkoI_h_ZGRrrK6U"
+        ]}
+        userData={{
+          avatar: "https://th8ta.org/marton.jpeg",
+          name: "Marton Lederer",
+          usertag: "martonlederer"
+        }}
+      />
+      <Spacer y={1} />
       <div style={{ display: "flex" }}>
         <Card.Asset
           name="Test"
