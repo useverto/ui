@@ -17,39 +17,28 @@ export default function Asset({
   style,
   onClick
 }: Props) {
-  // require minimum 3 items in a collection
-  const [itemIndexes, setItemIndexes] = useState<[number, number, number]>([
-    1,
-    0,
-    2
-  ]);
+  const [spotlightIndex, setSpotlightIndex] = useState(1);
   const [itemTypes, setItemTypes] = useState<AssetTypeInfo[]>([]);
   const theme = useTheme();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const updateImages = setInterval(
-      () =>
-        setItemIndexes((val) => {
-          const newPrimary = val[1] + 1 >= images.length ? 0 : val[1] + 1;
-          const pickRandom = (curr: number): number => {
-            const random = Math.floor(Math.random() * images.length);
-
-            if (random === curr || random === newPrimary)
-              return pickRandom(curr);
-            return random;
-          };
-
-          return [pickRandom(val[0]), newPrimary, pickRandom(val[2])];
-        }),
-      2000
+    const updateMs = 3000;
+    const progressInterval = setInterval(
+      () => setProgress((val) => val + 1),
+      updateMs / 100
     );
+    const updateImages = setInterval(() => {
+      setSpotlightIndex((val) => (val + 1 >= images.length ? 0 : val + 1));
+      setProgress(0);
+    }, updateMs);
 
     return () => clearInterval(updateImages);
   }, [images]);
 
   useEffect(() => {
     (async () => {
-      for (let i = 0; i < itemIndexes.length; i++) {
+      for (let i = 0; i < images.length; i++) {
         const assetType = await getAssetType(images[i]);
 
         setItemTypes((val) => {
@@ -58,7 +47,7 @@ export default function Asset({
         });
       }
     })();
-  }, [itemIndexes]);
+  }, [images]);
 
   function formatName(name: string) {
     if (name.length <= 12) return name;
@@ -83,23 +72,31 @@ export default function Asset({
       onClick={onClick}
     >
       <div className={styles.Preview + " " + styles.CollectionItem}>
-        {itemTypes && (
-          <>
-            {itemTypes[0] && (
-              <Image type={itemTypes[0]} src={images[itemIndexes[0]]} />
-            )}
-            {itemTypes[1] && (
-              <Image
-                type={itemTypes[1]}
-                src={images[itemIndexes[1]]}
-                spotlight
-              />
-            )}
-            {itemTypes[2] && (
-              <Image type={itemTypes[2]} src={images[itemIndexes[2]]} />
-            )}
-          </>
-        )}
+        {itemTypes.length > 0 &&
+          (() => {
+            const previous =
+              spotlightIndex === 0 ? images.length - 1 : spotlightIndex - 1;
+            const next =
+              spotlightIndex === images.length - 1 ? 0 : spotlightIndex + 1;
+
+            return (
+              <>
+                {itemTypes[previous] && (
+                  <Image type={itemTypes[previous]} src={images[previous]} />
+                )}
+                {itemTypes[spotlightIndex] && (
+                  <Image
+                    type={itemTypes[spotlightIndex]}
+                    src={images[spotlightIndex]}
+                    spotlight
+                  />
+                )}
+                {itemTypes[next] && (
+                  <Image type={itemTypes[next]} src={images[next]} />
+                )}
+              </>
+            );
+          })()}
       </div>
       <div className={styles.AssetInfo}>
         <h1 className={styles.ArtName}>{formatName(name)}</h1>
@@ -132,7 +129,15 @@ export default function Asset({
             </Link>
           </Popover>
         )}
-        <p className={styles.Price}>{images.length} items</p>
+        <div className={styles.Price + " " + styles.CollectionItems}>
+          {images.length} items
+          <div className={styles.SwitchStatus}>
+            <span
+              className={styles.Progress}
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

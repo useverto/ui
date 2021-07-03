@@ -383,6 +383,29 @@ $tradingPostStatusSize: 8px
         font-size: .62em
         margin-left: .14em
 
+      &.CollectionItems
+        display: flex
+        align-items: center
+        justify-content: space-between
+
+        .SwitchStatus
+          $switchRadius: 3px
+          position: relative
+          width: 34px
+          height: 6px
+          border-radius: $switchRadius
+          overflow: hidden
+          background-color: rgba(#fff, .5)
+          transition: all .23s ease-in-out
+
+          .Progress
+            position: absolute
+            top: 0
+            left: 0
+            bottom: 0
+            border-radius: $switchRadius
+            background-color: variables.$foreground-reverse-color
+
   &.ReverseAsset
     background-color: variables.$background-color
 
