@@ -33,7 +33,10 @@ export default function Asset({
       setProgress(0);
     }, updateMs);
 
-    return () => clearInterval(updateImages);
+    return () => {
+      clearInterval(updateImages);
+      clearInterval(progressInterval);
+    };
   }, [images]);
 
   useEffect(() => {
@@ -82,17 +85,25 @@ export default function Asset({
             return (
               <>
                 {itemTypes[previous] && (
-                  <Image type={itemTypes[previous]} src={images[previous]} />
+                  <Image
+                    type={itemTypes[previous]}
+                    src={images[previous]}
+                    pos="left"
+                  />
                 )}
                 {itemTypes[spotlightIndex] && (
                   <Image
                     type={itemTypes[spotlightIndex]}
                     src={images[spotlightIndex]}
-                    spotlight
+                    pos="middle"
                   />
                 )}
                 {itemTypes[next] && (
-                  <Image type={itemTypes[next]} src={images[next]} />
+                  <Image
+                    type={itemTypes[next]}
+                    src={images[next]}
+                    pos="right"
+                  />
                 )}
               </>
             );
@@ -149,51 +160,100 @@ interface Props extends BaseProps {
   userData?: UserData;
 }
 
-const SwitchAnimation = {
-  initial: { opacity: 0.4 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0.4 }
+const SwitchAnimation = (pos: "left" | "right" | "middle") => {
+  const spotlight = pos === "middle";
+  const transform = spotlight
+    ? { translateY: "-50%", translateX: "-50%" }
+    : { translateY: "-50%" };
+
+  return {
+    initial: {
+      opacity: 0,
+      x: pos === "left" ? 0 : 40,
+      left: pos === "left" ? 20 : undefined,
+      ...transform
+    },
+    animate: {
+      opacity: 1,
+      x: pos === "left" ? 0 : 0,
+      left: pos === "left" ? 10 : undefined,
+      ...transform
+    },
+    exit: {
+      opacity: 0,
+      x: pos === "left" ? 0 : -40,
+      left: pos === "left" ? 20 : undefined,
+      ...transform
+    },
+    transition: {
+      x: { type: "spring", stiffness: 200, damping: 50 },
+      left: { type: "spring", stiffness: 200, damping: 50 },
+      opacity: { duration: 0.16 }
+    }
+  };
 };
 const Image = ({
   type: { type, contentType },
   src,
-  spotlight = false
+  pos
 }: {
   type: AssetTypeInfo;
   src: string;
-  spotlight?: boolean;
-}) => (
-  <AnimatePresence>
-    {(type === "image" && (
-      <motion.img
-        src={src}
-        alt=""
-        draggable={false}
-        className={spotlight ? styles.SpotLight : styles.SideItem}
-        {...SwitchAnimation}
-        key={src}
-      />
-    )) ||
-      (type === "video" && (
-        <motion.video
-          controls={false}
-          // @ts-ignore
-          onMouseEnter={(e) => e.target.play()}
-          // @ts-ignore
-          onMouseLeave={(e) => e.target.pause()}
-          muted
+  pos: "left" | "right" | "middle";
+}) => {
+  const spotlight = pos === "middle";
+
+  return (
+    <AnimatePresence>
+      {(type === "image" && (
+        <motion.img
+          src={src}
+          alt=""
+          draggable={false}
           className={spotlight ? styles.SpotLight : styles.SideItem}
-          {...SwitchAnimation}
+          {...SwitchAnimation(pos)}
           key={src}
-        >
-          <source src={src} type={contentType} />
-        </motion.video>
+        />
       )) ||
-      (type === "audio" && (
-        <MusicIcon className={spotlight ? styles.SpotLight : styles.SideItem} />
-      )) ||
-      (type === "other" && (
-        <FileIcon className={spotlight ? styles.SpotLight : styles.SideItem} />
-      ))}
-  </AnimatePresence>
-);
+        (type === "video" && (
+          <motion.video
+            controls={false}
+            // @ts-ignore
+            onMouseEnter={(e) => e.target.play()}
+            // @ts-ignore
+            onMouseLeave={(e) => e.target.pause()}
+            muted
+            className={spotlight ? styles.SpotLight : styles.SideItem}
+            {...SwitchAnimation(pos)}
+            key={src}
+          >
+            <source src={src} type={contentType} />
+          </motion.video>
+        )) ||
+        (type === "audio" && (
+          <motion.div
+            className={
+              styles.SvgWrapper + " " + spotlight
+                ? styles.SpotLight
+                : styles.SideItem
+            }
+            {...SwitchAnimation(pos)}
+          >
+            <MusicIcon />
+          </motion.div>
+        )) ||
+        (type === "other" && (
+          <motion.div
+            className={
+              styles.SvgWrapper + " " + spotlight
+                ? styles.SpotLight
+                : styles.SideItem
+            }
+            {...SwitchAnimation(pos)}
+          >
+            <FileIcon />
+          </motion.div>
+        ))}
+    </AnimatePresence>
+  );
+};
