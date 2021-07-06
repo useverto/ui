@@ -24,12 +24,13 @@ export default function Asset({
 
   useEffect(() => {
     const updateMs = 3000;
+    const imagesToShow = 4;
     const progressInterval = setInterval(
       () => setProgress((val) => val + 1),
       updateMs / 100
     );
     const updateImages = setInterval(() => {
-      setSpotlightIndex((val) => (val + 1 >= images.length ? 0 : val + 1));
+      setSpotlightIndex((val) => (val + 1 >= imagesToShow - 1 ? 0 : val + 1));
       setProgress(0);
     }, updateMs);
 
