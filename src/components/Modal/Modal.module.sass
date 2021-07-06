@@ -1,6 +1,5 @@
 @use "../../styles/variables"
 
-$modalZIndex: 10000
 
 .Modal
   $sidePadding: 3em
@@ -13,7 +12,7 @@ $modalZIndex: 10000
   padding: $topPadding $sidePadding 2.5em
   top: 50%
   left: 50%
-  z-index: $modalZIndex
+  z-index: variables.$modalZIndex
   transform: translate(-50%, -50%)
 
   @media screen and (max-width: variables.$mobile-screen)
@@ -47,7 +46,7 @@ $modalZIndex: 10000
   right: 0
   bottom: 0
   background-color: rgba(0, 0, 0, .8)
-  z-index: $modalZIndex - 1
+  z-index: variables.$modalZIndex - 1
 
 .ModalTitle
   font-size: variables.$normal-font-size + .27em
