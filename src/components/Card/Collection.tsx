@@ -3,13 +3,12 @@ import { useTheme } from "../Provider/theme";
 import { useEffect, useState } from "react";
 import { AssetTypeInfo, getAssetType } from "../../utils";
 import { FileIcon, MusicIcon } from "@iconicicons/react";
-import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
 import styles from "./Card.module.sass";
 
-export default function Asset({
+export default function Collection({
   name,
   images,
   userData,
@@ -17,41 +16,21 @@ export default function Asset({
   style,
   onClick
 }: Props) {
-  const [spotlightIndex, setSpotlightIndex] = useState(1);
   const [itemTypes, setItemTypes] = useState<AssetTypeInfo[]>([]);
   const theme = useTheme();
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const updateMs = 3000;
-    const imagesToShow = 4;
-    const progressInterval = setInterval(
-      () => setProgress((val) => val + 1),
-      updateMs / 100
-    );
-    const updateImages = setInterval(() => {
-      setSpotlightIndex((val) => (val + 1 >= imagesToShow - 1 ? 0 : val + 1));
-      setProgress(0);
-    }, updateMs);
-
-    return () => {
-      clearInterval(updateImages);
-      clearInterval(progressInterval);
-    };
-  }, [images]);
 
   useEffect(() => {
     (async () => {
-      for (let i = 0; i < images.length; i++) {
-        const assetType = await getAssetType(images[i]);
+      let types: AssetTypeInfo[] = [];
 
-        setItemTypes((val) => {
-          val[i] = assetType;
-          return val;
-        });
+      for (let i = 0; i < 3; i++) {
+        const assetType = await getAssetType(images[i]);
+        types.push(assetType);
       }
+
+      setItemTypes(types);
     })();
-  }, [images]);
+  }, []);
 
   function formatName(name: string) {
     if (name.length <= 12) return name;
@@ -61,6 +40,18 @@ export default function Asset({
       name.substring(name.length - 2, name.length)
     );
   }
+
+  const [previewHovered, setPreviewHovered] = useState(false);
+  const [zoomPreview, setZoomPreview] = useState(false);
+
+  useEffect(() => {
+    if (!previewHovered) return;
+    const handle = setTimeout(() => {
+      if (previewHovered) setZoomPreview(true);
+    }, 1050);
+
+    return () => clearTimeout(handle);
+  }, [previewHovered]);
 
   return (
     <div
@@ -72,43 +63,31 @@ export default function Asset({
       ]
         .filter((val) => val !== "")
         .join(" ")}
-      style={style}
+      style={{ zIndex: zoomPreview ? 10 : undefined, ...style }}
       onClick={onClick}
     >
-      <div className={styles.Preview + " " + styles.CollectionItem}>
-        {itemTypes.length > 0 &&
-          (() => {
-            const previous =
-              spotlightIndex === 0 ? images.length - 1 : spotlightIndex - 1;
-            const next =
-              spotlightIndex === images.length - 1 ? 0 : spotlightIndex + 1;
-
-            return (
-              <>
-                {itemTypes[previous] && (
-                  <Image
-                    type={itemTypes[previous]}
-                    src={images[previous]}
-                    pos="left"
-                  />
-                )}
-                {itemTypes[spotlightIndex] && (
-                  <Image
-                    type={itemTypes[spotlightIndex]}
-                    src={images[spotlightIndex]}
-                    pos="middle"
-                  />
-                )}
-                {itemTypes[next] && (
-                  <Image
-                    type={itemTypes[next]}
-                    src={images[next]}
-                    pos="right"
-                  />
-                )}
-              </>
-            );
-          })()}
+      <div
+        className={
+          styles.Preview +
+          " " +
+          styles.CollectionItem +
+          " " +
+          (zoomPreview ? styles.MouseOver : "")
+        }
+        style={{ overflow: "visible" }}
+        onMouseEnter={() => setPreviewHovered(true)}
+        onMouseLeave={() => {
+          setZoomPreview(false);
+          setPreviewHovered(false);
+        }}
+      >
+        {itemTypes.length >= 3 && (
+          <>
+            <Image type={itemTypes[0]} src={images[0]} pos="left" />
+            <Image type={itemTypes[1]} src={images[1]} pos="middle" />
+            <Image type={itemTypes[2]} src={images[2]} pos="right" />
+          </>
+        )}
       </div>
       <div className={styles.AssetInfo}>
         <h1 className={styles.ArtName}>{formatName(name)}</h1>
@@ -141,15 +120,7 @@ export default function Asset({
             </Link>
           </Popover>
         )}
-        <div className={styles.Price + " " + styles.CollectionItems}>
-          {images.length} items
-          <div className={styles.SwitchStatus}>
-            <span
-              className={styles.Progress}
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
+        <div className={styles.Price}>{images.length} items</div>
       </div>
     </div>
   );
@@ -161,38 +132,6 @@ interface Props extends BaseProps {
   userData?: UserData;
 }
 
-const SwitchAnimation = (pos: "left" | "right" | "middle") => {
-  const spotlight = pos === "middle";
-  const transform = spotlight
-    ? { translateY: "-50%", translateX: "-50%" }
-    : { translateY: "-50%" };
-
-  return {
-    initial: {
-      opacity: 0,
-      x: pos === "left" ? 0 : 40,
-      left: pos === "left" ? 20 : undefined,
-      ...transform
-    },
-    animate: {
-      opacity: 1,
-      x: pos === "left" ? 0 : 0,
-      left: pos === "left" ? 10 : undefined,
-      ...transform
-    },
-    exit: {
-      opacity: 0,
-      x: pos === "left" ? 0 : -40,
-      left: pos === "left" ? 20 : undefined,
-      ...transform
-    },
-    transition: {
-      x: { type: "spring", stiffness: 200, damping: 50 },
-      left: { type: "spring", stiffness: 200, damping: 50 },
-      opacity: { duration: 0.16 }
-    }
-  };
-};
 const Image = ({
   type: { type, contentType },
   src,
@@ -205,19 +144,17 @@ const Image = ({
   const spotlight = pos === "middle";
 
   return (
-    <AnimatePresence>
+    <>
       {(type === "image" && (
-        <motion.img
+        <img
           src={src}
           alt=""
           draggable={false}
           className={spotlight ? styles.SpotLight : styles.SideItem}
-          {...SwitchAnimation(pos)}
-          key={src}
         />
       )) ||
         (type === "video" && (
-          <motion.video
+          <video
             controls={false}
             // @ts-ignore
             onMouseEnter={(e) => e.target.play()}
@@ -225,36 +162,32 @@ const Image = ({
             onMouseLeave={(e) => e.target.pause()}
             muted
             className={spotlight ? styles.SpotLight : styles.SideItem}
-            {...SwitchAnimation(pos)}
-            key={src}
           >
             <source src={src} type={contentType} />
-          </motion.video>
+          </video>
         )) ||
         (type === "audio" && (
-          <motion.div
+          <div
             className={
               styles.SvgWrapper + " " + spotlight
                 ? styles.SpotLight
                 : styles.SideItem
             }
-            {...SwitchAnimation(pos)}
           >
             <MusicIcon />
-          </motion.div>
+          </div>
         )) ||
         (type === "other" && (
-          <motion.div
+          <div
             className={
               styles.SvgWrapper + " " + spotlight
                 ? styles.SpotLight
                 : styles.SideItem
             }
-            {...SwitchAnimation(pos)}
           >
             <FileIcon />
-          </motion.div>
+          </div>
         ))}
-    </AnimatePresence>
+    </>
   );
 };

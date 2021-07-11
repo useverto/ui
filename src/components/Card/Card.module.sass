@@ -308,8 +308,11 @@ $tradingPostStatusSize: 8px
       border-radius: variables.$small-items-radius
 
     &.CollectionItem
+      $sideItemBaseTransform: translateY(-50%)
+      transition: all .19s ease-in-out
+
       img, video, .SvgWrapper
-        transition: all .07s ease-in-out
+        transition: all .19s ease-in-out
 
         &.SpotLight
           max-height: 72%
@@ -321,7 +324,7 @@ $tradingPostStatusSize: 8px
           $sideSpace: 10px
           max-height: 65%
           max-width: 65%
-          transform: translateY(-50%)
+          transform: $sideItemBaseTransform
 
           &:first-child
             left: $sideSpace
@@ -329,6 +332,17 @@ $tradingPostStatusSize: 8px
           &:last-child
             right: $sideSpace
             left: unset
+
+      &.MouseOver
+        transform: scale(1.1)
+
+        img, video, .SvgWrapper
+          &.SideItem
+            &:first-child
+              transform: $sideItemBaseTransform translateX(-80%)
+
+            &:last-child
+              transform: $sideItemBaseTransform translateX(80%)
 
   &.ClearAsset .Preview
     border-radius: variables.$small-items-radius
@@ -390,29 +404,6 @@ $tradingPostStatusSize: 8px
       span
         font-size: .62em
         margin-left: .14em
-
-      &.CollectionItems
-        display: flex
-        align-items: center
-        justify-content: space-between
-
-        .SwitchStatus
-          $switchRadius: 3px
-          position: relative
-          width: 34px
-          height: 6px
-          border-radius: $switchRadius
-          overflow: hidden
-          background-color: rgba(#fff, .5)
-          transition: all .23s ease-in-out
-
-          .Progress
-            position: absolute
-            top: 0
-            left: 0
-            bottom: 0
-            border-radius: $switchRadius
-            background-color: variables.$foreground-reverse-color
 
   &.ReverseAsset
     background-color: variables.$background-color
