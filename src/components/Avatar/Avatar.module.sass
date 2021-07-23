@@ -37,14 +37,16 @@
     line-height: 1em
 
   h1
-    display: flex
-    align-items: center
     color: variables.$foreground-color
     font-weight: 500
     font-size: $avatarWidth - variables.$tiny-font-size - .3em
 
-    .Verified
-      margin: 0 .3em
+    &.VerifiedWrapper
+      display: flex
+      align-items: center
+
+      .Verified
+        margin: 0 .3em
 
   p
     color: variables.$light-text

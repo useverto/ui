@@ -38,7 +38,7 @@ export default function Avatar({
     >
       {left && size === "small" && (
         <div className={styles.LeftInfo}>
-          <h1>
+          <h1 className={verified ? styles.VerifiedWrapper : ""}>
             {name}
             {verified && <VerifiedIcon />}
           </h1>
@@ -61,7 +61,7 @@ export default function Avatar({
       </div>
       {(!left || size === "large") && (
         <div>
-          <h1>
+          <h1 className={verified ? styles.VerifiedWrapper : ""}>
             {name}
             {verified && <VerifiedIcon />}
           </h1>
