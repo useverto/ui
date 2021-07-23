@@ -282,6 +282,7 @@ export default function Home() {
         usertag="martonlederer"
         name="Marton Lederer"
         size="large-inline"
+        verified
       />
       <Spacer y={1} />
       <Button
