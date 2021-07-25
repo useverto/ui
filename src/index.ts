@@ -15,3 +15,4 @@ export { default as Page } from "./components/Page";
 export { default as Avatar } from "./components/Avatar";
 export { default as Modal, useModal } from "./components/Modal";
 export { default as Popover } from "./components/Popover";
+export { generateAvatarGradient } from "./utils";

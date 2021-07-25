@@ -261,6 +261,8 @@ export default function Home() {
         href=""
       />
       <Spacer y={1} />
+      <Avatar usertag="martonlederer" name="Marton Lederer" href="" />
+      <Spacer y={1} />
       <Avatar
         avatar="https://th8ta.org/marton.jpeg"
         usertag="martonlederer"

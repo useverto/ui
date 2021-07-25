@@ -1,5 +1,6 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties } from "react";
 import { FloatingPosition } from "./types";
+import ColorHash from "color-hash";
 
 export function formatTime(time: Date, mobile = false): string {
   return new Intl.DateTimeFormat("en", {
@@ -35,4 +36,14 @@ export async function getAssetType(src: string): Promise<AssetTypeInfo> {
   else if (contentType.match(/^audio\//)) type = "audio";
 
   return { type, contentType };
+}
+
+export function generateAvatarGradient(input: string) {
+  const colorHash = new ColorHash({ saturation: 0.5 });
+  const baseColor: string = colorHash.hex(input);
+
+  return {
+    baseColor,
+    gradient: `linear-gradient(120deg, ${baseColor}44, ${baseColor}ff)`
+  };
 }

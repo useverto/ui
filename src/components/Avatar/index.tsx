@@ -1,7 +1,8 @@
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { DefaultProps } from "../../utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
+import { generateAvatarGradient } from "../../utils";
 import Tooltip from "../Tooltip";
 import styles from "./Avatar.module.sass";
 
@@ -20,6 +21,14 @@ export default function Avatar({
   verified = false
 }: Props) {
   const router = useRouter();
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
+
+  useEffect(() => setGradient(generateAvatarGradient(name || usertag)), [
+    name,
+    usertag
+  ]);
 
   return (
     <div
@@ -57,7 +66,14 @@ export default function Avatar({
             />
           )}
         </AnimatePresence>
-        <img src={avatar} alt="" draggable={false} />
+        {(avatar && <img src={avatar} alt="" draggable={false} />) || (
+          <div
+            className={styles.Gradient}
+            style={{ background: gradient?.gradient ?? "" }}
+          >
+            <span>{(name ?? usertag).charAt(0)}</span>
+          </div>
+        )}
       </div>
       {(!left || size === "large") && (
         <div>
@@ -77,7 +93,7 @@ interface Props extends DefaultProps {
   usertag: string;
   displaytag?: string;
   name: string; // full name
-  avatar: string;
+  avatar?: string;
   onClick?: MouseEventHandler<HTMLDivElement>;
   href?: string;
   notification?: boolean;
