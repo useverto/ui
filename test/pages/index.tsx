@@ -126,7 +126,6 @@ export default function Home() {
       <Spacer y={1} />
       <Card.SwapSell
         user={{
-          avatar: "https://th8ta.org/marton.jpeg",
           usertag: "martonlederer",
           name: "Marton Lederer"
         }}

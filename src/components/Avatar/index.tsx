@@ -25,7 +25,7 @@ export default function Avatar({
     ReturnType<typeof generateAvatarGradient>
   >();
 
-  useEffect(() => setGradient(generateAvatarGradient(name || usertag)), [
+  useEffect(() => setGradient(generateAvatarGradient(name || usertag || "")), [
     name,
     usertag
   ]);
@@ -71,7 +71,7 @@ export default function Avatar({
             className={styles.Gradient}
             style={{ background: gradient?.gradient ?? "" }}
           >
-            <span>{(name ?? usertag).charAt(0)}</span>
+            <span>{(name || usertag || "").charAt(0).toUpperCase()}</span>
           </div>
         )}
       </div>

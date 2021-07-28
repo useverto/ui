@@ -1,4 +1,6 @@
 import Card, { Props as BaseProps, UserData } from "./index";
+import { useEffect, useState } from "react";
+import { generateAvatarGradient } from "../../utils";
 import Spacer from "../Spacer";
 import Link from "next/link";
 import Popover from "../Popover";
@@ -15,6 +17,16 @@ export default function SwapSell({
   filled,
   orderID
 }: Props) {
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
+
+  useEffect(
+    () =>
+      setGradient(generateAvatarGradient(user?.name || user?.usertag || "")),
+    [user]
+  );
+
   return (
     <Card
       className={[styles.Item, className ?? ""]
@@ -39,7 +51,18 @@ export default function SwapSell({
         >
           <Link href={`/@${user.usertag}`}>
             <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
-              <img src={user.avatar} alt="user-avatar" draggable={false} />
+              {(user.avatar && (
+                <img src={user.avatar} alt="user-avatar" draggable={false} />
+              )) || (
+                <div
+                  className={styles.GradientAvatar}
+                  style={{ background: gradient?.gradient ?? "" }}
+                >
+                  <span>
+                    {(user.name || user.usertag || "").charAt(0).toUpperCase()}
+                  </span>
+                </div>
+              )}
             </a>
           </Link>
         </Popover>

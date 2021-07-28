@@ -1,7 +1,11 @@
 import { Props as BaseProps, UserData } from "./index";
 import { useTheme } from "../Provider/theme";
 import { useEffect, useState } from "react";
-import { AssetTypeInfo, getAssetType } from "../../utils";
+import {
+  AssetTypeInfo,
+  generateAvatarGradient,
+  getAssetType
+} from "../../utils";
 import { FileIcon, MusicIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Popover from "../Popover";
@@ -52,6 +56,18 @@ export default function Collection({
 
     return () => clearTimeout(handle);
   }, [previewHovered]);
+
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
+
+  useEffect(
+    () =>
+      setGradient(
+        generateAvatarGradient(userData?.name || userData?.usertag || "")
+      ),
+    [userData]
+  );
 
   return (
     <div
@@ -110,12 +126,27 @@ export default function Collection({
                 className={styles.UserData}
                 onClick={(e) => e.stopPropagation()}
               >
-                <img
-                  src={userData.avatar}
-                  alt={userData.name}
-                  draggable={false}
-                />
-                <span>@{userData.displaytag || userData.usertag}</span>
+                {(userData.avatar && (
+                  <img
+                    src={userData.avatar}
+                    alt={userData.name}
+                    draggable={false}
+                  />
+                )) || (
+                  <div
+                    className={styles.Gradient}
+                    style={{ background: gradient?.gradient ?? "" }}
+                  >
+                    <span>
+                      {(userData.name || userData.usertag || "")
+                        .charAt(0)
+                        .toUpperCase()}
+                    </span>
+                  </div>
+                )}
+                <span className={styles.Username}>
+                  @{userData.displaytag || userData.usertag}
+                </span>
               </a>
             </Link>
           </Popover>

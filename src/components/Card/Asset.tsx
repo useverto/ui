@@ -2,7 +2,7 @@ import { Props as BaseProps, UserData } from "./index";
 import { useTheme } from "../Provider/theme";
 import { useEffect, useState } from "react";
 import { FileIcon, MusicIcon } from "@iconicicons/react";
-import { AssetType, getAssetType } from "../../utils";
+import { AssetType, generateAvatarGradient, getAssetType } from "../../utils";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
@@ -21,6 +21,18 @@ export default function Asset({
 }: Props) {
   const theme = useTheme();
   const { type, contentType } = useAssetType(image);
+
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
+
+  useEffect(
+    () =>
+      setGradient(
+        generateAvatarGradient(userData?.name || userData?.usertag || "")
+      ),
+    [userData]
+  );
 
   function formatName(name: string) {
     if (name.length <= 12) return name;
@@ -86,12 +98,27 @@ export default function Asset({
                 className={styles.UserData}
                 onClick={(e) => e.stopPropagation()}
               >
-                <img
-                  src={userData.avatar}
-                  alt={userData.name}
-                  draggable={false}
-                />
-                <span>@{userData.displaytag || userData.usertag}</span>
+                {(userData.avatar && (
+                  <img
+                    src={userData.avatar}
+                    alt={userData.name}
+                    draggable={false}
+                  />
+                )) || (
+                  <div
+                    className={styles.Gradient}
+                    style={{ background: gradient?.gradient ?? "" }}
+                  >
+                    <span>
+                      {(userData.name || userData.usertag || "")
+                        .charAt(0)
+                        .toUpperCase()}
+                    </span>
+                  </div>
+                )}
+                <span className={styles.Username}>
+                  @{userData.displaytag || userData.usertag}
+                </span>
               </a>
             </Link>
           </Popover>

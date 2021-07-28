@@ -62,6 +62,7 @@ $standardPadding: 1.03em
         margin-right: $space - .3em
 
     .Avatar
+      $avatarWidth: 2.35em
       display: flex
       height: min-content
       align-items: center
@@ -71,11 +72,14 @@ $standardPadding: 1.03em
       &:hover
         opacity: .87
 
-      img
-        width: 2.35em
-        height: 2.35em
+      img, .GradientAvatar
+        width: $avatarWidth
+        height: $avatarWidth
         border-radius: 100%
         user-select: none
+
+      .GradientAvatar
+        +variables.userGradient($avatarWidth)
 
     .Data
       +dataWithLabel
@@ -333,6 +337,10 @@ $tradingPostStatusSize: 8px
             right: $sideSpace
             left: unset
 
+      &:hover:not(.MouseOver)
+        transform: scale(.9)
+        transition: all 3s
+
       &.MouseOver
         transform: scale(1.1)
 
@@ -368,6 +376,7 @@ $tradingPostStatusSize: 8px
       line-height: 1em
 
     .UserData
+      $avatarWidth: 1.6em
       display: flex
       align-items: center
       cursor: pointer
@@ -378,14 +387,20 @@ $tradingPostStatusSize: 8px
       &:hover
         opacity: .8
 
-      img
-        width: 1.6em
-        height: 1.6em
+      img, .Gradient
+        width: $avatarWidth
+        height: $avatarWidth
         border-radius: 100%
         user-select: none
         margin-right: .45em
 
-      span
+      .Gradient
+        +variables.userGradient($avatarWidth)
+
+        span
+          color: #fff !important
+
+      .Username
         font-family: variables.$jetbrains-mono
         color: variables.$foreground-reverse-color
         font-size: variables.$small-font-size

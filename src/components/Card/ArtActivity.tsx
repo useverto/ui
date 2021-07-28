@@ -1,5 +1,6 @@
 import Card, { Props as BaseProps, UserData } from "./index";
-import { formatTime } from "../../utils";
+import { useEffect, useState } from "react";
+import { formatTime, generateAvatarGradient } from "../../utils";
 import { useMediaPredicate } from "react-media-hook";
 import { ShareIcon } from "@iconicicons/react";
 import Link from "next/link";
@@ -18,6 +19,16 @@ export default function ArtActivity({
   orderID
 }: Props) {
   const notMobile = useMediaPredicate("(min-width: 720px)");
+
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
+
+  useEffect(
+    () =>
+      setGradient(generateAvatarGradient(user?.name || user?.usertag || "")),
+    [user]
+  );
 
   return (
     <Card
@@ -43,7 +54,18 @@ export default function ArtActivity({
         >
           <Link href={`/@${user.usertag}`}>
             <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
-              <img src={user.avatar} alt="user-avatar" draggable={false} />
+              {(user.avatar && (
+                <img src={user.avatar} alt="user-avatar" draggable={false} />
+              )) || (
+                <div
+                  className={styles.GradientAvatar}
+                  style={{ background: gradient?.gradient ?? "" }}
+                >
+                  <span>
+                    {(user.name || user.usertag || "").charAt(0).toUpperCase()}
+                  </span>
+                </div>
+              )}
             </a>
           </Link>
         </Popover>
