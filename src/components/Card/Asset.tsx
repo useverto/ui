@@ -124,7 +124,7 @@ export default function Asset({
           </Popover>
         )}
         <p className={styles.Price + " " + (ticker ? styles.WithTicker : "")}>
-          ${price.toLocaleString()}
+          ${price ? price.toLocaleString() : " ??"}
           {!ticker && <span>/bit</span>}
         </p>
       </div>
