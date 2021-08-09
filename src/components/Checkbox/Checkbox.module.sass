@@ -1,0 +1,51 @@
+@use "../../styles/variables"
+
+.Checkbox
+  $inputSize: 1em
+  display: block
+  position: relative
+  padding-left: $inputSize + .37em
+  cursor: pointer
+  font-size: variables.$smaller-font-size
+  -webkit-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+  .Check
+    position: absolute
+    display: flex
+    align-items: center
+    justify-content: center
+    top: 50%
+    left: 0
+    height: $inputSize
+    width: $inputSize
+    background-color: rgba(#000, .07)
+    border-radius: 4px
+    transform: translateY(-50%)
+    transition: all .23s ease-in-out
+
+    span
+      display: flex
+      align-items: center
+      justify-content: center
+      color: variables.$foreground-reverse-color
+
+      svg
+        font-size: 1em
+        width: 1em
+        height: 1em
+
+  input
+    position: absolute
+    opacity: 0
+    cursor: pointer
+    height: 0
+    width: 0
+
+    &:checked ~ .Check
+      background-color: variables.$foreground-color
+
+  &.Dark .Check
+    background-color: rgba(#fff, .07)
