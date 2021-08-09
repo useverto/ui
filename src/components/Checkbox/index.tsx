@@ -7,6 +7,7 @@ import {
   ChangeEvent
 } from "react";
 import { DefaultProps } from "../../utils";
+import { useTheme } from "../Provider/theme";
 import styles from "./Checkbox.module.sass";
 
 export default function Checkbox({
@@ -16,12 +17,14 @@ export default function Checkbox({
   checked = false,
   ...props
 }: PropsWithChildren<Props>) {
+  const theme = useTheme();
+
   return (
     <label
       className={[
         "VertoCheckbox",
         styles.Checkbox,
-        props.disabled ? styles.Disabled : "",
+        theme === "Dark" ? styles.Dark : "",
         className ?? ""
       ]
         .filter((val) => val !== "")

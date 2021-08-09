@@ -23,6 +23,7 @@
     width: $inputSize
     background-color: rgba(#000, .07)
     border-radius: 4px
+    box-shadow: variables.$lighter-shadow
     transform: translateY(-50%)
     transition: all .23s ease-in-out
 
@@ -46,6 +47,10 @@
 
     &:checked ~ .Check
       background-color: variables.$foreground-color
+
+    &:disabled ~ .Check
+      opacity: .8
+      cursor: not-allowed !important
 
   &.Dark .Check
     background-color: rgba(#fff, .07)
