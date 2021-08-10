@@ -37,10 +37,10 @@ export default function Checkbox({
         <AnimatePresence>
           {checked && (
             <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, scale: 0.6 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.23, ease: "easeInOut" }}
+              exit={{ opacity: 0, scale: 0.6 }}
+              transition={{ duration: 0.13, ease: "easeInOut" }}
             >
               <CheckIcon />
             </motion.span>
