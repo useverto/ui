@@ -296,6 +296,12 @@ $tradingPostStatusSize: 8px
       user-select: none
       transform: translate(-50%, -50%)
 
+    &:not(.Logo):not(.CollectionItem) 
+      img, video
+        height: 100%
+        width: 100%
+        object-fit: cover
+
     svg, .SvgWrapper
       color: variables.$foreground-reverse-color
       display: block
@@ -355,6 +361,11 @@ $tradingPostStatusSize: 8px
 
   &.ClearAsset .Preview
     border-radius: variables.$small-items-radius
+
+    img, video
+      height: 100%
+      width: 100%
+      object-fit: cover
 
   .AssetInfo
     padding: ($standardPadding / 3) ($standardPadding / 2)
