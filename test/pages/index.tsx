@@ -12,16 +12,16 @@ import {
   Modal,
   useModal,
   Popover,
-  Checkbox,
-  useTheme,
-  useCheckbox
+  // Checkbox,
+  useTheme
+  // useCheckbox
 } from "@verto/ui";
 
 export default function Home() {
   const { setToast } = useToasts();
   const exampleModal = useModal();
   const theme = useTheme();
-  const checkbox = useCheckbox();
+  // const checkbox = useCheckbox();
 
   return (
     <Page>
@@ -359,7 +359,7 @@ export default function Home() {
         <p>Popover (on hover)</p>
       </Popover>
       <Spacer y={1} />
-      <Checkbox {...checkbox.bindings}>Checkbox test</Checkbox>
+      {/* <Checkbox {...checkbox.bindings}>Checkbox test</Checkbox> */}
     </Page>
   );
 }
