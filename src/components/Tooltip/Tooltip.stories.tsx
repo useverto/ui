@@ -5,7 +5,21 @@ import Tooltip from ".";
 
 export default {
   title: "Tooltip",
-  component: Tooltip
-};
+  component: Tooltip,
+  argTypes: {
+    position: {
+      options: ["right", "left", "top", "bottom"],
+      control: { type: "radio" }
+    }
+  }
+} as ComponentMeta<typeof Tooltip>;
 
-export const ToolTip = () => <Tooltip>Hello World</Tooltip>;
+const Template = (args) => <Tooltip {...args}>Example tooltip</Tooltip>;
+
+export const ToolTip: ComponentStory<typeof Tooltip> = Template.bind({});
+
+ToolTip.args = {
+  position: "right",
+  text: "Tooltip text",
+  arrow: false
+};
