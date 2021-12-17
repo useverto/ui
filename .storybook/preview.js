@@ -15,7 +15,14 @@ export const parameters = {
         ? 0
         : a[1].id.localeCompare(b[1].id, { numeric: true });
     }
-  }
+  },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/
+    }
+  },
+  actions: { argTypesRegex: "^on.*" }
 };
 
 // wrap components with the Verto provider

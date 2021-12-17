@@ -10,6 +10,7 @@ import { FileIcon, MusicIcon } from "@iconicicons/react";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
+import assetStyles from "./Asset.module.sass";
 import styles from "./Card.module.sass";
 
 export default function Collection({
@@ -73,8 +74,8 @@ export default function Collection({
     <div
       className={[
         "VertoAssetCard",
-        styles.Asset,
-        theme === "Dark" ? styles.DarkAsset : "",
+        assetStyles.Asset,
+        theme === "Dark" ? assetStyles.DarkAsset : "",
         className ?? ""
       ]
         .filter((val) => val !== "")
@@ -84,11 +85,11 @@ export default function Collection({
     >
       <div
         className={
-          styles.Preview +
+          assetStyles.Preview +
           " " +
-          styles.CollectionItem +
+          assetStyles.CollectionItem +
           " " +
-          (zoomPreview ? styles.MouseOver : "")
+          (zoomPreview ? assetStyles.MouseOver : "")
         }
         style={{ overflow: "visible" }}
         onMouseEnter={() => setPreviewHovered(true)}
@@ -105,12 +106,18 @@ export default function Collection({
           </>
         )}
       </div>
-      <div className={styles.AssetInfo}>
-        <h1 className={styles.ArtName}>{formatName(name)}</h1>
+      <div className={assetStyles.AssetInfo}>
+        <h1 className={assetStyles.ArtName}>{formatName(name)}</h1>
         {userData && (
           <Popover
             mode="hover"
-            className={styles.UserPopover + " " + styles.AssetUserPopover}
+            className={
+              styles.UserPopover +
+              " " +
+              assetStyles.UserPopover +
+              " " +
+              assetStyles.AssetUserPopover
+            }
             content={
               <Avatar
                 avatar={userData.avatar}
@@ -123,7 +130,7 @@ export default function Collection({
           >
             <Link href={`/@${userData.usertag}`}>
               <a
-                className={styles.UserData}
+                className={assetStyles.UserData}
                 onClick={(e) => e.stopPropagation()}
               >
                 {(userData.avatar && (
@@ -134,7 +141,7 @@ export default function Collection({
                   />
                 )) || (
                   <div
-                    className={styles.Gradient}
+                    className={assetStyles.Gradient}
                     style={{ background: gradient?.gradient ?? "" }}
                   >
                     <span>
@@ -144,14 +151,14 @@ export default function Collection({
                     </span>
                   </div>
                 )}
-                <span className={styles.Username}>
+                <span className={assetStyles.Username}>
                   @{userData.displaytag || userData.usertag}
                 </span>
               </a>
             </Link>
           </Popover>
         )}
-        <div className={styles.Price}>{images.length} items</div>
+        <div className={assetStyles.Price}>{images.length} items</div>
       </div>
     </div>
   );
