@@ -9,7 +9,6 @@ export default function Trade({
   className,
   style,
   onClick,
-  type,
   from,
   to,
   timestamp,
@@ -19,14 +18,16 @@ export default function Trade({
 }: Props) {
   return (
     <Card
-      className={[styles.Item, className ?? ""]
+      className={["VertoTradeCard", styles.Item, className ?? ""]
         .filter((val) => val !== "")
         .join(" ")}
       style={style}
       onClick={onClick}
     >
       <div className={styles.ItemData}>
-        <span className={styles.OrderType}>{type}</span>
+        <span className={styles.OrderType}>
+          {from.ticker} / {to}
+        </span>
         <div className={styles.Data}>
           <h1 className={styles.FromTo}>
             {from.amount.toLocaleString()} {from.ticker.toUpperCase()}
@@ -78,7 +79,6 @@ export default function Trade({
 }
 
 interface Props extends BaseProps {
-  type: "sell" | "buy";
   orderID: string;
   from: {
     amount: number;

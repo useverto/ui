@@ -1,6 +1,6 @@
 @use "../../styles/variables"
 
-$standardPadding: 1.03em
+$standardPadding: variables.$standar-padding-card
 
 .Card
   position: relative
@@ -194,18 +194,6 @@ $standardPadding: 1.03em
         @media screen and (max-width: variables.$mobile-screen)
           margin-left: $smallerSpaceMarginLeft / 2
 
-      &.OrbitIcon
-        $orbitIconMarginLeft: $iconLeftMargin + ($iconAddition * 2)
-        font-size: variables.$normal-font-size
-        width: variables.$normal-font-size
-        height: variables.$normal-font-size
-        margin:
-          left: $orbitIconMarginLeft
-          right: $iconAddition
-
-        @media screen and (max-width: variables.$mobile-screen)
-          margin-left: $orbitIconMarginLeft / 2
-
       &:hover
         color: variables.$foreground-color
 
@@ -214,260 +202,11 @@ $standardPadding: 1.03em
         width: 1em
         height: 1em
 
-.Balance
-  .ItemData 
-    .Avatar
-      img
-        border-radius: 0
-
-      &:hover
-        opacity: 1
-
-    .TokenName
-      margin-right: .44em
-
-  h1
-    margin: 0
-    font-weight: 500
-    line-height: 1em
-
-$tradingPostStatusSize: 8px
-
-.TradingPost
-  cursor: pointer
-
-  .TradingPostStatus
-    display: block
-    margin-right: $standardPadding + .3em
-    width: $tradingPostStatusSize
-    height: $tradingPostStatusSize
-    border-radius: 100%
-    background-color: variables.$foreground-color
-    opacity: .6
-
-    &.TradingPostStatus_online
-      position: relative
-      opacity: 1
-      background-color: variables.$success
-
-      &::after
-        content: ""
-        display: block
-        position: absolute
-        top: 50%
-        left: 50%
-        width: $tradingPostStatusSize
-        height: $tradingPostStatusSize
-        border-radius: 100%
-        border: 1px solid variables.$success
-        transform: translate(-50%, -50%)
-        animation: online-animation 1.4s infinite
-
-    &.TradingPostStatus_offline
-      background-color: variables.$error
-      opacity: 1
-
-.Asset
-  $assetWidth: 204px
-  width: $assetWidth
-  background-color: variables.$foreground-color
-  border-radius: variables.$small-items-radius
-  box-shadow: variables.$lighter-shadow
-  cursor: pointer
-  transition: all .23s ease-in-out
-
-  &:active
-    transform: scale(.97)
-
-  .Preview
-    position: relative
-    width: $assetWidth
-    height: $assetWidth
-    overflow: hidden
-    border-top-left-radius: variables.$small-items-radius
-    border-top-right-radius: variables.$small-items-radius
-
-    img, video, svg, .SvgWrapper
-      position: absolute
-      max-width: 100%
-      max-height: 100%
-      top: 50%
-      left: 50%
-      user-select: none
-      transform: translate(-50%, -50%)
-
-    &:not(.Logo):not(.CollectionItem) 
-      img, video
-        height: 100%
-        width: 100%
-        object-fit: cover
-
-    svg, .SvgWrapper
-      color: variables.$foreground-reverse-color
-      display: block
-      width: 40%
-      height: 40%
-
-    .SvgWrapper
-      svg
-        width: 100%
-        height: 100%
-
-    &.Logo img, &.CollectionItem img
-      max-height: 80%
-      max-width: 80%
-      border-radius: variables.$small-items-radius
-
-    &.CollectionItem
-      $sideItemBaseTransform: translateY(-50%)
-      transition: all .19s ease-in-out
-
-      img, video, .SvgWrapper
-        transition: all .19s ease-in-out
-
-        &.SpotLight
-          max-height: 72%
-          max-width: 72%
-          z-index: 10
-          box-shadow: variables.$lighter-shadow
-
-        &.SideItem
-          $sideSpace: 10px
-          max-height: 65%
-          max-width: 65%
-          transform: $sideItemBaseTransform
-
-          &:first-child
-            left: $sideSpace
-
-          &:last-child
-            right: $sideSpace
-            left: unset
-
-      &:hover:not(.MouseOver)
-        transform: scale(.9)
-        transition: all 3s
-
-      &.MouseOver
-        transform: scale(1.1)
-
-        img, video, .SvgWrapper
-          &.SideItem
-            &:first-child
-              transform: $sideItemBaseTransform translateX(-80%)
-
-            &:last-child
-              transform: $sideItemBaseTransform translateX(80%)
-
-  &.ClearAsset .Preview
-    border-radius: variables.$small-items-radius
-
-    img, video
-      height: 100%
-      width: 100%
-      object-fit: cover
-
-  .AssetInfo
-    padding: ($standardPadding / 3) ($standardPadding / 2)
-
-    h1
-      font-size: 1.9em
-      color: variables.$foreground-reverse-color
-      margin: 0
-      font-weight: 600
-      line-height: 1em
-      overflow: hidden
-      white-space: nowrap
-
-      &.ArtName
-        margin-bottom: $standardPadding / 4
-
-    .AssetTicker
-      font-size: variables.$smaller-font-size
-      color: variables.$cec
-      line-height: 1em
-
-    .UserData
-      $avatarWidth: 1.6em
-      display: flex
-      align-items: center
-      cursor: pointer
-      text-decoration: none
-      margin-bottom: .13em
-      transition: opacity .23s ease-in-out
-
-      &:hover
-        opacity: .8
-
-      img, .Gradient
-        width: $avatarWidth
-        height: $avatarWidth
-        border-radius: 100%
-        user-select: none
-        margin-right: .45em
-
-      .Gradient
-        +variables.userGradient($avatarWidth)
-
-        span
-          color: #fff !important
-
-      .Username
-        font-family: variables.$jetbrains-mono
-        color: variables.$foreground-reverse-color
-        font-size: variables.$small-font-size
-        font-weight: 500
-
-    .Price
-      font-size: variables.$smaller-font-size
-      color: variables.$foreground-reverse-color
-      font-weight: 500
-      margin: 0
-
-      &.WithTicker
-        line-height: 1em
-        font-size: 2em
-
-      span
-        font-size: .62em
-        margin-left: .14em
-
-  &.ReverseAsset
-    background-color: variables.$background-color
-
-    .AssetInfo
-      h1, .UserData span, .Price, .Preview svg
-        color: variables.$foreground-color
-
-      .AssetTicker
-        color: variables.$light-text
-
-  &.DarkAsset
-    border: 2px solid rgba(156, 160, 177, .18)
-    background-color: variables.$background-color
-    box-shadow: none
-
-    .Price, h1, .UserData span, .Preview svg
-      color: variables.$foreground-color
-
-    &.ReverseAsset
-      border: none
-
 .TokenPortionTitle
   margin: 0
   font-weight: 500
   line-height: 1em
   
-@keyframes online-animation
-  0%
-    width: $tradingPostStatusSize
-    height: $tradingPostStatusSize
-    
-  100%
-    width: $tradingPostStatusSize * 4.5
-    height: $tradingPostStatusSize * 4.5
-    opacity: 0
-
 .UserPopover
   padding:
     top: .8em
@@ -476,11 +215,6 @@ $tradingPostStatusSize: 8px
   h1, p
     text-align: center !important
     display: block !important
-
-  &.AssetUserPopover
-    h1
-      font-size: variables.$normal-font-size + .25em
-      color: variables.$foreground-color !important
 
 .HideMobile
   @media screen and (max-width: variables.$mobile-screen)

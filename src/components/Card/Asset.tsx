@@ -6,7 +6,8 @@ import { AssetType, generateAvatarGradient, getAssetType } from "../../utils";
 import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
-import styles from "./Card.module.sass";
+import cardStyles from "./Card.module.sass";
+import styles from "./Asset.module.sass";
 
 export default function Asset({
   name,
@@ -82,7 +83,7 @@ export default function Asset({
         {userData && (
           <Popover
             mode="hover"
-            className={styles.UserPopover + " " + styles.AssetUserPopover}
+            className={cardStyles.UserPopover + " " + styles.UserPopover}
             content={
               <Avatar
                 avatar={userData.avatar}
