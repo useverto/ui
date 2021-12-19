@@ -1,5 +1,7 @@
-import { useState } from "react";
+import Page from "../Page";
+import Spacer from "../Spacer";
 import Button from "./index";
+import { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
 const storyConfig = {
