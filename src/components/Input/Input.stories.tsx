@@ -3,35 +3,61 @@ import Input from ".";
 
 const storyConfig = {
   title: "Input",
-  component: Input
+  component: Input,
+  argTypes: {
+    status: {
+      options: [undefined, "error", "warning", "success"],
+      control: { type: "select" }
+    },
+    type: {
+      options: ["text", "number", "password"],
+      control: { type: "select" }
+    }
+  }
 } as ComponentMeta<typeof Input>;
 
 const Template = (args) => <Input {...args} />;
 
-export const withLabel: ComponentStory<typeof Input> = Template.bind({});
+export const WithType: ComponentStory<typeof Input> = Template.bind({});
 
-withLabel.args = {
+WithType.args = {
+  type: "password",
+  placeholder: "Testing"
+};
+
+export const WithLabel: ComponentStory<typeof Input> = Template.bind({});
+
+WithLabel.args = {
   type: "text",
   currency: "$",
   inlineLabel: "VRT",
   placeholder: "10000",
-  label: "Hello World"
+  label: "Hello World",
+  disabled: false
 };
 
-export const withLeftLineLabel: ComponentStory<typeof Input> = Template.bind(
+export const WithLeftLineLabel: ComponentStory<typeof Input> = Template.bind(
   {}
 );
 
-withLeftLineLabel.args = {
-  ...withLabel.args,
+WithLeftLineLabel.args = {
+  ...WithLabel.args,
   leftInlineLabel: true
 };
 
-export const withStatus: ComponentStory<typeof Input> = Template.bind({});
+export const WithStatus: ComponentStory<typeof Input> = Template.bind({});
 
-withStatus.args = {
-  ...withLeftLineLabel.args,
-  status: "error" // "undefined | "error" | "warning" | "success"
+WithStatus.args = {
+  ...WithLeftLineLabel.args,
+  status: "error"
 };
 
+export const WithAllProps: ComponentStory<typeof Input> = Template.bind({});
+
+WithAllProps.args = {
+  ...WithLabel.args,
+  disabled: false,
+  readOnly: false,
+  type: "number"
+};
 export default storyConfig;

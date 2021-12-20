@@ -27,10 +27,4 @@ Open.args = {
   open: true
 };
 
-export const Closed: ComponentStory<typeof Modal> = Template.bind({});
-
-Closed.args = {
-  open: false
-};
-
 export default storyConfig;

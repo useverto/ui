@@ -39,6 +39,14 @@ Outlined.args = {
   loading: true
 };
 
+export const SmallOutlined: ComponentStory<typeof Button> = Template.bind({});
+
+Outlined.args = {
+  type: "outlined",
+  disabled: false,
+  loading: true
+};
+
 export const Secondary: ComponentStory<typeof Button> = Template.bind({});
 
 Secondary.args = {

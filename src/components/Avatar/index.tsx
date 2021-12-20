@@ -21,14 +21,13 @@ export default function Avatar({
   verified = false
 }: Props) {
   const router = useRouter();
-  const [gradient, setGradient] = useState<
-    ReturnType<typeof generateAvatarGradient>
-  >();
+  const [gradient, setGradient] =
+    useState<ReturnType<typeof generateAvatarGradient>>();
 
-  useEffect(() => setGradient(generateAvatarGradient(name || usertag || "")), [
-    name,
-    usertag
-  ]);
+  useEffect(
+    () => setGradient(generateAvatarGradient(name || usertag || "")),
+    [name, usertag]
+  );
 
   return (
     <div
