@@ -58,8 +58,9 @@ export default function Collection({
     return () => clearTimeout(handle);
   }, [previewHovered]);
 
-  const [gradient, setGradient] =
-    useState<ReturnType<typeof generateAvatarGradient>>();
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
 
   useEffect(
     () =>
