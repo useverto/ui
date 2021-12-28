@@ -23,8 +23,8 @@
     "fmt:check": "prettier --check .",
     "prepare": "install-peers",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -s public/",
-    "serve-storybook": "serve storybook-static",
+    "build:storybook": "build-storybook -s public/",
+    "serve:storybook": "serve storybook-static",
     "chromatic": "npx chromatic --project-token=03e7c42c41db"
   },
   "gitHooks": {
