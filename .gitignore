@@ -4,3 +4,4 @@ dist
 test/.next
 .vscode
 storybook-static
+.env
