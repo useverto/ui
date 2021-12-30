@@ -6,13 +6,13 @@
   <h3 align="center">Verto UI</h3>
 
   <p align="center">
-    React components conforming to the Verto Style Guide, based on <a href="https://geist-ui.dev">Geist UI</a>.
+    React components conforming to the Verto Style Guide.
   </p>
 </p>
 
 ## About
 
-This is the Verto React Component library, based on Geist UI, designed by [@maximousblk](https://github.com/maximousblk), developed by The Verto Team
+This is the Verto React Component library used in the [Verto Interface](https://github.com/useverto/interface).
 
 ## Guide
 
@@ -40,10 +40,6 @@ Before you start using the components, make sure to wrap your app component with
 
 The `theme` prop can be "Light" or "Dark" and it is required.
 
-### Components
-
-All components' documentation can be found at [ui.verto.exchange](https://ui.verto.exchange) and in the [repo](https://github.com/useverto/ui/blob/main/test/src/App.tsx).
-
 ## License
 
-The code contained within this repository is licensed under the MIT license. Geist UI is also licensed under the MIT license.
+The code contained within this repository is licensed under the MIT license.
