@@ -1,14 +1,17 @@
-name: 'Chromatic Deployment'
+name: 'Deploy Chromatic'
 
-on: push
+on: [push, pull_request]
 
 jobs:
-  test:
+  build:
+    name: Deploy Storybook
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v1
-      - run: yarn
       - uses: chromaui/action@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          node-version: '14'
           token: ${{ secrets.GH_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
