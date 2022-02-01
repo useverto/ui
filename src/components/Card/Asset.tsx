@@ -23,8 +23,9 @@ export default function Asset({
   const theme = useTheme();
   const { type, contentType } = useAssetType(image);
 
-  const [gradient, setGradient] =
-    useState<ReturnType<typeof generateAvatarGradient>>();
+  const [gradient, setGradient] = useState<
+    ReturnType<typeof generateAvatarGradient>
+  >();
 
   useEffect(
     () =>

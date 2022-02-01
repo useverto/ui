@@ -6,6 +6,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import url from "@rollup/plugin-url";
 import autoprefixer from "autoprefixer";
 import stringHash from "string-hash";
+import autoExternal from "rollup-plugin-auto-external";
 
 import pkg from "./package.json";
 
@@ -26,6 +27,7 @@ export default {
     }
   ],
   plugins: [
+    autoExternal(),
     external(),
     postcss({
       plugins: [autoprefixer],

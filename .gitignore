@@ -3,3 +3,5 @@ dist
 *.log
 test/.next
 .vscode
+storybook-static
+.env
