@@ -13,6 +13,7 @@ export default function Input({
   style,
   currency,
   label,
+  small,
   inlineLabel,
   leftInlineLabel,
   status,
@@ -44,6 +45,7 @@ export default function Input({
         className={[
           "VertoInputWrapper",
           styles.InputWrapper,
+          (small && styles.WithSmall) || "",
           (currency && styles.WithCurrency) || "",
           (inlineLabel && styles.WithInlineLabel) || "",
           (inputStatus && styles[`Status_${inputStatus}`]) || ""
@@ -110,6 +112,7 @@ interface Props extends DefaultProps {
   max?: string | number;
   readOnly?: boolean;
   disabled?: boolean;
+  small?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
   currency?: string;
   label?: ReactNode;

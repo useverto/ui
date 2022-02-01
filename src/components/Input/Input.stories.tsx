@@ -58,6 +58,7 @@ WithAllProps.args = {
   ...WithLabel.args,
   disabled: false,
   readOnly: false,
+  small: false,
   type: "number"
 };
 export default storyConfig;
