@@ -45,6 +45,9 @@
     height: 0
     width: 0
 
+    &:not(:checked) ~ .Check
+      border: 1px solid #666
+
     &:checked ~ .Check
       background-color: variables.$foreground-color
 

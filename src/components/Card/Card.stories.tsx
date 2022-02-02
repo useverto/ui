@@ -30,9 +30,8 @@ export const DefaultCard: ComponentStory<typeof Card> = DefaultTemplate.bind(
 
 const ArtActivityTemplate = (args) => <Card.ArtActivity {...args} />;
 
-export const ArtActivity: ComponentStory<
-  typeof Card.ArtActivity
-> = ArtActivityTemplate.bind({});
+export const ArtActivity: ComponentStory<typeof Card.ArtActivity> =
+  ArtActivityTemplate.bind({});
 
 ArtActivity.args = {
   type: "buy",
@@ -109,9 +108,8 @@ TokenAsset.args = {
 
 const BalanceTemplate = (args) => <Card.Balance {...args} />;
 
-export const Balance: ComponentStory<
-  typeof Card.Balance
-> = BalanceTemplate.bind({});
+export const Balance: ComponentStory<typeof Card.Balance> =
+  BalanceTemplate.bind({});
 
 Balance.args = {
   logo: {
@@ -145,9 +143,8 @@ Bits.args = {
 
 const CollectionTemplate = (args) => <Card.Collection {...args} />;
 
-export const Collection: ComponentStory<
-  typeof Card.Collection
-> = CollectionTemplate.bind({});
+export const Collection: ComponentStory<typeof Card.Collection> =
+  CollectionTemplate.bind({});
 
 // Credits: https://www.verto.exchange/space/GirFtyB_PI4oQXhEFrHZLpFUqincHrDdDxPaQ1M8r00
 // Articulate.eth

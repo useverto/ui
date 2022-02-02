@@ -2,9 +2,8 @@ import { createContext, useContext, Context } from "react";
 import { DisplayTheme } from "../../types";
 import { createGlobalStyle } from "styled-components";
 
-export const ThemeContext: Context<DisplayTheme> = createContext<DisplayTheme>(
-  "Light"
-);
+export const ThemeContext: Context<DisplayTheme> =
+  createContext<DisplayTheme>("Light");
 
 /**
  * Get the current theme of Verto UI
