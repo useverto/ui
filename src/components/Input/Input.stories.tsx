@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Input from ".";
 import Toast from "../Toast";
 import { useState } from "react";
-
+import { NorthStarIcon } from "@primer/octicons-react";
 const storyConfig = {
   title: "Input",
   component: Input,
@@ -88,3 +88,7 @@ export const KeyPressHandler = () => {
     </>
   );
 };
+
+export const WithIcon = () => (
+  <Input inlineLabel={<NorthStarIcon />} placeholder="Testing Icon" />
+);
