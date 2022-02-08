@@ -3300,6 +3300,20 @@
     react-media-hook "^0.4.9"
     styled-components "^5.2.1"
 
+"@verto/ui@^3.0.2-alpha":
+  version "3.0.2-alpha"
+  resolved "https://registry.yarnpkg.com/@verto/ui/-/ui-3.0.2-alpha.tgz#1654e65e045ef36d867e550aa18d5b7db8301e18"
+  integrity sha512-JzUwbta5ALpL4m4F9bQK9eBUSVSjG/l48XvWyGvdF1Ix6q9pD706UOrHq8ZVEP991MUItihu0OROjLbK05i+OQ==
+  dependencies:
+    "@iconicicons/react" "^1.1.1"
+    "@primer/octicons-react" "^16.3.0"
+    "@verto/ui" "^3.0.0-alpha"
+    color-hash "^2.0.1"
+    framer-motion "^3.1.1"
+    nanoid "^3.1.22"
+    react-media-hook "^0.4.9"
+    styled-components "^5.2.1"
+
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.1.tgz#2bfd767eae1a6996f432ff7e8d7fc75679c0b6a7"

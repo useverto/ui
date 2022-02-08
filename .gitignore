@@ -5,3 +5,5 @@ test/.next
 .vscode
 storybook-static
 .env
+public
+yarn-error.log
