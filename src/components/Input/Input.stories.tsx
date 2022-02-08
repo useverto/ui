@@ -1,6 +1,8 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Input from ".";
-
+import Toast from "../Toast";
+import { useState } from "react";
+import { NorthStarIcon } from "@primer/octicons-react";
 const storyConfig = {
   title: "Input",
   component: Input,
@@ -63,3 +65,30 @@ WithAllProps.args = {
 };
 
 export default storyConfig;
+
+export const KeyPressHandler = () => {
+  const [clickEnter, setClickEnter] = useState(false);
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      setClickEnter(true);
+    }
+  };
+
+  return (
+    <>
+      <h1>Testing KeyPress</h1>
+      <Input onKeyPressHandler={handleKeyPress} />
+      {clickEnter ? (
+        <Toast
+          title="Enter Button Clicked"
+          description="OnKeyPressHandler Working"
+          type="success"
+        />
+      ) : null}
+    </>
+  );
+};
+
+export const WithIcon = () => (
+  <Input inlineLabel={<NorthStarIcon />} placeholder="Testing Icon" />
+);
