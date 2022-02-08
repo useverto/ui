@@ -1,5 +1,6 @@
 import {
   ChangeEvent,
+  KeyboardEvent,
   ChangeEventHandler,
   ReactNode,
   useEffect,
@@ -19,6 +20,7 @@ export default function Input({
   status,
   matchPattern,
   onChange,
+  onKeyPress,
   ...props
 }: Props) {
   const [val, setVal] = useState(props.value),
@@ -40,7 +42,15 @@ export default function Input({
         .filter((val) => val !== "")
         .join(" ")}
     >
-      <span className={"VertoInputLabel " + styles.Label}>{label}</span>
+      <span
+        className={
+          small
+            ? "VertoInputLabel " + styles.SmallLabel
+            : "VertoInputLabel " + styles.Label
+        }
+      >
+        {label}
+      </span>
       <div
         className={[
           "VertoInputWrapper",
@@ -114,6 +124,7 @@ interface Props extends DefaultProps {
   disabled?: boolean;
   small?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  onKeyPress?: KeyboardEvent<HTMLInputElement>;
   currency?: string;
   label?: ReactNode;
   inlineLabel?: ReactNode;

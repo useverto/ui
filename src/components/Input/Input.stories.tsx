@@ -45,11 +45,11 @@ WithLeftLineLabel.args = {
   leftInlineLabel: true
 };
 
-export const WithStatus: ComponentStory<typeof Input> = Template.bind({});
+export const WithSmallInput: ComponentStory<typeof Input> = Template.bind({});
 
-WithStatus.args = {
+WithSmallInput.args = {
   ...WithLeftLineLabel.args,
-  status: "error"
+  small: true
 };
 
 export const WithAllProps: ComponentStory<typeof Input> = Template.bind({});
@@ -61,4 +61,5 @@ WithAllProps.args = {
   small: false,
   type: "number"
 };
+
 export default storyConfig;

@@ -20,9 +20,8 @@ export default function ArtActivity({
 }: Props) {
   const notMobile = useMediaPredicate("(min-width: 720px)");
 
-  const [gradient, setGradient] = useState<
-    ReturnType<typeof generateAvatarGradient>
-  >();
+  const [gradient, setGradient] =
+    useState<ReturnType<typeof generateAvatarGradient>>();
 
   useEffect(
     () =>
