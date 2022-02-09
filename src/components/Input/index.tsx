@@ -1,6 +1,6 @@
 import {
   ChangeEvent,
-  KeyboardEventHandler,
+  KeyboardEvent,
   ChangeEventHandler,
   ReactNode,
   useEffect,
@@ -20,7 +20,7 @@ export default function Input({
   status,
   matchPattern,
   onChange,
-  onKeyPressHandler,
+  onKeyPress,
   ...props
 }: Props) {
   const [val, setVal] = useState(props.value),
@@ -71,7 +71,6 @@ export default function Input({
           </div>
         )}
         <input
-          onKeyPress={onKeyPressHandler}
           onChange={(e) => {
             setVal(
               props.type === "number" ? Number(e.target.value) : e.target.value
@@ -125,7 +124,7 @@ interface Props extends DefaultProps {
   disabled?: boolean;
   small?: boolean;
   onChange?: ChangeEventHandler<HTMLInputElement>;
-  onKeyPressHandler?: KeyboardEventHandler<HTMLInputElement>;
+  onKeyPress?: KeyboardEvent<HTMLInputElement>;
   currency?: string;
   label?: ReactNode;
   inlineLabel?: ReactNode;

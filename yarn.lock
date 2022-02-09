@@ -1684,11 +1684,6 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.2.tgz#830beaec4b4091a9e9398ac50f865ddea52186b9"
   integrity sha512-92FRmppjjqz29VMJ2dn+xdyXZBrMlE42AV6Kq6BwjWV7CNUW1hs2FtxSNLQE+gJhaZ6AAmYuO9y8dshhcBl7vA==
 
-"@primer/octicons-react@^16.3.0":
-  version "16.3.0"
-  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-16.3.0.tgz#8e5ea48aeeffce9730227c4445e61bfb911022c9"
-  integrity sha512-nxB6L5IYeR2hPY6q7DAyQGW42MO0kA4PqMBNysN4WaZAHjiKgtTDr9rI+759PqGK7BTTuT43HTuu2cMsg7pH0Q==
-
 "@rollup/plugin-commonjs@^15.1.0":
   version "15.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-15.1.0.tgz#1e7d076c4f1b2abf7e65248570e555defc37c238"

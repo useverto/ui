@@ -1,6 +1,6 @@
 {
   "name": "@verto/ui",
-  "version": "3.0.1-alpha",
+  "version": "3.0.0-alpha",
   "description": "The Verto Components library for React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -23,7 +23,7 @@
     "fmt:check": "prettier --check .",
     "prepare": "install-peers",
     "storybook": "start-storybook -p 6006",
-    "build:storybook": "build-storybook -o public/",
+    "build:storybook": "build-storybook -s public/",
     "serve:storybook": "serve storybook-static"
   },
   "gitHooks": {
@@ -31,7 +31,6 @@
   },
   "dependencies": {
     "@iconicicons/react": "^1.1.1",
-    "@primer/octicons-react": "^16.3.0",
     "@verto/ui": "^3.0.0-alpha",
     "color-hash": "^2.0.1",
     "framer-motion": "^3.1.1",
