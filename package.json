@@ -1,6 +1,6 @@
 {
   "name": "@verto/ui",
-  "version": "3.0.2-alpha",
+  "version": "3.0.3-alpha",
   "description": "The Verto Components library for React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -32,7 +32,7 @@
   "dependencies": {
     "@iconicicons/react": "^1.1.1",
     "@primer/octicons-react": "^16.3.0",
-    "@verto/ui": "^3.0.2-alpha",
+    "@verto/ui": "^3.0.3-alpha",
     "color-hash": "^2.0.1",
     "framer-motion": "^3.1.1",
     "nanoid": "^3.1.22",
