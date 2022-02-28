@@ -24,6 +24,7 @@ const defaultTheme: SchemeTypes = {
     skeleton: "#E4E4E4",
     skeletonShine: "#bdbdbd",
     modalLayerDark: "rgba(0, 0, 0, .8)",
+    componentBackground: "var(--background-color)",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
@@ -42,6 +43,7 @@ const defaultTheme: SchemeTypes = {
     skeleton: "#131829",
     skeletonShine: "#181f35",
     modalLayerDark: "rgba(0, 0, 0, .8)",
+    componentBackground: "#151515",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
@@ -51,8 +53,6 @@ const defaultTheme: SchemeTypes = {
     lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)"
   }
 };
-
-// DARK CARD COLOR: #111111
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -80,6 +80,7 @@ export interface Theme {
   skeleton: string;
   skeletonShine: string;
   modalLayerDark: string; // modals' overlay
+  componentBackground: string;
   success: string;
   warning: string;
   error: string;
