@@ -20,6 +20,11 @@ $sidePaddingSmall: 1.7em
   padding: $topPaddingNormal $sidePaddingNormal
   transition: all .23s ease-in-out
 
+  &.Dark
+    background-color: variables.$dark-primary
+    color: variables.$foreground-color
+    box-shadow: 0px 0 17px 6px rgba(variables.$dark-primary, .35)
+
   .Loading
     color: variables.$foreground-reverse-color
 
@@ -30,6 +35,9 @@ $sidePaddingSmall: 1.7em
   &:hover:not(:disabled)
     box-shadow: variables.$standard-shadow-hover
 
+    &.Dark:not(.secondary)
+      box-shadow: 0px 0 17px 6px rgba(variables.$dark-primary, .45)
+
   &:active:not(:disabled)
     transform: scale(.96)
 
@@ -38,6 +46,10 @@ $sidePaddingSmall: 1.7em
     padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingNormal} - #{variables.$borderWidth})
     color: variables.$foreground-color
     background-color: variables.$background-color
+
+    &.Dark
+      border-color: variables.$dark-primary
+      color: variables.$dark-primary
 
     .Loading
       color: variables.$foreground-color
@@ -53,6 +65,10 @@ $sidePaddingSmall: 1.7em
     &.outlined:hover
       background-color: variables.$foreground-color
       color: variables.$foreground-reverse-color
+
+      &.Dark
+        background-color: variables.$dark-primary
+        color: variables.$foreground-color
 
       .Loading
         color: variables.$foreground-reverse-color

@@ -1,6 +1,7 @@
 import { PropsWithChildren, MouseEventHandler } from "react";
 import { Spinner } from "../Loading";
 import { DefaultProps } from "../../utils";
+import { useTheme } from "../Provider/theme";
 import styles from "./Button.module.sass";
 
 export default function Button({
@@ -12,10 +13,13 @@ export default function Button({
   onClick,
   ...props
 }: PropsWithChildren<Props>) {
+  const theme = useTheme();
+
   return (
     <button
       className={[
         styles.Button,
+        (theme === "Dark" && styles.Dark) || "",
         (type !== "filled" && styles[type]) || "",
         (small && styles.small) || "",
         className ?? ""
