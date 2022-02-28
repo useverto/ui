@@ -1,6 +1,7 @@
 import { createContext, useContext, Context } from "react";
 import { DisplayTheme } from "../../types";
 import { createGlobalStyle } from "styled-components";
+import { toKebab } from "../../utils";
 
 export const ThemeContext: Context<DisplayTheme> =
   createContext<DisplayTheme>("Light");
@@ -18,11 +19,11 @@ const defaultTheme: SchemeTypes = {
     backgroundColor: "#fff",
     foregroundColor: "#000",
     foregroundReverseColor: "#fff",
-    lightTextColor: "#666",
-    darkerTextColor: "#CECECE",
-    skeletonColor: "#E4E4E4",
-    skeletonShineColor: "#bdbdbd",
-    modalOverlayColor: "rgba(0, 0, 0, .8)",
+    lightText: "#666",
+    cec: "#CECECE",
+    skeleton: "#E4E4E4",
+    skeletonShine: "#bdbdbd",
+    modalLayerDark: "rgba(0, 0, 0, .8)",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
@@ -32,15 +33,15 @@ const defaultTheme: SchemeTypes = {
     lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
   },
   Dark: {
-    backgroundColor: "#030a23",
+    backgroundColor: "#000",
     lighterBackgroundColor: "#060e2b",
     foregroundColor: "#fff",
     foregroundReverseColor: "#030a23",
-    lightTextColor: "#9CA0B1",
-    darkerTextColor: "#9a9a9a",
-    skeletonColor: "#131829",
-    skeletonShineColor: "#181f35",
-    modalOverlayColor: "rgba(0, 0, 0, .8)",
+    lightText: "#9CA0B1",
+    cec: "#9a9a9a",
+    skeleton: "#131829",
+    skeletonShine: "#181f35",
+    modalLayerDark: "rgba(0, 0, 0, .8)",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
@@ -51,36 +52,21 @@ const defaultTheme: SchemeTypes = {
   }
 };
 
+// DARK CARD COLOR: #111111
+
 export const GlobalStyle = createGlobalStyle`
   body {
-    --background-color: ${(props) =>
-      defaultTheme[props.theme as string].backgroundColor};
-    --lighter-background-color: ${(props) =>
-      defaultTheme[props.theme as string].lighterBackgroundColor ?? ""};
-    --foreground-color: ${(props) =>
-      defaultTheme[props.theme as string].foregroundColor};
-    --foreground-reverse-color: ${(props) =>
-      defaultTheme[props.theme as string].foregroundReverseColor};
-    --light-text: ${(props) =>
-      defaultTheme[props.theme as string].lightTextColor};
-    --cec: ${(props) => defaultTheme[props.theme as string].darkerTextColor};
-    --skeleton: ${(props) => defaultTheme[props.theme as string].skeletonColor};
-    --skeleton-shine: ${(props) =>
-      defaultTheme[props.theme as string].skeletonShineColor};
-    --modal-layer-dark: ${(props) =>
-      defaultTheme[props.theme as string].modalOverlayColor};
-    --success: ${(props) => defaultTheme[props.theme as string].success};
-    --warning: ${(props) => defaultTheme[props.theme as string].warning};
-    --error: ${(props) => defaultTheme[props.theme as string].error};
-      
-    --standard-shadow: ${(props) =>
-      defaultTheme[props.theme as string].standardShadow};
-    --darker-shadow: ${(props) =>
-      defaultTheme[props.theme as string].darkerShadow};
-    --lighter-shadow: ${(props) =>
-      defaultTheme[props.theme as string].lighterShadow};
-    --standard-shadow-hover: ${(props) =>
-      defaultTheme[props.theme as string].standardShadowHover};
+    ${(props) =>
+      Object.keys(defaultTheme[props.theme as string])
+        .map(
+          (key: string) =>
+            "--" +
+            toKebab(key) +
+            ": " +
+            defaultTheme[props.theme as string][key] +
+            ";"
+        )
+        .join("\n")}
   }
 `;
 
@@ -89,11 +75,11 @@ export interface Theme {
   foregroundColor: string;
   foregroundReverseColor: string;
   lighterBackgroundColor?: string;
-  lightTextColor: string;
-  darkerTextColor: string; // CEC
-  skeletonColor: string;
-  skeletonShineColor: string;
-  modalOverlayColor: string; // modals' overlay
+  lightText: string;
+  cec: string; // CEC
+  skeleton: string;
+  skeletonShine: string;
+  modalLayerDark: string; // modals' overlay
   success: string;
   warning: string;
   error: string;
