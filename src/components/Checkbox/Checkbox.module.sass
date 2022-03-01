@@ -31,7 +31,7 @@
       display: flex
       align-items: center
       justify-content: center
-      color: variables.$foreground-reverse-color
+      color: #fff
 
       svg
         font-size: 1em
@@ -49,11 +49,8 @@
       border: 1px solid #666
 
     &:checked ~ .Check
-      background-color: variables.$foreground-color
+      background-color: rgb(variables.$primary-color)
 
     &:disabled ~ .Check
       opacity: .8
       cursor: not-allowed !important
-
-  &.Dark .Check
-    background-color: rgba(#fff, .07)
