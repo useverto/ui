@@ -25,6 +25,7 @@ const defaultTheme: SchemeTypes = {
     skeletonShine: "#bdbdbd",
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "var(--background-color)",
+    inputBorderColor: "var(--foreground-color)",
     primaryColor: "0, 0, 0",
     success: "#00D46E",
     warning: "#FFD335",
@@ -45,6 +46,7 @@ const defaultTheme: SchemeTypes = {
     skeletonShine: "#181f35",
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "#151515",
+    inputBorderColor: "#444444",
     primaryColor: "121, 38, 204",
     success: "#00D46E",
     warning: "#FFD335",
@@ -83,6 +85,7 @@ export interface Theme {
   skeletonShine: string;
   modalLayerDark: string; // modals' overlay
   componentBackground: string;
+  inputBorderColor: string;
   primaryColor: string;
   success: string;
   warning: string;

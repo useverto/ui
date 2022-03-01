@@ -8,6 +8,7 @@ import {
 import { MouseEventHandler, useState } from "react";
 import { ToastData } from "../../types";
 import { motion } from "framer-motion";
+import { useTheme } from "../Provider/theme";
 import styles from "./Toast.module.sass";
 
 type Props = Omit<ToastData, "duration"> & {
@@ -21,10 +22,16 @@ export default function Toast({
   onClick
 }: Props) {
   const [hovered, setHoverd] = useState(false);
+  const theme = useTheme();
 
   return (
     <motion.div
-      className={styles.Toast + " " + styles[`Status_${type}`]}
+      className={
+        styles.Toast +
+        " " +
+        ((theme === "Dark" && styles.Dark) || "") +
+        styles[`Status_${type}`]
+      }
       onMouseEnter={() => setHoverd(true)}
       onMouseLeave={() => setHoverd(false)}
       initial={{ x: "100%", opacity: 0 }}
