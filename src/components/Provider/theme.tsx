@@ -25,14 +25,14 @@ const defaultTheme: SchemeTypes = {
     skeletonShine: "#bdbdbd",
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "var(--background-color)",
+    primaryColor: "0, 0, 0",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
     standardShadow: "0px 10px 20px rgba(0, 0, 0, .2)",
     standardShadowHover: "0px 10px 20px rgba(0, 0, 0, .26)",
     darkerShadow: "0px 10px 25px rgba(0, 0, 0, .185)",
-    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)",
-    darkPrimary: "121, 38, 204"
+    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
   },
   Dark: {
     backgroundColor: "#000",
@@ -45,14 +45,14 @@ const defaultTheme: SchemeTypes = {
     skeletonShine: "#181f35",
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "#151515",
+    primaryColor: "121, 38, 204",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
     standardShadow: "0px 0 1px 2px rgba(156, 160, 177, .2)",
     standardShadowHover: "0px 0 1px 2px rgba(156, 160, 177, .26)",
     darkerShadow: "0px 0 1px 2px rgba(156, 160, 177, .5)",
-    lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)",
-    darkPrimary: "121, 38, 204"
+    lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)"
   }
 };
 
@@ -83,10 +83,10 @@ export interface Theme {
   skeletonShine: string;
   modalLayerDark: string; // modals' overlay
   componentBackground: string;
+  primaryColor: string;
   success: string;
   warning: string;
   error: string;
-  darkPrimary: string;
 
   standardShadow: string;
   standardShadowHover: string;
