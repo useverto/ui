@@ -31,7 +31,8 @@ const defaultTheme: SchemeTypes = {
     standardShadow: "0px 10px 20px rgba(0, 0, 0, .2)",
     standardShadowHover: "0px 10px 20px rgba(0, 0, 0, .26)",
     darkerShadow: "0px 10px 25px rgba(0, 0, 0, .185)",
-    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)"
+    lighterShadow: "0px 10px 20px rgba(0, 0, 0, .26)",
+    darkPrimary: "121, 38, 204"
   },
   Dark: {
     backgroundColor: "#000",
@@ -50,7 +51,8 @@ const defaultTheme: SchemeTypes = {
     standardShadow: "0px 0 1px 2px rgba(156, 160, 177, .2)",
     standardShadowHover: "0px 0 1px 2px rgba(156, 160, 177, .26)",
     darkerShadow: "0px 0 1px 2px rgba(156, 160, 177, .5)",
-    lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)"
+    lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)",
+    darkPrimary: "121, 38, 204"
   }
 };
 
@@ -84,6 +86,7 @@ export interface Theme {
   success: string;
   warning: string;
   error: string;
+  darkPrimary: string;
 
   standardShadow: string;
   standardShadowHover: string;
