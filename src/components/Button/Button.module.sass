@@ -11,7 +11,7 @@ $sidePaddingSmall: 1.7em
   outline: none
   border: none
   cursor: pointer
-  background-color: variables.$foreground-color
+  background-color: rgb(variables.$primary-color)
   color: variables.$foreground-reverse-color
   box-shadow: variables.$standard-shadow
   border-radius: variables.$big-items-radius
@@ -24,7 +24,6 @@ $sidePaddingSmall: 1.7em
     color: variables.$foreground-reverse-color
 
   &.Dark
-    background-color: rgb(variables.$primary-color)
     color: variables.$foreground-color
     box-shadow: 0px 0 17px 6px rgba(variables.$primary-color, .35)
 
@@ -48,13 +47,12 @@ $sidePaddingSmall: 1.7em
     transform: scale(.96)
 
   &.outlined, &.secondary
-    border: variables.$borderWidth solid variables.$foreground-color
+    border: variables.$borderWidth solid rgb(variables.$primary-color)
     padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingNormal} - #{variables.$borderWidth})
     color: variables.$foreground-color
     background-color: variables.$background-color
 
     &.Dark
-      border-color: rgb(variables.$primary-color)
       color: rgb(variables.$primary-color)
 
     .Loading
@@ -69,11 +67,10 @@ $sidePaddingSmall: 1.7em
         box-shadow: none
 
     &.outlined:hover
-      background-color: variables.$foreground-color
+      background-color: rgb(variables.$primary-color)
       color: variables.$foreground-reverse-color
 
       &.Dark
-        background-color: rgb(variables.$primary-color)
         color: variables.$foreground-color
 
       .Loading

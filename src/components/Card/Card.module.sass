@@ -48,8 +48,8 @@ $standardPadding: variables.$standard-padding-card
     align-items: center
 
     .OrderType, .BitCount
-      background-color: variables.$foreground-color
-      color: variables.$foreground-reverse-color
+      background-color: rgb(variables.$primary-color)
+      color: #fff
       font-size: variables.$normal-font-size
       font-weight: 500
       border-radius: variables.$small-items-radius - 1.5px
@@ -201,6 +201,11 @@ $standardPadding: variables.$standard-padding-card
         font-size: 1em
         width: 1em
         height: 1em
+
+  &.Dark
+    .ItemData
+      .OrderType, .BitCount
+        box-shadow: 0px 0 17px 6px rgba(variables.$primary-color, .35)
 
 .TokenPortionTitle
   margin: 0

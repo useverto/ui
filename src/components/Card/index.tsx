@@ -1,5 +1,6 @@
 import { PropsWithChildren, MouseEventHandler } from "react";
 import { DefaultProps } from "../../utils";
+import { useTheme } from "../Provider/theme";
 import Asset, { Clear } from "./Asset";
 import ArtActivity from "./ArtActivity";
 import Trade from "./Trade";
@@ -15,9 +16,16 @@ export default function Card({
   style,
   ...props
 }: PropsWithChildren<Props>) {
+  const theme = useTheme();
+
   return (
     <div
-      className={["VertoCard", styles.Card, className ?? ""]
+      className={[
+        "VertoCard",
+        styles.Card,
+        (theme === "Dark" && styles.Dark) || "",
+        className ?? ""
+      ]
         .filter((val) => val !== "")
         .join(" ")}
       style={style}
