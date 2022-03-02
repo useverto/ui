@@ -7,6 +7,7 @@ import {
   useState
 } from "react";
 import { DefaultProps } from "../../utils";
+import { useTheme } from "../Provider/theme";
 import styles from "./Input.module.sass";
 
 export default function Input({
@@ -36,6 +37,8 @@ export default function Input({
   useEffect(() => setVal(props.value), [props.value]);
   useEffect(() => setInputStatus(status), [status]);
 
+  const theme = useTheme();
+
   return (
     <div
       className={["VertoInput", className ?? ""]
@@ -58,7 +61,8 @@ export default function Input({
           (small && styles.WithSmall) || "",
           (currency && styles.WithCurrency) || "",
           (inlineLabel && styles.WithInlineLabel) || "",
-          (inputStatus && styles[`Status_${inputStatus}`]) || ""
+          (inputStatus && styles[`Status_${inputStatus}`]) || "",
+          (theme === "Dark" && styles.Dark) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}
