@@ -6,6 +6,7 @@ import {
   useState,
   ChangeEvent
 } from "react";
+import { useTheme } from "../Provider/theme";
 import { DefaultProps } from "../../utils";
 import styles from "./Select.module.sass";
 
@@ -19,6 +20,8 @@ export default function Select({
   status,
   ...props
 }: PropsWithChildren<Props>) {
+  const theme = useTheme();
+
   return (
     <div
       className={["VertoSelect", className ?? ""]
@@ -43,7 +46,8 @@ export default function Select({
           styles.Select,
           (filled && styles.Filled) || "",
           (small && styles.Small) || "",
-          (status && styles[`Status_${status}`]) || ""
+          (status && styles[`Status_${status}`]) || "",
+          (theme === "Dark" && styles.Dark) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}

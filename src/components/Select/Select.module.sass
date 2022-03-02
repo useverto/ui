@@ -12,11 +12,14 @@ $topPaddingSmall: .36em
   border-radius: variables.$big-items-radius
   overflow: hidden
   font-size: variables.$normal-font-size
-  border: variables.$borderWidth solid variables.$foreground-color
-  background-color: variables.$background-color
+  border: variables.$borderWidth solid variables.$input-border-color
+  background-color: variables.$component-background
   width: min-content
   min-width: 320px
   transition: all .23s ease-in-out
+
+  &.Dark
+    box-shadow: none
 
   select
     display: block
@@ -48,6 +51,13 @@ $topPaddingSmall: .36em
 
     select
       color: variables.$foreground-reverse-color
+
+    &.Dark
+      background-color: variables.$input-border-color
+      color: #fff
+
+      select
+        color: #fff
 
   &.Small
     font-size: variables.$smaller-font-size

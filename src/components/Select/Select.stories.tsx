@@ -29,7 +29,7 @@ TestSelect.args = {
   disabled: false,
   filled: true,
   small: false,
-  status: "warning"
+  status: undefined
 };
 
 export default storyConfig;
