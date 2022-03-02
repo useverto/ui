@@ -22,6 +22,7 @@ export default function Input({
   matchPattern,
   onChange,
   onKeyPressHandler,
+  fullWidth = false,
   ...props
 }: Props) {
   const [val, setVal] = useState(props.value),
@@ -62,7 +63,8 @@ export default function Input({
           (currency && styles.WithCurrency) || "",
           (inlineLabel && styles.WithInlineLabel) || "",
           (inputStatus && styles[`Status_${inputStatus}`]) || "",
-          (theme === "Dark" && styles.Dark) || ""
+          (theme === "Dark" && styles.Dark) || "",
+          (fullWidth && styles.FullWidth) || ""
         ]
           .filter((val) => val !== "")
           .join(" ")}
@@ -138,6 +140,7 @@ interface Props extends DefaultProps {
   status?: InputStatus;
   matchPattern?: RegExp;
   type?: "text" | "number" | "password";
+  fullWidth?: boolean;
 }
 
 type InputStatus = undefined | "error" | "warning" | "success";

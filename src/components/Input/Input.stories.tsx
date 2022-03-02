@@ -24,7 +24,8 @@ export const WithType: ComponentStory<typeof Input> = Template.bind({});
 
 WithType.args = {
   type: "password",
-  placeholder: "Testing"
+  placeholder: "Testing",
+  fullWidth: false
 };
 
 export const WithLabel: ComponentStory<typeof Input> = Template.bind({});
@@ -35,7 +36,8 @@ WithLabel.args = {
   inlineLabel: "VRT",
   placeholder: "10000",
   label: "Hello World",
-  disabled: false
+  disabled: false,
+  fullWidth: false
 };
 
 export const WithLeftLineLabel: ComponentStory<typeof Input> = Template.bind(
@@ -44,14 +46,16 @@ export const WithLeftLineLabel: ComponentStory<typeof Input> = Template.bind(
 
 WithLeftLineLabel.args = {
   ...WithLabel.args,
-  leftInlineLabel: true
+  leftInlineLabel: true,
+  fullWidth: false
 };
 
 export const WithSmallInput: ComponentStory<typeof Input> = Template.bind({});
 
 WithSmallInput.args = {
   ...WithLeftLineLabel.args,
-  small: true
+  small: true,
+  fullWidth: false
 };
 
 export const WithAllProps: ComponentStory<typeof Input> = Template.bind({});
@@ -61,7 +65,8 @@ WithAllProps.args = {
   disabled: false,
   readOnly: false,
   small: false,
-  type: "number"
+  type: "number",
+  fullWidth: false
 };
 
 export default storyConfig;
