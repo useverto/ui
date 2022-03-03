@@ -35,7 +35,7 @@ export default function Collection({
 
       setItemTypes(types);
     })();
-  }, []);
+  }, [images]);
 
   function formatName(name: string) {
     if (name.length <= 12) return name;
@@ -45,18 +45,6 @@ export default function Collection({
       name.substring(name.length - 2, name.length)
     );
   }
-
-  const [previewHovered, setPreviewHovered] = useState(false);
-  const [zoomPreview, setZoomPreview] = useState(false);
-
-  useEffect(() => {
-    if (!previewHovered) return;
-    const handle = setTimeout(() => {
-      if (previewHovered) setZoomPreview(true);
-    }, 1050);
-
-    return () => clearTimeout(handle);
-  }, [previewHovered]);
 
   const [gradient, setGradient] =
     useState<ReturnType<typeof generateAvatarGradient>>();
@@ -79,29 +67,18 @@ export default function Collection({
       ]
         .filter((val) => val !== "")
         .join(" ")}
-      style={{ zIndex: zoomPreview ? 10 : undefined, ...style }}
+      style={style}
       onClick={onClick}
     >
       <div
-        className={
-          assetStyles.Preview +
-          " " +
-          assetStyles.CollectionItem +
-          " " +
-          (zoomPreview ? assetStyles.MouseOver : "")
-        }
+        className={assetStyles.Preview + " " + assetStyles.CollectionItem}
         style={{ overflow: "visible" }}
-        onMouseEnter={() => setPreviewHovered(true)}
-        onMouseLeave={() => {
-          setZoomPreview(false);
-          setPreviewHovered(false);
-        }}
       >
         {itemTypes.length >= 3 && (
           <>
-            <Image type={itemTypes[0]} src={images[0]} pos="left" />
-            <Image type={itemTypes[1]} src={images[1]} pos="middle" />
-            <Image type={itemTypes[2]} src={images[2]} pos="right" />
+            <Image type={itemTypes[0]} src={images[0]} />
+            <Image type={itemTypes[1]} src={images[1]} />
+            <Image type={itemTypes[2]} src={images[2]} />
           </>
         )}
       </div>
@@ -171,60 +148,34 @@ interface Props extends BaseProps {
 
 const Image = ({
   type: { type, contentType },
-  src,
-  pos
+  src
 }: {
   type: AssetTypeInfo;
   src: string;
-  pos: "left" | "right" | "middle";
-}) => {
-  const spotlight = pos === "middle";
-
-  return (
-    <>
-      {(type === "image" && (
-        <img
-          src={src}
-          alt=""
-          draggable={false}
-          className={spotlight ? styles.SpotLight : styles.SideItem}
-        />
+}) => (
+  <>
+    {(type === "image" && <img src={src} alt="" draggable={false} />) ||
+      (type === "video" && (
+        <video
+          controls={false}
+          // @ts-ignore
+          onMouseEnter={(e) => e.target.play()}
+          // @ts-ignore
+          onMouseLeave={(e) => e.target.pause()}
+          muted
+        >
+          <source src={src} type={contentType} />
+        </video>
       )) ||
-        (type === "video" && (
-          <video
-            controls={false}
-            // @ts-ignore
-            onMouseEnter={(e) => e.target.play()}
-            // @ts-ignore
-            onMouseLeave={(e) => e.target.pause()}
-            muted
-            className={spotlight ? styles.SpotLight : styles.SideItem}
-          >
-            <source src={src} type={contentType} />
-          </video>
-        )) ||
-        (type === "audio" && (
-          <div
-            className={
-              styles.SvgWrapper + " " + spotlight
-                ? styles.SpotLight
-                : styles.SideItem
-            }
-          >
-            <MusicIcon />
-          </div>
-        )) ||
-        (type === "other" && (
-          <div
-            className={
-              styles.SvgWrapper + " " + spotlight
-                ? styles.SpotLight
-                : styles.SideItem
-            }
-          >
-            <FileIcon />
-          </div>
-        ))}
-    </>
-  );
-};
+      (type === "audio" && (
+        <div className={styles.SvgWrapper}>
+          <MusicIcon />
+        </div>
+      )) ||
+      (type === "other" && (
+        <div className={styles.SvgWrapper}>
+          <FileIcon />
+        </div>
+      ))}
+  </>
+);

@@ -22,14 +22,15 @@ $standardPadding: variables.$standard-padding-card
     border-top-left-radius: variables.$small-items-radius
     border-top-right-radius: variables.$small-items-radius
 
-    img, video, svg, .SvgWrapper
-      position: absolute
-      max-width: 100%
-      max-height: 100%
-      top: 50%
-      left: 50%
-      user-select: none
-      transform: translate(-50%, -50%)
+    &:not(.CollectionItem)
+      img, video, svg, .SvgWrapper
+        position: absolute
+        max-width: 100%
+        max-height: 100%
+        top: 50%
+        left: 50%
+        user-select: none
+        transform: translate(-50%, -50%)
 
     &:not(.Logo):not(.CollectionItem) 
       img, video
@@ -48,51 +49,45 @@ $standardPadding: variables.$standard-padding-card
         width: 100%
         height: 100%
 
-    &.Logo img, &.CollectionItem img
+    &.Logo img
       max-height: 80%
       max-width: 80%
       border-radius: variables.$small-items-radius
 
     &.CollectionItem
+      $collectionPreviewPadding: $standardPadding / 2
+      display: grid
+      justify-content: space-between
+      grid-template-columns: auto auto
+      grid-template-rows: auto auto
+      gap: $collectionPreviewPadding
+      padding: $collectionPreviewPadding
+      width: calc(100% - $collectionPreviewPadding * 2)
+      height: calc(100% - $collectionPreviewPadding * 2)
       $sideItemBaseTransform: translateY(-50%)
       transition: all .19s ease-in-out
 
       img, video, .SvgWrapper
+        max-width: 100%
+        max-height: 100%
+        object-fit: cover
+        user-select: none
         transition: all .19s ease-in-out
 
-        &.SpotLight
-          max-height: 72%
-          max-width: 72%
-          z-index: 10
-          box-shadow: variables.$lighter-shadow
+        &:first-child
+          height: 100%
+          grid-row: 1 / 3
+          border-radius: variables.$small-items-radius 0 0 variables.$small-items-radius
 
-        &.SideItem
-          $sideSpace: 10px
-          max-height: 65%
-          max-width: 65%
-          transform: $sideItemBaseTransform
+        &:nth-child(2)
+          border-radius: 0 variables.$small-items-radius 0 0
 
-          &:first-child
-            left: $sideSpace
+        &:last-child
+          border-radius: 0 0 variables.$small-items-radius 0
 
-          &:last-child
-            right: $sideSpace
-            left: unset
-
-      &:hover:not(.MouseOver)
-        transform: scale(.9)
-        transition: all 3s
-
-      &.MouseOver
-        transform: scale(1.1)
-
-        img, video, .SvgWrapper
-          &.SideItem
-            &:first-child
-              transform: $sideItemBaseTransform translateX(-80%)
-
-            &:last-child
-              transform: $sideItemBaseTransform translateX(80%)
+        &:not(:first-child)
+          max-height: calc(($assetWidth - 2 * $collectionPreviewPadding) / 2)
+          width: fit-content
 
   &.ClearAsset .Preview
     border-radius: variables.$small-items-radius
