@@ -1,6 +1,6 @@
 {
   "name": "@verto/ui",
-  "version": "3.5.3-beta",
+  "version": "3.5.4-beta",
   "description": "The Verto Components library for React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -24,7 +24,8 @@
     "prepare": "install-peers",
     "storybook": "start-storybook -p 6006",
     "build:storybook": "build-storybook -o public/",
-    "serve:storybook": "serve storybook-static"
+    "serve:storybook": "serve storybook-static",
+    "prepublish": "rollup -c"
   },
   "gitHooks": {
     "pre-commit": "prettier --write . && git add -A"
