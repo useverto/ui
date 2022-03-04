@@ -89,6 +89,13 @@ ArtAsset.args = {
   reverse: false
 };
 
+const ClearAssetTemplate = (args) => <Card.AssetClear {...args} />;
+
+export const ClearAsset: ComponentStory<typeof Card.AssetClear> =
+  ClearAssetTemplate.bind({});
+
+ClearAsset.args = ArtAsset.args;
+
 export const TokenAsset: ComponentStory<typeof Card.Asset> = AssetTemplate.bind(
   {}
 );
