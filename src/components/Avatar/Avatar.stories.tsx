@@ -42,4 +42,23 @@ LargeInlineAvatar.args = {
   size: "large-inline"
 };
 
+export const AvatarGroup: ComponentStory<typeof Avatar.Group> = (args) => (
+  <Avatar.Group {...args}>
+    <Avatar
+      usertag="martonlederer"
+      avatar="https://arweave.net/mzv2LMPSpoYcCPNtfq-IvB5pgnfk2k4_5XCCBefkZ_A"
+      onlyProfilePicture
+    />
+    <Avatar
+      usertag="t8"
+      avatar="https://arweave.net/UGu1pI3ObS3wzdQ_GZwOr0DoWShTj4EPFgyHfDaHFgI"
+      onlyProfilePicture
+    />
+  </Avatar.Group>
+);
+
+AvatarGroup.args = {
+  hoverExpand: false
+};
+
 export default storyConfig;

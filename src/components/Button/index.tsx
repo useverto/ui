@@ -18,6 +18,7 @@ export default function Button({
   return (
     <button
       className={[
+        "VertoButton",
         styles.Button,
         (theme === "Dark" && styles.Dark) || "",
         (type !== "filled" && styles[type]) || "",

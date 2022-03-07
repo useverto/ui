@@ -1,4 +1,9 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import {
+  MouseEventHandler,
+  PropsWithChildren,
+  useEffect,
+  useState
+} from "react";
 import { DefaultProps } from "../../utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/router";
@@ -33,6 +38,7 @@ export default function Avatar({
   return (
     <div
       className={[
+        "VertoAvatar",
         styles.Avatar,
         size !== "small" ? styles[size] : "",
         className ?? ""
@@ -100,7 +106,7 @@ interface Props extends DefaultProps {
   size?: "small" | "large" | "large-inline";
   usertag: string;
   displaytag?: string;
-  name: string; // full name
+  name?: string; // full name
   avatar?: string;
   onClick?: MouseEventHandler<HTMLDivElement>;
   href?: string;
@@ -128,3 +134,28 @@ const VerifiedIcon = () => (
     </Tooltip>
   </div>
 );
+
+Avatar.Group = ({
+  className,
+  style,
+  hoverExpand,
+  children
+}: PropsWithChildren<AvatarGroupPorps>) => (
+  <div
+    className={[
+      "VertoAvatarGroup",
+      styles.Group,
+      (hoverExpand && styles.ExpandOnHover) || "",
+      className ?? ""
+    ]
+      .filter((val) => val !== "")
+      .join(" ")}
+    style={style}
+  >
+    {children}
+  </div>
+);
+
+interface AvatarGroupPorps extends DefaultProps {
+  hoverExpand?: boolean;
+}

@@ -1,7 +1,7 @@
 @use "../../styles/variables"
+$avatarWidth: 2.2em
 
 .Avatar
-  $avatarWidth: 2.2em
   display: flex
   align-items: center
   text-decoration: none
@@ -104,3 +104,15 @@
     p
       font-size: variables.$smaller-font-size
       font-weight: 500
+
+.Group
+  display: flex
+  width: max-content
+  align-items: center
+  transition: all .23s ease-in-out
+
+  div[class~=VertoAvatar]:not(:first-child)
+    margin-left: calc($avatarWidth / -1.7)
+
+  &.ExpandOnHover:hover div[class~=VertoAvatar]:not(:first-child)
+    margin-left: .55em
