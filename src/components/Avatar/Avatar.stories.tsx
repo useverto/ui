@@ -24,7 +24,8 @@ SmallAvatar.args = {
   name: "John Cliff Webthree",
   notification: false,
   left: false,
-  verified: true
+  verified: true,
+  onlyProfilePicture: false
 };
 
 export const LargeAvatar = Template.bind({});

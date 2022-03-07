@@ -18,7 +18,8 @@ export default function Avatar({
   notification,
   left,
   displaytag,
-  verified = false
+  verified = false,
+  onlyProfilePicture = false
 }: Props) {
   const router = useRouter();
   const [gradient, setGradient] =
@@ -44,16 +45,24 @@ export default function Avatar({
         if (onClick) onClick(e);
       }}
     >
-      {left && size === "small" && (
+      {left && size === "small" && !onlyProfilePicture && (
         <div className={styles.LeftInfo}>
           <h1 className={verified ? styles.VerifiedWrapper : ""}>
-            {name}
+            {name || ""}
             {verified && <VerifiedIcon />}
           </h1>
           <p>@{displaytag ?? usertag}</p>
         </div>
       )}
-      <div className={styles.Pfp + " " + (left ? styles.RightPfp : "")}>
+      <div
+        className={
+          styles.Pfp +
+          " " +
+          (left ? styles.RightPfp : "") +
+          " " +
+          (onlyProfilePicture ? styles.OnlyProfilePicture : "")
+        }
+      >
         <AnimatePresence>
           {notification && (
             <motion.span
@@ -74,10 +83,10 @@ export default function Avatar({
           </div>
         )}
       </div>
-      {(!left || size === "large") && (
+      {(!left || size === "large") && !onlyProfilePicture && (
         <div>
           <h1 className={verified ? styles.VerifiedWrapper : ""}>
-            {name}
+            {name || ""}
             {verified && <VerifiedIcon />}
           </h1>
           <p>@{displaytag ?? usertag}</p>
@@ -98,6 +107,7 @@ interface Props extends DefaultProps {
   notification?: boolean;
   left?: boolean;
   verified?: boolean;
+  onlyProfilePicture?: boolean;
 }
 
 const VerifiedIcon = () => (

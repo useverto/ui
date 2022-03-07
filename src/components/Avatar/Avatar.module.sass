@@ -21,9 +21,13 @@
     height: $avatarWidth
     margin-right: $sideMargin
 
-    &.RightPfp
+    &.RightPfp:not(.OnlyProfilePicture)
       margin-right: 0
       margin-left: $sideMargin
+
+    &.OnlyProfilePicture
+      margin-right: 0
+      margin-left: 0
 
     img, .Gradient
       width: 100%
