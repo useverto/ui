@@ -142,7 +142,31 @@ $standardPadding: variables.$standard-padding-card
           padding: .2em .4em
           border-radius: 6px
 
+  &.Bit
+    overflow: hidden
+
+    .HoverEffect
+      position: absolute
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      top: 0
+      right: 0
+      bottom: 0
+      background-color: variables.$foreground-color
+      color: variables.$foreground-reverse-color
+      font-size: 1.4em
+      font-weight: 500
+      padding: 0 1.3em
+      overflow: hidden
+      transition: all .5s ease-in-out
+
+    &:not(:hover) .HoverEffect
+      right: -100%
+
   .ItemInfo
+    position: relative
     display: flex
     align-items: center
 

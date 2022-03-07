@@ -140,8 +140,11 @@ export const Bits: ComponentStory<typeof Card.Bits> = BitsTemplate.bind({});
 
 Bits.args = {
   quantity: 20,
-  priceAr: 7,
-  priceUSD: 287.43
+  price: {
+    usd: 10.23,
+    ticker: "VRT",
+    qty: 20
+  }
 };
 
 /**

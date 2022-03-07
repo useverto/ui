@@ -6,12 +6,11 @@ export default function TokenPortion({
   style,
   onClick,
   quantity,
-  priceAr,
-  priceUSD
+  price
 }: Props) {
   return (
     <Card
-      className={[styles.Item, className ?? ""]
+      className={[styles.Item, styles.Bit, className ?? ""]
         .filter((val) => val !== "")
         .join(" ")}
       style={style}
@@ -23,16 +22,22 @@ export default function TokenPortion({
       </div>
       <div className={styles.ItemInfo}>
         <div className={styles.RightSection}>
-          <p>${priceUSD.toLocaleString()} USD</p>
-          <h1>{priceAr.toLocaleString()} AR</h1>
+          <p>${price?.usd?.toLocaleString() || "--"} USD</p>
+          <h1>
+            {price.qty.toLocaleString()} {price.ticker}
+          </h1>
         </div>
       </div>
+      <div className={styles.HoverEffect}>Buy</div>
     </Card>
   );
 }
 
 interface Props extends BaseProps {
   quantity: number;
-  priceAr: number;
-  priceUSD: number;
+  price: {
+    qty: number;
+    ticker: string;
+    usd?: number;
+  };
 }
