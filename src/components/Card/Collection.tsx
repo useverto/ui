@@ -134,7 +134,7 @@ export default function Collection({
             </Link>
           </Popover>
         )}
-        <div className={assetStyles.Price}>{images.length} items</div>
+        <div className={assetStyles.Price}>Collection of tokens</div>
       </div>
     </div>
   );
