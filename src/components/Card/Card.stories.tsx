@@ -163,7 +163,7 @@ Collection.args = {
   images: [
     "https://arweave.net/Cu0FeGOQXmVFOfP4Fbpqdvy2dccDKlxi42ZFbGdCheA",
     "https://arweave.net/jKPlhtYF-by5eLJkNjTn97gVCLW_MAuDqxaypn2f6Lo",
-    "https://arweave.net/D2o7h18f0GdfsSmpahb-TLbc1xhutrimwH7In0g5lmA"
+    "https://arweave.net/P0L-j0NdchqHtF90CiJ75VdkeKUbZqPl9NCTmMzhCS0"
   ],
   userData: {
     name: "John Doe",
