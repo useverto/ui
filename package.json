@@ -1,6 +1,6 @@
 {
   "name": "@verto/ui",
-  "version": "3.5.8-beta",
+  "version": "3.5.9-beta",
   "description": "The Verto Components library for React",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
