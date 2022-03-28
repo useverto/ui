@@ -37,7 +37,8 @@ WithLabel.args = {
   placeholder: "10000",
   label: "Hello World",
   disabled: false,
-  fullWidth: false
+  fullWidth: false,
+  small: false
 };
 
 export const WithLeftLineLabel: ComponentStory<typeof Input> = Template.bind(

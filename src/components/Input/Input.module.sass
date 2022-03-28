@@ -48,12 +48,6 @@ $topPadding: .55em
       z-index: 10
       background-color: variables.$background-color
       border-radius: variables.$big-items-radius - variables.$borderWidth
-  
-  &.WithSmall
-
-    input
-      padding: 0.15em
-      padding-left: $sidePadding + 1em
 
   &.Status_error
     border-color: variables.$error !important
@@ -88,6 +82,24 @@ $topPadding: .55em
       right: $sidePadding
     color: variables.$foreground-reverse-color
     min-width: 90px
+
+  &.WithSmall
+    $smallSidePadding: $sidePadding - .14em
+    $smallTopPadding: $topPadding - .2em
+
+    input
+      padding: $smallTopPadding $smallSidePadding
+      font-size: variables.$smaller-font-size
+
+    &.WithCurrency input
+      padding-left: $smallSidePadding + 1em
+
+    .Currency
+      left: calc(#{$smallSidePadding} + #{variables.$borderWidth})
+      font-size: variables.$smaller-font-size
+
+    .InlineLabel
+      font-size: variables.$smaller-font-size
 
   &.Dark
     &.WithInlineLabel
