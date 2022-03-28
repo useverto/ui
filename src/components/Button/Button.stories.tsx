@@ -30,7 +30,8 @@ export const Filled: ComponentStory<typeof Button> = Template.bind({});
 Filled.args = {
   type: "filled",
   disabled: false,
-  loading: false
+  loading: false,
+  fullWidth: false
 };
 
 export const Outlined: ComponentStory<typeof Button> = Template.bind({});
@@ -38,7 +39,8 @@ export const Outlined: ComponentStory<typeof Button> = Template.bind({});
 Outlined.args = {
   type: "outlined",
   disabled: false,
-  loading: true
+  loading: true,
+  fullWidth: false
 };
 
 export const SmallOutlined: ComponentStory<typeof Button> = Template.bind({});
@@ -46,7 +48,8 @@ export const SmallOutlined: ComponentStory<typeof Button> = Template.bind({});
 Outlined.args = {
   type: "outlined",
   disabled: false,
-  loading: true
+  loading: true,
+  fullWidth: false
 };
 
 export const Secondary: ComponentStory<typeof Button> = Template.bind({});
@@ -54,7 +57,8 @@ export const Secondary: ComponentStory<typeof Button> = Template.bind({});
 Secondary.args = {
   type: "secondary",
   disabled: true,
-  loading: false
+  loading: false,
+  fullWidth: false
 };
 
 export const Events: ComponentStory<typeof Button> = () => {

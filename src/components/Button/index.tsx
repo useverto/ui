@@ -9,6 +9,7 @@ export default function Button({
   type = "filled",
   small,
   loading,
+  fullWidth = false,
   className,
   onClick,
   ...props
@@ -23,6 +24,7 @@ export default function Button({
         (theme === "Dark" && styles.Dark) || "",
         (type !== "filled" && styles[type]) || "",
         (small && styles.small) || "",
+        (fullWidth && styles.FullWidth) || "",
         className ?? ""
       ]
         .filter((val) => val !== "")
@@ -40,5 +42,6 @@ interface Props extends DefaultProps {
   small?: boolean;
   disabled?: boolean;
   loading?: boolean;
+  fullWidth?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
