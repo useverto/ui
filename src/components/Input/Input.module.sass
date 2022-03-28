@@ -36,7 +36,7 @@ $topPadding: .55em
       margin: 0
 
   &.FullWidth
-    width: 100%
+    width: calc(100% - #{variables.$borderWidth} * 2)
 
   &.WithCurrency input
     padding-left: $sidePadding + 1em
