@@ -40,7 +40,7 @@ const defaultTheme: SchemeTypes = {
     lighterBackgroundColor: "#060e2b",
     foregroundColor: "#fff",
     foregroundReverseColor: "#030a23",
-    lightText: "#9CA0B1",
+    lightText: "#999999",
     cec: "#9a9a9a",
     skeleton: "#242424",
     skeletonShine: "#323131",
