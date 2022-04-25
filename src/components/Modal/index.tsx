@@ -1,6 +1,11 @@
 import { CloseIcon } from "@iconicicons/react";
 import { AnimatePresence, motion } from "framer-motion";
-import { MouseEventHandler, PropsWithChildren, useState } from "react";
+import {
+  MouseEventHandler,
+  PropsWithChildren,
+  useEffect,
+  useState
+} from "react";
 import { DefaultProps } from "../../utils";
 import styles from "./Modal.module.sass";
 
@@ -66,6 +71,11 @@ interface Props extends DefaultProps {
 
 export function useModal(visibleInitially = false) {
   const [state, setState] = useState(visibleInitially);
+
+  // disable scrolling when modal is open
+  useEffect(() => {
+    document.body.style.overflowY = state ? "hidden" : "auto";
+  }, [state]);
 
   return {
     state,
