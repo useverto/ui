@@ -23,6 +23,7 @@ const defaultTheme: SchemeTypes = {
     border: "#e6e6e6",
     secondaryText: "#666",
     lighterBackground: "#fafafa",
+    hoverBackground: "f5f5f5",
     cec: "#CECECE",
     skeleton: "#E4E4E4",
     skeletonShine: "#bdbdbd",
@@ -47,6 +48,7 @@ const defaultTheme: SchemeTypes = {
     border: "#333",
     secondaryText: "#888",
     lighterBackground: "#111",
+    hoverBackground: "#1b1b1b",
     cec: "#9a9a9a",
     skeleton: "#242424",
     skeletonShine: "#323131",
@@ -86,6 +88,7 @@ export interface Theme {
   foregroundReverseColor: string;
   lighterBackgroundColor?: string;
   lightText: string;
+  hoverBackground: string;
   cec: string; // CEC
   skeleton: string;
   skeletonShine: string;
