@@ -20,6 +20,9 @@ const defaultTheme: SchemeTypes = {
     foregroundColor: "#000",
     foregroundReverseColor: "#fff",
     lightText: "#666",
+    border: "#e6e6e6",
+    secondaryText: "#666",
+    lighterBackground: "#fafafa",
     cec: "#CECECE",
     skeleton: "#E4E4E4",
     skeletonShine: "#bdbdbd",
@@ -41,6 +44,9 @@ const defaultTheme: SchemeTypes = {
     foregroundColor: "#fff",
     foregroundReverseColor: "#030a23",
     lightText: "#999999",
+    border: "#333",
+    secondaryText: "#888",
+    lighterBackground: "#111",
     cec: "#9a9a9a",
     skeleton: "#242424",
     skeletonShine: "#323131",
@@ -90,6 +96,9 @@ export interface Theme {
   success: string;
   warning: string;
   error: string;
+  border: string;
+  secondaryText: string;
+  lighterBackground: string;
 
   standardShadow: string;
   standardShadowHover: string;
