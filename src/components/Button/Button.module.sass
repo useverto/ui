@@ -1,8 +1,14 @@
 @use "../../styles/variables"
 
-$sidePaddingNormal: 2.3em
-$topPaddingNormal: .6em
+$sidePaddingNormal: 44px
+$topPaddingNormal: 12px
 $sidePaddingSmall: 1.7em
+
+=hoverStyle($opacity: 1)
+  box-shadow: 0 0 0 0 rgba(variables.$primary-color, $opacity)
+
+  &:hover:not(:active):not(:disabled)
+    box-shadow: var(--hover-shadow) rgba(variables.$primary-color, $opacity)
 
 .Button
   display: flex
@@ -13,68 +19,25 @@ $sidePaddingSmall: 1.7em
   cursor: pointer
   background-color: rgb(variables.$primary-color)
   color: variables.$foreground-reverse-color
-  box-shadow: variables.$standard-shadow
-  border-radius: variables.$big-items-radius
-  font-size: variables.$normal-font-size
+  border-radius: .9rem
+  font-size: 1.1rem
   font-weight: 500
   padding: $topPaddingNormal $sidePaddingNormal
   transition: all .23s ease-in-out
 
-  .Loading
-    color: variables.$foreground-reverse-color
-
-  &.Dark
-    color: variables.$foreground-color
-    box-shadow: 0px 0 17px 6px rgba(variables.$primary-color, .35)
-
-    .Loading
-      color: variables.$foreground-color
-
   &:disabled
     cursor: not-allowed
-    opacity: .77
+    background-color: rgba(variables.$primary-color, .1)
+    color: rgba(variables.$primary-color, .4)
+  
+  +hoverStyle
 
-  &:hover:not(:disabled)
-    box-shadow: variables.$standard-shadow-hover
+  // secondary btn styles
+  &.Secondary
+    background-color: rgba(variables.$primary-color, .15)
+    color: rgb(variables.$primary-color)
 
-    &.Dark:not(.secondary)
-      box-shadow: 0px 0 17px 6px rgba(variables.$primary-color, .45)
-
-      .Loading
-        color: variables.$foreground-color
-
-  &:active:not(:disabled)
-    transform: scale(.96)
-
-  &.outlined, &.secondary
-    border: variables.$borderWidth solid rgb(variables.$primary-color)
-    padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingNormal} - #{variables.$borderWidth})
-    color: variables.$foreground-color
-    background-color: variables.$component-background
-
-    &.Dark
-      color: rgb(variables.$primary-color)
-
-    .Loading
-      color: variables.$foreground-color
-
-    &.secondary
-      color: variables.$light-text
-      border-color: variables.$cec
-      box-shadow: none
-
-      &:hover
-        box-shadow: none
-
-    &.outlined:hover
-      background-color: rgb(variables.$primary-color)
-      color: variables.$foreground-reverse-color
-
-      &.Dark
-        color: variables.$foreground-color
-
-      .Loading
-        color: variables.$foreground-reverse-color
+    +hoverStyle($opacity: .15)
 
   &.small
     padding: $topPaddingNormal $sidePaddingSmall

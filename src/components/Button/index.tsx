@@ -1,12 +1,11 @@
 import { PropsWithChildren, MouseEventHandler } from "react";
 import { Spinner } from "../Loading";
 import { DefaultProps } from "../../utils";
-import { useTheme } from "../Provider/theme";
 import styles from "./Button.module.sass";
 
 export default function Button({
   children,
-  type = "filled",
+  secondary,
   small,
   loading,
   fullWidth = false,
@@ -14,15 +13,12 @@ export default function Button({
   onClick,
   ...props
 }: PropsWithChildren<Props>) {
-  const theme = useTheme();
-
   return (
     <button
       className={[
         "VertoButton",
         styles.Button,
-        (theme === "Dark" && styles.Dark) || "",
-        (type !== "filled" && styles[type]) || "",
+        (secondary && styles.Secondary) || "",
         (small && styles.small) || "",
         (fullWidth && styles.FullWidth) || "",
         className ?? ""
@@ -38,7 +34,7 @@ export default function Button({
 }
 
 interface Props extends DefaultProps {
-  type?: "filled" | "outlined" | "secondary";
+  secondary?: boolean;
   small?: boolean;
   disabled?: boolean;
   loading?: boolean;

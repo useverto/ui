@@ -14,6 +14,11 @@ export const ThemeContext: Context<DisplayTheme> =
 export const useTheme = (): DisplayTheme =>
   useContext<DisplayTheme>(ThemeContext);
 
+/**
+ * Theme color in RGB
+ */
+export const themeColor = "128, 0, 255";
+
 const defaultTheme: SchemeTypes = {
   Light: {
     backgroundColor: "#fff",
@@ -30,7 +35,6 @@ const defaultTheme: SchemeTypes = {
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "var(--background-color)",
     inputBorderColor: "var(--foreground-color)",
-    primaryColor: "0, 0, 0",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
@@ -55,7 +59,6 @@ const defaultTheme: SchemeTypes = {
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "#151515",
     inputBorderColor: "#444444",
-    primaryColor: "121, 38, 204",
     success: "#00D46E",
     warning: "#FFD335",
     error: "#FF0000",
@@ -64,6 +67,11 @@ const defaultTheme: SchemeTypes = {
     darkerShadow: "0px 0 1px 2px rgba(156, 160, 177, .5)",
     lighterShadow: "0px 0 1px 2px rgba(156, 160, 177, .18)"
   }
+};
+
+const defaultVariables = {
+  hoverShadow: "0 0 0 .25rem",
+  primaryColor: themeColor
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -79,6 +87,9 @@ export const GlobalStyle = createGlobalStyle`
             ";"
         )
         .join("\n")}
+    ${Object.keys(defaultVariables)
+      .map((key: string) => `--${toKebab(key)}: ${defaultVariables[key]};`)
+      .join("\n")}
   }
 `;
 
@@ -95,7 +106,6 @@ export interface Theme {
   modalLayerDark: string; // modals' overlay
   componentBackground: string;
   inputBorderColor: string;
-  primaryColor: string;
   success: string;
   warning: string;
   error: string;

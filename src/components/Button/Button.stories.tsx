@@ -1,5 +1,3 @@
-import Page from "../Page";
-import Spacer from "../Spacer";
 import Button from "./index";
 import { useState } from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
@@ -11,10 +9,6 @@ const storyConfig = {
     size: {
       options: ["small", "normal"],
       control: { type: "radio" }
-    },
-    type: {
-      options: ["filled", "outlined", "secondary"],
-      control: { type: "select" }
     }
   }
 } as ComponentMeta<typeof Button>;
@@ -25,38 +19,18 @@ const Template = ({ size, ...args }) => (
   </Button>
 );
 
-export const Filled: ComponentStory<typeof Button> = Template.bind({});
+export const Primary: ComponentStory<typeof Button> = Template.bind({});
 
-Filled.args = {
-  type: "filled",
+Primary.args = {
   disabled: false,
   loading: false,
-  fullWidth: false
-};
-
-export const Outlined: ComponentStory<typeof Button> = Template.bind({});
-
-Outlined.args = {
-  type: "outlined",
-  disabled: false,
-  loading: true,
-  fullWidth: false
-};
-
-export const SmallOutlined: ComponentStory<typeof Button> = Template.bind({});
-
-Outlined.args = {
-  type: "outlined",
-  disabled: false,
-  loading: true,
   fullWidth: false
 };
 
 export const Secondary: ComponentStory<typeof Button> = Template.bind({});
 
 Secondary.args = {
-  type: "secondary",
-  disabled: true,
+  secondary: true,
   loading: false,
   fullWidth: false
 };
