@@ -5,8 +5,8 @@ $standardPadding: variables.$standard-padding-card
 .Card
   position: relative
   background-color: variables.$component-background
-  box-shadow: variables.$lighter-shadow
   border-radius: variables.$card-radius
+  border: 3px solid rgba(variables.$primary-color, .06)
   overflow: hidden
   padding: $standardPadding
   width: min-content
@@ -48,12 +48,11 @@ $standardPadding: variables.$standard-padding-card
     align-items: center
 
     .OrderType, .BitCount
-      background-color: rgb(variables.$primary-color)
-      color: #fff
+      background-color: rgba(variables.$primary-color, .15)
+      color: rgb(variables.$primary-color)
       font-size: variables.$normal-font-size
       font-weight: 500
       border-radius: variables.$small-items-radius - 1.5px
-      box-shadow: variables.$standard-shadow
       padding: .04em .38em
       margin-right: $space
       text-transform: uppercase
@@ -154,8 +153,8 @@ $standardPadding: variables.$standard-padding-card
       top: 0
       right: 0
       bottom: 0
-      background-color: variables.$foreground-color
-      color: variables.$foreground-reverse-color
+      background-color: rgb(variables.$primary-color)
+      color: #fff
       font-size: 1.4em
       font-weight: 500
       padding: 0 1.3em
@@ -229,8 +228,8 @@ $standardPadding: variables.$standard-padding-card
   &.Dark
     .ItemData
       .OrderType, .BitCount
-        box-shadow: 0px 0 17px 6px rgba(variables.$primary-color, .35)
-
+        background-color: rgba(variables.$primary-color, .3)
+        
 .TokenPortionTitle
   margin: 0
   font-weight: 500
