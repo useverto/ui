@@ -35,9 +35,6 @@ const defaultTheme: SchemeTypes = {
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "var(--background-color)",
     inputBorderColor: "var(--foreground-color)",
-    success: "#00D46E",
-    warning: "#FFD335",
-    error: "#FF0000",
     standardShadow: "0px 10px 20px rgba(0, 0, 0, .2)",
     standardShadowHover: "0px 10px 20px rgba(0, 0, 0, .26)",
     darkerShadow: "0px 10px 25px rgba(0, 0, 0, .185)",
@@ -59,9 +56,6 @@ const defaultTheme: SchemeTypes = {
     modalLayerDark: "rgba(0, 0, 0, .8)",
     componentBackground: "#151515",
     inputBorderColor: "#444444",
-    success: "#00D46E",
-    warning: "#FFD335",
-    error: "#FF0000",
     standardShadow: "0px 0 1px 2px rgba(156, 160, 177, .2)",
     standardShadowHover: "0px 0 1px 2px rgba(156, 160, 177, .26)",
     darkerShadow: "0px 0 1px 2px rgba(156, 160, 177, .5)",
@@ -71,7 +65,10 @@ const defaultTheme: SchemeTypes = {
 
 const defaultVariables = {
   hoverShadow: "0 0 0 .25rem",
-  primaryColor: themeColor
+  primaryColor: themeColor,
+  success: "0, 212, 110",
+  warning: "255, 211, 53",
+  error: "255, 0, 0"
 };
 
 export const GlobalStyle = createGlobalStyle`
@@ -106,9 +103,6 @@ export interface Theme {
   modalLayerDark: string; // modals' overlay
   componentBackground: string;
   inputBorderColor: string;
-  success: string;
-  warning: string;
-  error: string;
   border: string;
   secondaryText: string;
   lighterBackground: string;

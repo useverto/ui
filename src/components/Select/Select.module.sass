@@ -8,18 +8,17 @@ $topPaddingSmall: .36em
 .Select
   position: relative
   display: flex
-  box-shadow: variables.$standard-shadow
   border-radius: variables.$big-items-radius
   overflow: hidden
   font-size: variables.$normal-font-size
-  border: variables.$borderWidth solid variables.$input-border-color
-  background-color: variables.$component-background
+  background-color: rgba(variables.$primary-color, .15)
+  color: rgb(variables.$primary-color)
   width: min-content
   min-width: 320px
   transition: all .23s ease-in-out
 
   &.Dark
-    box-shadow: none
+    background-color: rgba(variables.$primary-color, .3)
 
   select
     display: block
@@ -31,7 +30,7 @@ $topPaddingSmall: .36em
     font-size: 1em
     font-weight: 500
     padding: $topPaddingNormal $sidePaddingNormal
-    color: variables.$foreground-color
+    color: rgb(variables.$primary-color)
     width: 100%
     z-index: 10
 
@@ -46,18 +45,11 @@ $topPaddingSmall: .36em
       color: variables.$foreground-reverse-color
 
   &.Filled
-    background-color: variables.$foreground-color
-    color: variables.$foreground-reverse-color
+    background-color: rgb(variables.$primary-color)
+    color: #fff
 
     select
-      color: variables.$foreground-reverse-color
-
-    &.Dark
-      background-color: variables.$input-border-color
       color: #fff
-
-      select
-        color: #fff
 
   &.Small
     font-size: variables.$smaller-font-size
@@ -68,13 +60,46 @@ $topPaddingSmall: .36em
       padding: $topPaddingSmall $sidePaddingSmall
 
   &.Status_error
-    border-color: variables.$error !important
+    background-color: rgba(variables.$error, .15)
+    color: rgb(variables.$error)
+
+    select
+      color: rgb(variables.$error)
+
+    &.Filled
+      background-color: rgb(variables.$error)
+      color: #fff
+
+      select
+        color: #fff
 
   &.Status_warning
-    border-color: variables.$warning !important
+    background-color: rgba(variables.$warning, .2)
+    color: rgb(variables.$warning)
+
+    select
+      color: rgb(variables.$warning)
+
+    &.Filled
+      background-color: rgb(variables.$warning)
+      color: #fff
+
+      select
+        color: #fff
 
   &.Status_success
-    border-color: variables.$success !important
+    background-color: rgba(variables.$success, .15)
+    color: rgb(variables.$success)
+
+    select
+      color: rgb(variables.$success)
+
+    &.Filled
+      background-color: rgb(variables.$success)
+      color: #fff
+
+      select
+        color: #fff
 
   .Arrow
     position: absolute
@@ -92,9 +117,6 @@ $topPaddingSmall: .36em
   &:disabled
     cursor: not-allowed
     opacity: .9
-
-  &:hover:not(:disabled)
-    box-shadow: variables.$standard-shadow-hover
 
 .Label
   display: block
