@@ -1,6 +1,7 @@
 import { PropsWithChildren, MouseEventHandler } from "react";
 import { Spinner } from "../Loading";
 import { DefaultProps } from "../../utils";
+import { useTheme } from "../Provider/theme";
 import styles from "./Button.module.sass";
 
 export default function Button({
@@ -13,11 +14,14 @@ export default function Button({
   onClick,
   ...props
 }: PropsWithChildren<Props>) {
+  const theme = useTheme();
+
   return (
     <button
       className={[
         "VertoButton",
         styles.Button,
+        (theme === "Dark" && styles.Dark) || "",
         (secondary && styles.Secondary) || "",
         (small && styles.small) || "",
         (fullWidth && styles.FullWidth) || "",

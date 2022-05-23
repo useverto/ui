@@ -25,10 +25,8 @@ $sidePaddingSmall: 1.7em
   padding: $topPaddingNormal $sidePaddingNormal
   transition: all .23s ease-in-out
 
-  &:disabled
-    cursor: not-allowed
-    background-color: rgba(variables.$primary-color, .1)
-    color: rgba(variables.$primary-color, .4)
+  &.Dark
+    color: #fff
   
   +hoverStyle
 
@@ -38,6 +36,19 @@ $sidePaddingSmall: 1.7em
     color: rgb(variables.$primary-color)
 
     +hoverStyle($opacity: .15)
+
+    &.Dark
+      background-color: rgba(variables.$primary-color, .3)
+      +hoverStyle($opacity: .3)
+
+  &:disabled
+    cursor: not-allowed
+    background-color: rgba(variables.$primary-color, .1)
+    color: rgba(variables.$primary-color, .4)
+
+    &.Dark
+      background-color: rgba(variables.$primary-color, .2)
+      color: rgba(variables.$primary-color, .55)
 
   &.small
     padding: $topPaddingNormal $sidePaddingSmall

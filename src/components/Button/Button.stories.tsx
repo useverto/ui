@@ -32,7 +32,8 @@ export const Secondary: ComponentStory<typeof Button> = Template.bind({});
 Secondary.args = {
   secondary: true,
   loading: false,
-  fullWidth: false
+  fullWidth: false,
+  disabled: false
 };
 
 export const Events: ComponentStory<typeof Button> = () => {

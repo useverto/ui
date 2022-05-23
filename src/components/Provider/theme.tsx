@@ -17,7 +17,7 @@ export const useTheme = (): DisplayTheme =>
 /**
  * Theme color in RGB
  */
-export const themeColor = "128, 0, 255";
+export const themeColor = "140, 25, 255";
 
 const defaultTheme: SchemeTypes = {
   Light: {
