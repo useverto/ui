@@ -7,7 +7,8 @@ $topPadding: .55em
   position: relative
   display: flex
   background-color: variables.$component-background
-  border: variables.$borderWidth solid variables.$input-border-color
+  padding: variables.$borderWidth
+  background-color: rgba(variables.$primary-color, .15)
   overflow: hidden
   border-radius: variables.$big-items-radius
   font-size: variables.$normal-font-size
@@ -25,6 +26,9 @@ $topPadding: .55em
     font-size: variables.$normal-font-size
     font-weight: 500
     padding: $sidePadding $topPadding
+    background-color: variables.$background-color
+    border-radius: variables.$big-items-radius - variables.$borderWidth
+    z-index: 10
     width: 100%
     -moz-appearance: textfield
 
@@ -40,14 +44,6 @@ $topPadding: .55em
 
   &.WithCurrency input
     padding-left: $sidePadding + 1em
-
-  &.WithInlineLabel 
-    background-color: variables.$foreground-color
-
-    input
-      z-index: 10
-      background-color: variables.$background-color
-      border-radius: variables.$big-items-radius - variables.$borderWidth
 
   &.Status_error
     border-color: variables.$error !important
