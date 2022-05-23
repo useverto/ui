@@ -1,8 +1,7 @@
 @use "../../styles/variables"
 
-$sidePaddingNormal: 44px
-$topPaddingNormal: 12px
-$sidePaddingSmall: 1.7em
+$sidePadding: 44px
+$topPadding: 12px
 
 =hoverStyle($opacity: 1)
   box-shadow: 0 0 0 0 rgba(variables.$primary-color, $opacity)
@@ -18,14 +17,14 @@ $sidePaddingSmall: 1.7em
   border: none
   cursor: pointer
   background-color: rgb(variables.$primary-color)
-  color: variables.$foreground-reverse-color
+  color: #fff
   border-radius: .9rem
   font-size: 1.1rem
   font-weight: 500
-  padding: $topPaddingNormal $sidePaddingNormal
+  padding: $topPadding $sidePadding
   transition: all .23s ease-in-out
 
-  &.Dark
+  .Loading
     color: #fff
   
   +hoverStyle
@@ -34,6 +33,9 @@ $sidePaddingSmall: 1.7em
   &.Secondary
     background-color: rgba(variables.$primary-color, .15)
     color: rgb(variables.$primary-color)
+
+    .Loading
+      color: rgb(variables.$primary-color)
 
     +hoverStyle($opacity: .15)
 
@@ -51,12 +53,9 @@ $sidePaddingSmall: 1.7em
       color: rgba(variables.$primary-color, .55)
 
   &.small
-    padding: $topPaddingNormal $sidePaddingSmall
-    font-size: variables.$smaller-font-size
-    border-radius: variables.$small-items-radius
-
-    &.outlined, &.secondary
-      padding: calc(#{$topPaddingNormal} - #{variables.$borderWidth}) calc(#{$sidePaddingSmall} - #{variables.$borderWidth})
+    padding: $topPadding / 3 * 2 $sidePadding / 2
+    font-size: .9rem
+    border-radius: .7rem
 
   &.FullWidth
     width: 100%
