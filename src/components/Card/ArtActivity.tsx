@@ -112,14 +112,13 @@ export default function ArtActivity({
                     />
                   }
                 >
-                  <Link href={`/@${user.usertag}`}>
-                    <a
-                      className={styles.Usertag}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      @{user.displaytag || user.usertag}
-                    </a>
-                  </Link>
+                  <a
+                    href={`/@${user.usertag}`}
+                    className={styles.Usertag}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    @{user.displaytag || user.usertag}
+                  </a>
                 </Popover>
               </>
             )}
@@ -143,11 +142,9 @@ export default function ArtActivity({
             AR
           </h1>
         </div>
-        <Link href={`/orbit/order/${orderID}`}>
-          <a className={styles.Icon}>
-            <ShareIcon />
-          </a>
-        </Link>
+        <a href={`/orbit/order/${orderID}`} className={styles.Icon}>
+          <ShareIcon />
+        </a>
       </div>
     </Card>
   );
