@@ -7,7 +7,6 @@ import {
   getAssetType
 } from "../../utils";
 import { FileIcon, MusicIcon } from "@iconicicons/react";
-import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
 import assetStyles from "./Asset.module.sass";
@@ -104,34 +103,33 @@ export default function Collection({
               />
             }
           >
-            <Link href={`/@${userData.usertag}`}>
-              <a
-                className={assetStyles.UserData}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {(userData.avatar && (
-                  <img
-                    src={userData.avatar}
-                    alt={userData.name}
-                    draggable={false}
-                  />
-                )) || (
-                  <div
-                    className={assetStyles.Gradient}
-                    style={{ background: gradient?.gradient ?? "" }}
-                  >
-                    <span>
-                      {(userData.name || userData.usertag || "")
-                        .charAt(0)
-                        .toUpperCase()}
-                    </span>
-                  </div>
-                )}
-                <span className={assetStyles.Username}>
-                  @{userData.displaytag || userData.usertag}
-                </span>
-              </a>
-            </Link>
+            <a
+              href={`/@${userData.usertag}`}
+              className={assetStyles.UserData}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {(userData.avatar && (
+                <img
+                  src={userData.avatar}
+                  alt={userData.name}
+                  draggable={false}
+                />
+              )) || (
+                <div
+                  className={assetStyles.Gradient}
+                  style={{ background: gradient?.gradient ?? "" }}
+                >
+                  <span>
+                    {(userData.name || userData.usertag || "")
+                      .charAt(0)
+                      .toUpperCase()}
+                  </span>
+                </div>
+              )}
+              <span className={assetStyles.Username}>
+                @{userData.displaytag || userData.usertag}
+              </span>
+            </a>
           </Popover>
         )}
         <div className={assetStyles.Price}>Collection of tokens</div>

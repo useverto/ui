@@ -6,7 +6,6 @@ import {
 } from "react";
 import { DefaultProps } from "../../utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRouter } from "next/router";
 import { generateAvatarGradient } from "../../utils";
 import Tooltip from "../Tooltip";
 import styles from "./Avatar.module.sass";
@@ -18,7 +17,6 @@ export default function Avatar({
   name,
   avatar,
   onClick,
-  href,
   size = "small",
   notification,
   left,
@@ -26,7 +24,6 @@ export default function Avatar({
   verified = false,
   onlyProfilePicture = false
 }: Props) {
-  const router = useRouter();
   const [gradient, setGradient] =
     useState<ReturnType<typeof generateAvatarGradient>>();
 
@@ -46,10 +43,7 @@ export default function Avatar({
         .filter((val) => val !== "")
         .join(" ")}
       style={style}
-      onClick={(e) => {
-        if (href) router.push(href);
-        if (onClick) onClick(e);
-      }}
+      onClick={onClick}
     >
       {left && size === "small" && !onlyProfilePicture && (
         <div className={styles.LeftInfo}>
@@ -109,7 +103,6 @@ interface Props extends DefaultProps {
   name?: string; // full name
   avatar?: string;
   onClick?: MouseEventHandler<HTMLDivElement>;
-  href?: string;
   notification?: boolean;
   left?: boolean;
   verified?: boolean;

@@ -1,7 +1,6 @@
 import Card, { Props as BaseProps, Status, StatusTypes } from "./index";
 import { formatTime } from "../../utils";
 import { ArrowRightIcon, CloseIcon, ShareIcon } from "@iconicicons/react";
-import Link from "next/link";
 import Tooltip from "../Tooltip";
 import styles from "./Card.module.sass";
 
@@ -68,11 +67,12 @@ export default function Trade({
             </a>
           </Tooltip>
         )}
-        <Link href={`/orbit/order/${orderID}`}>
-          <a className={styles.Icon + " " + styles.SmallerSpace}>
-            <ShareIcon />
-          </a>
-        </Link>
+        <a
+          href={`/orbit/order/${orderID}`}
+          className={styles.Icon + " " + styles.SmallerSpace}
+        >
+          <ShareIcon />
+        </a>
       </div>
     </Card>
   );

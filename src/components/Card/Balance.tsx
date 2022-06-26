@@ -1,7 +1,6 @@
 import Card, { Props as BaseProps } from "./index";
 import { ShareIcon } from "@iconicicons/react";
 import { useTheme } from "../Provider/theme";
-import Link from "next/link";
 import cardStyles from "./Card.module.sass";
 import styles from "./Balance.module.sass";
 
@@ -40,11 +39,9 @@ export default function Balance({
         <h1>
           {balance.toLocaleString()} {ticker.toUpperCase()}
         </h1>
-        <Link href={`/space/${id}`}>
-          <a className={cardStyles.Icon}>
-            <ShareIcon />
-          </a>
-        </Link>
+        <a href={`/space/${id}`} className={cardStyles.Icon}>
+          <ShareIcon />
+        </a>
       </div>
     </Card>
   );

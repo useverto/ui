@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { formatTime, generateAvatarGradient } from "../../utils";
 import { useMediaPredicate } from "react-media-hook";
 import { ShareIcon } from "@iconicicons/react";
-import Link from "next/link";
 import Popover from "../Popover";
 import Avatar from "../Avatar";
 import styles from "./Card.module.sass";
@@ -51,22 +50,24 @@ export default function ArtActivity({
             />
           }
         >
-          <Link href={`/@${user.usertag}`}>
-            <a className={styles.Avatar} onClick={(e) => e.stopPropagation()}>
-              {(user.avatar && (
-                <img src={user.avatar} alt="user-avatar" draggable={false} />
-              )) || (
-                <div
-                  className={styles.GradientAvatar}
-                  style={{ background: gradient?.gradient ?? "" }}
-                >
-                  <span>
-                    {(user.name || user.usertag || "").charAt(0).toUpperCase()}
-                  </span>
-                </div>
-              )}
-            </a>
-          </Link>
+          <a
+            className={styles.Avatar}
+            onClick={(e) => e.stopPropagation()}
+            href={`/@${user.usertag}`}
+          >
+            {(user.avatar && (
+              <img src={user.avatar} alt="user-avatar" draggable={false} />
+            )) || (
+              <div
+                className={styles.GradientAvatar}
+                style={{ background: gradient?.gradient ?? "" }}
+              >
+                <span>
+                  {(user.name || user.usertag || "").charAt(0).toUpperCase()}
+                </span>
+              </div>
+            )}
+          </a>
         </Popover>
         <div className={styles.Data}>
           <h1 className={styles.Action}>
@@ -86,14 +87,13 @@ export default function ArtActivity({
                     />
                   }
                 >
-                  <Link href={`/@${user.usertag}`}>
-                    <a
-                      className={styles.Usertag}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      @{user.displaytag || user.usertag}
-                    </a>
-                  </Link>
+                  <a
+                    href={`/@${user.usertag}`}
+                    className={styles.Usertag}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    @{user.displaytag || user.usertag}
+                  </a>
                 </Popover>
               </>
             )) || (
